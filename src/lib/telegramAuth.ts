@@ -183,7 +183,19 @@ export async function openBotForLogin() {
   }
 }
 
-export async function signInWithTelegram(): Promise<{ ok: boolean; error?: string }> {
+type TelegramSignInResult = { ok: boolean; error?: string };
+let pendingTelegramSignIn: Promise<TelegramSignInResult> | null = null;
+
+/** Boot and the sign-in page must share one single-use magic-link exchange. */
+export function signInWithTelegram(): Promise<TelegramSignInResult> {
+  if (pendingTelegramSignIn) return pendingTelegramSignIn;
+  pendingTelegramSignIn = performTelegramSignIn().finally(() => {
+    pendingTelegramSignIn = null;
+  });
+  return pendingTelegramSignIn;
+}
+
+async function performTelegramSignIn(): Promise<TelegramSignInResult> {
   try {
     // Give the Telegram SDK a moment to populate initData on slow clients.
     const initData = getTelegramInitData() ?? (await waitForInitData());
@@ -212,13 +224,9 @@ export async function signInWithTelegram(): Promise<{ ok: boolean; error?: strin
       type: "email",
     });
     if (error) return { ok: false, error: error.message };
-    if (authData.session?.access_token && authData.session?.refresh_token) {
-      const { error: setErr } = await supabase.auth.setSession({
-        access_token: authData.session.access_token,
-        refresh_token: authData.session.refresh_token,
-      });
-      if (setErr) return { ok: false, error: setErr.message };
-    }
+    // verifyOtp already persists the session and publishes SIGNED_IN. Setting
+    // it again adds a second auth transition and an unnecessary network call.
+    if (!authData.session) return { ok: false, error: "session_missing" };
     const startParam = new URLSearchParams(initData).get("start_param");
     if (startParam?.startsWith("ref_")) await supabase.rpc("claim_referral_signup", {p_code:startParam.slice(4)});
     return { ok: true };

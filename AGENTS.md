@@ -18,3 +18,4 @@
 - Manual crypto checkout shares one inline payment panel; only supported comment-bearing networks are offered, and confirmation calls the service-only atomic settlement function. Why: prevent reference ambiguity, reused transactions and partial credit activation.
 - Reward task eligibility uses a shared allowlist and server-only atomic claims; unavailable external verification must not award points. Why: prevent arbitrary tasks and fabricated completions.
 - Telegram fullscreen and inset events update shared safe-area variables, and profile pictures synchronize after verified Telegram sign-in. Why: keep native controls clear and returning-user identity current.
+- Telegram sign-in uses one shared in-flight promise and relies on verifyOtp to persist its session. Why: startup and the auth page must not race single-use login tokens or publish duplicate sign-in transitions.
