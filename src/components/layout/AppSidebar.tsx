@@ -438,6 +438,12 @@ const AppSidebar = ({
     path: "/referrals",
     match: (p: string) => p.startsWith("/referrals") && !p.includes("tasks"),
   });
+  moreNav.push({
+    label: language === "ar-eg" ? "المهام" : "Tasks",
+    Icon: ({ size = 20, className, strokeWidth }) => <ListChecks size={size} className={className} strokeWidth={strokeWidth ?? 1.8} />,
+    path: "/tasks",
+    match: (p: string) => p.startsWith("/tasks"),
+  });
 
   const handleNewChat = () => {
     if (isBuildMode) navigateSmoothly("/build");
