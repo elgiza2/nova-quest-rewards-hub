@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { isInsideTelegram, openBotForLogin, signInWithTelegram } from "@/lib/telegramAuth";
-import logo from "@/assets/orange-logo.png.asset.json";
+const logo = { url: "/orange-logo.png" };
 
 export default function AuthPage() {
   const navigate = useNavigate();
