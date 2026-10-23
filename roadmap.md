@@ -38,7 +38,7 @@
 - [x] Chat thinking text not showing
 - [x] Remove two extra buttons next to copy/like/dislike in chat
 - [ ] Real TON/USDT wallet payment test (needs user's wallet)
-- [ ] New tasks added via bot /101 must appear in the app tasks page (remove key allowlist, use image_url)
-- [ ] Regenerate task images sized for small circular rows
-- [ ] Publish welcome post to channel -1002616088306
-- [ ] Channel welcome post button must open the Mini App (t.me bot link), not the website
+- [x] New tasks added via bot appear in the app tasks page (allowlist removed, image_url used)
+- [x] Regenerated 5 task images sized for small circular rows
+- [x] Welcome post published to channel (msg 375, button opens Mini App via t.me/Noveaibot?startapp)
+- [x] Channel post button opens Mini App
