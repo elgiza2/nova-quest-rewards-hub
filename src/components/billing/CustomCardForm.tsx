@@ -258,6 +258,10 @@ export default function CustomCardForm({ open, tier, interval, onClose }: Props)
                     data-selected={m.redirect === undefined && method === m.id}
                     disabled={busy || walletWaiting || startingMethod !== null}
                     onClick={() => {
+                      if (m.redirect === "crypto") {
+                        window.location.assign(`/checkout/crypto?tier=${tier}&interval=${interval}`);
+                        return;
+                      }
                       if (m.redirect !== undefined) {
                         void startRedirect(m.redirect, m.label);
                         return;
@@ -483,13 +487,13 @@ function ApplePayPanel({
   );
 }
 
-type TileId = "visa" | "apple_pay" | "vodafone" | "google_pay" | "more";
+type TileId = "visa" | "apple_pay" | "vodafone" | "crypto" | "more";
 type Tile = { id: TileId; label: string; redirect?: string | null };
 const METHODS: Tile[] = [
   { id: "visa", label: "Card" },
   { id: "apple_pay", label: "Apple Pay" },
   { id: "vodafone", label: "Vodafone" },
-  { id: "google_pay", label: "Google Pay", redirect: "google_pay" },
+  { id: "crypto", label: "Crypto", redirect: "crypto" },
   { id: "more", label: "More", redirect: null },
 ];
 
@@ -517,8 +521,8 @@ function TileLogo({ id }: { id: TileId }) {
           <path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM11.5 3c.7-.9 1.2-2 1-3.2-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3.1 1.1.1 2.2-.6 2.9-1.4z" />
         </svg>
       );
-    case "google_pay":
-      return <BrandIcon slug="googlepay" className="h-[22px] w-[22px]" />;
+    case "crypto":
+      return <Coins className="h-[22px] w-[22px]" strokeWidth={2} />;
     case "more":
       return <MoreHorizontal className="h-[22px] w-[22px]" strokeWidth={2} />;
     case "vodafone":
