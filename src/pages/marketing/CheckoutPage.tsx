@@ -53,6 +53,16 @@ const CheckoutPage = () => {
         path="/checkout"
       />
       <CustomCardForm open tier={tier} interval={interval} onClose={() => navigate("/pricing", { replace: true })} />
+      {/* Crypto alternative — TON / USDT with automatic wallet payment. */}
+      <div className="fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4">
+        <button
+          type="button"
+          onClick={() => navigate(`/checkout/crypto?tier=${tier}&interval=${interval}`)}
+          className="rounded-full bg-foreground px-5 py-2.5 text-xs font-semibold text-background shadow-lg"
+        >
+          أو ادفع بعملة مشفرة · TON / USDT
+        </button>
+      </div>
     </>
   );
 };
