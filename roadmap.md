@@ -1,5 +1,12 @@
 # Roadmap
 
+- [ ] Redesign Tasks with Orange point icon and character artwork; allow only X, community, coin purchase, monthly subscription and daily check-in.
+- [ ] Remove agent +; remove Earn tasks and rename Earn to Referral with Telegram-only invite links.
+- [ ] Replace wallet-connect checkout with inline address/reference payment and secure on-chain verification.
+- [ ] Telegram profile photos, fullscreen and native back navigation.
+- [ ] Remove remaining visible Megsy branding; restore shimmering thinking text.
+- [ ] Run targeted tests and verify the changed screens and payment flow.
+
 - [x] Rename Megsy/Nova AI → Orange AI (UI + translations + support links @Torekr)
 - [x] Telegram login (Mini App initData → session) + /api/public/telegram-auth
 - [x] Reward tasks migration (telegram_join, daily_checkin; old Trustpilot/X tasks deactivated)
