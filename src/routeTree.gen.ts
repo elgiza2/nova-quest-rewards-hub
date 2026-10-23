@@ -23,6 +23,7 @@ import { Route as ApiManusAdminRouteImport } from './routes/api/manus-admin'
 import { Route as ApiMcpRouteImport } from './routes/api/mcp'
 import { Route as ApiReadUrlRouteImport } from './routes/api/read-url'
 import { Route as ApiRenderPdfRouteImport } from './routes/api/render-pdf'
+import { Route as ApiTasksRouteImport } from './routes/api/tasks'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiWebSearchRouteImport } from './routes/api/web-search'
 import { Route as ApiAgentSplatRouteImport } from './routes/api/agent.$'
@@ -105,6 +106,11 @@ const ApiRenderPdfRoute = ApiRenderPdfRouteImport.update({
   path: '/api/render-pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTasksRoute = ApiTasksRouteImport.update({
+  id: '/api/tasks',
+  path: '/api/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/api/mcp': typeof ApiMcpRoute
   '/api/read-url': typeof ApiReadUrlRoute
   '/api/render-pdf': typeof ApiRenderPdfRoute
+  '/api/tasks': typeof ApiTasksRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/api/mcp': typeof ApiMcpRoute
   '/api/read-url': typeof ApiReadUrlRoute
   '/api/render-pdf': typeof ApiRenderPdfRoute
+  '/api/tasks': typeof ApiTasksRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   '/api/mcp': typeof ApiMcpRoute
   '/api/read-url': typeof ApiReadUrlRoute
   '/api/render-pdf': typeof ApiRenderPdfRoute
+  '/api/tasks': typeof ApiTasksRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
@@ -263,6 +272,7 @@ export interface FileRouteTypes {
     | '/api/mcp'
     | '/api/read-url'
     | '/api/render-pdf'
+    | '/api/tasks'
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/api/mcp'
     | '/api/read-url'
     | '/api/render-pdf'
+    | '/api/tasks'
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/api/mcp'
     | '/api/read-url'
     | '/api/render-pdf'
+    | '/api/tasks'
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   ApiMcpRoute: typeof ApiMcpRoute
   ApiReadUrlRoute: typeof ApiReadUrlRoute
   ApiRenderPdfRoute: typeof ApiRenderPdfRoute
+  ApiTasksRoute: typeof ApiTasksRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiWebSearchRoute: typeof ApiWebSearchRoute
   ApiAgentSplatRoute: typeof ApiAgentSplatRoute
@@ -458,6 +471,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiRenderPdfRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/tasks': {
+      id: '/api/tasks'
+      path: '/api/tasks'
+      fullPath: '/api/tasks'
+      preLoaderRoute: typeof ApiTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -553,6 +573,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiMcpRoute: ApiMcpRoute,
   ApiReadUrlRoute: ApiReadUrlRoute,
   ApiRenderPdfRoute: ApiRenderPdfRoute,
+  ApiTasksRoute: ApiTasksRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiWebSearchRoute: ApiWebSearchRoute,
   ApiAgentSplatRoute: ApiAgentSplatRoute,

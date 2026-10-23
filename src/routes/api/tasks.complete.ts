@@ -100,7 +100,7 @@ async function verifyCondition(db: any, userId: string, taskKey: TaskKey): Promi
   }
 }
 
-export const Route = createFileRoute("/api/tasks/complete")({
+export const Route = createFileRoute("/api/tasks")({
   server: {
     handlers: {
       POST: async ({ request }) => {
