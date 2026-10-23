@@ -1,21 +1,10 @@
 # Roadmap
-- [ ] Diagnose and repair chat delay / empty-response failure; verify with regression tests and real chat if authentication permits
-- [ ] Use connected Google tools to identify customer acquisition opportunities for Megsy; report concrete findings and blockers
-- [x] Preserve and verify searched phone and food images in generated answers (iPhone 16, Galaxy S25, Koshary and Falafel loaded in browser)
-- [x] Expand OpenUI place, hotel, menu and appointment cards, enable map instructions and refine light/dark colors
-- [x] Verify new card interactions, searched photos and maps on desktop and mobile (13 tests, map pins, view switches, actions; no overflow or runtime errors)
-- [x] Deploy latest chat UI to existing Vercel production project and verify all three public domains (READY; HTTP 200; published welcome page renders without runtime errors)
-- [x] Use Open Intelligent UI inside chat while preserving searched images and interactive replies (11 tests; photo + selection + submit verified in browser)
-- [ ] Verify a live authenticated model reply end-to-end — blocked: external unmanaged auth has no available managed browser session
-- [x] Import sky-nexus-hub repository
-- [x] Hide internal hand-off tag from replies
-- [x] Redesign thinking / tools display
-- [x] Hide broken repeated "%20" output
-- [x] Chat image tool: try Runway pool first, then Wan (deployed chat-alibaba)
-- [ ] Free-plan images (Wan) — blocked: alibaba_keys pool is empty; user adds keys via Telegram bot
-- [ ] Chat brain capacity — blocked: only 1 active Cerebras key, hitting per-minute limit; user adds keys
-- [ ] AgentSky "not configured" — to investigate next
-- [x] Agents page: real brand icons, robot for Megsy
-- [x] Chat renders clean HTML widgets (sandboxed)
-- [x] Agents page: truly real brand icons; Megsy = chat home robot
-- [x] Thinking label changes per live state with shimmer
+
+- [x] Import project from GitHub (sky-nexus-refined)
+- [x] Rename Megsy AI -> Nova AI (visible text), remove old-site links, Trustpilot "Rate this app"
+- [ ] Contact emails still use @megsyai.com — waiting on new email domain from user
+- [ ] Telegram auto sign-in (Mini App initData, bot token secret TELEGRAM_BOT_TOKEN)
+- [ ] Crypto subscriptions: TON (GRAM), USDT on TON via TON Connect; then more chains (EVM USDT/USDC, Solana, Tron)
+- [ ] Internal Telegram referral system
+- [ ] Tasks page: complete tasks -> earn points
+- [ ] Publish (Vercel token not usable here — publish via Lovable or user deploys from GitHub)
