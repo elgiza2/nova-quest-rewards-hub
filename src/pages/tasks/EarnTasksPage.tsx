@@ -14,7 +14,9 @@ import communityArt from "@/assets/tasks/join_channel.jpg";
 import coinArt from "@/assets/tasks/buy_orange.jpg";
 import planArt from "@/assets/tasks/first_subscription.jpg";
 import dailyArt from "@/assets/tasks/daily_checkin.jpg";
-type Task={id:string;task_key:string;title:string;reward_credits:number;action_url:string|null};
+type Task={id:string;task_key:string;title:string;reward_credits:number;action_url:string|null;image_url:string|null};
+const taskOrder=(t:Task)=>{const i=ORANGE_TASK_KEYS.findIndex(k=>k===t.task_key);return i<0?ORANGE_TASK_KEYS.length:i};
+const sortTasks=(list:Task[])=>list.sort((a,b)=>taskOrder(a)-taskOrder(b));
 const art:Record<string,string>={follow_x:xArt,join_channel:communityArt,buy_orange:coinArt,first_subscription:planArt,daily_checkin:dailyArt};
 const labels:Record<string,[string,string]>={follow_x:["Follow ORANGE on X","تابع ORANGE على إكس"],join_channel:["Join the community","انضم للمجتمع"],buy_orange:["Buy ORANGE","اشتري ORANGE"],first_subscription:["Monthly subscription","الاشتراك الشهري"],daily_checkin:["Daily check-in","الحضور اليومي"]};
 export default function EarnTasksPage(){
