@@ -142,7 +142,7 @@ async function postToChannel(poolIndex: number): Promise<boolean> {
   if (!item) return false;
   const res = await tg("sendPhoto", {
     chat_id: CHANNEL_ID,
-    photo: item.photo,
+    photo: absoluteAssetUrl(item.photo),
     caption: item.caption,
     parse_mode: "HTML",
     reply_markup: { inline_keyboard: [[appUrlButton()]] },
