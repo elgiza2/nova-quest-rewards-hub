@@ -64,8 +64,19 @@ export default function CreditPacks({ isPro }: { isPro: boolean }) {
             <span className="h-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">{p.note && t(p.note)}</span>
             <span className="mt-2 text-[28px] font-semibold tabular-nums">{p.credits}</span>
             <span className="text-[13px] text-muted-foreground">{t("credits")}</span>
-            <span className="mt-4 inline-flex items-center gap-2 text-[15px] font-semibold">
+            <span className="mt-4 inline-flex w-full items-center justify-between gap-2 text-[15px] font-semibold">
               {loading === p.sku ? <Loader2 className="h-4 w-4 animate-spin" /> : `$${p.price}`}
+              <span
+                role="button"
+                tabIndex={0}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.location.href = `/checkout/crypto?sku=${p.sku}`;
+                }}
+                className="rounded-full border border-border px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:border-foreground/50"
+              >
+                Crypto
+              </span>
             </span>
           </button>
         ))}
