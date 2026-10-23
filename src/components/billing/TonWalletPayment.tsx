@@ -14,7 +14,7 @@ import { TON_USDT_MASTER } from "@/lib/crypto/verification";
 type Invoice = { id: string; wallet: string; payAmount: number; memo: string; expectedNano: string; expiresAt: string };
 type Props = { tier: string; interval: string; sku?: string | null };
 
-const MANIFEST = "https://orange-ai-woad.vercel.app/tonconnect-manifest.json";
+const MANIFEST = "https://orange-ai-beta.vercel.app/tonconnect-manifest.json";
 
 function commentCell(text: string) {
   return beginCell().storeUint(0, 32).storeStringTail(text).endCell();
