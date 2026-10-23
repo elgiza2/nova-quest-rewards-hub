@@ -99,11 +99,19 @@ export function initTelegramWebApp(): void {
   } catch { /* ignore */ }
 }
 
-function toHex(rgb: string): string | null {
-  if (!rgb.startsWith("rgb")) return null;
-  const m = rgb.match(/\d+(\.\d+)?/g);
-  if (!m || m.length < 3) return null;
-  return "#" + m.slice(0, 3).map((n) => Math.round(Number(n)).toString(16).padStart(2, "0")).join("");
+let colorCtx: CanvasRenderingContext2D | null = null;
+/** Any CSS color (rgb, oklch, color()) → #rrggbb via a 1px canvas. */
+function toHex(color: string): string | null {
+  try {
+    colorCtx ??= document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    if (!colorCtx) return null;
+    colorCtx.clearRect(0, 0, 1, 1);
+    colorCtx.fillStyle = "#000";
+    colorCtx.fillStyle = color;
+    colorCtx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = colorCtx.getImageData(0, 0, 1, 1).data;
+    return "#" + [r, g, b].map((n) => n.toString(16).padStart(2, "0")).join("");
+  } catch { return null; }
 }
 
 /** Wait briefly for `initData` — the Telegram SDK sometimes populates it
