@@ -122,3 +122,16 @@ html.tg-app body::before {
   z-index: 2147483000;
   pointer-events: none;
 }
+
+/* Inside Telegram the native Back button replaces every in-app back control. */
+html.tg-app button[aria-label="Back"],
+html.tg-app a[aria-label="Back"],
+html.tg-app button[aria-label="Go back"],
+html.tg-app button[aria-label="رجوع"],
+html.tg-app a[aria-label="رجوع"],
+html.tg-app button:has(> svg.lucide-arrow-left:only-child),
+html.tg-app a:has(> svg.lucide-arrow-left:only-child),
+html.tg-app button:has(> svg.lucide-arrow-left + span:only-of-type),
+html.tg-app [data-back-button] {
+  display: none !important;
+}
