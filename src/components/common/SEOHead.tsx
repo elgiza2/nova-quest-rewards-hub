@@ -33,7 +33,6 @@ const SEOHead = ({
   const meta = locale ? getLocale(locale) : undefined;
 
   const brandName = "Nova AI";
-  const twitterHandle = "@MegsyAI";
 
   const isHomePath = path === "/" || (meta && path === meta.path);
   const fullTitle = isHomePath ? title : `${title} | ${brandName}`;
@@ -73,7 +72,6 @@ const SEOHead = ({
       {meta?.code !== "en" && <meta property="og:locale:alternate" content="en_US" />}
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={twitterHandle} />
       <meta name="twitter:title" content={localizedFullTitle} />
       <meta name="twitter:description" content={localizedDescription} />
       <meta name="twitter:image" content={ogImage} />

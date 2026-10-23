@@ -295,8 +295,8 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "No. Failed generations are automatically refunded within a few minutes.":
     "لأ. التوليد الفاشل بيترد تلقائي خلال دقايق.",
   "The app feels slow": "التطبيق بطيء",
-  "Check status.megsyai.com for incidents. Try a hard refresh, then sign out and back in.":
-    "شوف status.megsyai.com لو في عطل. جرّب تعمل تحديث كامل، وبعدين اخرج وادخل تاني.",
+  "If something feels broken, message @Torekr on Telegram. Try a hard refresh, then sign out and back in.":
+    "لو حاسس إن في حاجة مش شغالة، كلّمنا على تليجرام @Torekr. جرّب تحديث كامل وبعدين اخرج وادخل تاني.",
   "I can't sign in": "مش قادر أسجل دخول",
   "Use the password reset link, check for typos in your email, and make sure cookies aren't blocked.":
     "استخدم لينك إعادة تعيين الباسورد، اتأكد إن الإيميل مكتوب صح، وإن الكوكيز مش متمنوعة.",

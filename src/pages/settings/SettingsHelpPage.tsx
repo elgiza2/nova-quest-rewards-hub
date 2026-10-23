@@ -65,7 +65,7 @@ const sections = [
     title: "Troubleshooting",
     items: [
       { q: "A generation failed — am I charged?", a: "No. Failed generations are automatically refunded within a few minutes." },
-      { q: "The app feels slow", a: "Check status.megsyai.com for incidents. Try a hard refresh, then sign out and back in." },
+      { q: "The app feels slow", a: "If something feels broken, message @Torekr on Telegram. Try a hard refresh, then sign out and back in." },
       { q: "I can't sign in", a: "Use the password reset link, check for typos in your email, and make sure cookies aren't blocked." },
       { q: "Where do I report a bug?", a: "Help & Support → Write to a human. Include screenshots and the URL where it happened." },
     ],
