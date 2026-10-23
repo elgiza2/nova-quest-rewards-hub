@@ -14,7 +14,10 @@ export default function TelegramBackButton() {
   useEffect(() => {
     const btn = (window as unknown as { Telegram?: { WebApp?: { BackButton?: BackBtn; initData?: string } } }).Telegram
       ?.WebApp?.BackButton;
-    if (!btn || !document.documentElement.classList.contains("tg-app")) return;
+    if (!btn) return;
+    const wa = (window as unknown as { Telegram?: { WebApp?: { initData?: string } } }).Telegram?.WebApp;
+    if (!wa?.initData) return;
+    document.documentElement.classList.add("tg-app");
     const onBack = () => {
       if (window.history.length > 1 && (window.history.state?.idx ?? 1) > 0) navigate(-1);
       else navigate("/chat", { replace: true });

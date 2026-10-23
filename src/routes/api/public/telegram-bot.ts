@@ -16,7 +16,7 @@ import char01 from "@/assets/tg/char-01.jpg.asset.json";
 import char02 from "@/assets/tg/char-02.jpg.asset.json";
 import char03 from "@/assets/tg/char-03.jpg.asset.json";
 import char04 from "@/assets/tg/char-04.jpg.asset.json";
-import charactersGroup from "@/assets/tg/characters-group.jpg.asset.json";
+import charactersGroup from "@/assets/tg/characters-together.jpg.asset.json";
 
 /** Lovable-hosted origin that actually serves /__l5e asset files. */
 const ASSET_HOST = "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app";
