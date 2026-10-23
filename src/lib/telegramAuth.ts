@@ -1,15 +1,20 @@
 /** @doc Detects Telegram Mini App context and signs the user into Supabase
- *  via the /harmony/auth endpoint (verifies Telegram initData server-side
- *  and returns a token_hash we exchange for a real session). */
+ *  via the local /api/public/telegram-auth endpoint (verifies Telegram
+ *  initData server-side and returns a token_hash we exchange for a real
+ *  session). */
 import { supabase } from "@/integrations/supabase/client";
 
-const SUPABASE_URL = "https://qdnqxjzjecaieuavagvq.supabase.co";
+const SUPABASE_URL =
+  (import.meta.env.VITE_SUPABASE_URL as string | undefined) ||
+  "https://qdnqxjzjecaieuavagvq.supabase.co";
 const ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0Z2FtcGR0YXd1ZWZ3d2F5bmN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3Njk5ODAsImV4cCI6MjA4ODM0NTk4MH0.5ZOzuxCrm-TO4zzRDJ68LrCLH3f0itiznUxhbEupvGg";
+  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkbnF4anpqZWNhaWV1YXZhZ3ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MDY1NTcsImV4cCI6MjEwNDA4MjU1N30.eFK_7U7MRlktAAnQQ_9d4k7tF8N3qZ3QGhKVhH6C3Tg";
 
-const BOT_USERNAME = "Megsyaibot";
-const ENDPOINT = `${SUPABASE_URL}/functions/v1/telegram-tasks-bot/harmony/auth`;
-const BOT_MINI_APP_URL = `https://t.me/${BOT_USERNAME}?startapp=login`;
+/** Fallback only — the live username comes from /api/public/telegram-auth GET. */
+const FALLBACK_BOT_USERNAME = "Noveaibot";
+const AUTH_ENDPOINT = "/api/public/telegram-auth";
+let botUsernameCache: string | null = null;
 
 type TgWebApp = {
   initData?: string;
@@ -67,11 +72,26 @@ export function isInsideTelegram(): boolean {
   return false;
 }
 
-/** Open the bot's Main Mini App directly. `?startapp=login` launches the
- *  Mini App (configured via BotFather → Menu Button / Main Mini App) with
- *  `start_param=login`, so Telegram signs the user's identity into `initData`
- *  and our auto-login runs on arrival — no manual /start step needed. */
-export function openBotForLogin() {
+/** The bot username from the server (live), falling back to the last known one. */
+export async function fetchBotUsername(): Promise<string> {
+  if (botUsernameCache) return botUsernameCache;
+  try {
+    const res = await fetch(AUTH_ENDPOINT);
+    const data = await res.json().catch(() => null);
+    if (data?.botUsername) {
+      botUsernameCache = String(data.botUsername);
+      return botUsernameCache;
+    }
+  } catch { /* fall through */ }
+  return FALLBACK_BOT_USERNAME;
+}
+
+/** Open the bot's Main Mini App directly. Launching the Mini App signs the
+ *  user's identity into `initData` and our auto-login runs on arrival —
+ *  no manual /start step needed. */
+export async function openBotForLogin() {
+  const username = await fetchBotUsername();
+  const miniAppUrl = `https://t.me/${username}?startapp=login`;
   const tg = tgWebApp();
   // `tg.openTelegramLink` is a no-op stub outside the real Telegram client
   // (the telegram-web-app.js SDK is loaded globally, so `tg` is truthy in
@@ -79,12 +99,12 @@ export function openBotForLogin() {
   // otherwise fall back to opening the deep link in a new tab so desktop /
   // mobile Safari users are handed off to Telegram to launch the Mini App.
   if (isInsideTelegram() && tg?.openTelegramLink) {
-    tg.openTelegramLink(BOT_MINI_APP_URL);
+    tg.openTelegramLink(miniAppUrl);
   } else if (typeof window !== "undefined") {
     // Same-tab navigation is more reliable on mobile than window.open(): it
     // hands the browser directly to Telegram instead of leaving the user in a
     // background tab that cannot ever receive Telegram initData.
-    window.location.href = BOT_MINI_APP_URL;
+    window.location.href = miniAppUrl;
   }
 }
 
@@ -97,16 +117,12 @@ export async function signInWithTelegram(): Promise<{ ok: boolean; error?: strin
       // not launched as a Mini App (no initData). In both cases the fix is
       // the same: relaunch through the bot's Main Mini App gateway so
       // Telegram signs the user's identity into initData automatically.
-      openBotForLogin();
+      await openBotForLogin();
       return { ok: false, error: isInsideTelegram() ? "no_init_data" : "not_in_telegram" };
     }
-    const resp = await fetch(ENDPOINT, {
+    const resp = await fetch(AUTH_ENDPOINT, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        apikey: ANON_KEY,
-        Authorization: `Bearer ${ANON_KEY}`,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ initData }),
     });
     const data = await resp.json().catch(() => ({}));
