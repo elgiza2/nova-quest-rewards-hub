@@ -87,7 +87,7 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "Technical data: request logs, usage counters, error reports and security events needed to operate and protect the service.":
     "بيانات تقنية: سجلات الطلبات وعدادات الاستخدام وتقارير الأخطاء وأحداث الأمان اللازمة لتشغيل الخدمة وحمايتها.",
   "Billing data: subscription status and transaction records. Card details are handled by our payment provider, not stored by Orange.":
-    "بيانات الفوترة: حالة الاشتراك وسجل المعاملات. بيانات الكارت بتتعامل معاها بوابة الدفع، وNova مش بيخزّنها.",
+    "بيانات الفوترة: حالة الاشتراك وسجل المعاملات. بيانات الكارت بتتعامل معاها بوابة الدفع، وOrange مش بيخزّنها.",
   "How we use it": "بنستخدمها إزاي",
   "To deliver the features you request, apply plan limits and credits, provide support, detect abuse, and improve reliability and safety.":
     "عشان نقدّم المميزات اللي بتطلبها، ونطبّق حدود الباقة والكريدت، ونديك دعم، ونكشف إساءة الاستخدام، ونحسّن الاستقرار والأمان.",

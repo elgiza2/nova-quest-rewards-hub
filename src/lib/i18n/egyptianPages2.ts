@@ -246,7 +246,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
     "افتح الميديا ← استوديو الفيديو، اختار موديل، ارفع صورة بداية لو حبيت، اكتب وصفك، وولّد.",
   "What is Lip Sync?": "إيه هي مزامنة الشفايف؟",
   "Upload a portrait video and an audio file, and Orange syncs the mouth movements to the audio.":
-    "ارفع فيديو لوش وملف صوت، وNova هيظبط حركة الفم على الصوت.",
+    "ارفع فيديو لوش وملف صوت، وOrange هيظبط حركة الفم على الصوت.",
   "Can I edit a generated image?": "أقدر أعدّل صورة مولّدة؟",
   "Yes — open the image and use the edit tools (inpaint, upscale, background remove). Each edit costs MC.":
     "أيوه — افتح الصورة واستخدم أدوات التعديل (تعبئة وتكبير ومسح الخلفية). كل تعديل بيستهلك MC.",
@@ -256,7 +256,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Build (websites & apps)": "البناء (مواقع وتطبيقات)",
   "How do I start a project?": "أبدأ مشروع إزاي؟",
   "Open /build, describe what you want, and Orange scaffolds a working project you can iterate on with chat.":
-    "افتح /build، اوصف اللي عايزه، وNova هيبنيلك مشروع شغال تقدر تطوّره بالشات.",
+    "افتح /build، اوصف اللي عايزه، وOrange هيبنيلك مشروع شغال تقدر تطوّره بالشات.",
   "Can I preview my project?": "أقدر أعاين المشروع؟",
   "Yes — every project has a live preview pane that updates as the AI edits files.":
     "أيوه — كل مشروع فيه معاينة حية بتتحدث مع كل تعديل.",

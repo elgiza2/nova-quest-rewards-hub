@@ -261,7 +261,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Start with one short sentence — I'll turn it into steps or ready-made content.":
     "ابدأ بجملة قصيرة — وأنا أحوّلها لخطوات أو محتوى جاهز.",
   "One short sentence is enough — Orange turns it into steps or content.":
-    "جملة قصيرة تكفي — وNova يحوّلها لخطوات أو محتوى.",
+    "جملة قصيرة تكفي — وOrange يحوّلها لخطوات أو محتوى.",
   "Use + for files and tools": "استخدم + للملفات والأدوات",
   "Add anything from +": "ضيف أي حاجة من +",
   "Upload images and video, or open creation and editing tools from the + button.":
@@ -269,7 +269,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Photos, videos and creation tools all live behind this button.":
     "الصور والفيديوهات وأدوات الإنشاء كلها ورا الزر ده.",
   "Send when ready": "ابعت لما تكون جاهز",
-  "Tap send and Orange gets to work right away.": "دوس ابعت وNova يبدأ الشغل على طول.",
+  "Tap send and Orange gets to work right away.": "دوس ابعت وOrange يبدأ الشغل على طول.",
   "Pick the model that fits — speed or higher quality — before you send.":
     "اختار الموديل المناسب — سرعة ولا جودة أعلى — قبل ما تبعت.",
   "Tap the name at the top to pick the model that fits the task.":

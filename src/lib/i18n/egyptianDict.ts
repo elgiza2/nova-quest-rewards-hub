@@ -989,7 +989,7 @@ export const EGYPTIAN_DICT: Record<string, string> = {
 "Share your referral link.": "شير لينك الدعوة بتاعك.",
 "Sharing & Sub-Processors": "المشاركة والمعالجون الفرعيون",
 "Ship Code 10× Faster": "نزل كود أسرع 10 مرات",
-"Ship full websites, apps and code projects with Orange — paid plans only.": "اطلع مواقع وتطبيقات ومشاريع كود كاملة بNova — للخطط المدفوعة بس.",
+"Ship full websites, apps and code projects with Orange — paid plans only.": "اطلع مواقع وتطبيقات ومشاريع كود كاملة بـ Orange — للخطط المدفوعة بس.",
 "Sign in": "تسجيل الدخول",
 "Sign in or create your Orange AI account.": "سجل الدخول أو أنشئ حسابك في Orange AI.",
 "Sign in to Orange AI": "سجل الدخول إلى Orange AI",

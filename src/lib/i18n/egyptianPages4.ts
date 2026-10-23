@@ -38,7 +38,7 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   "Up to 40 premium videos a month (240 MC)": "لحد 40 فيديو بريميوم في الشهر (240 كريدت)",
   "Up to 120 premium videos a month (600 MC)": "لحد 120 فيديو بريميوم في الشهر (600 كريدت)",
   "Docs, Slides & Orange Coder — export, build and deploy":
-    "مستندات وسلايدز وNova Coder — تصدير وبناء ونشر",
+    "مستندات وسلايدز وOrange Coder — تصدير وبناء ونشر",
   "Team workspace with shared projects and files":
     "مساحة شغل للفريق بمشاريع وملفات مشتركة",
   "Priority support · cancel anytime": "دعم بأولوية · تلغي في أي وقت",
