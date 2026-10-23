@@ -23,12 +23,13 @@ export default function EarnTasksPage(){
  const ar=useUserLang()==="ar-eg";const navigate=useNavigate();
  const [tasks,setTasks]=useState<Task[]>([]);const [done,setDone]=useState<Record<string,string>>({});const [credits,setCredits]=useState<number|null>(null);const [loading,setLoading]=useState(true);const [busy,setBusy]=useState("");const [error,setError]=useState("");const [openedKeys,setOpenedKeys]=useState<Record<string,boolean>>({});
  const load=useCallback(async()=>{setLoading(true);try{
- const publicTasks=await supabase.from("reward_tasks").select("id,task_key,title,reward_credits,action_url").eq("active",true).in("task_key",[...ORANGE_TASK_KEYS]);
- if(!publicTasks.error)setTasks((publicTasks.data??[]).sort((a,b)=>ORANGE_TASK_KEYS.findIndex(k=>k===a.task_key)-ORANGE_TASK_KEYS.findIndex(k=>k===b.task_key)));
+ const cols="id,task_key,title,reward_credits,action_url,image_url";
+ const publicTasks=await supabase.from("reward_tasks").select(cols).eq("active",true);
+ if(!publicTasks.error)setTasks(sortTasks(publicTasks.data??[]));
  const {data:{user}}=await supabase.auth.getUser();if(!user)throw new Error(ar?"افتح التطبيق من تليجرام لاستلام نقاطك":"Open the app from Telegram to claim your points");
- const [tk,ut,p]=await Promise.all([supabase.from("reward_tasks").select("id,task_key,title,reward_credits,action_url").eq("active",true).in("task_key",[...ORANGE_TASK_KEYS]),supabase.from("user_reward_tasks").select("task_id,completed_at").eq("user_id",user.id),supabase.from("profiles").select("credits").eq("id",user.id).maybeSingle()]);
+ const [tk,ut,p]=await Promise.all([supabase.from("reward_tasks").select(cols).eq("active",true),supabase.from("user_reward_tasks").select("task_id,completed_at").eq("user_id",user.id),supabase.from("profiles").select("credits").eq("id",user.id).maybeSingle()]);
  if(tk.error||ut.error||p.error)throw new Error(ar?"تعذر تحميل المهام":"Could not load tasks");
- setTasks((tk.data??[]).sort((a,b)=>ORANGE_TASK_KEYS.findIndex(k=>k===a.task_key)-ORANGE_TASK_KEYS.findIndex(k=>k===b.task_key)));setDone(Object.fromEntries((ut.data??[]).filter(r=>r.completed_at).map(r=>[r.task_id,r.completed_at as string])));setCredits(Number(p.data?.credits??0));setError("");
+ setTasks(sortTasks(tk.data??[]));setDone(Object.fromEntries((ut.data??[]).filter(r=>r.completed_at).map(r=>[r.task_id,r.completed_at as string])));setCredits(Number(p.data?.credits??0));setError("");
  }catch(e){setError(e instanceof Error?e.message:"Could not load tasks")}finally{setLoading(false)}},[ar]);
  useEffect(()=>{void load()},[load]);
  async function verify(task:Task){setBusy(task.task_key);try{const {data}=await supabase.auth.getSession();if(!data.session)return;const res=await fetch("/api/tasks/complete",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${data.session.access_token}`},body:JSON.stringify({taskKey:task.task_key})});const result=await res.json();if(!result.ok){const msg=result.error==="x_verification_unavailable"?(ar?"متابعة إكس تحتاج ربط حساب إكس؛ لن تُمنح نقاط قبل التحقق":"X account verification is required before points can be awarded"):result.error==="wallet_ownership_verification_required"?(ar?"شراء العملة يحتاج إثبات ملكية المحفظة؛ لا تكفي كتابة عنوانها":"Coin purchase requires proof of wallet ownership; entering an address is not enough"):(ar?"لم يتم تأكيد المهمة بعد":"Task is not confirmed yet");toast.info(msg);return}toast.success(`+${result.credits??0}`);await load()}catch{toast.error(ar?"تعذّر التحقق":"Could not verify")}finally{setBusy("")}}
