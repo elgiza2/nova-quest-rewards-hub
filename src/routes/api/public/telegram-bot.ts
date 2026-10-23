@@ -12,10 +12,10 @@
  *  before anything else happens.
  */
 import { createFileRoute } from "@tanstack/react-router";
-import bannerAsset from "@/assets/tg/start-banner.png.asset.json";
-import post01Asset from "@/assets/tg/post-01.png.asset.json";
-import post02Asset from "@/assets/tg/post-02.png.asset.json";
-import post03Asset from "@/assets/tg/post-03.png.asset.json";
+import char01 from "@/assets/tg/char-01.jpg.asset.json";
+import char02 from "@/assets/tg/char-02.jpg.asset.json";
+import char03 from "@/assets/tg/char-03.jpg.asset.json";
+import char04 from "@/assets/tg/char-04.jpg.asset.json";
 
 const EMAIL_DOMAIN = "users.orangeai.telegram";
 
@@ -24,29 +24,29 @@ const MINIAPP_URL =
   "https://orange-ai-woad.vercel.app";
 
 const CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || "-1002616088306";
+const COMMUNITY_URL = "https://t.me/oraien";
+const BUY_ORANGE_URL =
+  "https://app.ston.fi/swap?chartVisible=false&ft=GRAM&tt=EQCY5dx1kTGT-r1RPXA-LTRyv73_LtfcaTl0g1E_WBlRdUyI";
 
-/** Channel post pool — clean character artwork, bold English captions, no emojis. */
+/** Unicode sans-serif bold — renders bold in every Telegram client, even where HTML is stripped. */
+function bold(s: string): string {
+  let out = "";
+  for (const ch of s) {
+    const c = ch.codePointAt(0)!;
+    if (c >= 65 && c <= 90) out += String.fromCodePoint(0x1d5d4 + c - 65);
+    else if (c >= 97 && c <= 122) out += String.fromCodePoint(0x1d5ee + c - 97);
+    else if (c >= 48 && c <= 57) out += String.fromCodePoint(0x1d7ec + c - 48);
+    else out += ch;
+  }
+  return out;
+}
+
+/** Channel post pool — the app's own characters, bold English captions, no emojis. */
 const POST_POOL: { photo: string; caption: string }[] = [
-  {
-    photo: bannerAsset.url,
-    caption:
-      "<b>Orange AI is here.</b>\n\nYour all-in-one assistant for work, play and rewards.\nOpen it straight from Telegram.",
-  },
-  {
-    photo: post01Asset.url,
-    caption:
-      "<b>Reach new levels.</b>\n\nComplete daily tasks, earn points and climb the ranks in Orange AI.",
-  },
-  {
-    photo: post02Asset.url,
-    caption:
-      "<b>Stay on course.</b>\n\nCheck in every day to keep your streak alive and your rewards growing.",
-  },
-  {
-    photo: post03Asset.url,
-    caption:
-      "<b>Your tasks are waiting.</b>\n\nOpen Orange AI, finish a task and turn minutes into points.",
-  },
+  { photo: char01.url, caption: `<b>${bold("Orange AI is here.")}</b>\n\n<b>${bold("Your all-in-one AI assistant, right inside Telegram.")}</b>` },
+  { photo: char02.url, caption: `<b>${bold("Reach new levels.")}</b>\n\n<b>${bold("Complete daily tasks, earn points and climb the ranks.")}</b>` },
+  { photo: char03.url, caption: `<b>${bold("Stay on course.")}</b>\n\n<b>${bold("Check in every day and keep your rewards growing.")}</b>` },
+  { photo: char04.url, caption: `<b>${bold("Your tasks are waiting.")}</b>\n\n<b>${bold("Open Orange AI, finish a task and turn minutes into points.")}</b>` },
 ];
 
 /** Daily channel posts: two slots per day, lazily fired on webhook traffic. */
@@ -54,6 +54,73 @@ const DAILY_SLOTS = [
   { key: "morning", hourUTC: 9 },
   { key: "evening", hourUTC: 19 },
 ];
+
+/** Daily personal notification to every Telegram user, sent in batches from webhook traffic. */
+const NOTIFY_HOUR_UTC = 12;
+const NOTIFY_BATCH = 80;
+const NOTIFY_MESSAGES = [
+  "Your daily credits are waiting. Check in today and keep your streak alive.",
+  "New tasks are live. Finish one and turn a few minutes into points.",
+  "Got a question or an idea? Your AI assistant is ready right now.",
+  "Invite a friend today and you both earn free credits.",
+];
+
+function appButtons(webApp: boolean) {
+  const open = webApp
+    ? { text: "Open Orange AI", web_app: { url: MINIAPP_URL }, style: "success" }
+    : { text: "Open Orange AI", url: MINIAPP_URL, style: "success" };
+  return {
+    inline_keyboard: [
+      [open],
+      [
+        { text: "Community", url: COMMUNITY_URL, style: "primary" },
+        { text: "Buy ORANGE", url: BUY_ORANGE_URL, style: "danger" },
+      ],
+    ],
+  };
+}
+
+async function maybeNotifyUsers(): Promise<void> {
+  try {
+    const now = new Date();
+    if (now.getUTCHours() < NOTIFY_HOUR_UTC) return;
+    const today = now.toISOString().slice(0, 10);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const db = supabaseAdmin as any;
+    const { data: st } = await db.from("bot_daily_state").select("last_posted_day, post_index, last_posted_at").eq("slot", "notify").maybeSingle();
+    if (st?.last_posted_day === today) return;
+    const startedToday = st?.last_posted_at?.slice(0, 10) === today;
+    const cursor = startedToday ? Number(st?.post_index ?? 0) : 0;
+    const { data: users } = await db
+      .from("telegram_profiles")
+      .select("telegram_user_id, first_name")
+      .order("telegram_user_id", { ascending: true })
+      .range(cursor, cursor + NOTIFY_BATCH - 1);
+    const list = (users ?? []) as { telegram_user_id: number; first_name: string | null }[];
+    const dayN = Math.floor(now.getTime() / 86_400_000);
+    const line = NOTIFY_MESSAGES[dayN % NOTIFY_MESSAGES.length];
+    await db.from("bot_daily_state").upsert(
+      {
+        slot: "notify",
+        last_posted_at: now.toISOString(),
+        last_posted_day: list.length < NOTIFY_BATCH ? today : st?.last_posted_day ?? null,
+        post_index: cursor + list.length,
+      },
+      { onConflict: "slot" },
+    );
+    for (const u of list) {
+      const name = (u.first_name ?? "there").replace(/[<>&]/g, "");
+      await tg("sendMessage", {
+        chat_id: u.telegram_user_id,
+        text: `<b>${bold(`Hey ${name},`)}</b>\n\n<b>${bold(line)}</b>`,
+        parse_mode: "HTML",
+        reply_markup: appButtons(true),
+      });
+    }
+  } catch (e) {
+    console.error("[telegram-bot] daily notify failed", e);
+  }
+}
 
 const DEFAULT_REWARD = 25;
 
