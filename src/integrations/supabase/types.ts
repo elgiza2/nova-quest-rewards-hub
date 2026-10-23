@@ -2481,6 +2481,27 @@ export type Database = {
         }
         Relationships: []
       }
+      bot_daily_state: {
+        Row: {
+          last_posted_at: string
+          last_posted_day: string
+          post_index: number
+          slot: string
+        }
+        Insert: {
+          last_posted_at?: string
+          last_posted_day?: string
+          post_index?: number
+          slot: string
+        }
+        Update: {
+          last_posted_at?: string
+          last_posted_day?: string
+          post_index?: number
+          slot?: string
+        }
+        Relationships: []
+      }
       bot_pending_actions: {
         Row: {
           action: string
