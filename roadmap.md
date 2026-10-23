@@ -34,3 +34,4 @@
 - [ ] Bot must be admin in @oraien for channel-join verification
 - [x] Tasks entry in app menu, real full screen, Telegram back button, crypto page Buffer crash, start image characters together, combined crypto icon
 - [ ] Tasks page: compact rows (image, name, Go button)
+- [ ] Telegram profile photo not showing
