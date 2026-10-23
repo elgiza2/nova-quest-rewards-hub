@@ -45,7 +45,7 @@ export default function SettingsSupportPage() {
             icon={FileText}
             label="Documentation"
             hint="Technical specs and API reference"
-            onClick={() => window.open("https://help.megsyai.com", "_blank", "noopener")}
+            onClick={() => window.open("/contact", "_blank", "noopener")}
           />
         </SubRowList>
       </SubSection>

@@ -121,7 +121,7 @@ export function DesktopSettingsHome() {
         {
           icon: (p) => <Info {...p} />,
           label: tx("About us"),
-          onClick: () => window.open("https://about.megsyai.com", "_blank", "noopener"),
+          onClick: () => window.open("/about", "_blank", "noopener"),
         },
       ],
     },
