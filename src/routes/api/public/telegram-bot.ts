@@ -12,12 +12,48 @@
  *  before anything else happens.
  */
 import { createFileRoute } from "@tanstack/react-router";
+import bannerAsset from "@/assets/tg/start-banner.png.asset.json";
+import post01Asset from "@/assets/tg/post-01.png.asset.json";
+import post02Asset from "@/assets/tg/post-02.png.asset.json";
+import post03Asset from "@/assets/tg/post-03.png.asset.json";
 
 const EMAIL_DOMAIN = "users.orangeai.telegram";
 
 const MINIAPP_URL =
   process.env.TELEGRAM_MINIAPP_URL ||
   "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app";
+
+const CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || "-1002616088306";
+
+/** Channel post pool — clean character artwork, bold English captions, no emojis. */
+const POST_POOL: { photo: string; caption: string }[] = [
+  {
+    photo: bannerAsset.url,
+    caption:
+      "<b>Orange AI is here.</b>\n\nYour all-in-one assistant for work, play and rewards.\nOpen it straight from Telegram.",
+  },
+  {
+    photo: post01Asset.url,
+    caption:
+      "<b>Reach new levels.</b>\n\nComplete daily tasks, earn points and climb the ranks in Orange AI.",
+  },
+  {
+    photo: post02Asset.url,
+    caption:
+      "<b>Stay on course.</b>\n\nCheck in every day to keep your streak alive and your rewards growing.",
+  },
+  {
+    photo: post03Asset.url,
+    caption:
+      "<b>Your tasks are waiting.</b>\n\nOpen Orange AI, finish a task and turn minutes into points.",
+  },
+];
+
+/** Daily channel posts: two slots per day, lazily fired on webhook traffic. */
+const DAILY_SLOTS = [
+  { key: "morning", hourUTC: 9 },
+  { key: "evening", hourUTC: 19 },
+];
 
 const DEFAULT_REWARD = 25;
 
