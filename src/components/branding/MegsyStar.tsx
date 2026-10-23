@@ -1,4 +1,4 @@
-// Brand 8-point sparkle. Solid currentColor for Nova.
+// Brand 8-point sparkle. Solid currentColor for Orange.
 
 type Props = React.SVGProps<SVGSVGElement>;
 

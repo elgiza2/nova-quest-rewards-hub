@@ -124,7 +124,7 @@ export function OperatorWorkspace({
         <div className="flex items-center gap-2 mb-3">
           <AgentStar agent="assistant" size={18} active={isRunning} />
           <div className="text-sm font-semibold" style={{ color: AGENT_COLORS.assistant.color }}>
-            Nova {isRunning ? "— thinking..." : ""}
+            Orange {isRunning ? "— thinking..." : ""}
           </div>
           {!inline && (
             <Button size="sm" variant="ghost" className="ml-auto" onClick={onClose}>
@@ -213,7 +213,7 @@ export function OperatorWorkspace({
               size={14}
               active={!!activeAgent}
             />
-            Nova Operator —{" "}
+            Orange Operator —{" "}
             <span className="opacity-70 font-normal">{run?.current_phase ?? "..."}</span>
           </div>
           {run?.goal && (
@@ -309,7 +309,7 @@ export function OperatorWorkspace({
               ) : run?.project_id ? (
                 <div className="h-full min-h-[240px] flex flex-col items-center justify-center gap-3 text-center p-4">
                   <div className="text-sm font-medium text-foreground">
-                    Project is being built in Nova Code
+                    Project is being built in Orange Code
                   </div>
                   <Link
                     to={`/build/${run.project_id}/chat`}
@@ -372,7 +372,7 @@ export function OperatorWorkspace({
                       >
                         <img loading="lazy" decoding="async"
                           src={s.url!}
-                          alt="Nova OS screenshot"
+                          alt="Orange OS screenshot"
                           className="w-full h-20 object-cover rounded border border-border/40 hover:opacity-80"
                         />
                       </button>

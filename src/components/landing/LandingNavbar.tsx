@@ -43,8 +43,8 @@ const navItems: NavItem[] = [
       {
         title: "Company",
         items: [
-          { label: "About", desc: "What Nova is and who builds it", href: "/about" },
-          { label: "Contact", desc: "Reach the Nova team", href: "/contact" },
+          { label: "About", desc: "What Orange is and who builds it", href: "/about" },
+          { label: "Contact", desc: "Reach the Orange team", href: "/contact" },
           { label: "Security", desc: "How we protect your data", href: "/security" },
         ],
       },
@@ -233,7 +233,7 @@ const LandingNavbar = () => {
             }}
             className="font-display text-3xl font-black uppercase tracking-tight text-foreground"
           >
-            <BrandWord>NOVA</BrandWord>
+            <BrandWord>ORANGE</BrandWord>
           </a>
         </div>
 

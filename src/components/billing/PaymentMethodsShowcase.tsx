@@ -1,5 +1,5 @@
 /**
- * @doc The "all payment methods" grid — every method Nova can offer, side by side,
+ * @doc The "all payment methods" grid — every method Orange can offer, side by side,
  * grouped so the list stays readable at a glance.
  *
  * It reads `@/lib/payments/paymentMethods`, so adding a method there is enough.
@@ -93,7 +93,7 @@ export default function PaymentMethodsShowcase({
 
       {showNote && (
         <p className="text-[12px] leading-relaxed text-foreground/50">
-          Cards, Apple Pay, Meeza and Egyptian wallets are handled right here inside Nova. Every
+          Cards, Apple Pay, Meeza and Egyptian wallets are handled right here inside Orange. Every
           other method opens a secure Dodo Payments checkout.
         </p>
       )}

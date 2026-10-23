@@ -1,7 +1,7 @@
 /**
  * @doc The Dodo Payments rail.
  *
- * Methods Nova cannot charge in-app are handed to the Dodo Payments checkout:
+ * Methods Orange cannot charge in-app are handed to the Dodo Payments checkout:
  * `dodo-checkout` creates the session server-side (Dodo is the Merchant of
  * Record, so it collects the money and handles tax) and we open the returned
  * payment link. Switch the rail off with VITE_DODO_CHECKOUT_ENABLED=false.

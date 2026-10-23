@@ -1,5 +1,5 @@
 /**
- * Skills page mobile extras: hero glass card + Add menu (Create with Nova /
+ * Skills page mobile extras: hero glass card + Add menu (Create with Orange /
  * Create from files) — mirrors the Kimi mobile design.
  */
 import { useRef, useState } from "react";
@@ -129,10 +129,10 @@ export function SkillsAddMenu({
                 </span>
                 <span className="flex-1 min-w-0 flex flex-col gap-1 text-right">
                   <span className="text-[15px] font-semibold leading-tight">
-                    Create a skill with Nova
+                    Create a skill with Orange
                   </span>
                   <span className="text-[12.5px] text-muted-foreground leading-snug">
-                    Ask Nova to help you build a skill in chat
+                    Ask Orange to help you build a skill in chat
                   </span>
                 </span>
                 <ChevronLeft className="w-4 h-4 text-muted-foreground shrink-0" />
@@ -175,7 +175,7 @@ export function SkillsAddMenu({
                       Add from official library
                     </span>
                     <span className="text-[12.5px] text-muted-foreground leading-snug">
-                      Ready-made skills maintained by Nova
+                      Ready-made skills maintained by Orange
                     </span>
                   </span>
                   <ChevronLeft className="w-4 h-4 text-muted-foreground shrink-0" />

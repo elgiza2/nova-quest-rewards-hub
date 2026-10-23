@@ -103,7 +103,7 @@ const ChangeEmailPage = () => {
       subtitle="Update the email address linked to your account. We'll send a confirmation link to both addresses before the change takes effect."
       backTo="/settings/security"
     >
-      <SubSection title="Current email" description="The address currently linked to your Nova account.">
+      <SubSection title="Current email" description="The address currently linked to your Orange account.">
         <SubCard>
           <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground font-medium">
             Signed in as

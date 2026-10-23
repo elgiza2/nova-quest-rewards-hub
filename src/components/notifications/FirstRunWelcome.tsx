@@ -38,7 +38,7 @@ export default function FirstRunWelcome() {
         if (!alive) return;
         trigger({
           id: "first-run-welcome",
-          title: "Welcome to Nova",
+          title: "Welcome to Orange",
           message: "I'm your personal assistant. Ask me anything and I'll get it done.",
           leading: <AgentOrb color="aurora" size={34} state="hello" />,
           duration: 6000,

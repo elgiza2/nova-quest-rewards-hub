@@ -1,4 +1,4 @@
-/** @doc Tell Nova about you so replies feel personal. */
+/** @doc Tell Orange about you so replies feel personal. */
 // AI Personalization ("Tuning Fork") — editorial redesign using SubShell.
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
@@ -280,9 +280,9 @@ export default function AIPersonalizationPage() {
         </CleanButton>
       </div>
 
-      <CleanCard title="About you" description="Basics Nova uses to address you correctly.">
+      <CleanCard title="About you" description="Basics Orange uses to address you correctly.">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <CleanField label="What should Nova call you?">
+          <CleanField label="What should Orange call you?">
             <CleanInput
               value={callName}
               onChange={(e) => setCallName(e.target.value)}
@@ -301,13 +301,13 @@ export default function AIPersonalizationPage() {
           <CleanTextarea
             value={about}
             onChange={(e) => setAbout(e.target.value)}
-            placeholder="Anything that helps Nova understand you…"
+            placeholder="Anything that helps Orange understand you…"
             rows={3}
           />
         </CleanField>
       </CleanCard>
 
-      <CleanCard title="Reply tone" description="How Nova should sound in every reply.">
+      <CleanCard title="Reply tone" description="How Orange should sound in every reply.">
         <div className="space-y-5">
           <CleanSlider
             label="Tone"
@@ -355,7 +355,7 @@ export default function AIPersonalizationPage() {
                   disabled={locked}
                   onClick={() => {
                     if (locked) {
-                      toast.info(`Nova ${t.label} requires a paid plan`);
+                      toast.info(`Orange ${t.label} requires a paid plan`);
                       return;
                     }
                     setPreferredTier(t.id);
@@ -422,14 +422,14 @@ export default function AIPersonalizationPage() {
         </CleanField>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <CleanField label="Personality traits for Nova">
+          <CleanField label="Personality traits for Orange">
             <CleanInput
               value={aiTraits}
               onChange={(e) => setAiTraits(e.target.value)}
               placeholder="e.g. playful, direct"
             />
           </CleanField>
-          <CleanField label="Anything else Nova should know">
+          <CleanField label="Anything else Orange should know">
             <CleanInput
               value={customInstructions}
               onChange={(e) => setCustomInstructions(e.target.value)}
@@ -456,7 +456,7 @@ export default function AIPersonalizationPage() {
   return (
     <SubShell
       title="Tuning Fork"
-      subtitle="Tune Nova's voice, tempo, and register. Changes save automatically."
+      subtitle="Tune Orange's voice, tempo, and register. Changes save automatically."
       action={<div className="hidden md:block">{statusPill}</div>}
     >
       <div className="pt-6">{form}</div>

@@ -37,7 +37,7 @@ const SharedChatPage = () => {
     const firstUser = messages.find((m) => m.role === "user")?.content || "";
     const firstAssistant = messages.find((m) => m.role === "assistant")?.content || "";
     const raw = (firstUser + " — " + firstAssistant).replace(/[#*_`>\[\]()]/g, " ").replace(/\s+/g, " ").trim();
-    return raw.slice(0, 155) || tx("A conversation shared from Nova AI.");
+    return raw.slice(0, 155) || tx("A conversation shared from Orange AI.");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
@@ -53,9 +53,9 @@ const SharedChatPage = () => {
   };
 
   const shareTo = (platform: "whatsapp" | "x" | "telegram" | "facebook") => {
-    const text = encodeURIComponent(`${title || tx("A conversation on Nova AI")}\n${shareUrl}`);
+    const text = encodeURIComponent(`${title || tx("A conversation on Orange AI")}\n${shareUrl}`);
     const url = encodeURIComponent(shareUrl);
-    const t = encodeURIComponent(title || "Nova AI");
+    const t = encodeURIComponent(title || "Orange AI");
     const urls: Record<typeof platform, string> = {
       whatsapp: `https://wa.me/?text=${text}`,
       x: `https://twitter.com/intent/tweet?url=${url}&text=${t}`,
@@ -70,7 +70,7 @@ const SharedChatPage = () => {
       return copyLink();
     }
     try {
-      await (navigator as any).share({ title: title || "Nova AI", text: preview, url: shareUrl });
+      await (navigator as any).share({ title: title || "Orange AI", text: preview, url: shareUrl });
     } catch { /* dismissed */ }
   };
 
@@ -145,7 +145,7 @@ const SharedChatPage = () => {
             onClick={() => navigate("/")}
             className="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-500 text-foreground text-sm font-semibold hover:opacity-95 transition"
           >
-            {tx("Go to Nova")}
+            {tx("Go to Orange")}
           </button>
         </div>
       </div>
@@ -168,7 +168,7 @@ const SharedChatPage = () => {
             onClick={() => navigate("/")}
             className="font-display text-xl font-black uppercase tracking-tight text-foreground"
           >
-            NOVA
+            ORANGE
           </button>
           <div className="flex items-center gap-2">
             <button
@@ -192,7 +192,7 @@ const SharedChatPage = () => {
               onClick={() => navigate("/auth")}
               className="px-4 py-1.5 rounded-full bg-foreground text-background text-[13px] font-semibold hover:opacity-90 transition"
             >
-              {tx("Join Nova")}
+              {tx("Join Orange")}
             </button>
           </div>
         </div>
@@ -210,7 +210,7 @@ const SharedChatPage = () => {
               <p className="mt-2 text-xs text-muted-foreground">
                 {new Date(createdAt).toLocaleDateString(lang || undefined, { year: "numeric", month: "short", day: "numeric" })}
                 {" · "}
-                {tx("Shared on Nova AI")}
+                {tx("Shared on Orange AI")}
               </p>
             )}
 
@@ -261,7 +261,7 @@ const SharedChatPage = () => {
             <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full bg-purple-500/20 blur-[120px] pointer-events-none" />
             <div className="relative">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-foreground/5 border border-border/50 text-[11px] font-medium text-foreground/80 mb-4">
-                {tx("Powered by Nova AI")}
+                {tx("Powered by Orange AI")}
               </div>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                 {tx("Start your own conversation")}
@@ -273,7 +273,7 @@ const SharedChatPage = () => {
                 onClick={() => navigate("/auth")}
                 className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-500 text-foreground text-sm font-semibold hover:opacity-95 transition"
               >
-                {tx("Join Nova free")}
+                {tx("Join Orange free")}
               </button>
             </div>
           </div>

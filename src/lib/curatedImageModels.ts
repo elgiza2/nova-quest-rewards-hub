@@ -19,7 +19,7 @@ interface Seed {
 const SEEDS: Seed[] = [
   {
     slug: "deapi-flux-schnell",
-    name: "Nova Image",
+    name: "Orange Image",
     provider: "deapi",
     credits: 0,
     description: "Free everyday images.",

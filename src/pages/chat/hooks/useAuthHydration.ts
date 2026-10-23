@@ -6,7 +6,7 @@ import type { MegsyTier } from "./useChatTier";
 
 
 /**
- * Hydrates Nova chat with the current user's id, display-name, plan, AI tier
+ * Hydrates Orange chat with the current user's id, display-name, plan, AI tier
  * preference, and "first visit" greeting flag. Subscribes to auth changes so
  * the chat stays in sync when the user signs in/out in another tab.
  */

@@ -39,7 +39,7 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
  */
 export function buildAgentGoal(userText: string, context?: string): string {
   return [
-    "You are Nova, an autonomous assistant. Complete the task end to end.",
+    "You are Orange, an autonomous assistant. Complete the task end to end.",
     "Answer in the exact same language and dialect as the user.",
     "Browse the web only when the task needs fresh or external facts; otherwise answer directly and fast.",
     "Return the final, polished answer only — no step logs, no internal notes. Cite links when you used the web.",

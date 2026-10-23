@@ -1890,7 +1890,7 @@ html[data-section="chat"] body .settings-desktop-canvas h6,
 
 /* ─────────────────────────────────────────────────────────────
    Mobile visual audit unification layer
-   Keeps imported pages on one Nova system: true black background,
+   Keeps imported pages on one Orange system: true black background,
    tokenized surfaces, transparent icon treatments, and stable mobile sizing.
    ───────────────────────────────────────────────────────────── */
 /* (legacy mobile palette override removed — Obsidian & Silver tokens win) */
@@ -3781,7 +3781,7 @@ html[dir="rtl"] .keep-ltr {
   }
 }
 
-/* Nova brand logo — invert to black in light theme */
+/* Orange brand logo — invert to black in light theme */
 html[data-theme="light"] .megsy-brand-logo {
   filter: brightness(0) saturate(100%);
 }

@@ -1,6 +1,6 @@
 /**
  * @doc Tiny state mark next to a conversation in the sidebar.
- * Moving yellow Nova star = the agent is still working on that conversation.
+ * Moving yellow Orange star = the agent is still working on that conversation.
  * Quiet blue dot = its last task already finished.
  */
 import MegsyStar from "@/components/branding/MegsyStar";

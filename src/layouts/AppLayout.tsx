@@ -7,7 +7,7 @@ import UpgradeMomentHost from "@/components/billing/UpgradeMomentHost";
 
 
 // Aurora Spectrum — per-section accent (HSL triplets so we can compose with hsl() / alpha).
-// Chat purple · Images pink · Videos cyan · Nova-OS green.
+// Chat purple · Images pink · Videos cyan · Orange-OS green.
 function sectionFor(pathname: string): { name: string; hsl: string } {
   if (pathname.startsWith("/media") || pathname.startsWith("/images"))
     return { name: "images", hsl: "338 100% 71%" };

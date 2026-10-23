@@ -1,6 +1,6 @@
 /** @doc Agents directory. Opens exactly like the settings sub-pages: same glass
  * sheet, same frosted cards, same tinted icon tiles — only the content differs.
- * Every agent shows its real published logo; Nova itself is the robot. */
+ * Every agent shows its real published logo; Orange itself is the robot. */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Check, ChevronRight, Loader2, Lock, Plus, RotateCw, Trash2, Users } from "lucide-react";
@@ -125,7 +125,7 @@ export function AgentsPage() {
     const live = sessions.filter((s) => s.agentId === a.id && s.status === "running").length;
     const locked = !a.isDefault && !canUseAgent(tier, !!a.mediaOnly, now);
     const brand = agentBrandKey(a);
-    // Brand logos and Nova's own orb bring their own colours — only the
+    // Brand logos and Orange's own orb bring their own colours — only the
     // generic marks sit on the agent's tint.
     const plainTile = !!brand || a.isDefault;
     const hint = a.isDefault
@@ -199,7 +199,7 @@ export function AgentsPage() {
         locale="en"
         path="/agents"
         title="Your agents"
-        description="Your personal Nova AI agents, specialist agents and conversations."
+        description="Your personal Orange AI agents, specialist agents and conversations."
       />
       <ProfileGlassShell
         title="Agents"

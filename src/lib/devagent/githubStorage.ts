@@ -60,7 +60,7 @@ export async function ensurePrivateGithubRepo(projectId: string, existing?: stri
       method: "POST",
       body: JSON.stringify({
         name,
-        description: "Private Nova coding-agent project storage",
+        description: "Private Orange coding-agent project storage",
         private: true,
       auto_init: true,
       }),
@@ -116,7 +116,7 @@ export async function saveWorkspaceToGithub(
   const commit = await github<{ sha?: string }>(`/repos/${repo}/git/commits`, {
     method: "POST",
     body: JSON.stringify({
-      message: message.slice(0, 120) || "Update from Nova",
+      message: message.slice(0, 120) || "Update from Orange",
       tree: tree.sha,
       parents: parent ? [parent] : [],
     }),

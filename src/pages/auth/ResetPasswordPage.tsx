@@ -116,7 +116,7 @@ const ResetPasswordPage = () => {
           }}
           className="font-display text-xl font-black uppercase tracking-tight text-foreground"
         >
-          NOVA
+          ORANGE
         </a>
       </div>
 

@@ -22,7 +22,7 @@ import {
 
 export const WHATSAPP_PHONE = "201098821812";
 export const PROMOTER_MESSAGE =
-  "Hello, I want to join the Nova AI promotion / referral system. Please send me the details.";
+  "Hello, I want to join the Orange AI promotion / referral system. Please send me the details.";
 export const MIN_PAYOUT = 10;
 
 /* Neutral, quiet palette — no gradients, no neon. */
@@ -263,7 +263,7 @@ const ReferralsPage = () => {
         .limit(1);
       let row = codes?.[0] as { code: string } | undefined;
       if (!row) {
-        const newCode = `NOVA-${user.id.substring(0, 6).toUpperCase()}`;
+        const newCode = `ORANGE-${user.id.substring(0, 6).toUpperCase()}`;
         await supabase
           .from("referral_codes")
           .insert({ user_id: user.id, code: newCode, referral_mode: "cash" });
@@ -347,10 +347,10 @@ const ReferralsPage = () => {
 
   const shareLink = async () => {
     if (!link) return;
-    const shareText = `Join Nova AI with my invite link:\n${link}`;
+    const shareText = `Join Orange AI with my invite link:\n${link}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Nova AI", text: shareText, url: link });
+        await navigator.share({ title: "Orange AI", text: shareText, url: link });
         return;
       } catch {
         /* fallthrough */
@@ -432,7 +432,7 @@ const ReferralsPage = () => {
           <h1 className="gx-title">{translateExactText("Invite friends", lang)}</h1>
           <p className="gx-sub">
             {translateExactText(
-              "Invite a friend and you both get credits — they are credited when they join, you are credited when they start using Nova. Five verified invites unlock Pro.",
+              "Invite a friend and you both get credits — they are credited when they join, you are credited when they start using Orange. Five verified invites unlock Pro.",
               lang,
             )}
           </p>

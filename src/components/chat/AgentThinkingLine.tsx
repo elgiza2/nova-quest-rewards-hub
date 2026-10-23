@@ -1,4 +1,4 @@
-/** Live "thinking" line for the agent: Nova star + the agent's real current thought. */
+/** Live "thinking" line for the agent: Orange star + the agent's real current thought. */
 import MegsyStar from "@/components/branding/MegsyStar";
 import { useUserLang } from "@/lib/authI18n";
 

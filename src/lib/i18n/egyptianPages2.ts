@@ -210,9 +210,9 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
 
   // ------------------------------------------------------------------- help
   "Getting started": "البداية",
-  "What is Nova?": "إيه هو Nova؟",
-  "Nova is an all-in-one AI creative platform — chat, images, videos, websites/code, presentations, and file analysis, all running on Nova Credits (MC).":
-    "Nova منصة إبداعية شاملة بالذكاء الاصطناعي — شات وصور وفيديو ومواقع وكود وعروض تقديمية وتحليل ملفات، وكلها شغالة بكريدت Nova (MC).",
+  "What is Orange?": "إيه هو Orange؟",
+  "Orange is an all-in-one AI creative platform — chat, images, videos, websites/code, presentations, and file analysis, all running on Orange Credits (MC).":
+    "Orange منصة إبداعية شاملة بالذكاء الاصطناعي — شات وصور وفيديو ومواقع وكود وعروض تقديمية وتحليل ملفات، وكلها شغالة بكريدت Orange (MC).",
   "How do credits (MC) work?": "الكريدت (MC) بيشتغل إزاي؟",
   "Every action consumes MC. Chat costs 1 MC, images start at 2 MC, videos at 8 MC, and Build projects vary by complexity. Your balance is shown in Settings → Billing.":
     "كل عملية بتستهلك MC. الشات بـ 1 MC، الصور من 2 MC، الفيديو من 8 MC، ومشاريع البناء بتختلف حسب التعقيد. رصيدك بيبان في الإعدادات ← الفوترة.",
@@ -225,7 +225,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "How do I start a chat?": "أبدأ شات إزاي؟",
   "Open /chat and type your prompt. You can attach files, enable web search, switch models, and pick agents from the composer.":
     "افتح /chat واكتب طلبك. تقدر ترفع ملفات وتفعّل البحث على النت وتغيّر الموديل وتختار وكلاء من صندوق الكتابة.",
-  "Can Nova remember things about me?": "Nova بيفتكر حاجات عني؟",
+  "Can Orange remember things about me?": "Orange بيفتكر حاجات عني؟",
   "Yes — important details are saved in Memory. Manage them from Settings → Memory.":
     "أيوه — التفاصيل المهمة بتتحفظ في الذاكرة. تتحكم فيها من الإعدادات ← الذاكرة.",
   "How do I share a conversation?": "أشارك محادثة إزاي؟",
@@ -245,7 +245,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Open Media → Video Studio, pick a model, optionally upload a starting image, write your prompt, and generate.":
     "افتح الميديا ← استوديو الفيديو، اختار موديل، ارفع صورة بداية لو حبيت، اكتب وصفك، وولّد.",
   "What is Lip Sync?": "إيه هي مزامنة الشفايف؟",
-  "Upload a portrait video and an audio file, and Nova syncs the mouth movements to the audio.":
+  "Upload a portrait video and an audio file, and Orange syncs the mouth movements to the audio.":
     "ارفع فيديو لوش وملف صوت، وNova هيظبط حركة الفم على الصوت.",
   "Can I edit a generated image?": "أقدر أعدّل صورة مولّدة؟",
   "Yes — open the image and use the edit tools (inpaint, upscale, background remove). Each edit costs MC.":
@@ -255,7 +255,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
     "كل اللي بتولّده بيتحفظ في المكتبة بتاعتك على حسابك أو مساحة الشغل النشطة.",
   "Build (websites & apps)": "البناء (مواقع وتطبيقات)",
   "How do I start a project?": "أبدأ مشروع إزاي؟",
-  "Open /build, describe what you want, and Nova scaffolds a working project you can iterate on with chat.":
+  "Open /build, describe what you want, and Orange scaffolds a working project you can iterate on with chat.":
     "افتح /build، اوصف اللي عايزه، وNova هيبنيلك مشروع شغال تقدر تطوّره بالشات.",
   "Can I preview my project?": "أقدر أعاين المشروع؟",
   "Yes — every project has a live preview pane that updates as the AI edits files.":
@@ -310,21 +310,21 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Published sites": "المواقع المنشورة",
   "Shared chats": "الشاتات المشاركة",
   "Download my data & privacy": "نزّل بياناتي والخصوصية",
-  "Keeping your data safe is a priority. Learn how your information is protected when using Nova products, and visit our":
-    "حماية بياناتك أولوية عندنا. اعرف إزاي بنأمّن معلوماتك وإنت بتستخدم Nova، وزور",
+  "Keeping your data safe is a priority. Learn how your information is protected when using Orange products, and visit our":
+    "حماية بياناتك أولوية عندنا. اعرف إزاي بنأمّن معلوماتك وإنت بتستخدم Orange، وزور",
   "for more details.": "لمزيد من التفاصيل.",
   "Export my data": "صدّر بياناتي",
 
   // ----------------------------------------------------------- capabilities
   "Required by code execution": "مطلوب لتشغيل الكود",
-  "Allow Nova to execute code and create and edit docs, spreadsheets, presentations, PDFs, and data reports.":
-    "اسمح لـ Nova يشغّل كود ويعمل ويعدّل مستندات وشيتات وعروض وPDF وتقارير بيانات.",
-  "Nova will automatically search the web when it determines it needs current information.":
-    "Nova هيبحث على النت لوحده لما يلاقي إنه محتاج معلومات حديثة.",
+  "Allow Orange to execute code and create and edit docs, spreadsheets, presentations, PDFs, and data reports.":
+    "اسمح لـ Orange يشغّل كود ويعمل ويعدّل مستندات وشيتات وعروض وPDF وتقارير بيانات.",
+  "Orange will automatically search the web when it determines it needs current information.":
+    "Orange هيبحث على النت لوحده لما يلاقي إنه محتاج معلومات حديثة.",
   "When safety measures flag a message, automatically switch to a different model to keep chatting. When off, your chat will pause instead.":
     "لما إجراءات الأمان توقف رسالة، يتحوّل تلقائي لموديل تاني عشان الشات يكمل. ولو مقفول، الشات هيقف بدل كده.",
   "No memory captured yet": "لسه مفيش ذاكرة متسجلة",
-  "Nova chooses for you": "Nova يختار لك",
+  "Orange chooses for you": "Orange يختار لك",
   "Load when needed. More messages, lower accuracy": "بيتحمّل عند الحاجة. رسايل أكتر ودقة أقل",
   "Ready from start. Fewer messages, better accuracy": "جاهز من الأول. رسايل أقل ودقة أعلى",
 
@@ -354,8 +354,8 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   Show: "اظهر",
   "Add an extra layer of security to your account using an authenticator app like Google Authenticator, 1Password, or Authy.":
     "زوّد طبقة أمان لحسابك بتطبيق تحقق زي Google Authenticator أو 1Password أو Authy.",
-  "Everything tied to your account will be removed from Nova's servers.":
-    "كل حاجة مرتبطة بحسابك هتتمسح من سيرفرات Nova.",
+  "Everything tied to your account will be removed from Orange's servers.":
+    "كل حاجة مرتبطة بحسابك هتتمسح من سيرفرات Orange.",
   "Profile Information": "بيانات البروفايل",
   "All Conversations": "كل المحادثات",
   "Generated Images & Videos": "الصور والفيديوهات المولّدة",
@@ -370,7 +370,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "starter": "مبتدئ",
   "elite": "إيليت",
   "Designs personalized study plans, generates spaced-repetition flashcards, and uses Socratic questioning to deepen understanding of any subject. Trigger when learning something new.": "بيعملك خطط مذاكرة مخصصة وكروت مراجعة بالتكرار المتباعد وبيستخدم أسئلة سقراطية عشان تفهم أي مادة بعمق. استخدمه وإنت بتذاكر أو بتتعلم حاجة جديدة.",
-  "Tell Nova once. It does the whole job.": "قول لـ Nova مرة واحدة… وهو يعمل الشغل كله.",
+  "Tell Orange once. It does the whole job.": "قول لـ Orange مرة واحدة… وهو يعمل الشغل كله.",
   "Build my website, publish it, connect Stripe, launch a Facebook ad and reply to customers.": "اعملي موقعي وانشره واربط Stripe وشغّل إعلان فيسبوك ورد على العملاء.",
   "WAITING": "مستني",
   "Start now": "ابدأ الآن",
@@ -396,7 +396,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "One chat, every model.": "شات واحد… وكل الموديلات.",
   "Yes — I want the best": "أيوه — عايز الأحسن",
   "A cloud computer that works for you": "كمبيوتر سحابي بيشتغل بدالك",
-  "Nova opens a real browser and desktop, clicks, types, runs code and hands you the finished files.": "Nova بيفتح متصفح وسطح مكتب حقيقي، بيدوس ويكتب ويشغّل كود ويسلّمك الملفات جاهزة.",
+  "Orange opens a real browser and desktop, clicks, types, runs code and hands you the finished files.": "Orange بيفتح متصفح وسطح مكتب حقيقي، بيدوس ويكتب ويشغّل كود ويسلّمك الملفات جاهزة.",
   "megsy-computer · cloud": "megsy-computer · سحابي",
   "$ opening chrome…": "$ بيفتح كروم…",
   "An agent with its own PC.": "وكيل ليه كمبيوتر بتاعه.",
@@ -407,12 +407,12 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Every flagship model, no daily caps": "كل الموديلات القوية من غير حد يومي",
   "240 MC every month": "240 MC كل شهر",
   "Up to 40 premium videos": "لحد 40 فيديو بريميوم",
-  "Agents & Nova Computer": "الوكلاء وكمبيوتر Nova",
+  "Agents & Orange Computer": "الوكلاء وكمبيوتر Orange",
   "Research, coder, slides, background tasks": "بحث، برمجة، عروض تقديمية، ومهام في الخلفية",
   "Or yearly · $160 (≈ $13/mo)": "أو سنوي · 160 دولار (حوالي 13 دولار في الشهر)",
   "I've been warned, let me in": "اتحذرت خلاص… دخّلني",
   "4.9 average rating": "متوسط التقييم 4.9",
-  "people are already using Nova": "شخص بيستخدموا Nova بالفعل",
+  "people are already using Orange": "شخص بيستخدموا Orange بالفعل",
   "150+ countries": "أكتر من 150 دولة",
   "1.2B messages": "1.2 مليار رسالة",
   "60+ models": "أكتر من 60 موديل",
@@ -427,8 +427,8 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   // ------------------------------------------------------- restore purchase
   "← Back to pricing": "رجوع للأسعار →",
   "Back to pricing": "رجوع للأسعار",
-  "Your subscription is stored on your Nova account, not on the device. Restoring simply re-reads it from our servers and re-applies it here.":
-    "اشتراكك متسجل على حساب Nova مش على الجهاز. الاسترجاع بس بيقرا الاشتراك تاني من السيرفرات بتاعتنا ويرجّعه هنا.",
+  "Your subscription is stored on your Orange account, not on the device. Restoring simply re-reads it from our servers and re-applies it here.":
+    "اشتراكك متسجل على حساب Orange مش على الجهاز. الاسترجاع بس بيقرا الاشتراك تاني من السيرفرات بتاعتنا ويرجّعه هنا.",
   "It re-checks the plan recorded for your account on our servers and re-applies the entitlements to the app on this device. It never creates a new charge.":
     "بيراجع الخطة المسجلة لحسابك على السيرفرات ويرجّع مميزاتها للتطبيق على الجهاز ده. عمره ما بيعمل أي خصم جديد.",
   "Plan limits and credits are enforced server-side, so a restore reflects exactly what your account is entitled to.":
@@ -451,10 +451,10 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   pts: "نقطة",
   "Model settings": "إعدادات الموديل",
   "Open model settings": "افتح إعدادات الموديل",
-  // ------------------------------------------------------------ Nova Mail
+  // ------------------------------------------------------------ Orange Mail
   Mail: "البريد",
-  "Your own Nova inbox": "بريدك الخاص على Nova",
-  "Your Nova address": "عنوان بريدك على Nova",
+  "Your own Orange inbox": "بريدك الخاص على Orange",
+  "Your Orange address": "عنوان بريدك على Orange",
   "Copy address": "انسخ العنوان",
   Copied: "اتنسخ",
   "New message": "رسالة جديدة",
@@ -478,17 +478,17 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Message sent": "الرسالة اتبعتت",
   "Queued — external delivery starts once the domain is connected":
     "اتحطت في الطابور — الإرسال للخارج هيشتغل أول ما الدومين يترب",
-  "This inbox belongs to you and to Nova. The assistant can send mail and read replies here when you ask it to sign up for a service or follow up on something.":
-    "البريد ده بتاعك وبتاع Nova كمان. المساعد يقدر يبعت رسايل ويقرا الردود من هنا لما تطلب منه يسجّل في خدمة أو يتابع حاجة.",
+  "This inbox belongs to you and to Orange. The assistant can send mail and read replies here when you ask it to sign up for a service or follow up on something.":
+    "البريد ده بتاعك وبتاع Orange كمان. المساعد يقدر يبعت رسايل ويقرا الردود من هنا لما تطلب منه يسجّل في خدمة أو يتابع حاجة.",
   Reply: "رد",
   Forward: "تحويل",
   "Explain with AI": "اشرح بالذكاء الاصطناعي",
-  "Nova's summary": "ملخص Nova",
+  "Orange's summary": "ملخص Orange",
   "No explanation available": "مفيش شرح متاح",
   "Forwarded message": "رسالة محوّلة",
   "Unread": "مش مقروء",
   
-  "From Nova": "من Nova",
+  "From Orange": "من Orange",
   "Search email": "دوّر في البريد",
   "Clear": "مسح",
   "Compose": "اكتب رسالة",
@@ -496,7 +496,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Format": "تنسيق",
   "Signature": "التوقيع",
   "Yesterday": "إمبارح",
-  "Nova Mail": "بريد Nova",
+  "Orange Mail": "بريد Orange",
   
   "Today": "النهارده",
   "This week": "الأسبوع ده",
