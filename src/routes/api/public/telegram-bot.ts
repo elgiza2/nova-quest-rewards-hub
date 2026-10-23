@@ -588,9 +588,14 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
               chat_id: msg.chat.id,
               photo: absoluteAssetUrl(banner.photo),
               caption:
-                `<b>Welcome to Orange AI, ${from.first_name ?? "friend"}.</b>\n\n` +
-                "Your account is ready and linked to Telegram.\n" +
-                "Tap the button below to open the app — no password, no sign-up.",
+                `<b>Hey ${(from.first_name ?? "friend").replace(/[<>&]/g, "")}, welcome to Orange AI.</b>\n\n` +
+                "We are really glad you are here. Orange AI is your all-in-one AI workspace, right inside Telegram.\n\n" +
+                "<b>What you can do</b>\n" +
+                "Chat with powerful AI models and get instant answers\n" +
+                "Create stunning images and videos from a simple idea\n" +
+                "Research, write documents and build slides in seconds\n" +
+                "Complete daily tasks and invite friends to earn free credits\n\n" +
+                "<b>Your account is already set up.</b> No password, no sign-up. Just tap the button below and start creating.",
               parse_mode: "HTML",
               reply_markup: {
                 inline_keyboard: [[{ text: "Open Orange AI", web_app: { url: MINIAPP_URL } }]],
