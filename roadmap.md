@@ -22,3 +22,4 @@
 - [ ] Confirm /start and daily notification in real Telegram
 - [x] Short start message + characters image, fixed broken images on Vercel, tasks (channel/X/ORANGE) with verification, Telegram Back button, crypto replaces Google Pay
 - [ ] Bot must be admin in @oraien for channel-join verification
+- [ ] Tasks entry in app menu, real full screen, Telegram back button, crypto page Buffer crash, start image characters together, combined crypto icon
