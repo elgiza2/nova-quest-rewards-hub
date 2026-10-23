@@ -21,11 +21,36 @@ function commentCell(text: string) {
 }
 
 async function usdtWalletOf(owner: string): Promise<string> {
-  const res = await fetch(`https://tonapi.io/v2/accounts/${encodeURIComponent(owner)}/jettons/${TON_USDT_MASTER}`);
-  if (!res.ok) throw new Error("no_usdt");
-  const j = (await res.json()) as { wallet_address?: { address?: string } };
-  if (!j.wallet_address?.address) throw new Error("no_usdt");
-  return j.wallet_address.address;
+  const ownerAddr = Address.parse(owner);
+  // 1) toncenter v3 index
+  try {
+    const r = await fetch(`https://toncenter.com/api/v3/jetton/wallets?owner_address=${encodeURIComponent(ownerAddr.toString())}&jetton_address=${encodeURIComponent(TON_USDT_MASTER)}&limit=1`);
+    if (r.ok) {
+      const j = (await r.json()) as { jetton_wallets?: { address?: string }[] };
+      const a = j.jetton_wallets?.[0]?.address;
+      if (a) return a;
+    }
+  } catch { /* try next */ }
+  // 2) tonapi
+  try {
+    const r = await fetch(`https://tonapi.io/v2/accounts/${encodeURIComponent(ownerAddr.toRawString())}/jettons/${encodeURIComponent(TON_USDT_MASTER)}`);
+    if (r.ok) {
+      const j = (await r.json()) as { wallet_address?: { address?: string } };
+      if (j.wallet_address?.address) return j.wallet_address.address;
+    }
+  } catch { /* try next */ }
+  // 3) ask the USDT master contract directly
+  const cell = beginCell().storeAddress(ownerAddr).endCell().toBoc().toString("base64");
+  const r = await fetch("https://toncenter.com/api/v2/runGetMethod", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ address: TON_USDT_MASTER, method: "get_wallet_address", stack: [["tvm.Slice", cell]] }),
+  });
+  const j = (await r.json()) as { ok?: boolean; result?: { stack?: any[] } };
+  const b64 = j.result?.stack?.[0]?.[1]?.bytes;
+  if (!j.ok || !b64) throw new Error("no_usdt");
+  const { Cell } = await import("@ton/core");
+  return Cell.fromBase64(b64).beginParse().loadAddress().toString();
 }
 
 function Inner({ tier, interval, sku }: Props) {
