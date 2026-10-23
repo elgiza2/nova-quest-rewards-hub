@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Check, Loader2, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandMark } from "./CardPreview";
+import ManualCryptoPayment from "./ManualCryptoPayment";
 import artCoat from "@/assets/orange-coat.png.asset.json";
 
 import {
@@ -257,10 +258,6 @@ export default function CustomCardForm({ open, tier, interval, onClose }: Props)
                     data-selected={m.redirect === undefined && method === m.id}
                     disabled={busy || walletWaiting || startingMethod !== null}
                     onClick={() => {
-                      if (m.redirect === "crypto") {
-                        window.location.assign(`/checkout/crypto?tier=${tier}&interval=${interval}`);
-                        return;
-                      }
                       if (m.redirect !== undefined) {
                         void startRedirect(m.redirect, m.label);
                         return;
@@ -281,7 +278,9 @@ export default function CustomCardForm({ open, tier, interval, onClose }: Props)
               </div>
 
               <div key={method} className="checkout-panel">
-                {method === "visa" ? (
+                {method === "crypto" ? (
+                  <ManualCryptoPayment tier={tier} interval={interval} />
+                ) : method === "visa" ? (
                   <form onSubmit={submitCard} className="checkout-card-form" autoComplete="off">
                     <Field label="Card number">
                       <input
@@ -492,7 +491,7 @@ const METHODS: Tile[] = [
   { id: "visa", label: "Card" },
   { id: "apple_pay", label: "Apple Pay" },
   { id: "vodafone", label: "Vodafone" },
-  { id: "crypto", label: "Crypto", redirect: "crypto" },
+  { id: "crypto", label: "Crypto" },
   { id: "more", label: "More", redirect: null },
 ];
 

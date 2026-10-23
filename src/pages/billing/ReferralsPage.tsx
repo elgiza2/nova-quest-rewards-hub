@@ -1,3 +1,4 @@
+import { fetchBotUsername } from "@/lib/telegramAuth";
 /** @doc Referral program — 20 credits per verified invite, 10 per task. */
 import {
   useState,
@@ -241,6 +242,8 @@ const ReferralsPage = () => {
   const milestone = useReferralMilestone();
   const [userId, setUserId] = useState<string | null>(null);
   const [code, setCode] = useState("");
+  const [bot, setBot] = useState("");
+  useEffect(() => { void fetchBotUsername().then(setBot); }, []);
   const [refs, setRefs] = useState<Referral[]>([]);
   const [earns, setEarns] = useState<Earning[]>([]);
   const [wds, setWds] = useState<Withdrawal[]>([]);
@@ -271,7 +274,7 @@ const ReferralsPage = () => {
       }
       setCode(row.code);
 
-      const [r, e, w, tk, ut] = await Promise.all([
+      const [r, e, w] = await Promise.all([
         supabase
           .from("referrals")
           .select("*")
@@ -287,17 +290,12 @@ const ReferralsPage = () => {
           .select("*")
           .eq("user_id", user.id)
           .order("created_at", { ascending: false }),
-        supabase.from("reward_tasks").select("*").eq("active", true).order("sort_order"),
-        supabase
-          .from("user_reward_tasks")
-          .select("task_id, progress, completed_at, awarded_credits")
-          .eq("user_id", user.id),
       ]);
       setRefs(r.data ?? []);
       setEarns(e.data ?? []);
       setWds(w.data ?? []);
-      setTasks((tk.data as RewardTask[]) ?? []);
-      setUserTasks((ut.data as UserTask[]) ?? []);
+
+
     } catch {
       // A failed lookup must never blank the page — the invite UI still works.
     }
@@ -328,7 +326,7 @@ const ReferralsPage = () => {
     toast.info("This reward is awaiting secure verification");
   };
 
-  const link = code ? `${window.location.origin}/ref/${code}` : "";
+  const link = code && bot ? `https://t.me/${bot}?startapp=ref_${encodeURIComponent(code)}` : "";
   const totalEarned = earns.reduce((s, x) => s + Number(x.amount), 0);
   const committed = wds
     .filter((w) => w.status !== "rejected")
