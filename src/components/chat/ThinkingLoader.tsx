@@ -15,8 +15,8 @@ const ThinkingLoader = ({ searchStatus }: ThinkingLoaderProps) => {
   return (
     <div className="flex items-center gap-2 py-1" aria-live="polite" dir={rtl ? "rtl" : undefined}>
       <MegsyStar className={`megsy-thinking-mark h-4 w-4 ${starClass}`} />
-      <span className="ai-shimmer text-[13px] font-medium motion-reduce:animate-none">
-        {searchStatus?.trim() || thinkingLabel}
+      <span className="orange-thinking-text text-[13px] font-medium">
+        {searchStatus?.trim() || (rtl ? "يفكر…" : thinkingLabel)}
       </span>
     </div>
   );

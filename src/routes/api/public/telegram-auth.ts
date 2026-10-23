@@ -170,6 +170,13 @@ export const Route = createFileRoute("/api/public/telegram-auth")({
 
         if (!userId) return Response.json({ ok: false, error: "user_create_failed" }, { status: 500 });
 
+        const fullName=[tgUser.first_name,tgUser.last_name].filter(Boolean).join(" ") || tgUser.username || "Telegram user";
+        await db.from("telegram_profiles").upsert({user_id:userId,telegram_user_id:tgUser.id,username:tgUser.username??null,first_name:tgUser.first_name??null,last_name:tgUser.last_name??null,photo_url:tgUser.photo_url??null},{onConflict:"user_id"});
+        if (tgUser.photo_url && /^https:\/\//.test(tgUser.photo_url)) {
+          await db.from("profiles").update({avatar_url:tgUser.photo_url,display_name:fullName}).eq("id",userId);
+          await db.auth.admin.updateUserById(userId,{user_metadata:{avatar_url:tgUser.photo_url,full_name:fullName,telegram_id:tgUser.id,provider:"telegram"}});
+        }
+
         // Mint a session the browser can claim: Supabase generateLink for an
         // already-confirmed user returns a hashed token instead of sending mail.
         const { data: link, error: linkErr } = await db.auth.admin.generateLink({
