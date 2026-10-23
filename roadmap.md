@@ -38,3 +38,6 @@
 - [x] Chat thinking text not showing
 - [x] Remove two extra buttons next to copy/like/dislike in chat
 - [ ] Real TON/USDT wallet payment test (needs user's wallet)
+- [ ] New tasks added via bot /101 must appear in the app tasks page (remove key allowlist, use image_url)
+- [ ] Regenerate task images sized for small circular rows
+- [ ] Publish welcome post to channel -1002616088306
