@@ -47,8 +47,11 @@ export function initTelegramWebApp(): void {
   if (!isInsideTelegram()) return;
   try {
     document.documentElement.classList.add("tg-app");
-    if (tg.isVersionAtLeast?.("8.0")) tg.requestFullscreen?.();
-    if (tg.isVersionAtLeast?.("7.7")) tg.disableVerticalSwipes?.();
+    const goFull = () => { try { tg.requestFullscreen?.(); } catch { /* unsupported client */ } };
+    goFull();
+    window.setTimeout(goFull, 400);
+    window.addEventListener("load", goFull, { once: true });
+    try { tg.disableVerticalSwipes?.(); } catch { /* ignore */ }
     const bg = getComputedStyle(document.body || document.documentElement).backgroundColor;
     const hex = toHex(bg);
     if (hex) {
