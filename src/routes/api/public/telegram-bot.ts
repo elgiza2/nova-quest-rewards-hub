@@ -119,9 +119,70 @@ function mainMenuKeyboard() {
   return {
     inline_keyboard: [
       [{ text: "📊 إحصائيات", callback_data: "adm:stats" }, { text: "📋 المهام", callback_data: "adm:list" }],
-      [{ text: "➕ إضافة مهمة", callback_data: "adm:add" }],
+      [{ text: "➕ إضافة مهمة", callback_data: "adm:add" }, { text: "📣 انشر دلوقتي", callback_data: "adm:post" }],
     ],
   };
+}
+
+// ---------- channel posts ----------
+
+function appUrlButton(): Record<string, unknown> {
+  // web_app buttons only work in private chats; channel posts use a plain url button.
+  return { text: "Open Orange AI", url: MINIAPP_URL };
+}
+
+async function postToChannel(poolIndex: number): Promise<boolean> {
+  const item = POST_POOL[poolIndex % POST_POOL.length];
+  if (!item) return false;
+  const res = await tg("sendPhoto", {
+    chat_id: CHANNEL_ID,
+    photo: item.photo,
+    caption: item.caption,
+    parse_mode: "HTML",
+    reply_markup: { inline_keyboard: [[appUrlButton()]] },
+  });
+  return Boolean(res?.ok);
+}
+
+async function saveDailyState(slot: string, poolIndex: number): Promise<void> {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const db = supabaseAdmin as any;
+  await db.from("bot_daily_state").upsert(
+    {
+      slot,
+      last_posted_at: new Date().toISOString(),
+      last_posted_day: new Date().toISOString().slice(0, 10),
+      post_index: poolIndex,
+    },
+    { onConflict: "slot" },
+  );
+}
+
+async function nextPoolIndex(): Promise<number> {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const db = supabaseAdmin as any;
+  const { data } = await db.from("bot_daily_state").select("post_index").order("last_posted_at", { ascending: false }).limit(1);
+  return ((data?.[0]?.post_index as number | undefined) ?? -1) + 1;
+}
+
+/** Posts the slot's channel message if its daily window hasn't been used yet. */
+async function maybePostDaily(): Promise<void> {
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const db = supabaseAdmin as any;
+    const now = new Date();
+    const today = now.toISOString().slice(0, 10);
+    for (const slot of DAILY_SLOTS) {
+      if (now.getUTCHours() < slot.hourUTC) continue;
+      const { data } = await db.from("bot_daily_state").select("last_posted_day").eq("slot", slot.key).maybeSingle();
+      if (data?.last_posted_day === today) continue;
+      const idx = await nextPoolIndex();
+      if (await postToChannel(idx)) await saveDailyState(slot.key, idx);
+      break; // one post per webhook at most; the next slot fires on later traffic
+    }
+  } catch (e) {
+    console.error("[telegram-bot] daily post failed", e);
+  }
 }
 
 // ---------- accounts ----------
