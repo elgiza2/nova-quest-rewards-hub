@@ -468,6 +468,16 @@ async function handleAdminCallback(cb: NonNullable<TgUpdate["callback_query"]>):
     await reply(chatId, await adminStats(), { parse_mode: "HTML", reply_markup: mainMenuKeyboard() });
     return;
   }
+  if (cmd === "post") {
+    await answerCallback(cb.id);
+    const idx = await nextPoolIndex();
+    const sent = await postToChannel(idx);
+    if (sent) await saveDailyState("manual", idx);
+    await reply(chatId, sent ? "✅ اتنشر المنشور في القناة." : "فشل النشر — اتأكد إن البوت أدمن في القناة.", {
+      reply_markup: mainMenuKeyboard(),
+    });
+    return;
+  }
   if (cmd === "list") {
     await answerCallback(cb.id);
     await adminTaskList(chatId);
