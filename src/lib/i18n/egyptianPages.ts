@@ -74,7 +74,7 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "ممكن نحدّث الخدمة والشروط دي، وأي تغيير مهم هنعلنه في التطبيق أو على الإيميل.",
   "You may stop using Nova and delete your account at any time from your account settings. We may suspend accounts that violate these terms.":
     "تقدر تبطّل استخدام Nova وتمسح حسابك في أي وقت من إعدادات الحساب. وإحنا ممكن نوقف أي حساب بيخالف الشروط دي.",
-  "Questions about these terms: تليجرام @Torekr": "أي استفسار عن الشروط: تليجرام @Torekr",
+  "Questions about these terms: @Torekr on Telegram": "أي استفسار عن الشروط: تليجرام @Torekr",
 
   // ---------------------------------------------------------------- privacy
   "This page explains what data Nova collects, why it is collected, and the control you have over it.":
@@ -119,7 +119,7 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "التعليق المؤقت متاح كبديل للإلغاء لو الخيار موجود.",
   "Refund requests": "طلبات الاسترجاع",
   "Refund requests are reviewed case by case. Message @Torekr on Telegram with the transaction date and the reason for the request.":
-    "طلبات الاسترجاع بتتراجع حالة بحالة. ابعت من إيميل حسابك على تليجرام @Torekr بتاريخ العملية وسبب الطلب.",
+    "طلبات الاسترجاع بتتراجع حالة بحالة. كلّمنا على تليجرام @Torekr بتاريخ العملية وسبب الطلب.",
   "Requests are more likely to be approved when the subscription was charged in error, was a duplicate charge, or when the paid features could not be delivered.":
     "فرصة الموافقة بتزيد لو الاشتراك اتخصم بالغلط، أو الخصم اتكرر، أو المميزات المدفوعة مقدرناش نقدّمها.",
   "Consumed usage": "الاستخدام المستهلك",
