@@ -21,7 +21,9 @@ export default function EarnTasksPage(){
  const ar=useUserLang()==="ar-eg";const navigate=useNavigate();
  const [tasks,setTasks]=useState<Task[]>([]);const [done,setDone]=useState<Record<string,string>>({});const [credits,setCredits]=useState<number|null>(null);const [loading,setLoading]=useState(true);const [busy,setBusy]=useState("");const [error,setError]=useState("");
  const load=useCallback(async()=>{setLoading(true);try{
- const {data:{user}}=await supabase.auth.getUser();if(!user)throw new Error(ar?"افتح التطبيق من تليجرام لعرض مهامك":"Open the app from Telegram to see your tasks");
+ const publicTasks=await supabase.from("reward_tasks").select("id,task_key,title,reward_credits,action_url").eq("active",true).in("task_key",[...ORANGE_TASK_KEYS]);
+ if(!publicTasks.error)setTasks((publicTasks.data??[]).sort((a,b)=>ORANGE_TASK_KEYS.findIndex(k=>k===a.task_key)-ORANGE_TASK_KEYS.findIndex(k=>k===b.task_key)));
+ const {data:{user}}=await supabase.auth.getUser();if(!user)throw new Error(ar?"افتح التطبيق من تليجرام لاستلام نقاطك":"Open the app from Telegram to claim your points");
  const [tk,ut,p]=await Promise.all([supabase.from("reward_tasks").select("id,task_key,title,reward_credits,action_url").eq("active",true).in("task_key",[...ORANGE_TASK_KEYS]),supabase.from("user_reward_tasks").select("task_id,completed_at").eq("user_id",user.id),supabase.from("profiles").select("credits").eq("id",user.id).maybeSingle()]);
  if(tk.error||ut.error||p.error)throw new Error(ar?"تعذر تحميل المهام":"Could not load tasks");
  setTasks((tk.data??[]).sort((a,b)=>ORANGE_TASK_KEYS.findIndex(k=>k===a.task_key)-ORANGE_TASK_KEYS.findIndex(k=>k===b.task_key)));setDone(Object.fromEntries((ut.data??[]).filter(r=>r.completed_at).map(r=>[r.task_id,r.completed_at as string])));setCredits(Number(p.data?.credits??0));setError("");

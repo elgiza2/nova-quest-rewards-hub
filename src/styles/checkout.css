@@ -40,7 +40,7 @@
 .manual-crypto-panel .text-muted-foreground { color: var(--checkout-muted, var(--muted-foreground)); }
 .megsy-checkout .manual-crypto-panel [role="tablist"] { background: transparent !important; border: 0 !important; }
 .megsy-checkout .manual-crypto-panel button { color: var(--checkout-glass-ink) !important; background: var(--checkout-fill) !important; border: 1px solid var(--checkout-line) !important; }
-html.light .megsy-checkout .manual-crypto-panel button { background-color: var(--checkout-glass) !important; color: var(--checkout-glass-ink) !important; -webkit-text-fill-color: var(--checkout-glass-ink) !important; }
+html.light body section.megsy-checkout .checkout-panel .manual-crypto-panel button { background: var(--checkout-glass) !important; background-image: none !important; color: var(--checkout-glass-ink) !important; -webkit-text-fill-color: var(--checkout-glass-ink) !important; }
 .megsy-checkout .manual-crypto-panel button[aria-selected="true"] { background: var(--checkout-fill-on) !important; }
 .megsy-checkout .manual-crypto-panel [role="alert"] { color: var(--checkout-glass-ink); }
 html.tg-app .megsy-checkout { top: var(--tg-top-safe); height: calc(100dvh - var(--tg-top-safe)); }
