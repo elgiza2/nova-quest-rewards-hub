@@ -41,3 +41,4 @@
 - [ ] New tasks added via bot /101 must appear in the app tasks page (remove key allowlist, use image_url)
 - [ ] Regenerate task images sized for small circular rows
 - [ ] Publish welcome post to channel -1002616088306
+- [ ] Channel welcome post button must open the Mini App (t.me bot link), not the website
