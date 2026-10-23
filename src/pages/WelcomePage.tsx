@@ -55,10 +55,15 @@ export default function WelcomePage() {
     }
     try {
       const { supabase } = await import("@/integrations/supabase/client");
-      const { data } = await supabase.auth.getSession();
-      navigate(data.session ? "/" : "/auth", { replace: true });
+      let { data } = await supabase.auth.getSession();
+      const tgAuth = await import("@/lib/telegramAuth");
+      if (!data.session && tgAuth.isInsideTelegram()) {
+        await tgAuth.signInWithTelegram();
+        ({ data } = await supabase.auth.getSession());
+      }
+      navigate(data.session ? "/chat" : "/auth?redirect=/chat", { replace: true });
     } catch {
-      navigate("/auth", { replace: true });
+      navigate("/auth?redirect=/chat", { replace: true });
     }
   };
   const next = () => (i < slides.length - 1 ? setI(i + 1) : void finish());
