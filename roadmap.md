@@ -33,3 +33,8 @@
 - [x] Short start message + characters image, fixed broken images on Vercel, tasks (channel/X/ORANGE) with verification, Telegram Back button, crypto replaces Google Pay
 - [ ] Bot must be admin in @oraien for channel-join verification
 - [x] Tasks entry in app menu, real full screen, Telegram back button, crypto page Buffer crash, start image characters together, combined crypto icon
+- [x] Tasks page: compact rows (image, name, Go button)
+- [x] Telegram profile photo not showing
+- [x] Chat thinking text not showing
+- [x] Remove two extra buttons next to copy/like/dislike in chat
+- [ ] Real TON/USDT wallet payment test (needs user's wallet)

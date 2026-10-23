@@ -33,6 +33,7 @@ import { Route as ApiPublicRemindersTickRouteImport } from './routes/api/public/
 import { Route as ApiPublicTelegramAuthRouteImport } from './routes/api/public/telegram-auth'
 import { Route as ApiPublicTelegramBotRouteImport } from './routes/api/public/telegram-bot'
 import { Route as ApiPublicTelegramKeysRouteImport } from './routes/api/public/telegram-keys'
+import { Route as ApiPublicTgAvatarRouteImport } from './routes/api/public/tg-avatar'
 import { Route as ApiTasksCompleteRouteImport } from './routes/api/tasks.complete'
 import { Route as ApiPublicAgentToolsTokenRouteImport } from './routes/api/public/agent-tools.$token'
 import { Route as ApiPublicMediaStatusRunIdRouteImport } from './routes/api/public/media-status.$runId'
@@ -158,6 +159,11 @@ const ApiPublicTelegramKeysRoute = ApiPublicTelegramKeysRouteImport.update({
   path: '/api/public/telegram-keys',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicTgAvatarRoute = ApiPublicTgAvatarRouteImport.update({
+  id: '/api/public/tg-avatar',
+  path: '/api/public/tg-avatar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTasksCompleteRoute = ApiTasksCompleteRouteImport.update({
   id: '/api/tasks/complete',
   path: '/api/tasks/complete',
@@ -207,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-bot': typeof ApiPublicTelegramBotRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
+  '/api/public/tg-avatar': typeof ApiPublicTgAvatarRoute
   '/api/tasks/complete': typeof ApiTasksCompleteRoute
   '/api/public/agent-tools/$token': typeof ApiPublicAgentToolsTokenRoute
   '/api/public/media-status/$runId': typeof ApiPublicMediaStatusRunIdRoute
@@ -237,6 +244,7 @@ export interface FileRoutesByTo {
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-bot': typeof ApiPublicTelegramBotRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
+  '/api/public/tg-avatar': typeof ApiPublicTgAvatarRoute
   '/api/tasks/complete': typeof ApiTasksCompleteRoute
   '/api/public/agent-tools/$token': typeof ApiPublicAgentToolsTokenRoute
   '/api/public/media-status/$runId': typeof ApiPublicMediaStatusRunIdRoute
@@ -268,6 +276,7 @@ export interface FileRoutesById {
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-bot': typeof ApiPublicTelegramBotRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
+  '/api/public/tg-avatar': typeof ApiPublicTgAvatarRoute
   '/api/tasks/complete': typeof ApiTasksCompleteRoute
   '/api/public/agent-tools/$token': typeof ApiPublicAgentToolsTokenRoute
   '/api/public/media-status/$runId': typeof ApiPublicMediaStatusRunIdRoute
@@ -300,6 +309,7 @@ export interface FileRouteTypes {
     | '/api/public/telegram-auth'
     | '/api/public/telegram-bot'
     | '/api/public/telegram-keys'
+    | '/api/public/tg-avatar'
     | '/api/tasks/complete'
     | '/api/public/agent-tools/$token'
     | '/api/public/media-status/$runId'
@@ -330,6 +340,7 @@ export interface FileRouteTypes {
     | '/api/public/telegram-auth'
     | '/api/public/telegram-bot'
     | '/api/public/telegram-keys'
+    | '/api/public/tg-avatar'
     | '/api/tasks/complete'
     | '/api/public/agent-tools/$token'
     | '/api/public/media-status/$runId'
@@ -360,6 +371,7 @@ export interface FileRouteTypes {
     | '/api/public/telegram-auth'
     | '/api/public/telegram-bot'
     | '/api/public/telegram-keys'
+    | '/api/public/tg-avatar'
     | '/api/tasks/complete'
     | '/api/public/agent-tools/$token'
     | '/api/public/media-status/$runId'
@@ -391,6 +403,7 @@ export interface RootRouteChildren {
   ApiPublicTelegramAuthRoute: typeof ApiPublicTelegramAuthRoute
   ApiPublicTelegramBotRoute: typeof ApiPublicTelegramBotRoute
   ApiPublicTelegramKeysRoute: typeof ApiPublicTelegramKeysRoute
+  ApiPublicTgAvatarRoute: typeof ApiPublicTgAvatarRoute
   ApiTasksCompleteRoute: typeof ApiTasksCompleteRoute
   ApiPublicAgentToolsTokenRoute: typeof ApiPublicAgentToolsTokenRoute
   ApiPublicMediaStatusRunIdRoute: typeof ApiPublicMediaStatusRunIdRoute
@@ -567,6 +580,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicTelegramKeysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/tg-avatar': {
+      id: '/api/public/tg-avatar'
+      path: '/api/public/tg-avatar'
+      fullPath: '/api/public/tg-avatar'
+      preLoaderRoute: typeof ApiPublicTgAvatarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/tasks/complete': {
       id: '/api/tasks/complete'
       path: '/api/tasks/complete'
@@ -623,6 +643,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicTelegramAuthRoute: ApiPublicTelegramAuthRoute,
   ApiPublicTelegramBotRoute: ApiPublicTelegramBotRoute,
   ApiPublicTelegramKeysRoute: ApiPublicTelegramKeysRoute,
+  ApiPublicTgAvatarRoute: ApiPublicTgAvatarRoute,
   ApiTasksCompleteRoute: ApiTasksCompleteRoute,
   ApiPublicAgentToolsTokenRoute: ApiPublicAgentToolsTokenRoute,
   ApiPublicMediaStatusRunIdRoute: ApiPublicMediaStatusRunIdRoute,

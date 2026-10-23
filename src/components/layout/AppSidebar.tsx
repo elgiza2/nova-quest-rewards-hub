@@ -1,3 +1,4 @@
+import { avatarSrc } from "@/lib/avatarSrc";
 import EmptyState from "@/components/common/EmptyState";
 import { memo, startTransition, useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate, useLocation, type NavigateOptions } from "react-router-dom";
@@ -360,7 +361,7 @@ const AppSidebar = ({
   const account = useActiveAccount();
   const activeUserId = currentUserId || account.id;
   const displayName = (account.name || userName || "User").trim() || "User";
-  const displayAvatar = account.avatarUrl ?? avatarUrl;
+  const displayAvatar = avatarSrc(account.avatarUrl || avatarUrl);
   const initial = displayName.charAt(0).toUpperCase() || "U";
   const [collapsed, setCollapsed, toggleCollapsed] = useSidebarCollapsed();
   const isCollapsed = inline && collapsed && !forceExpanded;
