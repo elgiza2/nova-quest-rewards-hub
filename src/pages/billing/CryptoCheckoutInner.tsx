@@ -102,7 +102,7 @@ export default function CryptoCheckoutInner() {
   const manifestUrl =
     !window.location.hostname.startsWith("localhost")
       ? `${window.location.origin}/tonconnect-manifest.json`
-      : "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app/tonconnect-manifest.json";
+      : "https://orange-ai-woad.vercel.app/tonconnect-manifest.json";
   return (
     <TonConnectUIProvider manifestUrl={manifestUrl}>
       <CheckoutContent />
@@ -402,6 +402,6 @@ export function CryptoCheckoutProviders({ children }: { children: React.ReactNod
   const manifestUrl =
     typeof window !== "undefined" && !window.location.hostname.startsWith("localhost")
       ? `${window.location.origin}/tonconnect-manifest.json`
-      : "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app/tonconnect-manifest.json";
+      : "https://orange-ai-woad.vercel.app/tonconnect-manifest.json";
   return <TonConnectUIProvider manifestUrl={manifestUrl}>{children}</TonConnectUIProvider>;
 }

@@ -21,7 +21,7 @@ const EMAIL_DOMAIN = "users.orangeai.telegram";
 
 const MINIAPP_URL =
   process.env.TELEGRAM_MINIAPP_URL ||
-  "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app";
+  "https://orange-ai-woad.vercel.app";
 
 const CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || "-1002616088306";
 
