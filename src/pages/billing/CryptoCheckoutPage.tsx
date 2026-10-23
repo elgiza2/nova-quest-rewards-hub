@@ -1,7 +1,7 @@
 /** @doc Crypto checkout route wrapper — keeps TonConnect out of the SSR graph
  *  by lazy-loading the browser-only checkout behind Suspense. */
 import { Suspense, lazy } from "react";
-import { ClientOnly } from "@/components/ClientOnly";
+import { ClientOnly } from "@tanstack/react-router";
 
 const Inner = lazy(() => import("./CryptoCheckoutInner"));
 

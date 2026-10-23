@@ -98,6 +98,18 @@ function jettonTransferPayload(dest: string, amountNano: string): string {
 }
 
 export default function CryptoCheckoutInner() {
+  const manifestUrl =
+    !window.location.hostname.startsWith("localhost")
+      ? `${window.location.origin}/tonconnect-manifest.json`
+      : "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app/tonconnect-manifest.json";
+  return (
+    <TonConnectUIProvider manifestUrl={manifestUrl}>
+      <CheckoutContent />
+    </TonConnectUIProvider>
+  );
+}
+
+function CheckoutContent() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const lang = useUserLang();
