@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { m as motion, AnimatePresence } from "framer-motion";
 import AppleSignInButton from "@/components/auth/AppleSignInButton";
+import { openBotForLogin } from "@/lib/telegramAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { invokeFunction } from "@/lib/supabaseFunction";
 import { toast } from "sonner";
@@ -1036,6 +1037,21 @@ const AuthPage = () => {
                             />
                           </svg>
                           {authT("continueWithGitHub")}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            void openBotForLogin();
+                          }}
+                          className={socialCls}
+                        >
+                          <svg className="h-[18px] w-[18px] shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                              fill="currentColor"
+                              d="M9.04 15.51 8.7 20.2c.49 0 .7-.21.96-.46l2.3-2.2 4.77 3.5c.88.49 1.5.26 1.74-.8l3.15-14.7c.29-1.3-.47-1.81-1.32-1.49L2.4 9.6c-1.27.5-1.25 1.2-.22 1.52l4.7 1.47L17.02 5.5c.51-.34.98-.15.6.19L9.04 15.5z"
+                            />
+                          </svg>
+                          {authT("continueWithTelegram")}
                         </button>
                       </div>
                     </motion.div>

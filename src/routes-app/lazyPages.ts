@@ -89,6 +89,7 @@ export const DocumentPreviewPage = lazy(() => import("@/pages/DocumentPreviewPag
 export const FilePreviewPage = lazy(() => import("@/pages/FilePreviewPage"));
 export const MemoryPage = lazy(() => import("@/pages/settings/MemoryPage"));
 export const TasksPage = lazy(() => import("@/pages/tasks/TasksPage"));
+export const EarnTasksPage = lazy(() => import("@/pages/tasks/EarnTasksPage"));
 
 /* ── Hidden admin ─────────────────────────────────────────────── */
 export const ManusKeysPage = lazy(() => import("@/pages/admin/ManusKeysPage"));
