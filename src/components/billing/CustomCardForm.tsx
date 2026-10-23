@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Check, Loader2, MoreHorizontal, Coins } from "lucide-react";
+import { ArrowLeft, Check, Loader2, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandMark } from "./CardPreview";
 import artCoat from "@/assets/orange-coat.png.asset.json";
@@ -521,7 +521,19 @@ function TileLogo({ id }: { id: TileId }) {
         </svg>
       );
     case "crypto":
-      return <Coins className="h-[22px] w-[22px]" strokeWidth={2} />;
+      return (
+        <svg viewBox="0 0 44 22" className="h-[22px] w-[44px]" aria-hidden="true">
+          {/* Stacked TON, USDT and ETH coins */}
+          <circle cx="11" cy="11" r="10" fill="#0098EA" stroke="#fff" strokeWidth="1.5" />
+          <path d="M6.5 7.5h9L11 15.5z" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinejoin="round" />
+          <path d="M11 7.5v8" stroke="#fff" strokeWidth="1.4" />
+          <circle cx="22" cy="11" r="10" fill="#26A17B" stroke="#fff" strokeWidth="1.5" />
+          <path d="M16.5 6.8h11M22 6.8v9.4" stroke="#fff" strokeWidth="2" />
+          <ellipse cx="22" cy="10.6" rx="4.6" ry="1.4" fill="none" stroke="#fff" strokeWidth="1.2" />
+          <circle cx="33" cy="11" r="10" fill="#627EEA" stroke="#fff" strokeWidth="1.5" />
+          <path d="M33 4.5l-4 6.8 4 2.3 4-2.3zM29 12.2l4 5.3 4-5.3-4 2.3z" fill="#fff" />
+        </svg>
+      );
     case "more":
       return <MoreHorizontal className="h-[22px] w-[22px]" strokeWidth={2} />;
     case "vodafone":
