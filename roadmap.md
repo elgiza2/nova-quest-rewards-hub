@@ -20,3 +20,5 @@
 
 - [x] Start message rewrite (bold, characters, community + buy ORANGE buttons), daily user notifications, Telegram-only login, full-screen Mini App with top safe area
 - [ ] Confirm /start and daily notification in real Telegram
+- [x] Short start message + characters image, fixed broken images on Vercel, tasks (channel/X/ORANGE) with verification, Telegram Back button, crypto replaces Google Pay
+- [ ] Bot must be admin in @oraien for channel-join verification
