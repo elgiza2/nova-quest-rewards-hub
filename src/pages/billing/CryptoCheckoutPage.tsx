@@ -5,7 +5,12 @@ import { ClientOnly } from "@tanstack/react-router";
 
 // Buffer must be global before @ton/core / TonConnect modules evaluate, so it
 // loads as its own chunk first.
-const Inner = lazy(() => import("@/lib/bufferPolyfill").then(() => import("./CryptoCheckoutInner")));
+const Inner = lazy(async () => {
+  const { Buffer } = await import("buffer");
+  const g = globalThis as unknown as { Buffer?: unknown };
+  if (!g.Buffer) g.Buffer = Buffer;
+  return import("./CryptoCheckoutInner");
+});
 
 export default function CryptoCheckoutPage() {
   return (
