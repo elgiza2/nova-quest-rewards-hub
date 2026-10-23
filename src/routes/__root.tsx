@@ -154,7 +154,7 @@ const ORG_JSON_LD = JSON.stringify({
       name: "Nova AI",
       url: "/",
       logo: "/app-icon-512.png",
-      sameAs: ["https://x.com/megsyai", "https://www.instagram.com/megsyai"],
+      sameAs: [],
       description:
         "AI agent workspace for chat, image and video generation, research, documents, slides and app building.",
     },
