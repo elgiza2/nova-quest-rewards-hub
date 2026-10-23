@@ -9,9 +9,11 @@
 - [x] crypto_payments migration
 - [x] /api/crypto/invoice — invoice creation + on-chain verification + fulfilment
 - [ ] Crypto checkout page (/checkout/crypto) + TonConnect auto-payment + wiring on pricing/credit packs
-- [ ] Bot /start auto-link: deploy new public webhook route, switch webhook, remove "set your Telegram username" flow
-- [ ] New bot token: replace TELEGRAM_BOT_TOKEN secret
-- [ ] Bot admin panel /101 — user count + add/edit/delete tasks (name, link, image)
-- [ ] reward_tasks image_url column + tasks UI shows task image
+- [x] Bot /start auto-link: webhook route deployed and registered (verified via getWebhookInfo)
+- [x] New bot token: TELEGRAM_BOT_TOKEN secret replaced
+- [x] Bot admin panel /101 — user count + add/edit/delete tasks (name, link, image)
+- [x] Bot /start welcome image + two daily channel posts (English, bold captions, Open Orange AI button) + admin "post now" button
+- [x] Orange AI logo + favicon/icons applied from the uploaded circular logo
+- [x] reward_tasks image_url column + tasks UI shows task image
 - [ ] EVM auto-pay (WalletConnect) needs a WalletConnect project ID from the user — fallback address+QR shipped
 - [ ] Publish (Vercel token exposed in chat — do not use; publish via Lovable instead)
