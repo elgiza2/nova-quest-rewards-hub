@@ -32,6 +32,7 @@ import {
   DeleteAccountPage,
   AcceptInvitePage,
   ReferralRedirectPage,
+  EarnTasksPage,
   // billing hub
   BillingSuccessPage,
   ReferralsPage,
