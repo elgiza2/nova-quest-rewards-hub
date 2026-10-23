@@ -1,4 +1,4 @@
-/** Public Telegram bot webhook — /api/public/telegram-bot
+/** Public Telegram bot webhook — /api/public/telegram-bot (Orange AI)
  *
  *  - /start silently creates/links the user's account from their Telegram
  *    identity and answers with a button that opens the Orange AI Mini App
