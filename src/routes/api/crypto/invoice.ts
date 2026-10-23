@@ -124,7 +124,15 @@ export const Route = createFileRoute("/api/crypto/invoice")({
         const wallet = process.env[cfg.walletEnv];
         if (!wallet) return done({ ok: false, error: "wallet_not_configured" });
 
-        const usd = Number(plan.usd_price);
+        let usd = Number(plan.usd_price);
+        // First-month intro price (shown on the pricing page) for users who never paid before.
+        if (!body.sku && body.tier === "pro" && body.interval === "monthly") {
+          const { count } = await db.from("crypto_payments").select("id", { count: "exact", head: true }).eq("user_id", userId).eq("status", "paid");
+          if (!count) {
+            const { data: intro } = await db.from("billing_catalog").select("usd_price").eq("tier", "pro").eq("interval", "monthly_intro").eq("active", true).maybeSingle();
+            if (intro && Number(intro.usd_price) > 0 && Number(intro.usd_price) < usd) usd = Number(intro.usd_price);
+          }
+        }
         let base: number;
         if (asset === "ton") {
           let price: number;
