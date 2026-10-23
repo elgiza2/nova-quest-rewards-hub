@@ -150,3 +150,19 @@ html.tg-app button:has(> svg.lucide-arrow-left + span:only-of-type),
 html.tg-app [data-back-button] {
   display: none !important;
 }
+
+/* Telegram: full-height layouts shrink by the reserved top strip so pages
+   (e.g. pricing) fit without extra scrolling. */
+html.tg-app { --tg-vh: calc(100dvh - var(--tg-top-safe)); }
+html.tg-app body { min-height: var(--tg-vh); }
+html.tg-app .h-screen, html.tg-app .h-dvh, html.tg-app .h-svh, html.tg-app .h-\[100dvh\] { height: var(--tg-vh) !important; }
+html.tg-app .min-h-screen, html.tg-app .min-h-dvh, html.tg-app .min-h-svh, html.tg-app .min-h-\[100dvh\] { min-height: var(--tg-vh) !important; }
+html.tg-app .h-\[calc\(100vh-120px\)\] { height: calc(var(--tg-vh) - 120px) !important; }
+html.tg-app .h-\[calc\(100vh-3\.25rem\)\] { height: calc(var(--tg-vh) - 3.25rem) !important; }
+html.tg-app .min-h-\[calc\(100vh-88px\)\] { min-height: calc(var(--tg-vh) - 88px) !important; }
+html.tg-app .max-h-\[calc\(100dvh-130px\)\] { max-height: calc(var(--tg-vh) - 130px) !important; }
+html.tg-app .botanical-pricing, html.tg-app .botanical-content { min-height: var(--tg-vh); }
+html.tg-app .botanical-content { padding-top: 16px; }
+html.tg-app .botanical-art, html.tg-app .botanical-scrim { top: var(--tg-top-safe); height: var(--tg-vh); }
+/* Fixed full-height panels pushed below the strip must not overflow the bottom. */
+html.tg-app .fixed.inset-0, html.tg-app .fixed.inset-y-0 { top: var(--tg-top-safe) !important; height: auto; bottom: 0; }
