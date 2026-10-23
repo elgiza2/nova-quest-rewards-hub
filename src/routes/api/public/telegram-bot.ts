@@ -131,6 +131,12 @@ function appUrlButton(): Record<string, unknown> {
   return { text: "Open Orange AI", url: MINIAPP_URL };
 }
 
+/** Telegram needs absolute https URLs for photos; asset pointers are relative. */
+function absoluteAssetUrl(pointerUrl: string): string {
+  if (pointerUrl.startsWith("http")) return pointerUrl;
+  return new URL(pointerUrl, MINIAPP_URL).toString();
+}
+
 async function postToChannel(poolIndex: number): Promise<boolean> {
   const item = POST_POOL[poolIndex % POST_POOL.length];
   if (!item) return false;
