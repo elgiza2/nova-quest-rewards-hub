@@ -262,7 +262,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
     "أيوه — كل مشروع فيه معاينة حية بتتحدث مع كل تعديل.",
   "How do I publish a project?": "أنشر المشروع إزاي؟",
   "Open the project → Publish. You get a free megsy.app subdomain, or connect a custom domain from project Settings.":
-    "افتح المشروع ← نشر. هتاخد نطاق فرعي مجاني على megsy.app، أو توصّل دومين خاص من إعدادات المشروع.",
+    "افتح المشروع ← نشر، أو توصّل دومين خاص من إعدادات المشروع.",
   "Can I connect a database?": "أقدر أوصّل قاعدة بيانات؟",
   "Yes — projects can use Lovable Cloud for auth, database, storage, and edge functions.":
     "أيوه — المشاريع تقدر تستخدم Lovable Cloud للدخول وقاعدة البيانات والتخزين والدوال.",
@@ -384,7 +384,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Reply to customers": "يرد على العملاء",
   "inbox": "الرسايل",
   "› opened the cloud computer": "› فتح الكمبيوتر السحابي",
-  "› site deployed → megsy.shop": "› الموقع اتنشر ← megsy.shop",
+  "› site deployed → megsy.shop": "› الموقع اتنشر ← Orange AI",
   "› Stripe connected · first payment ready": "› Stripe اتربط · أول دفعة جاهزة",
   "› ad live · 3 replies sent": "› الإعلان شغال · 3 ردود اتبعتت",
   "✓ all done — nothing left for you": "✓ خلص كله — مفيش حاجة عليك",
@@ -397,7 +397,7 @@ export const EGYPTIAN_PAGES_2: Record<string, string> = {
   "Yes — I want the best": "أيوه — عايز الأحسن",
   "A cloud computer that works for you": "كمبيوتر سحابي بيشتغل بدالك",
   "Orange opens a real browser and desktop, clicks, types, runs code and hands you the finished files.": "Orange بيفتح متصفح وسطح مكتب حقيقي، بيدوس ويكتب ويشغّل كود ويسلّمك الملفات جاهزة.",
-  "megsy-computer · cloud": "megsy-computer · سحابي",
+  "megsy-computer · cloud": "Orange AI · سحابي",
   "$ opening chrome…": "$ بيفتح كروم…",
   "An agent with its own PC.": "وكيل ليه كمبيوتر بتاعه.",
   "Everything unlocked for $7": "كل حاجة مفتوحة بـ 7 دولار",
