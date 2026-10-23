@@ -7,14 +7,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { TonConnectUIProvider, useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
+import "./bufferPolyfill";
 import { beginCell, Address } from "@ton/core";
-import { Buffer } from "buffer";
-
-// @ton/core relies on the Node Buffer in a few BOC paths; the browser polyfill
-// must be installed before the module builds any cell.
-if (typeof globalThis !== "undefined" && typeof (globalThis as any).Buffer === "undefined") {
-  (globalThis as any).Buffer = Buffer;
-}
 import QRCode from "qrcode";
 import { ArrowLeft, Check, Copy, RefreshCw, Wallet } from "lucide-react";
 import { toast } from "sonner";
