@@ -1,5 +1,5 @@
 /** @doc useBrandLogo — returns the Orange brand icon URL (Orange AI logo). */
-import orangeLogo from "@/assets/orange-logo.png.asset.json";
+const orangeLogo = { url: "/orange-logo.png" };
 
 const orangeIconUrl = orangeLogo.url;
 
