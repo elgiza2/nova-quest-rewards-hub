@@ -109,11 +109,23 @@ html, body {
    close/back buttons with the page background so nothing overlaps. */
 html.tg-app {
   --tg-top-safe: calc(var(--tg-safe-area-inset-top, 0px) + var(--tg-content-safe-area-inset-top, 0px));
-  --safe-top: var(--tg-top-safe);
+  /* Body padding already reserves the Telegram area; avoid doubling it. */
+  --safe-top: 0px;
   --safe-bottom: var(--tg-safe-area-inset-bottom, 0px);
 }
 html.tg-app body {
   padding-top: var(--tg-top-safe);
+}
+/* Fixed/sticky top chrome ignores body padding: push it below Telegram's buttons. */
+html.tg-app .fixed.top-0,
+html.tg-app .sticky.top-0,
+html.tg-app .fixed.inset-x-0.top-0,
+html.tg-app header.fixed,
+html.tg-app header.sticky,
+html.tg-app [data-app-header],
+html.tg-app .fixed.inset-y-0,
+html.tg-app [data-fixed-top] {
+  top: var(--tg-top-safe) !important;
 }
 html.tg-app body::before {
   content: "";
