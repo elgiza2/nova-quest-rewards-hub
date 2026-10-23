@@ -23,7 +23,6 @@ import { Route as ApiManusAdminRouteImport } from './routes/api/manus-admin'
 import { Route as ApiMcpRouteImport } from './routes/api/mcp'
 import { Route as ApiReadUrlRouteImport } from './routes/api/read-url'
 import { Route as ApiRenderPdfRouteImport } from './routes/api/render-pdf'
-import { Route as ApiTasksRouteImport } from './routes/api/tasks'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiWebSearchRouteImport } from './routes/api/web-search'
 import { Route as ApiAgentSplatRouteImport } from './routes/api/agent.$'
@@ -32,6 +31,7 @@ import { Route as ApiPublicGeoRouteImport } from './routes/api/public/geo'
 import { Route as ApiPublicRemindersTickRouteImport } from './routes/api/public/reminders-tick'
 import { Route as ApiPublicTelegramAuthRouteImport } from './routes/api/public/telegram-auth'
 import { Route as ApiPublicTelegramKeysRouteImport } from './routes/api/public/telegram-keys'
+import { Route as ApiTasksCompleteRouteImport } from './routes/api/tasks.complete'
 import { Route as ApiPublicAgentToolsTokenRouteImport } from './routes/api/public/agent-tools.$token'
 import { Route as ApiPublicMediaStatusRunIdRouteImport } from './routes/api/public/media-status.$runId'
 import { Route as ApiPublicMediaRunIdIndexRouteImport } from './routes/api/public/media.$runId.$index'
@@ -106,11 +106,6 @@ const ApiRenderPdfRoute = ApiRenderPdfRouteImport.update({
   path: '/api/render-pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiTasksRoute = ApiTasksRouteImport.update({
-  id: '/api/tasks',
-  path: '/api/tasks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -151,6 +146,11 @@ const ApiPublicTelegramKeysRoute = ApiPublicTelegramKeysRouteImport.update({
   path: '/api/public/telegram-keys',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTasksCompleteRoute = ApiTasksCompleteRouteImport.update({
+  id: '/api/tasks/complete',
+  path: '/api/tasks/complete',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicAgentToolsTokenRoute =
   ApiPublicAgentToolsTokenRouteImport.update({
     id: '/api/public/agent-tools/$token',
@@ -185,7 +185,6 @@ export interface FileRoutesByFullPath {
   '/api/mcp': typeof ApiMcpRoute
   '/api/read-url': typeof ApiReadUrlRoute
   '/api/render-pdf': typeof ApiRenderPdfRoute
-  '/api/tasks': typeof ApiTasksRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
@@ -194,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
+  '/api/tasks/complete': typeof ApiTasksCompleteRoute
   '/api/public/agent-tools/$token': typeof ApiPublicAgentToolsTokenRoute
   '/api/public/media-status/$runId': typeof ApiPublicMediaStatusRunIdRoute
   '/api/public/media/$runId/$index': typeof ApiPublicMediaRunIdIndexRoute
@@ -213,7 +213,6 @@ export interface FileRoutesByTo {
   '/api/mcp': typeof ApiMcpRoute
   '/api/read-url': typeof ApiReadUrlRoute
   '/api/render-pdf': typeof ApiRenderPdfRoute
-  '/api/tasks': typeof ApiTasksRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
@@ -222,6 +221,7 @@ export interface FileRoutesByTo {
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
+  '/api/tasks/complete': typeof ApiTasksCompleteRoute
   '/api/public/agent-tools/$token': typeof ApiPublicAgentToolsTokenRoute
   '/api/public/media-status/$runId': typeof ApiPublicMediaStatusRunIdRoute
   '/api/public/media/$runId/$index': typeof ApiPublicMediaRunIdIndexRoute
@@ -242,7 +242,6 @@ export interface FileRoutesById {
   '/api/mcp': typeof ApiMcpRoute
   '/api/read-url': typeof ApiReadUrlRoute
   '/api/render-pdf': typeof ApiRenderPdfRoute
-  '/api/tasks': typeof ApiTasksRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
@@ -251,6 +250,7 @@ export interface FileRoutesById {
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
+  '/api/tasks/complete': typeof ApiTasksCompleteRoute
   '/api/public/agent-tools/$token': typeof ApiPublicAgentToolsTokenRoute
   '/api/public/media-status/$runId': typeof ApiPublicMediaStatusRunIdRoute
   '/api/public/media/$runId/$index': typeof ApiPublicMediaRunIdIndexRoute
@@ -272,7 +272,6 @@ export interface FileRouteTypes {
     | '/api/mcp'
     | '/api/read-url'
     | '/api/render-pdf'
-    | '/api/tasks'
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
@@ -281,6 +280,7 @@ export interface FileRouteTypes {
     | '/api/public/reminders-tick'
     | '/api/public/telegram-auth'
     | '/api/public/telegram-keys'
+    | '/api/tasks/complete'
     | '/api/public/agent-tools/$token'
     | '/api/public/media-status/$runId'
     | '/api/public/media/$runId/$index'
@@ -300,7 +300,6 @@ export interface FileRouteTypes {
     | '/api/mcp'
     | '/api/read-url'
     | '/api/render-pdf'
-    | '/api/tasks'
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
@@ -309,6 +308,7 @@ export interface FileRouteTypes {
     | '/api/public/reminders-tick'
     | '/api/public/telegram-auth'
     | '/api/public/telegram-keys'
+    | '/api/tasks/complete'
     | '/api/public/agent-tools/$token'
     | '/api/public/media-status/$runId'
     | '/api/public/media/$runId/$index'
@@ -328,7 +328,6 @@ export interface FileRouteTypes {
     | '/api/mcp'
     | '/api/read-url'
     | '/api/render-pdf'
-    | '/api/tasks'
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
@@ -337,6 +336,7 @@ export interface FileRouteTypes {
     | '/api/public/reminders-tick'
     | '/api/public/telegram-auth'
     | '/api/public/telegram-keys'
+    | '/api/tasks/complete'
     | '/api/public/agent-tools/$token'
     | '/api/public/media-status/$runId'
     | '/api/public/media/$runId/$index'
@@ -357,7 +357,6 @@ export interface RootRouteChildren {
   ApiMcpRoute: typeof ApiMcpRoute
   ApiReadUrlRoute: typeof ApiReadUrlRoute
   ApiRenderPdfRoute: typeof ApiRenderPdfRoute
-  ApiTasksRoute: typeof ApiTasksRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiWebSearchRoute: typeof ApiWebSearchRoute
   ApiAgentSplatRoute: typeof ApiAgentSplatRoute
@@ -366,6 +365,7 @@ export interface RootRouteChildren {
   ApiPublicRemindersTickRoute: typeof ApiPublicRemindersTickRoute
   ApiPublicTelegramAuthRoute: typeof ApiPublicTelegramAuthRoute
   ApiPublicTelegramKeysRoute: typeof ApiPublicTelegramKeysRoute
+  ApiTasksCompleteRoute: typeof ApiTasksCompleteRoute
   ApiPublicAgentToolsTokenRoute: typeof ApiPublicAgentToolsTokenRoute
   ApiPublicMediaStatusRunIdRoute: typeof ApiPublicMediaStatusRunIdRoute
   ApiPublicMediaRunIdIndexRoute: typeof ApiPublicMediaRunIdIndexRoute
@@ -471,13 +471,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiRenderPdfRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/tasks': {
-      id: '/api/tasks'
-      path: '/api/tasks'
-      fullPath: '/api/tasks'
-      preLoaderRoute: typeof ApiTasksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -534,6 +527,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicTelegramKeysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/tasks/complete': {
+      id: '/api/tasks/complete'
+      path: '/api/tasks/complete'
+      fullPath: '/api/tasks/complete'
+      preLoaderRoute: typeof ApiTasksCompleteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/agent-tools/$token': {
       id: '/api/public/agent-tools/$token'
       path: '/api/public/agent-tools/$token'
@@ -573,7 +573,6 @@ const rootRouteChildren: RootRouteChildren = {
   ApiMcpRoute: ApiMcpRoute,
   ApiReadUrlRoute: ApiReadUrlRoute,
   ApiRenderPdfRoute: ApiRenderPdfRoute,
-  ApiTasksRoute: ApiTasksRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiWebSearchRoute: ApiWebSearchRoute,
   ApiAgentSplatRoute: ApiAgentSplatRoute,
@@ -582,6 +581,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicRemindersTickRoute: ApiPublicRemindersTickRoute,
   ApiPublicTelegramAuthRoute: ApiPublicTelegramAuthRoute,
   ApiPublicTelegramKeysRoute: ApiPublicTelegramKeysRoute,
+  ApiTasksCompleteRoute: ApiTasksCompleteRoute,
   ApiPublicAgentToolsTokenRoute: ApiPublicAgentToolsTokenRoute,
   ApiPublicMediaStatusRunIdRoute: ApiPublicMediaStatusRunIdRoute,
   ApiPublicMediaRunIdIndexRoute: ApiPublicMediaRunIdIndexRoute,
