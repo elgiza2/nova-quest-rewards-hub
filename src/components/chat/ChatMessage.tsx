@@ -2171,24 +2171,6 @@ const ChatMessage = ({
                     <Copy className="w-[15px] h-[15px]" strokeWidth={1.75} />
                   )}
                 </AIMessageAction>
-                {role === "assistant" && onRegenerate && (
-                  <AIMessageAction
-                    onClick={onRegenerate}
-                    tooltip={label("Regenerate", "إعادة توليد")}
-                    className="h-9 w-9 rounded-md border-0 bg-transparent text-muted-foreground/70 shadow-none hover:bg-transparent hover:text-foreground"
-                  >
-                    <RefreshCw className="w-[15px] h-[15px]" strokeWidth={1.75} />
-                  </AIMessageAction>
-                )}
-                {role === "assistant" && onBranch && (
-                  <AIMessageAction
-                    onClick={onBranch}
-                    tooltip={label("Branch from here", "تفريع من هنا")}
-                    className="h-9 w-9 rounded-md border-0 bg-transparent text-muted-foreground/70 shadow-none hover:bg-transparent hover:text-foreground"
-                  >
-                    <GitBranch className="w-[15px] h-[15px]" strokeWidth={1.75} />
-                  </AIMessageAction>
-                )}
                 {downloadUrl && (
                   <AIMessageAction
                     onClick={() => {
