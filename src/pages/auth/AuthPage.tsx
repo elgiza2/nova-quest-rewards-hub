@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { isInsideTelegram, openBotForLogin, signInWithTelegram } from "@/lib/telegramAuth";
+import { Button } from "@/components/ui/button";
 const logo = { url: "/orange-logo.png" };
 
 export default function AuthPage() {
@@ -11,7 +12,8 @@ export default function AuthPage() {
   const [params] = useSearchParams();
   const [inTg, setInTg] = useState(false);
   const [failed, setFailed] = useState(false);
-  const target = params.get("redirect")?.startsWith("/") ? params.get("redirect")! : "/";
+  const redirect = params.get("redirect");
+  const target = redirect?.startsWith("/") && !redirect.startsWith("//") ? redirect : "/";
 
   useEffect(() => {
     let alive = true;
@@ -19,12 +21,19 @@ export default function AuthPage() {
     setInTg(tg);
     (async () => {
       const { data } = await supabase.auth.getSession();
+      if (!alive) return;
       if (data.session) return navigate(target, { replace: true });
       if (!tg) return;
       const r = await signInWithTelegram();
       if (!alive) return;
       if (r.ok) navigate(target, { replace: true });
-      else setFailed(true);
+      else {
+        // Never show a failed attempt over an already-established session.
+        const { data: current } = await supabase.auth.getSession();
+        if (!alive) return;
+        if (current.session) navigate(target, { replace: true });
+        else setFailed(true);
+      }
     })();
     return () => {
       alive = false;
@@ -42,13 +51,13 @@ export default function AuthPage() {
           <p className="max-w-xs text-muted-foreground">
             {failed ? "We couldn't sign you in. Please try again." : "Orange AI works inside Telegram. Open it there to sign in automatically."}
           </p>
-          <button
+          <Button
             type="button"
             onClick={() => (failed ? window.location.reload() : void openBotForLogin())}
             className="rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground"
           >
             {failed ? "Try again" : "Open in Telegram"}
-          </button>
+          </Button>
         </>
       )}
     </div>
