@@ -212,7 +212,7 @@ async function postToChannel(poolIndex: number): Promise<boolean> {
     photo: absoluteAssetUrl(item.photo),
     caption: item.caption,
     parse_mode: "HTML",
-    reply_markup: { inline_keyboard: [[appUrlButton()]] },
+    reply_markup: appButtons(false),
   });
   return Boolean(res?.ok);
 }
@@ -234,7 +234,7 @@ async function saveDailyState(slot: string, poolIndex: number): Promise<void> {
 async function nextPoolIndex(): Promise<number> {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const db = supabaseAdmin as any;
-  const { data } = await db.from("bot_daily_state").select("post_index").order("last_posted_at", { ascending: false }).limit(1);
+  const { data } = await db.from("bot_daily_state").select("post_index").in("slot", DAILY_SLOTS.map((x) => x.key)).order("last_posted_at", { ascending: false }).limit(1);
   return ((data?.[0]?.post_index as number | undefined) ?? -1) + 1;
 }
 
@@ -619,6 +619,7 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
         try {
           // Two daily channel posts, fired lazily on bot traffic (no cron needed).
           maybePostDaily();
+          maybeNotifyUsers();
           if (update.callback_query) {
             await handleAdminCallback(update.callback_query);
             return Response.json({ ok: true });
@@ -650,30 +651,27 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
           if (text === "/start" || text.startsWith("/start ")) {
             await ensureAccount(from);
             // Welcome message: clean character banner, bold English caption, app button.
-            const banner = POST_POOL[0];
+            const name = (from.first_name ?? "friend").replace(/[<>&]/g, "");
+            const caption =
+              `<b>${bold(`Welcome to Orange AI, ${name}.`)}</b>\n\n` +
+              `<b>${bold("We are so happy to have you here. Orange AI is your complete AI workspace, living right inside Telegram.")}</b>\n\n` +
+              `<b>${bold("Here is what you can do:")}</b>\n` +
+              `<b>${bold("- Chat with the smartest AI models and get instant answers")}</b>\n` +
+              `<b>${bold("- Turn any idea into stunning images and videos")}</b>\n` +
+              `<b>${bold("- Write documents, research topics and build slides in seconds")}</b>\n` +
+              `<b>${bold("- Complete daily tasks and invite friends to earn free credits")}</b>\n\n` +
+              `<b>${bold("Your account is ready. No password, no sign-up. Tap the button below and start creating.")}</b>\n\n` +
+              `<b>${bold("Join our community and grab ORANGE with the buttons below.")}</b>`;
             const sent = await tg("sendPhoto", {
               chat_id: msg.chat.id,
-              photo: absoluteAssetUrl(banner.photo),
-              caption:
-                `<b>Hey ${(from.first_name ?? "friend").replace(/[<>&]/g, "")}, welcome to Orange AI.</b>\n\n` +
-                "We are really glad you are here. Orange AI is your all-in-one AI workspace, right inside Telegram.\n\n" +
-                "<b>What you can do</b>\n" +
-                "Chat with powerful AI models and get instant answers\n" +
-                "Create stunning images and videos from a simple idea\n" +
-                "Research, write documents and build slides in seconds\n" +
-                "Complete daily tasks and invite friends to earn free credits\n\n" +
-                "<b>Your account is already set up.</b> No password, no sign-up. Just tap the button below and start creating.",
+              photo: absoluteAssetUrl(POST_POOL[0].photo),
+              caption,
               parse_mode: "HTML",
-              reply_markup: {
-                inline_keyboard: [[{ text: "Open Orange AI", web_app: { url: MINIAPP_URL } }]],
-              },
+              reply_markup: appButtons(true),
             });
             if (!sent?.ok) {
-              await reply(
-                msg.chat.id,
-                "<b>Welcome to Orange AI.</b>\n\nYour account is ready and linked to Telegram.\nTap the button below to open the app.",
-                { reply_markup: { inline_keyboard: [[{ text: "Open Orange AI", web_app: { url: MINIAPP_URL } }]] } },
-              );
+              console.error("[telegram-bot] start photo failed", sent);
+              await reply(msg.chat.id, caption, { reply_markup: appButtons(true) });
             }
           } else if (text === "/help" || text === "/app") {
             await reply(msg.chat.id, "Tap /start to open Orange AI.", {
