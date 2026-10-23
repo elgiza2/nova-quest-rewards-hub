@@ -4,7 +4,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowLeft,
   Bot,
   CalendarCheck,
   Check,
@@ -21,6 +20,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useUserLang } from "@/lib/authI18n";
 import SEOHead from "@/components/common/SEOHead";
+import { openTaskLink } from "@/lib/telegramAuth";
 
 type RewardTask = {
   id: string;
@@ -62,6 +62,8 @@ const T = {
     goReferrals: "Referrals",
     failed: "Could not complete the task",
     tryAgain: "Not yet — finish the task first, then verify.",
+    start: "Start",
+    walletPh: "Your TON wallet address",
     points: "pts",
   },
   ar: {
@@ -79,6 +81,8 @@ const T = {
     goReferrals: "الإحالات",
     failed: "مقدرناش نكمّل المهمة",
     tryAgain: "لسه — خلّص المهمة الأول وبعدين تحقّق.",
+    start: "ابدأ",
+    walletPh: "عنوان محفظة TON بتاعتك",
     points: "نقطة",
   },
 };
@@ -94,6 +98,28 @@ export default function EarnTasksPage() {
   const [credits, setCredits] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState<string | null>(null);
+  const [started, setStarted] = useState<Record<string, boolean>>({});
+  const [wallet, setWallet] = useState("");
+
+  const authHeaders = async () => {
+    const { data: session } = await supabase.auth.getSession();
+    const token = session.session?.access_token;
+    return token ? { "Content-Type": "application/json", Authorization: `Bearer ${token}` } : null;
+  };
+
+  const startTask = async (task: RewardTask) => {
+    const url = task.action_url ?? "";
+    if (task.action_type === "navigate" || task.action_type === "referral") {
+      if (url.startsWith("/")) navigate(url);
+      return;
+    }
+    if (url) openTaskLink(url);
+    setStarted((s) => ({ ...s, [task.task_key]: true }));
+    const headers = await authHeaders();
+    if (headers) {
+      void fetch("/api/tasks/complete", { method: "POST", headers, body: JSON.stringify({ taskKey: task.task_key, action: "start" }) });
+    }
+  };
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -123,20 +149,15 @@ export default function EarnTasksPage() {
   const completeTask = async (task: RewardTask) => {
     setBusy(task.task_key);
     try {
-      // Daily check-in completes directly; everything else opens its action first.
-      if (task.action_type === "open_url" && task.action_url) {
-        window.open(task.action_url, "_blank", "noopener,noreferrer");
-      }
-      const { data: session } = await supabase.auth.getSession();
-      const token = session.session?.access_token;
-      if (!token) {
+      const headers = await authHeaders();
+      if (!headers) {
         toast.error(t.failed);
         return;
       }
       const res = await fetch("/api/tasks/complete", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ taskKey: task.task_key }),
+        headers,
+        body: JSON.stringify({ taskKey: task.task_key, wallet: task.action_type === "buy_jetton" ? wallet.trim() : undefined }),
       });
       const json = await res.json().catch(() => null);
       if (!res.ok || !json?.ok) {
@@ -155,7 +176,7 @@ export default function EarnTasksPage() {
   const isDone = (task: RewardTask) =>
     userTasks.some((u) => u.task_id === task.id && u.completed_at);
 
-  const order = ["daily_checkin", "telegram_join", "first_chat", "first_image", "complete_profile", "first_subscription", "invite_friend"];
+  const order = ["daily_checkin", "join_channel", "follow_x", "buy_orange", "telegram_join", "first_chat", "first_image", "complete_profile", "first_subscription", "invite_friend"];
   const sorted = [...tasks].sort(
     (a, b) => (order.indexOf(a.task_key) + 1 || 99) - (order.indexOf(b.task_key) + 1 || 99),
   );
@@ -164,13 +185,6 @@ export default function EarnTasksPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEOHead title="Tasks — Earn points | Orange AI" description="Complete tasks and earn points in Orange AI." path="/tasks" />
       <div className="mx-auto max-w-xl px-4 py-8">
-        <button
-          type="button"
-          onClick={() => navigate(-1)}
-          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> {ar ? "رجوع" : "Back"}
-        </button>
 
         <h1 className="text-2xl font-semibold tracking-tight">{t.title}</h1>
         <p className="mt-1 text-sm text-muted-foreground">{t.subtitle}</p>
@@ -216,6 +230,14 @@ export default function EarnTasksPage() {
                       {task.description ?? ""}
                       {daily ? ` ${t.dailyNote}` : ""}
                     </p>
+                    {task.action_type === "buy_jetton" && started[task.task_key] && !done && (
+                      <input
+                        value={wallet}
+                        onChange={(e) => setWallet(e.target.value)}
+                        placeholder={t.walletPh}
+                        className="mt-2 w-full rounded-lg border border-border bg-background px-2 py-1.5 text-xs"
+                      />
+                    )}
                   </div>
                   <span className="shrink-0 text-sm font-semibold text-amber-500 tabular-nums">
                     +{task.reward_credits}
@@ -232,20 +254,22 @@ export default function EarnTasksPage() {
                     >
                       {t.goReferrals}
                     </button>
+                  ) : !daily && task.action_type !== "daily" && !started[task.task_key] && task.action_url ? (
+                    <button
+                      type="button"
+                      onClick={() => void startTask(task)}
+                      className="shrink-0 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground"
+                    >
+                      {t.start}
+                    </button>
                   ) : (
                     <button
                       type="button"
-                      disabled={busy === task.task_key}
+                      disabled={busy === task.task_key || (task.action_type === "buy_jetton" && wallet.trim().length < 40)}
                       onClick={() => completeTask(task)}
                       className="shrink-0 rounded-full bg-foreground px-4 py-1.5 text-xs font-semibold text-background disabled:opacity-50"
                     >
-                      {busy === task.task_key
-                        ? "…"
-                        : daily
-                          ? t.checkin
-                          : task.action_type === "open_url"
-                            ? t.open
-                            : t.verify}
+                      {busy === task.task_key ? "…" : daily ? t.checkin : t.verify}
                     </button>
                   )}
                 </div>

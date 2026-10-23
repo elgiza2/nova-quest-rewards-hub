@@ -10549,6 +10549,50 @@ export type Database = {
         }
         Relationships: []
       }
+      task_starts: {
+        Row: {
+          started_at: string
+          task_id: string
+          user_id: string
+        }
+        Insert: {
+          started_at?: string
+          task_id: string
+          user_id: string
+        }
+        Update: {
+          started_at?: string
+          task_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "task_starts_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "reward_tasks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      task_wallet_claims: {
+        Row: {
+          created_at: string
+          user_id: string
+          wallet: string
+        }
+        Insert: {
+          created_at?: string
+          user_id: string
+          wallet: string
+        }
+        Update: {
+          created_at?: string
+          user_id?: string
+          wallet?: string
+        }
+        Relationships: []
+      }
       team_agent_events: {
         Row: {
           agent_id: string
