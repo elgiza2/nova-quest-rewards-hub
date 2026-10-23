@@ -109,6 +109,8 @@ html, body {
    close/back buttons with the page background so nothing overlaps. */
 html.tg-app {
   --tg-top-safe: calc(var(--tg-safe-area-inset-top, 0px) + var(--tg-content-safe-area-inset-top, 0px));
+  --safe-top: var(--tg-top-safe);
+  --safe-bottom: var(--tg-safe-area-inset-bottom, 0px);
 }
 html.tg-app body {
   padding-top: var(--tg-top-safe);
@@ -118,7 +120,7 @@ html.tg-app body::before {
   position: fixed;
   inset: 0 0 auto 0;
   height: var(--tg-top-safe);
-  background: var(--background);
+  background: var(--tg-page-background, var(--background));
   z-index: 2147483000;
   pointer-events: none;
 }

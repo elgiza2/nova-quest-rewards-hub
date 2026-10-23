@@ -7,6 +7,7 @@
  */
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
+import { isOrangeTask } from "@/lib/orangeTasks";
 
 type TaskKey = string;
 const ORANGE_JETTON = "EQCY5dx1kTGT-r1RPXA-LTRyv73_LtfcaTl0g1E_WBlRdUyI";
@@ -22,27 +23,7 @@ async function verifyTelegramChannel(db: any, userId: string, url: string | null
   if (!data?.telegram_user_id) return false;
   const res = await fetch(`https://api.telegram.org/bot${token}/getChatMember?chat_id=@${handle}&user_id=${data.telegram_user_id}`);
   const j = (await res.json().catch(() => null)) as any;
-  return ["member", "administrator", "creator", "restricted"].includes(j?.result?.status);
-}
-
-async function verifyJetton(db: any, userId: string, wallet: string | undefined): Promise<boolean> {
-  const w = (wallet ?? "").trim();
-  if (!/^[A-Za-z0-9_\-:]{40,70}$/.test(w)) return false;
-  const res = await fetch(`https://tonapi.io/v2/accounts/${encodeURIComponent(w)}/jettons/${ORANGE_JETTON}`);
-  if (!res.ok) return false;
-  const j = (await res.json().catch(() => null)) as any;
-  if (!(Number(j?.balance ?? 0) > 0)) return false;
-  const raw = String(j?.wallet_address?.owner?.address ?? j?.wallet_address?.address ?? w);
-  const { data: claim } = await db.from("task_wallet_claims").select("user_id").eq("wallet", raw).maybeSingle();
-  if (claim && claim.user_id !== userId) return false;
-  if (!claim) await db.from("task_wallet_claims").insert({ wallet: raw, user_id: userId });
-  return true;
-}
-
-async function verifyLinkVisit(db: any, userId: string, taskId: string): Promise<boolean> {
-  const { data } = await db.from("task_starts").select("started_at").eq("user_id", userId).eq("task_id", taskId).maybeSingle();
-  if (!data) return false;
-  return Date.now() - new Date(data.started_at).getTime() >= LINK_MIN_SECONDS * 1000;
+  return j?.ok === true && (["member", "administrator", "creator"].includes(j?.result?.status) || (j?.result?.status === "restricted" && j.result.is_member === true));
 }
 
 function serverClients() {
@@ -63,64 +44,14 @@ async function requireUser(request: Request): Promise<string | null> {
 
 async function verifyCondition(db: any, userId: string, taskKey: TaskKey, task: TaskRow, wallet?: string): Promise<boolean> {
   if (task.action_type === "telegram_channel") return verifyTelegramChannel(db, userId, task.action_url);
-  if (task.action_type === "buy_jetton") return verifyJetton(db, userId, wallet);
-  switch (taskKey) {
-    case "first_chat": {
-      const { count } = await db
-        .from("conversations")
-        .select("id", { count: "exact", head: true })
-        .eq("user_id", userId);
-      return (count ?? 0) > 0;
-    }
-    case "first_image": {
-      const { count } = await db
-        .from("image_generations")
-        .select("id", { count: "exact", head: true })
-        .eq("user_id", userId);
-      return (count ?? 0) > 0;
-    }
-    case "complete_profile": {
-      const { data } = await db
-        .from("profiles")
-        .select("display_name, avatar_url")
-        .eq("id", userId)
-        .maybeSingle();
-      return Boolean(data?.display_name || data?.avatar_url);
-    }
-    case "first_subscription": {
-      const { data } = await db
-        .from("subscriptions")
-        .select("id")
-        .eq("user_id", userId)
-        .in("status", ["active", "trialing", "past_due"])
-        .limit(1)
-        .maybeSingle();
-      if (data) return true;
-      const { data: prof } = await db.from("profiles").select("plan").eq("id", userId).maybeSingle();
-      return Boolean(prof?.plan && prof.plan !== "free");
-    }
-    case "telegram_join": {
-      const { data } = await db
-        .from("telegram_profiles")
-        .select("user_id")
-        .eq("user_id", userId)
-        .limit(1)
-        .maybeSingle();
-      return Boolean(data);
-    }
-    case "invite_friend": {
-      const { count } = await db
-        .from("referrals")
-        .select("id", { count: "exact", head: true })
-        .eq("referrer_id", userId);
-      return (count ?? 0) > 0;
-    }
-    case "daily_checkin":
-      return true; // cooldown is checked separately
-    default:
-      // Admin-created / social link tasks: the user must have opened the link a while ago.
-      return verifyLinkVisit(db, userId, task.id);
+
+  if (taskKey === "daily_checkin") return true;
+  if (taskKey === "first_subscription") {
+    const {data,error} = await db.from("subscriptions").select("current_period_end").eq("user_id",userId).eq("status","active").gt("current_period_end",new Date().toISOString()).limit(1).maybeSingle();
+    return !error && Boolean(data) && Date.parse(data.current_period_end) <= Date.now()+32*86400_000;
   }
+  return false;
+
 }
 
 export const Route = createFileRoute("/api/tasks/complete")({
@@ -133,7 +64,7 @@ export const Route = createFileRoute("/api/tasks/complete")({
 
           const body = (await request.json().catch(() => null)) as { taskKey?: string; action?: string; wallet?: string } | null;
           const taskKey = body?.taskKey as TaskKey | undefined;
-          if (!taskKey || typeof taskKey !== "string" || taskKey.length > 80) {
+          if (!taskKey || typeof taskKey !== "string" || !isOrangeTask(taskKey)) {
             return Response.json({ ok: false, error: "unknown_task" }, { status: 400 });
           }
 
@@ -153,6 +84,8 @@ export const Route = createFileRoute("/api/tasks/complete")({
             return Response.json({ ok: true, started: true });
           }
 
+          if (taskKey === "follow_x") return Response.json({ok:false,error:"x_verification_unavailable"},{status:409});
+          if (taskKey === "buy_orange") return Response.json({ok:false,error:"wallet_ownership_verification_required"},{status:409});
           // Daily check-in: one claim per 24h.
           if (taskKey === "daily_checkin") {
             const { data: recent } = await db
@@ -184,37 +117,9 @@ export const Route = createFileRoute("/api/tasks/complete")({
             }
           }
 
-          const amount = Number(task.reward_credits ?? 0);
-          const opKey =
-            taskKey === "daily_checkin"
-              ? `task:${userId}:${taskKey}:${new Date().toISOString().slice(0, 10)}`
-              : `task:${userId}:${taskKey}`;
-
-          const { data: grant, error: grantErr } = await db.rpc("grant_credit_bucket", {
-            p_user_id: userId,
-            p_bucket: "bonus",
-            p_amount: amount,
-            p_action_type: "reward_task",
-            p_description: `Task: ${task.title}`,
-            p_operation_key: opKey,
-          });
-          if (grantErr) {
-            console.error("[tasks] grant failed", grantErr);
-            return Response.json({ ok: false, error: "grant_failed" }, { status: 500 });
-          }
-
-          await db.from("user_reward_tasks").upsert(
-            {
-              user_id: userId,
-              task_id: task.id,
-              progress: Math.max(1, Number(task.target_count ?? 1)),
-              completed_at: new Date().toISOString(),
-              awarded_credits: amount,
-            },
-            { onConflict: "user_id,task_id" },
-          );
-
-          return Response.json({ ok: true, credits: amount, total: grant?.total ?? null });
+          const { data: grant, error: grantErr } = await db.rpc("claim_orange_task", {p_user:userId,p_task:task.id});
+          if (grantErr) return Response.json({ok:false,error:"grant_failed"},{status:500});
+          return Response.json(grant,{status:grant?.ok ? 200 : 409});
         } catch (e) {
           console.error("[tasks] complete error", e);
           return Response.json({ ok: false, error: "server_error" }, { status: 500 });

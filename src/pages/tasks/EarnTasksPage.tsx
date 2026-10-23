@@ -1,282 +1,38 @@
-/** @doc Tasks — complete tasks, earn points. Points are Orange credits (MC)
- *  granted server-side by /api/tasks/complete after verifying each task's
- *  real condition; the browser never awards itself. */
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Bot,
-  CalendarCheck,
-  Check,
-  Coins,
-  Crown,
-  Image as ImageIcon,
-  MessageCircle,
-  RefreshCw,
-  Send,
-  UserRound,
-  Users,
-} from "lucide-react";
+import { ArrowUpRight, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useUserLang } from "@/lib/authI18n";
 import SEOHead from "@/components/common/SEOHead";
 import { openTaskLink } from "@/lib/telegramAuth";
-
-type RewardTask = {
-  id: string;
-  task_key: string;
-  title: string;
-  description: string | null;
-  image_url: string | null;
-  reward_credits: number;
-  action_type: string | null;
-  action_url: string | null;
-  icon: string | null;
-};
-
-type UserTask = { task_id: string; completed_at: string | null; awarded_credits: number | null };
-
-const ICONS: Record<string, typeof Bot> = {
-  telegram: Send,
-  calendar: CalendarCheck,
-  chat: MessageCircle,
-  image: ImageIcon,
-  profile: UserRound,
-  subscription: Crown,
-  invite: Users,
-};
-
-const T = {
-  en: {
-    title: "Tasks",
-    subtitle: "Complete tasks and earn points you can spend in Orange AI.",
-    balance: "Your points",
-    done: "Done",
-    claim: "Claim",
-    verify: "Verify",
-    open: "Open",
-    checkin: "Check in",
-    checkedIn: "Come back tomorrow",
-    dailyNote: "Daily check-in unlocks again every 24 hours.",
-    invite: "Invite friends from the referrals page",
-    goReferrals: "Referrals",
-    failed: "Could not complete the task",
-    tryAgain: "Not yet — finish the task first, then verify.",
-    start: "Start",
-    walletPh: "Your TON wallet address",
-    points: "pts",
-  },
-  ar: {
-    title: "المهام",
-    subtitle: "كمّل المهام واكسب نقاط تستخدمها في أورانج.",
-    balance: "نقاطك",
-    done: "خلصت",
-    claim: "استلم",
-    verify: "تحقّق",
-    open: "افتح",
-    checkin: "سجّل حضورك",
-    checkedIn: "ارجع بكرة",
-    dailyNote: "الحضور اليومي بيفتح تاني كل ٢٤ ساعة.",
-    invite: "ادعُ أصحابك من صفحة الإحالات",
-    goReferrals: "الإحالات",
-    failed: "مقدرناش نكمّل المهمة",
-    tryAgain: "لسه — خلّص المهمة الأول وبعدين تحقّق.",
-    start: "ابدأ",
-    walletPh: "عنوان محفظة TON بتاعتك",
-    points: "نقطة",
-  },
-};
-
-export default function EarnTasksPage() {
-  const navigate = useNavigate();
-  const lang = useUserLang();
-  const ar = lang === "ar-eg";
-  const t = ar ? T.ar : T.en;
-
-  const [tasks, setTasks] = useState<RewardTask[]>([]);
-  const [userTasks, setUserTasks] = useState<UserTask[]>([]);
-  const [credits, setCredits] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [busy, setBusy] = useState<string | null>(null);
-  const [started, setStarted] = useState<Record<string, boolean>>({});
-  const [wallet, setWallet] = useState("");
-
-  const authHeaders = async () => {
-    const { data: session } = await supabase.auth.getSession();
-    const token = session.session?.access_token;
-    return token ? { "Content-Type": "application/json", Authorization: `Bearer ${token}` } : null;
-  };
-
-  const startTask = async (task: RewardTask) => {
-    const url = task.action_url ?? "";
-    if (task.action_type === "navigate" || task.action_type === "referral") {
-      if (url.startsWith("/")) navigate(url);
-      return;
-    }
-    if (url) openTaskLink(url);
-    setStarted((s) => ({ ...s, [task.task_key]: true }));
-    const headers = await authHeaders();
-    if (headers) {
-      void fetch("/api/tasks/complete", { method: "POST", headers, body: JSON.stringify({ taskKey: task.task_key, action: "start" }) });
-    }
-  };
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    try {
-      const [{ data: auth }] = await Promise.all([supabase.auth.getUser()]);
-      const user = auth.user;
-      if (!user) return;
-      const [tk, ut, prof] = await Promise.all([
-        supabase.from("reward_tasks").select("*").eq("active", true).order("sort_order"),
-        supabase.from("user_reward_tasks").select("task_id, completed_at, awarded_credits").eq("user_id", user.id),
-        supabase.from("profiles").select("credits").eq("id", user.id).maybeSingle(),
-      ]);
-      setTasks((tk.data as RewardTask[]) ?? []);
-      setUserTasks((ut.data as UserTask[]) ?? []);
-      setCredits(prof.data?.credits != null ? Number(prof.data.credits) : null);
-    } catch {
-      // keep the page usable even if a lookup fails
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    void load();
-  }, [load]);
-
-  const completeTask = async (task: RewardTask) => {
-    setBusy(task.task_key);
-    try {
-      const headers = await authHeaders();
-      if (!headers) {
-        toast.error(t.failed);
-        return;
-      }
-      const res = await fetch("/api/tasks/complete", {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ taskKey: task.task_key, wallet: task.action_type === "buy_jetton" ? wallet.trim() : undefined }),
-      });
-      const json = await res.json().catch(() => null);
-      if (!res.ok || !json?.ok) {
-        if (json?.error === "condition_not_met") toast.info(t.tryAgain);
-        else if (json?.error === "already_claimed_today") toast.info(t.checkedIn);
-        else toast.error(t.failed);
-        return;
-      }
-      if ((json.credits ?? 0) > 0) toast.success(`+${json.credits} ${t.points}`);
-      await load();
-    } finally {
-      setBusy(null);
-    }
-  };
-
-  const isDone = (task: RewardTask) =>
-    userTasks.some((u) => u.task_id === task.id && u.completed_at);
-
-  const order = ["daily_checkin", "join_channel", "follow_x", "buy_orange", "telegram_join", "first_chat", "first_image", "complete_profile", "first_subscription", "invite_friend"];
-  const sorted = [...tasks].sort(
-    (a, b) => (order.indexOf(a.task_key) + 1 || 99) - (order.indexOf(b.task_key) + 1 || 99),
-  );
-
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SEOHead title="Tasks — Earn points | Orange AI" description="Complete tasks and earn points in Orange AI." path="/tasks" />
-      <div className="mx-auto max-w-xl px-4 py-8">
-
-        <h1 className="text-2xl font-semibold tracking-tight">{t.title}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">{t.subtitle}</p>
-
-        <div className="mt-6 flex items-center justify-between rounded-2xl border border-border bg-card px-5 py-4">
-          <span className="inline-flex items-center gap-2 text-sm font-medium">
-            <Coins className="h-4 w-4 text-amber-500" /> {t.balance}
-          </span>
-          <span className="text-xl font-semibold tabular-nums">
-            {credits == null ? "—" : credits.toLocaleString()}
-          </span>
-        </div>
-
-        <div className="mt-6 space-y-3">
-          {loading && (
-            <div className="flex justify-center py-10 text-muted-foreground">
-              <RefreshCw className="h-5 w-5 animate-spin" />
-            </div>
-          )}
-          {!loading &&
-            sorted.map((task) => {
-              const Icon = ICONS[task.icon ?? ""] ?? Coins;
-              const done = isDone(task);
-              const daily = task.task_key === "daily_checkin";
-              const invite = task.task_key === "invite_friend";
-              return (
-                <div key={task.id} className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4">
-                  {task.image_url ? (
-                    <img
-                      src={task.image_url}
-                      alt=""
-                      loading="lazy"
-                      className="h-10 w-10 shrink-0 rounded-xl object-cover"
-                    />
-                  ) : (
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium">{task.title}</p>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {task.description ?? ""}
-                      {daily ? ` ${t.dailyNote}` : ""}
-                    </p>
-                    {task.action_type === "buy_jetton" && started[task.task_key] && !done && (
-                      <input
-                        value={wallet}
-                        onChange={(e) => setWallet(e.target.value)}
-                        placeholder={t.walletPh}
-                        className="mt-2 w-full rounded-lg border border-border bg-background px-2 py-1.5 text-xs"
-                      />
-                    )}
-                  </div>
-                  <span className="shrink-0 text-sm font-semibold text-amber-500 tabular-nums">
-                    +{task.reward_credits}
-                  </span>
-                  {done ? (
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                      <Check className="h-3.5 w-3.5" /> {t.done}
-                    </span>
-                  ) : invite ? (
-                    <button
-                      type="button"
-                      onClick={() => navigate("/referrals")}
-                      className="shrink-0 rounded-full bg-foreground px-4 py-1.5 text-xs font-semibold text-background"
-                    >
-                      {t.goReferrals}
-                    </button>
-                  ) : !daily && task.action_type !== "daily" && !started[task.task_key] && task.action_url ? (
-                    <button
-                      type="button"
-                      onClick={() => void startTask(task)}
-                      className="shrink-0 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground"
-                    >
-                      {t.start}
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled={busy === task.task_key || (task.action_type === "buy_jetton" && wallet.trim().length < 40)}
-                      onClick={() => completeTask(task)}
-                      className="shrink-0 rounded-full bg-foreground px-4 py-1.5 text-xs font-semibold text-background disabled:opacity-50"
-                    >
-                      {busy === task.task_key ? "…" : daily ? t.checkin : t.verify}
-                    </button>
-                  )}
-                </div>
-              );
-            })}
-        </div>
-      </div>
-    </div>
-  );
+import { ORANGE_TASK_KEYS, canCheckIn } from "@/lib/orangeTasks";
+import logo from "@/assets/orange-logo.png.asset.json";
+import xArt from "@/assets/tasks/follow_x.jpg";
+import communityArt from "@/assets/tasks/join_channel.jpg";
+import coinArt from "@/assets/tasks/buy_orange.jpg";
+import planArt from "@/assets/tasks/first_subscription.jpg";
+import dailyArt from "@/assets/tasks/daily_checkin.jpg";
+type Task={id:string;task_key:string;title:string;reward_credits:number;action_url:string|null};
+const art:Record<string,string>={follow_x:xArt,join_channel:communityArt,buy_orange:coinArt,first_subscription:planArt,daily_checkin:dailyArt};
+const labels:Record<string,[string,string]>={follow_x:["Follow ORANGE on X","تابع ORANGE على إكس"],join_channel:["Join the community","انضم للمجتمع"],buy_orange:["Buy ORANGE","اشتري ORANGE"],first_subscription:["Monthly subscription","الاشتراك الشهري"],daily_checkin:["Daily check-in","الحضور اليومي"]};
+export default function EarnTasksPage(){
+ const ar=useUserLang()==="ar-eg";const navigate=useNavigate();
+ const [tasks,setTasks]=useState<Task[]>([]);const [done,setDone]=useState<Record<string,string>>({});const [credits,setCredits]=useState<number|null>(null);const [loading,setLoading]=useState(true);const [busy,setBusy]=useState("");const [error,setError]=useState("");
+ const load=useCallback(async()=>{setLoading(true);try{
+ const {data:{user}}=await supabase.auth.getUser();if(!user)throw new Error(ar?"افتح التطبيق من تليجرام لعرض مهامك":"Open the app from Telegram to see your tasks");
+ const [tk,ut,p]=await Promise.all([supabase.from("reward_tasks").select("id,task_key,title,reward_credits,action_url").eq("active",true).in("task_key",[...ORANGE_TASK_KEYS]),supabase.from("user_reward_tasks").select("task_id,completed_at").eq("user_id",user.id),supabase.from("profiles").select("credits").eq("id",user.id).maybeSingle()]);
+ if(tk.error||ut.error||p.error)throw new Error(ar?"تعذر تحميل المهام":"Could not load tasks");
+ setTasks((tk.data??[]).sort((a,b)=>ORANGE_TASK_KEYS.findIndex(k=>k===a.task_key)-ORANGE_TASK_KEYS.findIndex(k=>k===b.task_key)));setDone(Object.fromEntries((ut.data??[]).filter(r=>r.completed_at).map(r=>[r.task_id,r.completed_at as string])));setCredits(Number(p.data?.credits??0));setError("");
+ }catch(e){setError(e instanceof Error?e.message:"Could not load tasks")}finally{setLoading(false)}},[ar]);
+ useEffect(()=>{void load()},[load]);
+ async function verify(task:Task){setBusy(task.task_key);try{const {data}=await supabase.auth.getSession();if(!data.session)return;const res=await fetch("/api/tasks/complete",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${data.session.access_token}`},body:JSON.stringify({taskKey:task.task_key})});const result=await res.json();if(!result.ok){const msg=result.error==="x_verification_unavailable"?(ar?"متابعة إكس تحتاج ربط حساب إكس؛ لن تُمنح نقاط قبل التحقق":"X account verification is required before points can be awarded"):result.error==="wallet_ownership_verification_required"?(ar?"شراء العملة يحتاج إثبات ملكية المحفظة؛ لا تكفي كتابة عنوانها":"Coin purchase requires proof of wallet ownership; entering an address is not enough"):(ar?"لم يتم تأكيد المهمة بعد":"Task is not confirmed yet");toast.info(msg);return}toast.success(`+${result.credits??0}`);await load()}catch{toast.error(ar?"تعذّر التحقق":"Could not verify")}finally{setBusy("")}}
+ function open(task:Task){if(task.action_url?.startsWith("/"))navigate(task.action_url);else if(task.action_url)openTaskLink(task.action_url)}
+ return <main className="min-h-dvh bg-background text-foreground" dir={ar?"rtl":"ltr"}><SEOHead title="Tasks — Orange AI" description="Your Orange AI tasks and points." path="/tasks"/><div className="mx-auto max-w-5xl px-5 py-8 md:px-10 md:py-12">
+ <div className="flex items-start justify-between gap-4 border-b border-border pb-6"><div><p className="mb-2 text-sm font-medium text-primary">Orange AI</p><h1 className="text-3xl font-semibold">{ar?"المهام":"Tasks"}</h1></div><Button variant="ghost" size="icon" aria-label={ar?"تحديث":"Refresh"} disabled={loading} onClick={()=>void load()}><RefreshCw className={loading?"animate-spin":""}/></Button></div>
+ <div className="flex items-center gap-3 py-7"><img src={logo.url} alt="Orange" className="h-11 w-11 object-contain"/><div><p className="text-xs text-muted-foreground">{ar?"رصيد النقاط":"Points balance"}</p><p className="mt-1 text-3xl font-semibold tabular-nums">{credits===null?"—":credits.toLocaleString()}</p></div></div>
+ {error&&<p role="alert" className="mb-5 text-sm text-destructive">{error}</p>}
+ <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">{tasks.map(task=>{const daily=task.task_key==="daily_checkin";const completed=daily?!canCheckIn(done[task.id]??null):Boolean(done[task.id]);return <article key={task.id} className="overflow-hidden rounded-lg border border-border bg-card"><div className="h-48 overflow-hidden bg-muted"><img src={art[task.task_key]} alt="" className="h-full w-full object-cover object-[center_28%]"/></div><div className="p-5"><div className="flex items-center justify-between gap-2"><span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums"><img src={logo.url} alt="Orange points" className="h-5 w-5"/>+{task.reward_credits}</span>{completed&&<Check className="h-4 w-4 text-primary"/>}</div><h2 className="mt-3 text-lg font-semibold">{labels[task.task_key]?.[ar?1:0]??task.title}</h2><div className="mt-5 flex gap-2">{completed?<p className="text-sm text-muted-foreground">{daily?(ar?"ارجع بعد ٢٤ ساعة":"Come back after 24 hours"):(ar?"اكتملت":"Completed")}</p>:<>{!daily&&<Button variant="outline" className="flex-1" onClick={()=>open(task)}>{ar?"افتح":"Open"}<ArrowUpRight className="h-4 w-4"/></Button>}<Button className="flex-1" disabled={busy===task.task_key} onClick={()=>void verify(task)}>{busy===task.task_key?"…":daily?(ar?"سجّل حضورك":"Check in"):(ar?"تحقّق":"Verify")}</Button></>}</div></div></article>})}</div>
+ </div></main>
 }

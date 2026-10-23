@@ -13119,6 +13119,10 @@ export type Database = {
         Returns: Json
       }
       claim_daily_credits: { Args: never; Returns: Json }
+      claim_orange_task: {
+        Args: { p_task: string; p_user: string }
+        Returns: Json
+      }
       claim_promo_slot: { Args: never; Returns: number }
       claim_referral_milestone: { Args: never; Returns: Json }
       claim_referral_signup: { Args: { p_code: string }; Returns: Json }
@@ -13179,6 +13183,10 @@ export type Database = {
       cleanup_old_research_reports: { Args: never; Returns: undefined }
       cleanup_rate_limits: { Args: never; Returns: undefined }
       complete_referral_task: { Args: { p_task_key: string }; Returns: Json }
+      confirm_crypto_payment: {
+        Args: { p_invoice: string; p_tx: string }
+        Returns: Json
+      }
       consume_agentsky_free_video: {
         Args: { p_limit?: number; p_user_id: string }
         Returns: boolean

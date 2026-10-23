@@ -162,11 +162,6 @@ export default function AgentSelectionPage() {
         title="Agent settings"
         subtitle="Choose the assistant that leads your chats and which specialists can join when relevant."
         onBack={back}
-        trailing={
-          <Link to="/agents/new" className="gx-hbtn gx-hbtn-sm" aria-label="Create agent" title="Create agent">
-            <Plus className="gx-hicon" strokeWidth={2} />
-          </Link>
-        }
       >
         <GlassSection title="Primary assistant">
           <GlassCard className="gx-card-pad">

@@ -36,6 +36,14 @@
 }
 
 /* Brand marks */
+.manual-crypto-panel { color: var(--checkout-glass-ink, var(--foreground)); text-shadow: none; }
+.manual-crypto-panel .text-muted-foreground { color: var(--checkout-muted, var(--muted-foreground)); }
+.megsy-checkout .manual-crypto-panel [role="tablist"] { background: transparent !important; border: 0 !important; }
+.megsy-checkout .manual-crypto-panel button { color: var(--checkout-glass-ink) !important; background: var(--checkout-fill) !important; border: 1px solid var(--checkout-line) !important; }
+html.light .megsy-checkout .manual-crypto-panel button { background-color: var(--checkout-glass) !important; color: var(--checkout-glass-ink) !important; -webkit-text-fill-color: var(--checkout-glass-ink) !important; }
+.megsy-checkout .manual-crypto-panel button[aria-selected="true"] { background: var(--checkout-fill-on) !important; }
+.megsy-checkout .manual-crypto-panel [role="alert"] { color: var(--checkout-glass-ink); }
+html.tg-app .megsy-checkout { top: var(--tg-top-safe); height: calc(100dvh - var(--tg-top-safe)); }
 .megsy-checkout .checkout-logo { background: transparent; color: var(--payment-black); border: 0; }
 .megsy-checkout .checkout-logo svg { width: 30px; height: 26px; }
 .megsy-checkout .checkout-logo svg[viewBox="0 0 32 20"] { width: 40px; }

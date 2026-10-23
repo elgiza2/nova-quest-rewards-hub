@@ -2,6 +2,7 @@
  *  screen except the home/chat screen, and it navigates back in-app. */
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { initTelegramWebApp, isInsideTelegram } from "@/lib/telegramAuth";
 
 type BackBtn = { show: () => void; hide: () => void; onClick: (cb: () => void) => void; offClick: (cb: () => void) => void };
 
@@ -12,11 +13,12 @@ export default function TelegramBackButton() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    initTelegramWebApp();
     const btn = (window as unknown as { Telegram?: { WebApp?: { BackButton?: BackBtn; initData?: string } } }).Telegram
       ?.WebApp?.BackButton;
     if (!btn) return;
     const wa = (window as unknown as { Telegram?: { WebApp?: { initData?: string } } }).Telegram?.WebApp;
-    if (!wa?.initData) return;
+    if (!isInsideTelegram()) return;
     document.documentElement.classList.add("tg-app");
     const onBack = () => {
       if (window.history.length > 1 && (window.history.state?.idx ?? 1) > 0) navigate(-1);

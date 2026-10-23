@@ -146,7 +146,7 @@ const DICT: Record<string, Entry> = {
 const UI_DICT: Record<string, Entry> = {
   sidebarHome: { en: "Home", "ar-eg": "الرئيسية" },
   sidebarLibrary: { en: "Library", "ar-eg": "المكتبة" },
-  sidebarEarn: { en: "Earn", "ar-eg": "اكسب" },
+  sidebarEarn: { en: "Referral", "ar-eg": "الإحالة" },
   sidebarCloud: { en: "Cloud", "ar-eg": "السحابة" },
   newChat: { en: "New chat", "ar-eg": "شات جديد" },
   newProject: { en: "New project", "ar-eg": "مشروع جديد" },

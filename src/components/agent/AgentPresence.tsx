@@ -23,7 +23,7 @@ export function AgentPresence({ message, live }: { message: Message; live?: stri
       <AgentOrb size={38} state={state} color={message.agentSkyAgent?.color} />
       <div className="min-w-0">
         <div className="truncate text-sm font-semibold text-foreground">{message.agentSkyAgent?.name ?? "Orange"}</div>
-        {status && <div className="line-clamp-2 text-xs leading-relaxed text-muted-foreground" role="status"><span className={state === "awakening" || state === "thinking" ? "ag-shimmer" : ""}>{status}</span></div>}
+        {status && <div className="line-clamp-2 text-xs leading-relaxed text-muted-foreground" role="status"><span className={state === "awakening" || state === "thinking" ? "orange-thinking-text" : ""}>{status}</span></div>}
       </div>
     </div>
   );

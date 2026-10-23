@@ -1,0 +1,21 @@
+@keyframes orange-thought-sweep {
+  from { background-position: 140% 0; }
+  to { background-position: -140% 0; }
+}
+.orange-thinking-text {
+  color: var(--muted-foreground);
+}
+@supports (background-clip: text) {
+  .orange-thinking-text {
+    background-image: linear-gradient(90deg, var(--muted-foreground) 30%, var(--foreground) 50%, var(--muted-foreground) 70%);
+    background-size: 220% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: orange-thought-sweep 2s linear infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orange-thinking-text { animation: none; background: none; color: var(--muted-foreground); -webkit-text-fill-color: currentColor; }
+}

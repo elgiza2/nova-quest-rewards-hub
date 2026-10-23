@@ -30,6 +30,10 @@ type TgWebApp = {
   setHeaderColor?: (c: string) => void;
   setBackgroundColor?: (c: string) => void;
   setBottomBarColor?: (c: string) => void;
+  isFullscreen?: boolean;
+  safeAreaInset?: {top?:number;bottom?:number};
+  contentSafeAreaInset?: {top?:number;bottom?:number};
+  onEvent?: (event:string,callback:()=>void)=>void;
 };
 
 function tgWebApp(): TgWebApp | null {
@@ -39,6 +43,7 @@ function tgWebApp(): TgWebApp | null {
 }
 
 /** Call as early as possible so Telegram populates initData and expands the view. */
+let telegramInitialized = false;
 export function initTelegramWebApp(): void {
   const tg = tgWebApp();
   if (!tg) return;
@@ -47,12 +52,23 @@ export function initTelegramWebApp(): void {
   if (!isInsideTelegram()) return;
   try {
     document.documentElement.classList.add("tg-app");
-    const goFull = () => { try { tg.requestFullscreen?.(); } catch { /* unsupported client */ } };
+    const syncInsets = () => {
+      const root=document.documentElement;
+      root.style.setProperty("--tg-safe-area-inset-top", `${tg.safeAreaInset?.top ?? 0}px`);
+      root.style.setProperty("--tg-content-safe-area-inset-top", `${tg.contentSafeAreaInset?.top ?? (tg.isFullscreen ? 56 : 0)}px`);
+      root.style.setProperty("--tg-safe-area-inset-bottom", `${tg.safeAreaInset?.bottom ?? 0}px`);
+    };
+    const goFull = () => { try { if (!tg.isFullscreen && (!tg.isVersionAtLeast || tg.isVersionAtLeast("8.0"))) tg.requestFullscreen?.(); } catch { /* unsupported client */ } syncInsets(); };
     goFull();
+    if (telegramInitialized) return;
+    telegramInitialized=true;
+    ["safeAreaChanged","contentSafeAreaChanged","fullscreenChanged","viewportChanged"].forEach(event=>tg.onEvent?.(event,syncInsets));
+    window.addEventListener("pointerdown",goFull,{once:true});
     window.setTimeout(goFull, 400);
     window.addEventListener("load", goFull, { once: true });
     try { tg.disableVerticalSwipes?.(); } catch { /* ignore */ }
     const bg = getComputedStyle(document.body || document.documentElement).backgroundColor;
+    document.documentElement.style.setProperty("--tg-page-background", bg);
     const hex = toHex(bg);
     if (hex) {
       tg.setHeaderColor?.(hex);
@@ -121,7 +137,7 @@ export async function fetchBotUsername(): Promise<string> {
  *  no manual /start step needed. */
 export async function openBotForLogin() {
   const username = await fetchBotUsername();
-  const miniAppUrl = `https://t.me/${username}?startapp=login`;
+  const miniAppUrl = `https://t.me/${username}?startapp=login&mode=fullscreen`;
   const tg = tgWebApp();
   // `tg.openTelegramLink` is a no-op stub outside the real Telegram client
   // (the telegram-web-app.js SDK is loaded globally, so `tg` is truthy in
@@ -174,6 +190,8 @@ export async function signInWithTelegram(): Promise<{ ok: boolean; error?: strin
       });
       if (setErr) return { ok: false, error: setErr.message };
     }
+    const startParam = new URLSearchParams(initData).get("start_param");
+    if (startParam?.startsWith("ref_")) await supabase.rpc("claim_referral_signup", {p_code:startParam.slice(4)});
     return { ok: true };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };

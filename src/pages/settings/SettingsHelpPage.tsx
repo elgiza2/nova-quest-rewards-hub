@@ -39,7 +39,7 @@ const sections = [
     items: [
       { q: "How do I start a project?", a: "Open /build, describe what you want, and Orange scaffolds a working project you can iterate on with chat." },
       { q: "Can I preview my project?", a: "Yes — every project has a live preview pane that updates as the AI edits files." },
-      { q: "How do I publish a project?", a: "Open the project → Publish. You get a free megsy.app subdomain, or connect a custom domain from project Settings." },
+      { q: "How do I publish a project?", a: "Open the project → Publish, or connect a custom domain from project Settings." },
       { q: "Can I connect a database?", a: "Yes — projects can use Lovable Cloud for auth, database, storage, and edge functions." },
     ],
   },
