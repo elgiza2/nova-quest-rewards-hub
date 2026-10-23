@@ -150,7 +150,7 @@ type TgUser = {
 
 type TgUpdate = {
   update_id: number;
-  message?: { chat: { id: number }; from?: TgUser; text?: string };
+  message?: { chat: { id: number }; from?: TgUser; text?: string; photo?: { file_id: string }[]; document?: { file_id: string; mime_type?: string } };
   callback_query?: {
     id: string;
     from?: TgUser;
@@ -191,6 +191,7 @@ function mainMenuKeyboard() {
     inline_keyboard: [
       [{ text: "📊 إحصائيات", callback_data: "adm:stats" }, { text: "📋 المهام", callback_data: "adm:list" }],
       [{ text: "➕ إضافة مهمة", callback_data: "adm:add" }, { text: "📣 انشر دلوقتي", callback_data: "adm:post" }],
+      [{ text: "📨 ابعت منشور لكل المستخدمين", callback_data: "adm:bcast" }],
     ],
   };
 }
@@ -219,6 +220,30 @@ async function postToChannel(poolIndex: number): Promise<boolean> {
     reply_markup: appButtons(false),
   });
   return Boolean(res?.ok);
+}
+
+/** Sends the same channel post privately to every Telegram user of the bot. */
+async function broadcastPost(poolIndex: number): Promise<{ sent: number; failed: number }> {
+  const item = POST_POOL[poolIndex % POST_POOL.length];
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const db = supabaseAdmin as any;
+  const ids: number[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data } = await db.from("telegram_profiles").select("telegram_user_id").range(from, from + 999);
+    if (!data?.length) break;
+    for (const r of data) if (r.telegram_user_id) ids.push(Number(r.telegram_user_id));
+    if (data.length < 1000) break;
+  }
+  let sent = 0, failed = 0;
+  for (let i = 0; i < ids.length; i += 20) {
+    const batch = ids.slice(i, i + 20);
+    const res = await Promise.all(batch.map((id) => tg("sendPhoto", {
+      chat_id: id, photo: absoluteAssetUrl(item.photo), caption: item.caption, parse_mode: "HTML", reply_markup: appButtons(true),
+    })));
+    for (const r of res) r?.ok ? sent++ : failed++;
+    if (i + 20 < ids.length) await new Promise((r) => setTimeout(r, 1100));
+  }
+  return { sent, failed };
 }
 
 async function saveDailyState(slot: string, poolIndex: number): Promise<void> {
@@ -439,20 +464,21 @@ function randomKey(): string {
   return "adm_" + [...buf].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-/** "الاسم | الرابط | رابط الصورة" — image part optional. */
-function parseTaskInput(text: string): { name: string; url: string; image: string | null } | null {
-  const parts = text.split(/\s*[|\n]\s*/).map((s) => s.trim()).filter(Boolean);
-  if (parts.length < 2) return null;
-  const [name, url, image] = parts;
-  const isHttp = (s: string) => /^https?:\/\/\S+$/i.test(s);
-  if (!isHttp(url)) return null;
-  if (image && !isHttp(image)) return null;
-  return { name, url, image: image || null };
+type Draft = { name?: string; image?: string };
+
+function parseStep(action: string): { mode: string; step: string; draft: Draft } {
+  const [head, json] = action.split("|", 2);
+  const [mode, step] = head.split(":");
+  let draft: Draft = {};
+  try { if (json) draft = JSON.parse(json); } catch { /* fresh draft */ }
+  return { mode, step: step ?? "name", draft };
 }
 
-async function handleAdminTextInput(chatId: number, from: TgUser, text: string): Promise<boolean> {
+/** Step-by-step task input: name → photo uploaded from the device → link. */
+async function handleAdminInput(chatId: number, from: TgUser, msg: NonNullable<TgUpdate["message"]>): Promise<boolean> {
   const state = await getState(from.id);
   if (!state) return false;
+  const text = (msg.text ?? "").trim();
 
   if (text === "إلغاء") {
     await clearState(from.id);
@@ -460,71 +486,45 @@ async function handleAdminTextInput(chatId: number, from: TgUser, text: string):
     return true;
   }
 
-  const parsed = parseTaskInput(text);
-  if (!parsed) {
-    await reply(
-      chatId,
-      "الصيغة مش صح 🙏\nابعت المهمة بالشكل ده:\n<code>اسم المهمة | https://الرابط | https://رابط-الصورة</code>\n\nأو ابعت «إلغاء».",
-      { parse_mode: "HTML" },
-    );
+  const { mode, step, draft } = parseStep(state.action);
+  const taskId = state.task_id ?? undefined;
+  const save = (next: string, d: Draft) => setState(from.id, `${mode}:${next}|${JSON.stringify(d)}`, taskId);
+
+  if (step === "name") {
+    if (!text || text.length > 80) { await reply(chatId, "ابعت اسم المهمة كنص (لحد 80 حرف)."); return true; }
+    await save("photo", { name: text });
+    await reply(chatId, "🖼 <b>خطوة 2 من 3</b>\nابعت <b>صورة المهمة</b> من موبايلك (صورة عادية، مش رابط).", { parse_mode: "HTML" });
     return true;
   }
 
-  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  const db = supabaseAdmin as any;
+  if (step === "photo") {
+    const fileId = msg.photo?.length ? msg.photo[msg.photo.length - 1].file_id
+      : msg.document?.mime_type?.startsWith("image/") ? msg.document.file_id : null;
+    if (!fileId) { await reply(chatId, "لازم تبعت صورة من جهازك 🙏"); return true; }
+    await save("url", { ...draft, image: `tg:${fileId}` });
+    await reply(chatId, "🔗 <b>خطوة 3 من 3</b>\nابعت <b>رابط المهمة</b> (يبدأ بـ https://).", { parse_mode: "HTML" });
+    return true;
+  }
 
-  if (state.action === "add") {
-    const { data: created, error } = await db
-      .from("reward_tasks")
-      .insert({
-        task_key: randomKey(),
-        title: parsed.name,
-        description: parsed.url,
-        reward_credits: DEFAULT_REWARD,
-        action_type: "open_url",
-        action_url: parsed.url,
-        image_url: parsed.image,
-        icon: "coins",
-        active: true,
-        sort_order: 50,
-      })
-      .select()
-      .single();
+  if (step === "url") {
+    if (!/^https?:\/\/\S+$/i.test(text)) { await reply(chatId, "الرابط لازم يبدأ بـ https://"); return true; }
+    if (!draft.name || !draft.image) { await clearState(from.id); await reply(chatId, "انتهت الخطوات، ابدأ من جديد.", { reply_markup: mainMenuKeyboard() }); return true; }
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const db = supabaseAdmin as any;
+    const fields = { title: draft.name, action_url: text, description: text, image_url: draft.image };
+    const q = mode === "edit" && taskId
+      ? db.from("reward_tasks").update(fields).eq("id", taskId).select().single()
+      : db.from("reward_tasks").insert({ ...fields, task_key: randomKey(), reward_credits: DEFAULT_REWARD, action_type: "open_url", icon: "coins", active: true, sort_order: 50 }).select().single();
+    const { data: row, error } = await q;
     await clearState(from.id);
-    if (error || !created) {
-      await reply(chatId, "حصل خطأ في الحفظ، جرّب تاني.");
-      return true;
-    }
-    await reply(chatId, `✅ المهمة اتضافت: <b>${created.title}</b> (+${created.reward_credits} نقطة)`, {
-      parse_mode: "HTML",
+    if (error || !row) { await reply(chatId, "حصل خطأ في الحفظ، جرّب تاني."); return true; }
+    await tg("sendPhoto", {
+      chat_id: chatId, photo: draft.image.slice(3),
+      caption: `✅ ${mode === "edit" ? "المهمة اتعدّلت" : "المهمة اتضافت"}: <b>${row.title}</b> (+${row.reward_credits} نقطة)\n${text}`,
+      parse_mode: "HTML", reply_markup: mainMenuKeyboard(),
     });
-    if (created.image_url) {
-      await tg("sendPhoto", { chat_id: chatId, photo: created.image_url, caption: created.title }).catch(() => {});
-    }
     return true;
   }
-
-  if (state.action === "edit" && state.task_id) {
-    const { data: updated, error } = await db
-      .from("reward_tasks")
-      .update({
-        title: parsed.name,
-        action_url: parsed.url,
-        description: parsed.url,
-        image_url: parsed.image,
-      })
-      .eq("id", state.task_id)
-      .select()
-      .single();
-    await clearState(from.id);
-    if (error || !updated) {
-      await reply(chatId, "حصل خطأ في التعديل، جرّب تاني.");
-      return true;
-    }
-    await reply(chatId, `✅ المهمة اتعدّلت: <b>${updated.title}</b>`, { parse_mode: "HTML" });
-    return true;
-  }
-
   return false;
 }
 
@@ -555,6 +555,13 @@ async function handleAdminCallback(cb: NonNullable<TgUpdate["callback_query"]>):
     });
     return;
   }
+  if (cmd === "bcast") {
+    await answerCallback(cb.id, "جاري الإرسال…");
+    const idx = await nextPoolIndex();
+    const { sent, failed } = await broadcastPost(idx);
+    await reply(chatId, `📨 المنشور اتبعت لـ <b>${sent}</b> مستخدم` + (failed ? ` · فشل ${failed} (غالبًا قفلوا البوت)` : ""), { parse_mode: "HTML", reply_markup: mainMenuKeyboard() });
+    return;
+  }
   if (cmd === "list") {
     await answerCallback(cb.id);
     await adminTaskList(chatId);
@@ -562,12 +569,8 @@ async function handleAdminCallback(cb: NonNullable<TgUpdate["callback_query"]>):
   }
   if (cmd === "add") {
     await answerCallback(cb.id);
-    await setState(cb.from.id, "add");
-    await reply(
-      chatId,
-      "➕ ابعت المهمة الجديدة بالشكل ده:\n<code>اسم المهمة | https://الرابط | https://رابط-الصورة</code>\n\nرابط الصورة اختياري · نقاط المهمة الافتراضية 25.\nللإلغاء ابعت «إلغاء».",
-      { parse_mode: "HTML" },
-    );
+    await setState(cb.from.id, "add:name");
+    await reply(chatId, "➕ <b>مهمة جديدة — خطوة 1 من 3</b>\nابعت <b>اسم المهمة</b>.\n\nللإلغاء ابعت «إلغاء».", { parse_mode: "HTML" });
     return;
   }
   if (cmd === "task" && arg1) {
@@ -577,10 +580,8 @@ async function handleAdminCallback(cb: NonNullable<TgUpdate["callback_query"]>):
   }
   if (cmd === "edit" && arg1) {
     await answerCallback(cb.id);
-    await setState(cb.from.id, "edit", arg1);
-    await reply(chatId, "✏️ ابعت السطر الجديد بالشكل: <code>الاسم | الرابط | رابط الصورة</code>\nللإلغاء ابعت «إلغاء».", {
-      parse_mode: "HTML",
-    });
+    await setState(cb.from.id, "edit:name", arg1);
+    await reply(chatId, "✏️ <b>تعديل المهمة — خطوة 1 من 3</b>\nابعت <b>الاسم الجديد</b>.\n\nللإلغاء ابعت «إلغاء».", { parse_mode: "HTML" });
     return;
   }
   if (cmd === "del" && arg1) {
@@ -648,7 +649,7 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
 
           // Admin pending task input (add / edit).
           if ((await isAdmin(from.id)) && (await getState(from.id))) {
-            await handleAdminTextInput(msg.chat.id, from, text);
+            await handleAdminInput(msg.chat.id, from, msg);
             return Response.json({ ok: true });
           }
 
