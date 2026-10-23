@@ -17,3 +17,6 @@
 - [x] reward_tasks image_url column + tasks UI shows task image
 - [ ] EVM auto-pay (WalletConnect) needs a WalletConnect project ID from the user — fallback address+QR shipped
 - [ ] Publish (Vercel token exposed in chat — do not use; publish via Lovable instead)
+
+- [x] Start message rewrite (bold, characters, community + buy ORANGE buttons), daily user notifications, Telegram-only login, full-screen Mini App with top safe area
+- [ ] Confirm /start and daily notification in real Telegram

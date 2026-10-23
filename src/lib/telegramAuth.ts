@@ -23,6 +23,13 @@ type TgWebApp = {
   expand?: () => void;
   openTelegramLink?: (url: string) => void;
   platform?: string;
+  version?: string;
+  isVersionAtLeast?: (v: string) => boolean;
+  requestFullscreen?: () => void;
+  disableVerticalSwipes?: () => void;
+  setHeaderColor?: (c: string) => void;
+  setBackgroundColor?: (c: string) => void;
+  setBottomBarColor?: (c: string) => void;
 };
 
 function tgWebApp(): TgWebApp | null {
@@ -37,6 +44,26 @@ export function initTelegramWebApp(): void {
   if (!tg) return;
   try { tg.ready?.(); } catch { /* ignore */ }
   try { tg.expand?.(); } catch { /* ignore */ }
+  if (!isInsideTelegram()) return;
+  try {
+    document.documentElement.classList.add("tg-app");
+    if (tg.isVersionAtLeast?.("8.0")) tg.requestFullscreen?.();
+    if (tg.isVersionAtLeast?.("7.7")) tg.disableVerticalSwipes?.();
+    const bg = getComputedStyle(document.body || document.documentElement).backgroundColor;
+    const hex = toHex(bg);
+    if (hex) {
+      tg.setHeaderColor?.(hex);
+      tg.setBackgroundColor?.(hex);
+      tg.setBottomBarColor?.(hex);
+    }
+  } catch { /* ignore */ }
+}
+
+function toHex(rgb: string): string | null {
+  if (!rgb.startsWith("rgb")) return null;
+  const m = rgb.match(/\d+(\.\d+)?/g);
+  if (!m || m.length < 3) return null;
+  return "#" + m.slice(0, 3).map((n) => Math.round(Number(n)).toString(16).padStart(2, "0")).join("");
 }
 
 /** Wait briefly for `initData` — the Telegram SDK sometimes populates it
