@@ -7,6 +7,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { TonConnectUIProvider, useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
+import "./bufferPolyfill";
 import { beginCell, Address } from "@ton/core";
 import QRCode from "qrcode";
 import { ArrowLeft, Check, Copy, RefreshCw, Wallet } from "lucide-react";
