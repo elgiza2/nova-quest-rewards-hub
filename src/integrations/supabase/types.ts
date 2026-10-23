@@ -2460,6 +2460,27 @@ export type Database = {
         }
         Relationships: []
       }
+      bot_admin_state: {
+        Row: {
+          action: string
+          created_at: string
+          task_id: string | null
+          telegram_id: number
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          task_id?: string | null
+          telegram_id: number
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          task_id?: string | null
+          telegram_id?: number
+        }
+        Relationships: []
+      }
       bot_pending_actions: {
         Row: {
           action: string
