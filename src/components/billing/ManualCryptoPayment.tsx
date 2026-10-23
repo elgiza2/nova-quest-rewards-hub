@@ -33,8 +33,8 @@ export default function ManualCryptoPayment({tier,interval,sku}:{tier:string;int
     return ()=>{alive=false;clearInterval(timer)};
   },[invoice,status]);
   const copy=async(value:string)=>{try{await navigator.clipboard.writeText(value)}catch{setError(ar?"تعذّر النسخ":"Could not copy")}};
-  return <div className="space-y-5 text-foreground" dir={ar?"rtl":"ltr"}>
-    <div className="flex gap-2" role="tablist" aria-label="Crypto asset">{["usdt_ton","ton"].map(key=><Button key={key} variant={asset===key?"default":"outline"} role="tab" aria-selected={asset===key} onClick={()=>setAsset(key)}>{key==="ton"?"TON":"USDT · TON"}</Button>)}</div>
+  return <div className="manual-crypto-panel space-y-5" dir={ar?"rtl":"ltr"}>
+    <div className="flex gap-2" role="tablist" aria-label="Crypto asset">{["usdt_ton","ton"].map(key=><Button key={key} variant="outline" role="tab" aria-selected={asset===key} onClick={()=>setAsset(key)}>{key==="ton"?"TON":"USDT · TON"}</Button>)}</div>
     {status==="loading" && <p role="status" className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin"/>{ar?"بنجهز الدفع…":"Preparing payment…"}</p>}
     {invoice && status!=="paid" && <>
       <div><p className="text-xs text-muted-foreground">{ar?"المبلغ":"Amount"}</p><p className="mt-1 text-2xl font-semibold tabular-nums" dir="ltr">{invoice.payAmount} {asset==="ton"?"TON":"USDT"}</p></div>

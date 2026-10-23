@@ -273,11 +273,7 @@ export const AppRoutes = ({ currentUserId }: { currentUserId: string | null }) =
     />
     <Route
       path="/tasks"
-      element={
-        <ProtectedRoute>
-          <EarnTasksPage />
-        </ProtectedRoute>
-      }
+      element={<EarnTasksPage />}
     />
     <Route path="/tasks/*" element={<Navigate to="/tasks" replace />} />
     <Route path="/settings/knowledge" element={<Navigate to="/settings/memory" replace />} />
