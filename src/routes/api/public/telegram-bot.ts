@@ -586,7 +586,7 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
             const banner = POST_POOL[0];
             const sent = await tg("sendPhoto", {
               chat_id: msg.chat.id,
-              photo: banner.photo,
+              photo: absoluteAssetUrl(banner.photo),
               caption:
                 `<b>Welcome to Orange AI, ${from.first_name ?? "friend"}.</b>\n\n` +
                 "Your account is ready and linked to Telegram.\n" +
