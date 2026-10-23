@@ -50,7 +50,7 @@ const HERO_VIDEO =
 const NAV_LINKS = [
   { label: "Plans", href: "#plans-grid" },
   { label: "FAQ", href: "#pricing-faq" },
-  { label: "Support", href: "mailto:support@megsyai.com" },
+  { label: "Support", href: "https://t.me/Torekr" },
 ];
 
 /* ----------------------------- StaggeredFade ----------------------------- */

@@ -20,7 +20,7 @@ interface LegalDoc {
   sections: Section[];
 }
 
-const SUPPORT_EMAIL = "support@megsyai.com";
+const SUPPORT_EMAIL = "@Torekr on Telegram";
 const COMPANY = {
   name: "Nova for Digital Platforms & E-Commerce Development LLC",
   address: "58 El-Hegaz Street, Amoun Tower, Unit 84, Floor 8, Sheraton Al-Matar, Cairo, Egypt",
@@ -112,7 +112,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         heading: "Retention and deletion",
         body: [
           "Stored conversations, files and account information support your ongoing use of the service. Deleting an item in the app may not immediately remove backup copies or records held by third-party providers.",
-          `For access, correction or deletion requests, contact ${SUPPORT_EMAIL} from your account email. Billing and security records may need to be retained to meet applicable obligations. This policy does not promise a specific backup or provider retention period.`,
+          `For access, correction or deletion requests, contact ${SUPPORT_EMAIL}. Billing and security records may need to be retained to meet applicable obligations. This policy does not promise a specific backup or provider retention period.`,
         ],
       },
       {
@@ -149,7 +149,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       {
         heading: "Refund requests",
         body: [
-          `Refund requests are reviewed case by case. Email ${SUPPORT_EMAIL} from your account address with the transaction date and the reason for the request.`,
+          `Refund requests are reviewed case by case. Message ${SUPPORT_EMAIL} with the transaction date and the reason for the request.`,
           "Please identify duplicate or incorrect charges and paid features that were not delivered so we can investigate. Applicable statutory rights are not excluded by this policy.",
         ],
       },
@@ -241,7 +241,7 @@ const LegalPage = ({ slug }: { slug: keyof typeof LEGAL_DOCS }) => {
         path={doc.path || location.pathname}
       />
       <main className="megsy-legal" data-no-translate>
-        <nav className="megsy-legal-nav" aria-label="Company navigation"><Link to="/landing" className="font-semibold">Nova AI</Link><Link to="/chat">Workspace</Link><Link to="/pricing">Plans</Link><a href={`mailto:${SUPPORT_EMAIL}`}>Support</a></nav>
+        <nav className="megsy-legal-nav" aria-label="Company navigation"><Link to="/landing" className="font-semibold">Nova AI</Link><Link to="/chat">Workspace</Link><Link to="/pricing">Plans</Link><a href="https://t.me/Torekr">Support</a></nav>
         <div className="megsy-legal-layout">
           <aside className="megsy-legal-aside" aria-label="Policies">{Object.entries(LEGAL_DOCS).map(([key, item]) => <Link key={key} to={item.path} aria-current={key === slug ? "page" : undefined}>{item.title}</Link>)}</aside>
           <article>

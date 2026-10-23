@@ -256,7 +256,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Do you offer refunds?",
-    a: 'Yes — new paid subscriptions include a 7-day no-questions-asked refund window, provided no more than 10% of your included credits have been consumed. Credit packs are non-refundable once any credit has been spent. Failed generations are auto-refunded within minutes. Email support@megsyai.com (subject: "Refund Request") and we respond within 5 business days.',
+    a: 'Yes — new paid subscriptions include a 7-day no-questions-asked refund window, provided no more than 10% of your included credits have been consumed. Credit packs are non-refundable once any credit has been spent. Failed generations are auto-refunded within minutes. Message @Torekr on Telegram and we respond within 5 business days.',
   },
   {
     q: "Is my payment secure? Which payment methods do you accept?",
@@ -264,6 +264,6 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Do you offer team or enterprise plans?",
-    a: "Yes. Pro includes team workspaces, and for custom MC allocation, SSO, dedicated infrastructure, custom contracts or volume discounts contact our enterprise team via the Enterprise page or support@megsyai.com.",
+    a: "Yes. Pro includes team workspaces, and for custom MC allocation, SSO, dedicated infrastructure, custom contracts or volume discounts contact our enterprise team via the Enterprise page or on Telegram @Torekr.",
   },
 ];

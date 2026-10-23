@@ -278,8 +278,8 @@ const BillingSuccessPage = () => {
             )}
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-black/40">
               <Mail className="h-3.5 w-3.5" /> {t("Need help?", "محتاج مساعدة؟")}{" "}
-              <a href="mailto:support@megsyai.com" className="font-medium text-black/65 underline">
-                support@megsyai.com
+              <a href="https://t.me/Torekr" className="font-medium text-black/65 underline">
+                @Torekr on Telegram
               </a>
             </p>
           </div>

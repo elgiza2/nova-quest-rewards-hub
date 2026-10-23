@@ -11,7 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { getCachedUser } from "@/lib/cachedUser";
 import { getOwnProfile } from "@/lib/ownProfile";
 
-const SUPPORT_EMAIL = "support@megsyai.com";
+const SUPPORT_EMAIL = "@Torekr on Telegram";
 
 type State =
   | { kind: "loading" }
@@ -109,7 +109,7 @@ export default function RestorePurchasePage() {
                 <h2 className="text-lg font-semibold tracking-tight">No active subscription found</h2>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   We found no paid plan on {state.email}. If you paid with a different email, sign in
-                  with that account. If the charge was made on this account, email {SUPPORT_EMAIL}
+                  with that account. If the charge was made on this account, message {SUPPORT_EMAIL} on Telegram
                   {" "}with the transaction date and we will link it.
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -153,7 +153,7 @@ export default function RestorePurchasePage() {
                   Payments can take a short time to confirm. Wait a minute and press Check again.
                 </p>
                 <p>
-                  Still missing? Email {SUPPORT_EMAIL} from your account address with the payment date
+                  Still missing? Message {SUPPORT_EMAIL} on Telegram with the payment date
                   and amount. Cancellations and refunds are covered in our{" "}
                   <Link className="underline hover:text-foreground" to="/refund">
                     refund policy

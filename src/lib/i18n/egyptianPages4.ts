@@ -80,8 +80,8 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
     "الأسعار معروضة من غير ضريبة. الضريبة بتتحسب في صفحة الدفع على حسب بلد الفوترة وبتظهرلك قبل ما تأكّد.",
   "Do you offer refunds?": "بتردّوا الفلوس؟",
   "Do you offer team or enterprise plans?": "في باقات فرق أو شركات؟",
-  "Yes. Max includes team workspaces, and for custom MC allocation, SSO, dedicated infrastructure, custom contracts or volume discounts contact our enterprise team via the Enterprise page or support@megsyai.com.":
-    "أيوه. Max فيه مساحات شغل للفريق، ولو محتاج كريدت مخصص أو SSO أو بنية تحتية مخصصة أو عقود خاصة أو خصم كميات كلّم فريق الشركات من صفحة Enterprise أو على support@megsyai.com.",
+  "Yes. Max includes team workspaces, and for custom MC allocation, SSO, dedicated infrastructure, custom contracts or volume discounts contact our enterprise team via the Enterprise page or on Telegram @Torekr.":
+    "أيوه. Max فيه مساحات شغل للفريق، ولو محتاج كريدت مخصص أو SSO أو بنية تحتية مخصصة أو عقود خاصة أو خصم كميات كلّم فريق الشركات من صفحة Enterprise أو على تليجرام @Torekr.",
   "Is my payment secure? Which payment methods do you accept?":
     "الدفع آمن؟ وبتقبلوا إيه من وسايل الدفع؟",
 

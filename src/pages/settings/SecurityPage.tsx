@@ -134,8 +134,8 @@ const SecurityPage = () => (
           <p className="text-[13.5px] mb-5 text-[color:var(--amb-cream-dim)]">
             If you discover a vulnerability, please report it responsibly.
           </p>
-          <a href="mailto:security@megsyai.com" className="amb-btn-gold">
-            security@megsyai.com
+          <a href="https://t.me/Torekr" className="amb-btn-gold">
+            @Torekr on Telegram
           </a>
         </motion.div>
       </section>

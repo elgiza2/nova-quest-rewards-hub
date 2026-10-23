@@ -31,20 +31,20 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "How it is built": "متبني إزاي",
   "Nova runs on a modern web stack with a managed Postgres backend. Access control, usage limits and credit accounting are enforced on the server, not in the browser.":
     "Nova شغّال على تقنيات ويب حديثة مع باك إند Postgres مُدار. صلاحيات الدخول وحدود الاستخدام وحساب الكريدت كلها بتتنفّذ على السيرفر مش في المتصفح.",
-  "For support, partnerships or press: support@megsyai.com":
-    "للدعم أو الشراكات أو الصحافة: support@megsyai.com",
+  "For support, partnerships or press: @Torekr on Telegram":
+    "للدعم أو الشراكات أو الصحافة: تليجرام @Torekr",
 
   // ---------------------------------------------------------------- contact
   "Contact Nova AI": "اتواصل مع Nova AI",
   "We read every message sent to our support address.": "بنقرا كل رسالة بتوصل على إيميل الدعم.",
-  "General help, bugs and account issues: support@megsyai.com":
-    "مساعدة عامة ومشاكل وأعطال الحساب: support@megsyai.com",
+  "General help, bugs and account issues: @Torekr on Telegram":
+    "مساعدة عامة ومشاكل وأعطال الحساب: تليجرام @Torekr",
   "Include your account email and a description of what you expected versus what happened.":
     "ابعت إيميل حسابك ووصف لللي كنت متوقعه واللي حصل فعلاً.",
-  "Subscription, invoice and refund questions: support@megsyai.com — see the refund policy for what to include.":
-    "أسئلة الاشتراك والفواتير والاسترجاع: support@megsyai.com — بصّ على سياسة الاسترجاع تعرف تبعت إيه.",
-  "Report a suspected vulnerability to support@megsyai.com with steps to reproduce. Please do not share details publicly before we respond.":
-    "لو لقيت ثغرة، بلّغنا على support@megsyai.com مع خطوات إعادة المشكلة. ومن فضلك متنشرش التفاصيل قبل ما نرد عليك.",
+  "Subscription, invoice and refund questions: @Torekr on Telegram — see the refund policy for what to include.":
+    "أسئلة الاشتراك والفواتير والاسترجاع: تليجرام @Torekr — بصّ على سياسة الاسترجاع تعرف تبعت إيه.",
+  "Report a suspected vulnerability to @Torekr on Telegram with steps to reproduce. Please do not share details publicly before we respond.":
+    "لو لقيت ثغرة، بلّغنا على تليجرام @Torekr مع خطوات إعادة المشكلة. ومن فضلك متنشرش التفاصيل قبل ما نرد عليك.",
 
   // ------------------------------------------------------------------ terms
   "These terms describe how Nova AI may be used. By creating an account or using the service you agree to them.":
@@ -74,7 +74,7 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "ممكن نحدّث الخدمة والشروط دي، وأي تغيير مهم هنعلنه في التطبيق أو على الإيميل.",
   "You may stop using Nova and delete your account at any time from your account settings. We may suspend accounts that violate these terms.":
     "تقدر تبطّل استخدام Nova وتمسح حسابك في أي وقت من إعدادات الحساب. وإحنا ممكن نوقف أي حساب بيخالف الشروط دي.",
-  "Questions about these terms: support@megsyai.com": "أي استفسار عن الشروط: support@megsyai.com",
+  "Questions about these terms: تليجرام @Torekr": "أي استفسار عن الشروط: تليجرام @Torekr",
 
   // ---------------------------------------------------------------- privacy
   "This page explains what data Nova collects, why it is collected, and the control you have over it.":
@@ -103,11 +103,11 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "تقدر تمسح عناصر منفردة، أو تصدّر بياناتك أو تفضّيها من الإعدادات، وتمسح حسابك من الإعدادات كمان.",
   "Access to your data is restricted per user at the database level, transport is encrypted, and privileged operations are authorised server-side.":
     "الوصول لبياناتك متقيّد لكل مستخدم على مستوى قاعدة البيانات، والنقل مشفّر، والعمليات الحساسة بتتصرّح من السيرفر.",
-  "No system is perfectly secure. Report suspected vulnerabilities to support@megsyai.com.":
-    "مفيش نظام آمن 100%. لو شكيت في ثغرة بلّغنا على support@megsyai.com.",
+  "No system is perfectly secure. Report suspected vulnerabilities to @Torekr on Telegram.":
+    "مفيش نظام آمن 100%. لو شكيت في ثغرة بلّغنا على تليجرام @Torekr.",
   "Your rights": "حقوقك",
-  "Depending on where you live you may request access, correction, export or deletion of your personal data. Contact support@megsyai.com.":
-    "حسب بلدك، تقدر تطلب الاطلاع على بياناتك الشخصية أو تصحيحها أو تصديرها أو مسحها. كلّمنا على support@megsyai.com.",
+  "Depending on where you live you may request access, correction, export or deletion of your personal data. Contact @Torekr on Telegram.":
+    "حسب بلدك، تقدر تطلب الاطلاع على بياناتك الشخصية أو تصحيحها أو تصديرها أو مسحها. كلّمنا على تليجرام @Torekr.",
 
   // ----------------------------------------------------------------- refund
   "This page describes how cancellations and refund requests are handled.":
@@ -118,8 +118,8 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "Pausing is offered as an alternative to cancelling where available.":
     "التعليق المؤقت متاح كبديل للإلغاء لو الخيار موجود.",
   "Refund requests": "طلبات الاسترجاع",
-  "Refund requests are reviewed case by case. Email support@megsyai.com from your account address with the transaction date and the reason for the request.":
-    "طلبات الاسترجاع بتتراجع حالة بحالة. ابعت من إيميل حسابك على support@megsyai.com بتاريخ العملية وسبب الطلب.",
+  "Refund requests are reviewed case by case. Message @Torekr on Telegram with the transaction date and the reason for the request.":
+    "طلبات الاسترجاع بتتراجع حالة بحالة. ابعت من إيميل حسابك على تليجرام @Torekr بتاريخ العملية وسبب الطلب.",
   "Requests are more likely to be approved when the subscription was charged in error, was a duplicate charge, or when the paid features could not be delivered.":
     "فرصة الموافقة بتزيد لو الاشتراك اتخصم بالغلط، أو الخصم اتكرر، أو المميزات المدفوعة مقدرناش نقدّمها.",
   "Consumed usage": "الاستخدام المستهلك",

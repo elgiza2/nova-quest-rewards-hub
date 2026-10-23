@@ -17,20 +17,20 @@
 ## Key Contact Emails
 | Purpose | Email |
 |---|---|
-| General support / billing | support@megsyai.com |
-| Privacy & data rights | privacy@megsyai.com |
-| Copyright / DMCA | copyright@megsyai.com |
-| Accessibility issues | accessibility@megsyai.com |
-| Trust & safety reports | trust@megsyai.com |
-| Abuse reports | abuse@megsyai.com |
-| Legal process | legal@megsyai.com |
-| Security disclosures | security@megsyai.com |
-| Appeals | appeals@megsyai.com |
-| Whistleblowing | whistleblower@megsyai.com |
-| AUP reports | support@megsyai.com (subject "AUP Report") |
-| IP / copyright notices | support@megsyai.com (subject "IP Notice") |
-| Sub-processor notices | subprocessors@megsyai.com |
-| Transparency reports | transparency@megsyai.com |
+| General support / billing | @Torekr (Telegram) |
+| Privacy & data rights | @Torekr (Telegram) |
+| Copyright / DMCA | @Torekr (Telegram) |
+| Accessibility issues | @Torekr (Telegram) |
+| Trust & safety reports | @Torekr (Telegram) |
+| Abuse reports | @Torekr (Telegram) |
+| Legal process | @Torekr (Telegram) |
+| Security disclosures | @Torekr (Telegram) |
+| Appeals | @Torekr (Telegram) |
+| Whistleblowing | @Torekr (Telegram) |
+| AUP reports | @Torekr (Telegram) (subject "AUP Report") |
+| IP / copyright notices | @Torekr (Telegram) (subject "IP Notice") |
+| Sub-processor notices | @Torekr (Telegram) |
+| Transparency reports | @Torekr (Telegram) |
 - **Phone:** +20 109 882 1812
 
 ---
@@ -59,7 +59,7 @@
 ---
 
 ### /pricing — Pricing Page
-- Contact shown: support@megsyai.com and +20 109 882 1812
+- Contact: Telegram @Torekr and +20 109 882 1812
 - Two paid plans: Pro and Max (no free card shown on pricing page)
 - Yearly billing toggle: 4 months free (yearly = 8 × monthly)
 - Payment processor: **Kashier** (the only Nova subscription checkout)
@@ -223,8 +223,8 @@
 - Liability cap: amount paid in preceding 12 months or USD 100, whichever is greater
 - No indirect/incidental/special/consequential/punitive damages
 - Terminate account from Settings page
-- Notify unauthorised access to: support@megsyai.com
-- Questions about Terms: support@megsyai.com
+- Notify unauthorised access to: @Torekr (Telegram)
+- Questions about Terms: @Torekr (Telegram)
 
 ---
 
@@ -236,11 +236,11 @@
 - Account data retained while active and up to 24 months after closure (longer if legally required, e.g. tax records)
 - Generated outputs/uploaded files: deleted from active systems within 30 days of user deletion; from backups within 90 days
 - Material privacy changes: 14 days advance notice in-app or by email
-- Privacy requests to: privacy@megsyai.com (subject "Privacy Request")
+- Privacy requests to: @Torekr (Telegram) (subject "Privacy Request")
 - CCPA response: 45 days; LGPD: 15 days where feasible; general: 30 days
 - Platform minimum age: 18; COPPA threshold: 13
 - Security: TLS 1.3 in transit, AES-256 at rest, row-level access control, 2FA available
-- California rights: know, access, correct, delete, port, opt-out of "sale"/"sharing" — email privacy@megsyai.com
+- California rights: know, access, correct, delete, port, opt-out of "sale"/"sharing" — email @Torekr (Telegram)
 - GDPR legal bases: contract performance, legitimate interests, consent, legal obligations
 - International transfers: Standard Contractual Clauses
 
@@ -249,16 +249,16 @@
 ### /refund — Refund Policy
 - Last updated: 19 May 2026
 - **Subscriptions:** 7-day no-questions-asked refund window on new paid subscriptions (Pro or higher), provided no more than 10% of included credits consumed
-- **Credit packs:** Non-refundable once any credit from pack spent; if no credits used, may request refund within 7 days — email support@megsyai.com
-- **Generation failures:** Credits for server-side failures auto-returned within minutes; contact support@megsyai.com with job ID if not auto-refunded
+- **Credit packs:** Non-refundable once any credit from pack spent; if no credits used, may request refund within 7 days — email @Torekr (Telegram)
+- **Generation failures:** Credits for server-side failures auto-returned within minutes; contact @Torekr (Telegram) with job ID if not auto-refunded
 - **Not eligible for refund:** consumed credits, credit packs with ≥1 credit used, subscription renewals after cancellation window, quality dissatisfaction, accounts terminated for AUP violation, free/bonus/referral/promotional credits
-- **How to request:** Email support@megsyai.com (subject "Refund Request") with account email, transaction date, order/invoice reference, reason
+- **How to request:** Email @Torekr (Telegram) (subject "Refund Request") with account email, transaction date, order/invoice reference, reason
 - Response: within 5 business days; approved refunds processed within 7-14 business days to original payment method
 - **Chargebacks:** Contact support BEFORE filing; most disputes resolved in under 48 hours; chargeback abuse → account closure and reporting to Ethoca/Verifi
 - EU right of withdrawal: 14-day right waived for digital content activated immediately (user consents at checkout)
 - Payment processor: Kashier-hosted checkout; Nova does not store card details
 - Accepted payment methods: card and mobile-wallet options presented by Kashier
-- Billing dispute email: support@megsyai.com (subject "Billing Dispute")
+- Billing dispute email: @Torekr (Telegram) (subject "Billing Dispute")
 
 ---
 
@@ -273,7 +273,7 @@
 - **Fraud/spam:** No phishing, scams, fake reviews, counterfeit IDs, malware, election manipulation, bulk spam
 - **Illegal activity:** No controlled-substance/human/weapons trafficking, money laundering, fraud
 - **Platform integrity:** No bypassing safety filters, rate limits, credit systems; no scraping/reverse-engineering; no reselling outputs as own model; no using Nova to train competing models
-- Report violations: support@megsyai.com (subject "AUP Report")
+- Report violations: @Torekr (Telegram) (subject "AUP Report")
 - Enforcement: warning → removal → suspension → permanent termination and law-enforcement referral for severe violations (CSAM, identity fraud, safety threats)
 
 ---
@@ -288,7 +288,7 @@
 - "Undress"/"nudify" use on real people explicitly prohibited
 - Moderation approach: prompt-time filters + output classifiers + human review; C2PA-style labeling/watermarking
 - Reports involving imminent harm or CSAM escalated within 24 hours; standard reports within 5 business days
-- **Appeals:** email appeals@megsyai.com within 30 days with account ID and case reference; reviewed by different human moderator; response within 10 business days
+- **Appeals:** email @Torekr (Telegram) within 30 days with account ID and case reference; reviewed by different human moderator; response within 10 business days
 - EU DSA: trusted flaggers get prioritised handling; right to escalate to DSA out-of-court dispute settlement body (Article 21)
 - **Transparency Report:** published annually; disclosures include content removals by category, government requests, DMCA notices, DSA notices, response times, appeals outcomes
 
@@ -300,8 +300,8 @@
 - **Strictly Prohibited (Zero Tolerance):** CSAM (reported to NCMEC), non-consensual intimate imagery, terrorism/violent extremism, political deepfakes to deceive voters, weapons manufacture content, fraud/malware instructions
 - **Restricted (allowed with safeguards):** artistic nudity, mature fiction, security research, harm-reduction info, educational violence depictions — may require age-gating or additional verification
 - Identity/likeness tools: user must have rights to source likeness; outputs may include C2PA/watermarks that must not be removed
-- Report abuse: abuse@megsyai.com — acknowledged within 24 hours, acted within 72 hours for high-severity; CSAM/credible violence threats escalated immediately; anonymous reports accepted
-- **Appeals:** appeals@megsyai.com within 30 days; different reviewer; response within 10 business days
+- Report abuse: @Torekr (Telegram) — acknowledged within 24 hours, acted within 72 hours for high-severity; CSAM/credible violence threats escalated immediately; anonymous reports accepted
+- **Appeals:** @Torekr (Telegram) within 30 days; different reviewer; response within 10 business days
 - **Transparency Report:** first covers calendar year 2026; available at megsyai.com/trust
 
 ---
@@ -312,7 +312,7 @@
 - Stricter local limits examples: South Korea 19 for contracts, Japan 18, Egypt 21 for certain financial obligations
 - Sensitive tools (AI Portrait Studio, Voice Sync Studio, Animated Portrait) may require additional age verification or country-level restrictions
 - Must never use sensitive tools to create content involving minors or depict real people without consent
-- Report underage use: safety@megsyai.com
+- Report underage use: @Torekr (Telegram)
 - Parental controls: Apple Screen Time, Google Family Link, DNS filtering to block megsyai.com
 
 ---
@@ -355,7 +355,7 @@
 - Data breach notification: within 72 hours per GDPR Article 33
 - Personal data returned or deleted within 90 days of service termination; backups deleted on normal rotation
 - **AI Training Opt-Out:** Nova does NOT use Controller content to train its own or any third-party foundation models. Any opt-in (if offered) is a separate explicit choice in account settings.
-- Data subject rights requests: privacy@megsyai.com
+- Data subject rights requests: @Torekr (Telegram)
 
 ---
 
@@ -363,10 +363,10 @@
 - Last updated: 19 May 2026
 - Complies with US DMCA 1998, EU Directive 2019/790
 - **Designated Agent:** Nova for Digital Platforms & E-Commerce Development LLC
-- Copyright Agent email: copyright@megsyai.com
+- Copyright Agent email: @Torekr (Telegram)
 - Address: 58 El-Hegaz St., Amoun Tower, Unit 84, Floor 8, Sheraton Al-Matar, Al-Nozha District, Cairo Governorate, Egypt
 - Takedown notice must include: signature, identification of copyrighted work, identification of infringing material (URL), your full contact info, good-faith belief statement, perjury statement
-- Counter-notification: submit to copyright@megsyai.com; must include name, address, phone, removed material location, perjury statement, consent to jurisdiction
+- Counter-notification: submit to @Torekr (Telegram); must include name, address, phone, removed material location, perjury statement, consent to jurisdiction
 - Repeat infringers: account may be suspended or terminated; even single willful/harmful infringement may result in termination
 - False DMCA claims: liability under 17 U.S.C. § 512(f) for damages including costs and attorneys' fees
 
@@ -375,7 +375,7 @@
 ### /cookies — Cookie Policy
 - Last updated: 19 May 2026
 - Data controller: Nova for Digital Platforms & E-Commerce Development LLC (CR 248691, Tax 774034785)
-- Cookie questions: privacy@megsyai.com
+- Cookie questions: @Torekr (Telegram)
 - **Essential cookies:** session ID (sb-auth-token), auth state, CSRF token, cookie consent prefs, security headers; retention: session or up to 30 days for persistent login; CANNOT be disabled
 - **Analytics cookies:** anonymized/aggregated; no PII; legal basis: consent (GDPR Art. 6(1)(a)); retention: up to 12 months
 - **Preference/functional cookies:** theme, language, layout, notifications; no cross-site tracking; retention: up to 12 months
@@ -393,11 +393,11 @@
 - Screening: OFAC SDN, EU consolidated, UK OFSI, UN sanctions lists
 - **Security:** TLS 1.3 in transit, AES-256 at rest; OAuth 2.0, MFA available, SSO/SAML for enterprise; principle of least privilege; production access audited quarterly; annual penetration test; breach notification within 72 hours; daily encrypted backups, multi-region recovery
 - **Payments (Trust Center detail):** Kashier-hosted checkout; available card and mobile-wallet methods are shown by Kashier at checkout
-- **Accessibility:** WCAG 2.2 Level AA target; ADA Title III; European Accessibility Act (effective June 2025); compatible with NVDA, JAWS, VoiceOver, TalkBack; issues: accessibility@megsyai.com (response within 5 business days)
+- **Accessibility:** WCAG 2.2 Level AA target; ADA Title III; European Accessibility Act (effective June 2025); compatible with NVDA, JAWS, VoiceOver, TalkBack; issues: @Torekr (Telegram) (response within 5 business days)
 - **EU sub-processors (Trust Center list):** Supabase (AWS, primarily eu-west), Cloudflare, OpenAI, Anthropic, Google AI, Fal.ai, Replicate, Eleven Labs, Stability AI, Resend/Postmark, PostHog (privacy-respecting), Sentry (no PII)
 - Default EU user data processed in EU regions; cross-border via SCCs, UK ITDA, EU-US Data Privacy Framework
-- Law-enforcement: valid process to legal@megsyai.com; emergency disclosure if imminent risk to life; user notified unless legally prohibited
-- Contact: trust@megsyai.com (general), privacy@megsyai.com (data rights), security@megsyai.com (security), legal@megsyai.com (legal process), accessibility@megsyai.com, appeals@megsyai.com
+- Law-enforcement: valid process to @Torekr (Telegram); emergency disclosure if imminent risk to life; user notified unless legally prohibited
+- Contact: @Torekr (Telegram) (general), @Torekr (Telegram) (data rights), @Torekr (Telegram) (security), @Torekr (Telegram) (legal process), @Torekr (Telegram), @Torekr (Telegram)
 - **Transparency Report:** published annually; first covers 2026; linked from this Trust Center
 - Note: /legal/subprocessors, /legal/accessibility, and /legal/compliance all redirect to /trust
 
@@ -420,7 +420,7 @@
 - Targets: WCAG 2.2 Level AA, European Accessibility Act (EAA Directive 2019/882), ADA + Section 508, UK Public Sector Bodies Accessibility Regulations 2018
 - **What Nova does:** semantic HTML + ARIA, keyboard navigability + visible focus indicators, WCAG AA color contrast, respects `prefers-reduced-motion`, responsive down to 320px and up to 200% zoom, alt text on meaningful images, captions on instructional videos
 - **Known limitations:** AI-generated images may lack alt text by default (working on auto alt-text generation); some third-party embedded content may not fully conform
-- **Feedback:** accessibility@megsyai.com with page URL, device, assistive technology, description of issue; acknowledged within 5 business days; material barriers resolved within 30 days
+- **Feedback:** @Torekr (Telegram) with page URL, device, assistive technology, description of issue; acknowledged within 5 business days; material barriers resolved within 30 days
 
 ---
 
@@ -433,8 +433,8 @@
 - Anti-bribery: zero-tolerance, complies with UK Bribery Act 2010, US FCPA, Egyptian anti-corruption law
 - Modern slavery: complies with UK Modern Slavery Act 2015, California Transparency in Supply Chains Act, Australian Modern Slavery Act 2018; annual Modern Slavery Statement once turnover thresholds met
 - **Tax registration:** Egyptian tax registration 774034785; commercial registry 248691
-- Law-enforcement requests: legal@megsyai.com (PGP key available); user notified before disclosure unless prohibited; emergency disclosure for risk to life without prior notice
-- Whistleblowing: whistleblower@megsyai.com; anonymous reports accepted; retaliation prohibited
+- Law-enforcement requests: @Torekr (Telegram) (PGP key available); user notified before disclosure unless prohibited; emergency disclosure for risk to life without prior notice
+- Whistleblowing: @Torekr (Telegram); anonymous reports accepted; retaliation prohibited
 
 ---
 

@@ -83,13 +83,13 @@ export default function SettingsContactPage() {
         <>
           <SubSection title={tx("Direct")}>
             <SubCard>
-              <a href="mailto:support@megsyai.com" className="gx-row gx-row-tap gx-tone-blue">
+              <a href="https://t.me/Torekr" className="gx-row gx-row-tap gx-tone-blue">
                 <span className="gx-tile">
                   <Mail strokeWidth={1.7} />
                 </span>
                 <span className="gx-row-body">
                   <span className="gx-row-label">{tx("Email")}</span>
-                  <span className="gx-row-hint">support@megsyai.com</span>
+                  <span className="gx-row-hint">@Torekr on Telegram</span>
                 </span>
                 <span className="gx-row-trailing">~24h</span>
               </a>
