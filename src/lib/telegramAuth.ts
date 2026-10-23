@@ -60,6 +60,7 @@ export function initTelegramWebApp(): void {
 }
 
 function toHex(rgb: string): string | null {
+  if (!rgb.startsWith("rgb")) return null;
   const m = rgb.match(/\d+(\.\d+)?/g);
   if (!m || m.length < 3) return null;
   return "#" + m.slice(0, 3).map((n) => Math.round(Number(n)).toString(16).padStart(2, "0")).join("");
