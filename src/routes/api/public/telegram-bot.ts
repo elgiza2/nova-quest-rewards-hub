@@ -544,6 +544,8 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
         if (!update) return Response.json({ ok: true });
 
         try {
+          // Two daily channel posts, fired lazily on bot traffic (no cron needed).
+          maybePostDaily();
           if (update.callback_query) {
             await handleAdminCallback(update.callback_query);
             return Response.json({ ok: true });
