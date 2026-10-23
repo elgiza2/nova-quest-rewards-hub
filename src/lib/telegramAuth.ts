@@ -67,14 +67,33 @@ export function initTelegramWebApp(): void {
     window.setTimeout(goFull, 400);
     window.addEventListener("load", goFull, { once: true });
     try { tg.disableVerticalSwipes?.(); } catch { /* ignore */ }
-    const bg = getComputedStyle(document.body || document.documentElement).backgroundColor;
-    document.documentElement.style.setProperty("--tg-page-background", bg);
-    const hex = toHex(bg);
-    if (hex) {
-      tg.setHeaderColor?.(hex);
-      tg.setBackgroundColor?.(hex);
-      tg.setBottomBarColor?.(hex);
-    }
+    // Match the safe strip to whatever page is showing right under it.
+    let lastHex = "";
+    const syncColor = () => {
+      const root = document.documentElement;
+      const top = parseFloat(getComputedStyle(root).getPropertyValue("--tg-top-px")) || 0;
+      let el = document.elementFromPoint(window.innerWidth / 2, top + 4) as HTMLElement | null;
+      let bg = "";
+      while (el) {
+        const c = getComputedStyle(el).backgroundColor;
+        if (c && c !== "transparent" && !/rgba\([^)]*,\s*0\)$/.test(c)) { bg = c; break; }
+        el = el.parentElement;
+      }
+      if (!bg) bg = getComputedStyle(document.body).backgroundColor;
+      const hex = toHex(bg);
+      if (!hex || hex === lastHex) return;
+      lastHex = hex;
+      root.style.setProperty("--tg-page-background", hex);
+      try { tg.setHeaderColor?.(hex); tg.setBackgroundColor?.(hex); tg.setBottomBarColor?.(hex); } catch { /* old client */ }
+    };
+    const syncTopPx = () => {
+      const t = (tg.safeAreaInset?.top ?? 0) + (tg.contentSafeAreaInset?.top ?? 0);
+      document.documentElement.style.setProperty("--tg-top-px", String(t));
+    };
+    syncTopPx();
+    ["safeAreaChanged","contentSafeAreaChanged","fullscreenChanged"].forEach(event=>tg.onEvent?.(event,syncTopPx));
+    syncColor();
+    window.setInterval(syncColor, 600);
   } catch { /* ignore */ }
 }
 
