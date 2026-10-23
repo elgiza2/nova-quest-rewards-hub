@@ -574,15 +574,30 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
 
           if (text === "/start" || text.startsWith("/start ")) {
             await ensureAccount(from);
-            const name = from.first_name ? ` يا ${from.first_name}` : "";
-            await reply(
-              msg.chat.id,
-              `أهلًا${name} 👋\nحسابك في <b>Orange AI</b> جاهز ومربوط بتليجرام.\nاضغط الزر تحت علشان تفتح التطبيق وتكمل تلقائيًا من غير تسجيل دخول.`,
-              { reply_markup: { inline_keyboard: [[{ text: "🚀 افتح Orange AI", web_app: { url: MINIAPP_URL } }]] } },
-            );
+            // Welcome message: clean character banner, bold English caption, app button.
+            const banner = POST_POOL[0];
+            const sent = await tg("sendPhoto", {
+              chat_id: msg.chat.id,
+              photo: banner.photo,
+              caption:
+                `<b>Welcome to Orange AI, ${from.first_name ?? "friend"}.</b>\n\n` +
+                "Your account is ready and linked to Telegram.\n" +
+                "Tap the button below to open the app — no password, no sign-up.",
+              parse_mode: "HTML",
+              reply_markup: {
+                inline_keyboard: [[{ text: "Open Orange AI", web_app: { url: MINIAPP_URL } }]],
+              },
+            });
+            if (!sent?.ok) {
+              await reply(
+                msg.chat.id,
+                "<b>Welcome to Orange AI.</b>\n\nYour account is ready and linked to Telegram.\nTap the button below to open the app.",
+                { reply_markup: { inline_keyboard: [[{ text: "Open Orange AI", web_app: { url: MINIAPP_URL } }]] } },
+              );
+            }
           } else if (text === "/help" || text === "/app") {
-            await reply(msg.chat.id, "اضغط /start علشان تفتح التطبيق.", {
-              reply_markup: { inline_keyboard: [[{ text: "🚀 افتح Orange AI", web_app: { url: MINIAPP_URL } }]] },
+            await reply(msg.chat.id, "Tap /start to open Orange AI.", {
+              reply_markup: { inline_keyboard: [[{ text: "Open Orange AI", web_app: { url: MINIAPP_URL } }]] },
             });
           }
         } catch (e) {
