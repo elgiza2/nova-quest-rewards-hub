@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Check, Loader2, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, Check, Loader2, MoreHorizontal, Coins } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandMark } from "./CardPreview";
-import { BrandIcon } from "./PaymentMethodMark";
 import artCoat from "@/assets/orange-coat.png.asset.json";
 
 import {
