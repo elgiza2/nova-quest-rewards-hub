@@ -9338,6 +9338,7 @@ export type Database = {
           description: string | null
           icon: string | null
           id: string
+          image_url: string | null
           reward_credits: number
           sort_order: number
           target_count: number
@@ -9353,6 +9354,7 @@ export type Database = {
           description?: string | null
           icon?: string | null
           id?: string
+          image_url?: string | null
           reward_credits?: number
           sort_order?: number
           target_count?: number
@@ -9368,6 +9370,7 @@ export type Database = {
           description?: string | null
           icon?: string | null
           id?: string
+          image_url?: string | null
           reward_credits?: number
           sort_order?: number
           target_count?: number
