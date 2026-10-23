@@ -131,12 +131,18 @@ function appUrlButton(): Record<string, unknown> {
   return { text: "Open Orange AI", url: MINIAPP_URL };
 }
 
+/** Telegram needs absolute https URLs for photos; asset pointers are relative. */
+function absoluteAssetUrl(pointerUrl: string): string {
+  if (pointerUrl.startsWith("http")) return pointerUrl;
+  return new URL(pointerUrl, MINIAPP_URL).toString();
+}
+
 async function postToChannel(poolIndex: number): Promise<boolean> {
   const item = POST_POOL[poolIndex % POST_POOL.length];
   if (!item) return false;
   const res = await tg("sendPhoto", {
     chat_id: CHANNEL_ID,
-    photo: item.photo,
+    photo: absoluteAssetUrl(item.photo),
     caption: item.caption,
     parse_mode: "HTML",
     reply_markup: { inline_keyboard: [[appUrlButton()]] },
@@ -580,7 +586,7 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
             const banner = POST_POOL[0];
             const sent = await tg("sendPhoto", {
               chat_id: msg.chat.id,
-              photo: banner.photo,
+              photo: absoluteAssetUrl(banner.photo),
               caption:
                 `<b>Welcome to Orange AI, ${from.first_name ?? "friend"}.</b>\n\n` +
                 "Your account is ready and linked to Telegram.\n" +
