@@ -36,3 +36,4 @@
 - [ ] Tasks page: compact rows (image, name, Go button)
 - [ ] Telegram profile photo not showing
 - [ ] Chat thinking text not showing
+- [ ] Remove two extra buttons next to copy/like/dislike in chat
