@@ -84,7 +84,7 @@ const T = {
 
 export default function EarnTasksPage() {
   const navigate = useNavigate();
-  const { lang } = useUserLang();
+  const lang = useUserLang();
   const ar = lang === "ar-eg";
   const t = ar ? T.ar : T.en;
 
@@ -161,7 +161,7 @@ export default function EarnTasksPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEOHead title="Tasks — Earn points | Orange AI" description="Complete tasks and earn points in Orange AI." />
+      <SEOHead title="Tasks — Earn points | Orange AI" description="Complete tasks and earn points in Orange AI." path="/tasks" />
       <div className="mx-auto max-w-xl px-4 py-8">
         <button
           type="button"
