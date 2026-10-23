@@ -26,6 +26,7 @@ import { Route as ApiRenderPdfRouteImport } from './routes/api/render-pdf'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiWebSearchRouteImport } from './routes/api/web-search'
 import { Route as ApiAgentSplatRouteImport } from './routes/api/agent.$'
+import { Route as ApiCryptoInvoiceRouteImport } from './routes/api/crypto/invoice'
 import { Route as ApiPublicFxRouteImport } from './routes/api/public/fx'
 import { Route as ApiPublicGeoRouteImport } from './routes/api/public/geo'
 import { Route as ApiPublicRemindersTickRouteImport } from './routes/api/public/reminders-tick'
@@ -121,6 +122,11 @@ const ApiAgentSplatRoute = ApiAgentSplatRouteImport.update({
   path: '/api/agent/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCryptoInvoiceRoute = ApiCryptoInvoiceRouteImport.update({
+  id: '/api/crypto/invoice',
+  path: '/api/crypto/invoice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicFxRoute = ApiPublicFxRouteImport.update({
   id: '/api/public/fx',
   path: '/api/public/fx',
@@ -188,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
+  '/api/crypto/invoice': typeof ApiCryptoInvoiceRoute
   '/api/public/fx': typeof ApiPublicFxRoute
   '/api/public/geo': typeof ApiPublicGeoRoute
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
@@ -216,6 +223,7 @@ export interface FileRoutesByTo {
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
+  '/api/crypto/invoice': typeof ApiCryptoInvoiceRoute
   '/api/public/fx': typeof ApiPublicFxRoute
   '/api/public/geo': typeof ApiPublicGeoRoute
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
@@ -245,6 +253,7 @@ export interface FileRoutesById {
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/web-search': typeof ApiWebSearchRoute
   '/api/agent/$': typeof ApiAgentSplatRoute
+  '/api/crypto/invoice': typeof ApiCryptoInvoiceRoute
   '/api/public/fx': typeof ApiPublicFxRoute
   '/api/public/geo': typeof ApiPublicGeoRoute
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
@@ -275,6 +284,7 @@ export interface FileRouteTypes {
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
+    | '/api/crypto/invoice'
     | '/api/public/fx'
     | '/api/public/geo'
     | '/api/public/reminders-tick'
@@ -303,6 +313,7 @@ export interface FileRouteTypes {
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
+    | '/api/crypto/invoice'
     | '/api/public/fx'
     | '/api/public/geo'
     | '/api/public/reminders-tick'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/api/transcribe'
     | '/api/web-search'
     | '/api/agent/$'
+    | '/api/crypto/invoice'
     | '/api/public/fx'
     | '/api/public/geo'
     | '/api/public/reminders-tick'
@@ -360,6 +372,7 @@ export interface RootRouteChildren {
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiWebSearchRoute: typeof ApiWebSearchRoute
   ApiAgentSplatRoute: typeof ApiAgentSplatRoute
+  ApiCryptoInvoiceRoute: typeof ApiCryptoInvoiceRoute
   ApiPublicFxRoute: typeof ApiPublicFxRoute
   ApiPublicGeoRoute: typeof ApiPublicGeoRoute
   ApiPublicRemindersTickRoute: typeof ApiPublicRemindersTickRoute
@@ -492,6 +505,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/crypto/invoice': {
+      id: '/api/crypto/invoice'
+      path: '/api/crypto/invoice'
+      fullPath: '/api/crypto/invoice'
+      preLoaderRoute: typeof ApiCryptoInvoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/fx': {
       id: '/api/public/fx'
       path: '/api/public/fx'
@@ -576,6 +596,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiWebSearchRoute: ApiWebSearchRoute,
   ApiAgentSplatRoute: ApiAgentSplatRoute,
+  ApiCryptoInvoiceRoute: ApiCryptoInvoiceRoute,
   ApiPublicFxRoute: ApiPublicFxRoute,
   ApiPublicGeoRoute: ApiPublicGeoRoute,
   ApiPublicRemindersTickRoute: ApiPublicRemindersTickRoute,

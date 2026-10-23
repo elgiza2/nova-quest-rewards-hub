@@ -3414,6 +3414,75 @@ export type Database = {
         }
         Relationships: []
       }
+      crypto_payments: {
+        Row: {
+          amount_usd: number
+          asset: string
+          created_at: string
+          credits: number | null
+          decimals: number
+          expected_nano: number
+          expires_at: string
+          id: string
+          interval: string | null
+          memo: string
+          network: string
+          paid_at: string | null
+          pay_amount: number
+          status: string
+          tier: string | null
+          tx_from: string | null
+          tx_hash: string | null
+          updated_at: string
+          user_id: string
+          wallet_address: string
+        }
+        Insert: {
+          amount_usd: number
+          asset: string
+          created_at?: string
+          credits?: number | null
+          decimals?: number
+          expected_nano: number
+          expires_at?: string
+          id?: string
+          interval?: string | null
+          memo: string
+          network: string
+          paid_at?: string | null
+          pay_amount: number
+          status?: string
+          tier?: string | null
+          tx_from?: string | null
+          tx_hash?: string | null
+          updated_at?: string
+          user_id: string
+          wallet_address: string
+        }
+        Update: {
+          amount_usd?: number
+          asset?: string
+          created_at?: string
+          credits?: number | null
+          decimals?: number
+          expected_nano?: number
+          expires_at?: string
+          id?: string
+          interval?: string | null
+          memo?: string
+          network?: string
+          paid_at?: string | null
+          pay_amount?: number
+          status?: string
+          tier?: string | null
+          tx_from?: string | null
+          tx_hash?: string | null
+          updated_at?: string
+          user_id?: string
+          wallet_address?: string
+        }
+        Relationships: []
+      }
       daily_credit_grants: {
         Row: {
           amount: number
