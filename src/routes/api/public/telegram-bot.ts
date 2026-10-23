@@ -16,6 +16,10 @@ import char01 from "@/assets/tg/char-01.jpg.asset.json";
 import char02 from "@/assets/tg/char-02.jpg.asset.json";
 import char03 from "@/assets/tg/char-03.jpg.asset.json";
 import char04 from "@/assets/tg/char-04.jpg.asset.json";
+import charactersGroup from "@/assets/tg/characters-group.jpg.asset.json";
+
+/** Lovable-hosted origin that actually serves /__l5e asset files. */
+const ASSET_HOST = "https://project--789553ce-ddf6-457a-bc18-082abf75e556-dev.lovable.app";
 
 const EMAIL_DOMAIN = "users.orangeai.telegram";
 
@@ -201,7 +205,7 @@ function appUrlButton(): Record<string, unknown> {
 /** Telegram needs absolute https URLs for photos; asset pointers are relative. */
 function absoluteAssetUrl(pointerUrl: string): string {
   if (pointerUrl.startsWith("http")) return pointerUrl;
-  return new URL(pointerUrl, MINIAPP_URL).toString();
+  return new URL(pointerUrl, ASSET_HOST).toString();
 }
 
 async function postToChannel(poolIndex: number): Promise<boolean> {
@@ -654,17 +658,10 @@ export const Route = createFileRoute("/api/public/telegram-bot")({
             const name = (from.first_name ?? "friend").replace(/[<>&]/g, "");
             const caption =
               `<b>${bold(`Welcome to Orange AI, ${name}.`)}</b>\n\n` +
-              `<b>${bold("We are so happy to have you here. Orange AI is your complete AI workspace, living right inside Telegram.")}</b>\n\n` +
-              `<b>${bold("Here is what you can do:")}</b>\n` +
-              `<b>${bold("- Chat with the smartest AI models and get instant answers")}</b>\n` +
-              `<b>${bold("- Turn any idea into stunning images and videos")}</b>\n` +
-              `<b>${bold("- Write documents, research topics and build slides in seconds")}</b>\n` +
-              `<b>${bold("- Complete daily tasks and invite friends to earn free credits")}</b>\n\n` +
-              `<b>${bold("Your account is ready. No password, no sign-up. Tap the button below and start creating.")}</b>\n\n` +
-              `<b>${bold("Join our community and grab ORANGE with the buttons below.")}</b>`;
+              `<b>${bold("Chat with top AI models, create images and videos, and earn rewards with daily tasks — all inside Telegram.")}</b>`;
             const sent = await tg("sendPhoto", {
               chat_id: msg.chat.id,
-              photo: absoluteAssetUrl(POST_POOL[0].photo),
+              photo: absoluteAssetUrl(charactersGroup.url),
               caption,
               parse_mode: "HTML",
               reply_markup: appButtons(true),
