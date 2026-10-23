@@ -223,7 +223,7 @@ html.light [data-sidebar] {
 }
 
 /* Brand wordmark: the silver→white shimmer is dark-mode only. In light mode
-   render solid ink so "Megsy" is legible in the sidebar / headers. */
+   render solid ink so "Nova" is legible in the sidebar / headers. */
 html.light .brand-word {
   background: none !important;
   -webkit-text-fill-color: var(--ink-1) !important;

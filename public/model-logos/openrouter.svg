@@ -36,8 +36,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Megsy" />
-    <meta name="application-name" content="Megsy AI" />
+    <meta name="apple-mobile-web-app-title" content="Nova" />
+    <meta name="application-name" content="Nova AI" />
     <link rel="manifest" href="/site.webmanifest" />
     <!-- iOS PWA startup image (static splash before JS loads — matches the animated PwaSplash component) -->
     <link rel="apple-touch-startup-image" href="/splash-megsy.png" />
@@ -47,7 +47,7 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="format-detection" content="telephone=no" />
-    <title>Megsy AI — All-in-One AI Platform for Chat, Images &amp; Video</title>
+    <title>Nova AI — All-in-One AI Platform for Chat, Images &amp; Video</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -93,20 +93,20 @@
   <meta property="og:image" content="https://megsyai.com/og-megsy.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Megsy AI — All-in-One AI Platform">
+  <meta property="og:image:alt" content="Nova AI — All-in-One AI Platform">
   <meta name="twitter:image" content="https://megsyai.com/og-megsy.jpg">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://megsyai.com/">
-  <meta property="og:site_name" content="Megsy AI">
+  <meta property="og:site_name" content="Nova AI">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ar_EG">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Megsy AI","url":"https://megsyai.com/","logo":"https://megsyai.com/apple-touch-icon.png","sameAs":["https://x.com/megsyai","https://www.instagram.com/megsyai"],"description":"All-in-one AI platform for chat, images, video, slides, docs and apps."}
+  {"@context":"https://schema.org","@type":"Organization","name":"Nova AI","url":"https://megsyai.com/","logo":"https://megsyai.com/apple-touch-icon.png","sameAs":["https://x.com/megsyai","https://www.instagram.com/megsyai"],"description":"All-in-one AI platform for chat, images, video, slides, docs and apps."}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"Megsy AI","url":"https://megsyai.com/","potentialAction":{"@type":"SearchAction","target":"https://megsyai.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
+  {"@context":"https://schema.org","@type":"WebSite","name":"Nova AI","url":"https://megsyai.com/","potentialAction":{"@type":"SearchAction","target":"https://megsyai.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
   </script>
 
   
@@ -125,8 +125,8 @@
   
   
   
-  <meta property="og:title" content="Megsy AI — All-in-One AI Platform for Chat, Images &amp; Video">
-  <meta name="twitter:title" content="Megsy AI — All-in-One AI Platform for Chat, Images &amp; Video">
+  <meta property="og:title" content="Nova AI — All-in-One AI Platform for Chat, Images &amp; Video">
+  <meta name="twitter:title" content="Nova AI — All-in-One AI Platform for Chat, Images &amp; Video">
   <meta property="og:description" content="Chat, generate images, create videos, build slides, docs and full apps — one AI platform with every top model. Free to start.">
   <meta name="twitter:description" content="Chat, generate images, create videos, build slides, docs and full apps — one AI platform with every top model. Free to start.">
   <script type="module" crossorigin src="/assets/index-CF29SWBl.js"></script>

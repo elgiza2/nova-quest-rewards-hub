@@ -8,7 +8,7 @@ const sections = [
   {
     title: "Getting started",
     items: [
-      { q: "What is Megsy?", a: "Megsy is an all-in-one AI creative platform — chat, images, videos, websites/code, presentations, and file analysis, all running on Megsy Credits (MC)." },
+      { q: "What is Nova?", a: "Nova is an all-in-one AI creative platform — chat, images, videos, websites/code, presentations, and file analysis, all running on Nova Credits (MC)." },
       { q: "How do credits (MC) work?", a: "Every action consumes MC. Chat costs 1 MC, images start at 2 MC, videos at 8 MC, and Build projects vary by complexity. Your balance is shown in Settings → Billing." },
       { q: "How do I sign in?", a: "Go to /auth and sign in with email or Google. Forgot your password? Use the recovery link on the login screen." },
       { q: "Free vs paid plans", a: "Free includes a starter credit allowance. Paid plans (Starter, Pro, Elite, Enterprise) add monthly MC, faster models, and team features. Compare at /pricing." },
@@ -18,7 +18,7 @@ const sections = [
     title: "Chat",
     items: [
       { q: "How do I start a chat?", a: "Open /chat and type your prompt. You can attach files, enable web search, switch models, and pick agents from the composer." },
-      { q: "Can Megsy remember things about me?", a: "Yes — important details are saved in Memory. Manage them from Settings → Memory." },
+      { q: "Can Nova remember things about me?", a: "Yes — important details are saved in Memory. Manage them from Settings → Memory." },
       { q: "How do I share a conversation?", a: "Open any chat → menu → Share. A read-only public link is created. You can revoke it anytime." },
       { q: "What is Deep Research?", a: "An agent that runs multi-source web research and returns a structured report with citations." },
       { q: "What is Slides mode?", a: "Generates a full editable presentation from a prompt. Export to PPTX from the slide deck view." },
@@ -29,7 +29,7 @@ const sections = [
     items: [
       { q: "How do I generate an image?", a: "Open Media → Image Studio, pick a model, write your prompt, choose ratio and quality, then generate." },
       { q: "How do I generate a video?", a: "Open Media → Video Studio, pick a model, optionally upload a starting image, write your prompt, and generate." },
-      { q: "What is Lip Sync?", a: "Upload a portrait video and an audio file, and Megsy syncs the mouth movements to the audio." },
+      { q: "What is Lip Sync?", a: "Upload a portrait video and an audio file, and Nova syncs the mouth movements to the audio." },
       { q: "Can I edit a generated image?", a: "Yes — open the image and use the edit tools (inpaint, upscale, background remove). Each edit costs MC." },
       { q: "Where are my generations saved?", a: "Everything you generate lives in your Library, scoped to your account or active workspace." },
     ],
@@ -37,7 +37,7 @@ const sections = [
   {
     title: "Build (websites & apps)",
     items: [
-      { q: "How do I start a project?", a: "Open /build, describe what you want, and Megsy scaffolds a working project you can iterate on with chat." },
+      { q: "How do I start a project?", a: "Open /build, describe what you want, and Nova scaffolds a working project you can iterate on with chat." },
       { q: "Can I preview my project?", a: "Yes — every project has a live preview pane that updates as the AI edits files." },
       { q: "How do I publish a project?", a: "Open the project → Publish. You get a free megsy.app subdomain, or connect a custom domain from project Settings." },
       { q: "Can I connect a database?", a: "Yes — projects can use Lovable Cloud for auth, database, storage, and edge functions." },

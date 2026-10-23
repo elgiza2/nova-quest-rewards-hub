@@ -17,7 +17,7 @@ const SLIDES = {
     },
     {
       t: "Your agent,\nalways by your side.",
-      d: "Megsy Computer handles the busywork so you can focus on what matters.",
+      d: "Nova Computer handles the busywork so you can focus on what matters.",
     },
   ],
   "ar-eg": [
@@ -142,7 +142,7 @@ export default function WelcomePage() {
         {image("")}
         <div className="welcome-scrim absolute inset-0" />
         <div className="relative z-10 flex h-full flex-col px-6 pb-8 pt-[max(env(safe-area-inset-top),28px)]">
-          <span className="welcome-logo">Megsy</span>
+          <span className="welcome-logo">Nova</span>
           <div className="mt-auto">{text}</div>
           <div className="mt-10">{controls}</div>
         </div>
@@ -151,7 +151,7 @@ export default function WelcomePage() {
       {/* Desktop */}
       <div className="hidden h-[100dvh] gap-6 p-6 md:flex">
         <div className="flex flex-1 flex-col px-8 py-6">
-          <span className="welcome-logo">Megsy</span>
+          <span className="welcome-logo">Nova</span>
           <div className="my-auto">{text}</div>
           {controls}
         </div>

@@ -18,7 +18,7 @@ export default function DashboardTab() {
       <GlassCard className="ref-hero">
         <img
           src={heroImage}
-          alt={copy("Megsy Pro invitation artwork")}
+          alt={copy("Nova Pro invitation artwork")}
           width={1280}
           height={960}
           loading="lazy"

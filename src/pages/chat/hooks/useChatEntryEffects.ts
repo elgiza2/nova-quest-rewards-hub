@@ -98,9 +98,9 @@ export function useChatEntryEffects(params: {
       if (count && count > 0) return;
 
       // The very first thing a new user reads. Kept short, scannable and in the
-      // user's own language, and it lists what Megsy actually ships today.
+      // user's own language, and it lists what Nova actually ships today.
       const ar = getUserLang() === "ar-eg";
-      const demoUserMsg = ar ? "أهلاً Megsy — تعرف تعمل إيه بالظبط؟" : "Hey Megsy — what can you actually do?";
+      const demoUserMsg = ar ? "أهلاً Nova — تعرف تعمل إيه بالظبط؟" : "Hey Nova — what can you actually do?";
       const demoAssistantMsg = ar
         ? `أهلاً بيك 👋 اعتبرني مساحة شغل كاملة، مش مجرد شات.
 
@@ -109,7 +109,7 @@ export function useChatEntryEffects(params: {
 **صور وفيديو** — أعمل صور جديدة، أعدّل صورة عندك، وأطلع فيديوهات قصيرة.
 **مستندات وعروض** — دوكيومنت أو بريزنتيشن جاهز من أول السطر.
 **كود ومواقع** — أبني تطبيق أو موقع كامل وأشغّله.
-**كمبيوتر Megsy** — متصفح حقيقي في السحابة بيدوس ويكتب ويملّي الفورمات بدالك.
+**كمبيوتر Nova** — متصفح حقيقي في السحابة بيدوس ويكتب ويملّي الفورمات بدالك.
 **مهام في الخلفية** — تسيب المهمة الطويلة شغّالة وترجع تلاقي النتيجة.
 **ملفاتك** — ارفع PDF أو Excel أو صورة واسألني عليها.
 **ربط أدواتك** — Slack، Notion، Telegram، Shopify، Drive وغيرهم، أتحرّك جواهم مش بس أتكلم عنهم.
@@ -122,7 +122,7 @@ export function useChatEntryEffects(params: {
 **Images & video** — generate new images, edit ones you upload, and make short videos.
 **Docs & slides** — a finished document or presentation from a single prompt.
 **Code & websites** — build a real app or site and run it.
-**Megsy Computer** — a real cloud browser that clicks, types and fills forms for you.
+**Nova Computer** — a real cloud browser that clicks, types and fills forms for you.
 **Background tasks** — leave a long job running and come back to the result.
 **Your files** — drop a PDF, spreadsheet or image and ask me about it.
 **Your tools** — Slack, Notion, Telegram, Shopify, Drive and more: I act inside them, not just talk about them.
@@ -130,7 +130,7 @@ export function useChatEntryEffects(params: {
 Nothing to set up. Tell me what you're working on and we'll go from there.`;
 
       const workspaceId = getActiveWorkspaceId();
-      const welcomeTitle = ar ? "أهلاً بيك في Megsy AI" : "Welcome to Megsy AI";
+      const welcomeTitle = ar ? "أهلاً بيك في Nova AI" : "Welcome to Nova AI";
       const { data: conv } = await supabase
         .from("conversations")
         .insert({

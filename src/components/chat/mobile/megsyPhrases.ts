@@ -1,4 +1,4 @@
-// 200+ short English phrases Megsy whispers when the user starts typing.
+// 200+ short English phrases Nova whispers when the user starts typing.
 // Use {name} as a placeholder — it will be replaced with the signed-in user's
 // first name when available, otherwise stripped out gracefully.
 export const MEGSY_TYPING_PHRASES: string[] = [

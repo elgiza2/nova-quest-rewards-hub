@@ -343,7 +343,7 @@
     background: var(--overlay-white-06) !important;
   }
 
-  /* Center greeting — original Megsy serif treatment. */
+  /* Center greeting — original Nova serif treatment. */
   [data-skin="claude"] h1[data-greeting] {
     font-family: 'Instrument Serif', 'Source Serif 4', Georgia, ui-serif, serif !important;
     font-weight: 400 !important;
@@ -369,7 +369,7 @@
   [data-skin="claude"] aside [title*="Upgrade" i],
   [data-skin="claude"] [aria-label="Unlock Pro"],
   [data-skin="claude"] [aria-label*="Upgrade" i],
-  [data-skin="claude"] a[aria-label="Upgrade Megsy"] {
+  [data-skin="claude"] a[aria-label="Upgrade Nova"] {
     display: none !important;
   }
 }

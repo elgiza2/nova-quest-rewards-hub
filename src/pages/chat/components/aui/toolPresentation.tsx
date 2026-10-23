@@ -47,7 +47,7 @@ const RULES: Rule[] = [
   { test: /(web_?search|serp|google|bing|search)/i, icon: Search, ar: "بحث في الويب", en: "Web search", tint: "text-sky-400" },
   { test: /(browse|fetch_url|open_url|scrape|crawl|visit)/i, icon: Globe, ar: "تصفّح صفحة", en: "Browse page", tint: "text-sky-400" },
   { test: /(browser|screenshot|chrome|playwright)/i, icon: MonitorPlay, ar: "متصفح", en: "Browser", tint: "text-indigo-400" },
-  { test: /(computer|operator|manus|desktop)/i, icon: MonitorPlay, ar: "كمبيوتر Megsy", en: "Megsy Computer", tint: "text-blue-400" },
+  { test: /(computer|operator|manus|desktop)/i, icon: MonitorPlay, ar: "كمبيوتر Nova", en: "Nova Computer", tint: "text-blue-400" },
   { test: /(github|git_|repository|pull_request)/i, icon: Github, ar: "GitHub", en: "GitHub", tint: "text-foreground" },
   { test: /(deploy|publish|vercel|hosting|site_build)/i, icon: Rocket, ar: "النشر", en: "Deploy", tint: "text-blue-400" },
   { test: /(terminal|shell|bash|exec|command)/i, icon: Terminal, ar: "تيرمنال", en: "Terminal", tint: "text-emerald-400" },

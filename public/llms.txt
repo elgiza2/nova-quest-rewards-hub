@@ -1,10 +1,10 @@
-# Megsy AI
+# Nova AI
 
-> Megsy AI is an AI agent workspace made by an Egyptian company. You can chat, search the web, run research, make images and videos, create slides and documents, build simple websites, and run agents that use a browser. It works in English and Egyptian Arabic.
+> Nova AI is an AI agent workspace made by an Egyptian company. You can chat, search the web, run research, make images and videos, create slides and documents, build simple websites, and run agents that use a browser. It works in English and Egyptian Arabic.
 
 ## Key facts
 
-- Product: Megsy AI (https://www.megsyai.com)
+- Product: Nova AI (https://www.megsyai.com)
 - Company: Egyptian company; payments in EGP, including Vodafone Cash through Kashier
 - Chat: free
 - Credits: images cost 2 credits, videos cost 25 credits, agent tasks cost 1 to 50 credits

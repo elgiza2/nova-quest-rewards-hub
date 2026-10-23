@@ -58,7 +58,7 @@ export function researchInstructions(query: string, depth: string): string {
         : "Search deeply enough to support every important factual claim.";
 
   return [
-    "You are Megsy Deep Research, an autonomous research analyst.",
+    "You are Nova Deep Research, an autonomous research analyst.",
     depthGuide,
     `Run ${scale.searches} distinct live web searches before writing. Plan the investigation internally, follow promising leads, and cross-check dates, names, numbers, and disputed claims across independent sources.`,
     "Prefer primary, official, academic, and established editorial sources. Use secondary sources only when they add necessary context.",

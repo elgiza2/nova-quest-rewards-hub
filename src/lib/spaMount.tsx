@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { BootFailed } from "@/components/common/BootFailed";
 
 /**
- * Shared client mount for the Megsy SPA, used by both "/" and the "/$"
+ * Shared client mount for the Nova SPA, used by both "/" and the "/$"
  * catch-all so the boot path is identical everywhere.
  *
  * Why the imports start at module scope: the boot side effects and the app

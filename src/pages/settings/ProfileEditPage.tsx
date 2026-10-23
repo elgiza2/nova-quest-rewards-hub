@@ -202,7 +202,7 @@ const ProfileEditPage = () => {
               />
             </div>
           </section>
-          <p className="pep-hint">{tx("Megsy calls you by this name in chat.")}</p>
+          <p className="pep-hint">{tx("Nova calls you by this name in chat.")}</p>
 
           <button className="pep-danger" type="button" onClick={openDelete}>
             <Trash2 className="pep-danger-ico" strokeWidth={1.7} />
@@ -252,7 +252,7 @@ const ProfileEditPage = () => {
         </button>
       }
     >
-      <SubSection title={tx("Photo")} description={tx("Shown across Megsy.")}>
+      <SubSection title={tx("Photo")} description={tx("Shown across Nova.")}>
         <SubCard>
           <div className="flex items-center gap-4">
             <button
@@ -289,7 +289,7 @@ const ProfileEditPage = () => {
         </SubCard>
       </SubSection>
 
-      <SubSection title={tx("Name")} description={tx("How Megsy addresses you.")}>
+      <SubSection title={tx("Name")} description={tx("How Nova addresses you.")}>
         <SubCard>
           <div>
             <label className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground font-medium">
@@ -302,7 +302,7 @@ const ProfileEditPage = () => {
               className="mt-2 w-full px-3.5 py-2.5 rounded-lg bg-background/60 border border-border/70 text-[14px] text-foreground outline-none focus:border-foreground/40 transition-colors"
             />
             <p className="mt-2 text-[12px] text-muted-foreground">
-              {tx("Megsy calls you by this name in chat.")}
+              {tx("Nova calls you by this name in chat.")}
             </p>
           </div>
         </SubCard>

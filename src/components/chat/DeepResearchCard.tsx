@@ -80,7 +80,7 @@ const DeepResearchCard = ({
   if (status === "running") {
     const activeIndex = RESEARCH_STEPS.findIndex((step) => step.id === activeStepId);
     // Same quiet timeline the computer agent uses: no card chrome, one icon per
-    // step, Megsy star with the light passing through it on the live line.
+    // step, Nova star with the light passing through it on the live line.
     return (
       <div className="my-3 w-full" dir={ar ? "rtl" : "ltr"}>
         <div className="border-s border-border/50 ps-3">

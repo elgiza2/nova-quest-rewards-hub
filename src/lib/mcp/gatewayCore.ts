@@ -80,7 +80,7 @@ function db(userToken?: string): SupabaseClient {
 }
 
 function redirectUri(origin?: string): string {
-  const configured = (process.env.PUBLIC_SITE_URL || "https://megsyai.com").replace(/\/$/, "");
+  const configured = (process.env.PUBLIC_SITE_URL || "/").replace(/\/$/, "");
   const requested = (origin || configured).replace(/\/$/, "");
   const allowed = [
     configured,

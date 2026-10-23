@@ -1,4 +1,4 @@
-export const MEGSY_CHAT_MODEL_LABEL = "Megsy";
+export const MEGSY_CHAT_MODEL_LABEL = "Nova";
 
 export const LEGACY_MEGSY_CHAT_MODEL_IDS = new Set([
   "megsy-3.9",
@@ -10,7 +10,7 @@ export const LEGACY_MEGSY_CHAT_MODEL_IDS = new Set([
 
 export const normalizeMegsyModelLabel = (label: string | null | undefined) => {
   const clean = (label || MEGSY_CHAT_MODEL_LABEL)
-    .replace(/Megsy\s*3\.9/gi, MEGSY_CHAT_MODEL_LABEL)
+    .replace(/Nova\s*3\.9/gi, MEGSY_CHAT_MODEL_LABEL)
     .replace(/ميغسي\s*3\.9/g, MEGSY_CHAT_MODEL_LABEL)
     .replace(/\s+/g, " ")
     .trim();
@@ -24,5 +24,5 @@ export const isLegacyMegsyChatSelection = (
   if (!model) return false;
   const id = model.id || "";
   const label = model.label || model.name || "";
-  return LEGACY_MEGSY_CHAT_MODEL_IDS.has(id) || /(?:Megsy|ميغسي)\s*3\.9/i.test(label);
+  return LEGACY_MEGSY_CHAT_MODEL_IDS.has(id) || /(?:Nova|ميغسي)\s*3\.9/i.test(label);
 };

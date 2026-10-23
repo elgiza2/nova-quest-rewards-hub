@@ -1,4 +1,4 @@
-/** Translate stored Megsy JSON answers to the original OpenUI primitives. */
+/** Translate stored Nova JSON answers to the original OpenUI primitives. */
 import type { Block, UISpec } from "../genui/schema";
 const q = (value: unknown) => JSON.stringify(value ?? null);
 const call = (name: string, ...args: unknown[]) => `${name}(${args.map(q).join(", ")})`;

@@ -22,7 +22,7 @@ const SCREENS = [
   {
     image: welcomeResearch,
     title: "Ask once. Get it done.",
-    description: "Megsy researches, checks the facts, and turns your request into a finished report, plan, presentation, or completed task.",
+    description: "Nova researches, checks the facts, and turns your request into a finished report, plan, presentation, or completed task.",
     alt: "Korean fashion model wearing silver glasses against a blue cloud backdrop",
   },
   {
@@ -131,7 +131,7 @@ export default function FeatureShowcase({
       onTouchEnd={onTouchEnd}
       className="fixed inset-0 isolate h-[100dvh] w-full overflow-hidden bg-[hsl(var(--welcome-paper))]"
     >
-      <h1 className="sr-only">Welcome to Megsy</h1>
+      <h1 className="sr-only">Welcome to Nova</h1>
 
       <section
         key={index}
@@ -242,7 +242,7 @@ function ProScreen() {
       <div className="relative min-h-[260px] w-full flex-1 overflow-hidden sm:min-h-[340px]">
         <img
           src={welcomePro}
-          alt="Woman holding a Megsy Pro card toward the camera"
+          alt="Woman holding a Nova Pro card toward the camera"
           width={1024}
           height={1280}
           loading="eager"
@@ -257,7 +257,7 @@ function ProScreen() {
           Unlock more.
         </h2>
         <p className="mt-4 max-w-[330px] text-[16px] font-medium leading-6 text-[hsl(var(--welcome-muted))]">
-          More powerful models, longer tasks, and bigger creations with Megsy Pro.
+          More powerful models, longer tasks, and bigger creations with Nova Pro.
         </p>
       </div>
     </div>

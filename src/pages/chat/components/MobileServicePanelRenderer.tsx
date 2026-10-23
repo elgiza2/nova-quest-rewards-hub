@@ -190,7 +190,7 @@ export function MobileServicePanelRenderer(p: MobileServicePanelRendererProps) {
               })}
             </div>
             <p className="mt-2 text-[10.5px] leading-snug text-foreground/55">
-              Megsy will interpolate motion between these two frames. Use a model that supports
+              Nova will interpolate motion between these two frames. Use a model that supports
               first/last frames (e.g. Wan / HappyHorse).
             </p>
           </div>

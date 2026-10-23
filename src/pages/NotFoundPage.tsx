@@ -27,7 +27,7 @@ const NotFoundPage = () => {
     <>
       <SEOHead
         title="Page not found"
-        description="This Megsy AI page does not exist. Head back to chat, pricing or your settings."
+        description="This Nova AI page does not exist. Head back to chat, pricing or your settings."
         path={location.pathname}
         noindex
       />
@@ -39,7 +39,7 @@ const NotFoundPage = () => {
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             The address <span className="font-mono text-foreground">{location.pathname}</span> isn’t
-            part of Megsy. It may have been moved or the link may be mistyped.
+            part of Nova. It may have been moved or the link may be mistyped.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -47,7 +47,7 @@ const NotFoundPage = () => {
               to="/chat"
               className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Go to Megsy
+              Go to Nova
             </Link>
             <Link
               to="/pricing"

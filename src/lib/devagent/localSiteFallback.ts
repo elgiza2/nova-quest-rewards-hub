@@ -70,7 +70,7 @@ export async function buildSiteWithoutVm(
 
   onProgress?.("Publishing the live preview…");
   const published = await publishProject(files, {
-    title: prompt.slice(0, 60) || "Megsy site",
+    title: prompt.slice(0, 60) || "Nova site",
     prompt,
   });
   return { url: published.url, files, degraded: published.degraded };

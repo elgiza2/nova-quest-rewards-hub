@@ -140,7 +140,7 @@ export default function MobileAuthExtras(p: Props) {
       className="megsy-auth-screen megsy-auth-extras"
       style={{ fontFamily: FONT_SANS, touchAction: "manipulation" }}
     >
-      <div className="megsy-auth-brand"><div className="megsy-auth-lockup"><AgentOrb color="aurora" size={86} /><h1>Megsy</h1></div></div>
+      <div className="megsy-auth-brand"><div className="megsy-auth-lockup"><AgentOrb color="aurora" size={86} /><h1>Nova</h1></div></div>
       <div className="megsy-auth-extras-bar" style={{ zIndex: 4 }}>
         <TopBar onBack={p.onBack} />
       </div>

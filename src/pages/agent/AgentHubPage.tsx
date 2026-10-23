@@ -394,7 +394,7 @@ export default function AgentHubPage() {
         locale="en"
         path="/agents"
         title="Your agents"
-        description="Chat with your Megsy AI agents — every agent keeps its own saved conversations."
+        description="Chat with your Nova AI agents — every agent keeps its own saved conversations."
       />
 
       {/* ── Conversation list ── */}

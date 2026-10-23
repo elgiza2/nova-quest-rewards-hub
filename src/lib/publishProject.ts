@@ -40,7 +40,7 @@ export function buildProjectBundleHtml(
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>${esc(title)} · Megsy Coder</title>
+<title>${esc(title)} · Nova Coder</title>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -67,17 +67,17 @@ export function buildProjectBundleHtml(
 <body>
 <header>
   <div>
-    <div class="brand"><span class="dot"></span>Megsy Coder</div>
+    <div class="brand"><span class="dot"></span>Nova Coder</div>
     <h1>${esc(title)}</h1>
     <p>${files.length} files · Complete project ready to run locally</p>
   </div>
   <div class="actions">
     <button class="btn primary" id="dl">Download ZIP-JSON</button>
-    <a class="btn" href="https://megsy.ai" target="_blank" rel="noopener">Megsy</a>
+    <a class="btn" href="https://megsy.ai" target="_blank" rel="noopener">Nova</a>
   </div>
 </header>
 <main>${items}</main>
-<footer>Built with Megsy Coder · Share this link with anyone to view the full project</footer>
+<footer>Built with Nova Coder · Share this link with anyone to view the full project</footer>
 <script>
   const files = ${filesJson};
   document.getElementById('dl').addEventListener('click', () => {
@@ -227,7 +227,7 @@ export async function publishProject(
   const user = auth?.user;
   if (!user) throw new Error("Please sign in first to publish");
 
-  const title = (opts.title || "Megsy Project").slice(0, 120);
+  const title = (opts.title || "Nova Project").slice(0, 120);
   // Priority: 1) plain static HTML site (buildProjectPreviewHtml returns non-null
   // only for runnable index.html) → 2) React/Vite project → real in-browser runtime
   // → 3) last-resort: readable file bundle listing.

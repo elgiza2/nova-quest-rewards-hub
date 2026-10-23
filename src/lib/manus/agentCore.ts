@@ -1,9 +1,9 @@
 /**
- * @doc Server-only core for the Computer Agent (Megsy Computer).
+ * @doc Server-only core for the Computer Agent (Nova Computer).
  * Owns: key-pool selection with automatic failover, task creation/polling/stop
  * against the upstream computer provider, plus conversation memory.
  * The provider name is never exposed to the client — the UI only sees
- * "Megsy Computer".
+ * "Nova Computer".
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 

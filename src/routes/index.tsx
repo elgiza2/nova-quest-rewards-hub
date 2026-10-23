@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SpaMount } from "@/lib/spaMount";
 
-// The home page is the Megsy SPA itself (same mount as the catch-all `$` route).
+// The home page is the Nova SPA itself (same mount as the catch-all `$` route).
 export const Route = createFileRoute("/")({
   ssr: false,
   component: SpaMount,
   head: () => ({
     meta: [
-      { title: "Megsy AI — AI Agent Workspace for Chat, Research, Images & Video" },
+      { title: "Nova AI — AI Agent Workspace for Chat, Research, Images & Video" },
       {
         name: "description",
         content:
           "Use one AI agent workspace for chat, deep research, image and video generation, presentations, coding and browser automation in English and Arabic.",
       },
-      { property: "og:title", content: "Megsy AI — AI Agent Workspace for Real Work" },
+      { property: "og:title", content: "Nova AI — AI Agent Workspace for Real Work" },
       {
         property: "og:description",
         content:
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Megsy AI — AI Agent Workspace for Real Work" },
+      { name: "twitter:title", content: "Nova AI — AI Agent Workspace for Real Work" },
       {
         name: "twitter:description",
         content:

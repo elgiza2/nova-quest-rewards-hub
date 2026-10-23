@@ -1242,7 +1242,7 @@ const ChatMessage = ({
       const { publishProject } = await import("@/lib/publishProject");
       const firstLine = (content || "").split("\n").find((l) => l.trim())?.slice(0, 80);
       const res = await publishProject(projectFiles, {
-        title: firstLine || "Megsy Project",
+        title: firstLine || "Nova Project",
       });
       setPublishState({ status: "done", url: res.url });
       try {
@@ -1257,16 +1257,16 @@ const ChatMessage = ({
 
   const [studioOpen, setStudioOpen] = useState(false);
 
-  // Detect a saved Megsy Coder project so old conversations render the compact
+  // Detect a saved Nova Coder project so old conversations render the compact
   // card instead of dumping raw fenced code blocks into the transcript.
   const isSavedCoderProject =
     role === "assistant" &&
     !isStreaming &&
     typeof content === "string" &&
-    content.startsWith("Megsy Coder finished the build.") &&
+    content.startsWith("Nova Coder finished the build.") &&
     projectFiles.length > 0;
   const coderSummary = isSavedCoderProject
-    ? content.replace(/^Megsy Coder finished the build\.\s*/, "").split("```")[0].trim()
+    ? content.replace(/^Nova Coder finished the build\.\s*/, "").split("```")[0].trim()
     : "";
 
 

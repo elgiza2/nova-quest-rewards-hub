@@ -409,7 +409,7 @@ export default function CustomCardForm({ open, tier, interval, onClose }: Props)
 
 /**
  * Apple Pay straight inside our checkout: Kashier's SDK draws the real Apple Pay
- * button and the Wallet sheet opens on top of Megsy — no redirect anywhere.
+ * button and the Wallet sheet opens on top of Nova — no redirect anywhere.
  */
 function ApplePayPanel({
   tier,

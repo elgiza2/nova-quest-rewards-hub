@@ -150,29 +150,29 @@ const ORG_JSON_LD = JSON.stringify({
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://www.megsyai.com/#organization",
-      name: "Megsy AI",
-      url: "https://www.megsyai.com/",
-      logo: "https://www.megsyai.com/app-icon-512.png",
+      "@id": "/#organization",
+      name: "Nova AI",
+      url: "/",
+      logo: "/app-icon-512.png",
       sameAs: ["https://x.com/megsyai", "https://www.instagram.com/megsyai"],
       description:
         "AI agent workspace for chat, image and video generation, research, documents, slides and app building.",
     },
     {
       "@type": "WebSite",
-      "@id": "https://www.megsyai.com/#website",
-      name: "Megsy AI",
-      url: "https://www.megsyai.com/",
-      publisher: { "@id": "https://www.megsyai.com/#organization" },
+      "@id": "/#website",
+      name: "Nova AI",
+      url: "/",
+      publisher: { "@id": "/#organization" },
       inLanguage: ["en", "ar"],
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://www.megsyai.com/#software",
-      name: "Megsy AI",
+      "@id": "/#software",
+      name: "Nova AI",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
-      url: "https://www.megsyai.com/",
+      url: "/",
       description:
         "One AI agent workspace to chat, research, generate images and videos, create slides and documents, and build apps.",
       offers: {
@@ -181,7 +181,7 @@ const ORG_JSON_LD = JSON.stringify({
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
       },
-      publisher: { "@id": "https://www.megsyai.com/#organization" },
+      publisher: { "@id": "/#organization" },
     },
   ],
 });
@@ -257,37 +257,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "apple-mobile-web-app-title", content: "Megsy" },
-      { name: "application-name", content: "Megsy AI" },
+      { name: "apple-mobile-web-app-title", content: "Nova" },
+      { name: "application-name", content: "Nova AI" },
       { name: "theme-color", content: "#ffffff" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "format-detection", content: "telephone=no" },
-      { title: "Megsy AI — AI Agent Workspace for Chat, Research, Images & Video" },
+      { title: "Nova AI — AI Agent Workspace for Chat, Research, Images & Video" },
       {
         name: "description",
         content:
-          "Megsy AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
+          "Nova AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
       },
       {
         property: "og:title",
-        content: "Megsy AI — AI Agent Workspace for Chat, Research, Images & Video",
+        content: "Nova AI — AI Agent Workspace for Chat, Research, Images & Video",
       },
       {
         property: "og:description",
         content:
-          "Megsy AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
+          "Nova AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.megsyai.com/" },
-      { property: "og:site_name", content: "Megsy AI" },
+      { property: "og:url", content: "/" },
+      { property: "og:site_name", content: "Nova AI" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "ar_EG" },
-      { property: "og:image", content: "https://www.megsyai.com/og-megsy.jpg" },
+      { property: "og:image", content: "/og-megsy.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Megsy AI — AI Agent Workspace" },
+      { property: "og:image:alt", content: "Nova AI — AI Agent Workspace" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://www.megsyai.com/og-megsy.jpg" },
+      { name: "twitter:image", content: "/og-megsy.jpg" },
     ],
     links: [
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/app-icon-32.png" },
@@ -317,7 +317,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // third-party request never competes with the first paint, and re-fired on SPA
 // navigation because the loader only counts one pageView per document.
 // IMPORTANT: the tag only starts after the visitor accepted cookies through
-// Megsy's own banner (megsy_cookies_accepted === "true"). Loading it earlier
+// Nova's own banner (megsy_cookies_accepted === "true"). Loading it earlier
 // makes AdRoll/NextRoll show its full-screen Didomi consent dialog, which
 // covers the pricing/checkout UI.
 const ADROLL_SCRIPT = `
@@ -328,7 +328,7 @@ const ADROLL_SCRIPT = `
     } catch (e) { return; }
     if (window.__adroll_loaded) return;
     var w = window, d = document;
-    // Consent was already collected by Megsy's own banner: suppress the
+    // Consent was already collected by Nova's own banner: suppress the
     // AdRoll/NextRoll (Didomi) dialog, which otherwise overlays the whole app
     // and swallows clicks on the chat composer and the checkout buttons.
     try {
@@ -371,7 +371,7 @@ const ADROLL_SCRIPT = `
     };
     w.addEventListener("megsy:navigation", onNav);
     w.addEventListener("popstate", onNav);
-    // If consent arrives after boot (user clicks Accept in the Megsy banner),
+    // If consent arrives after boot (user clicks Accept in the Nova banner),
     // start the pixel then.
     w.addEventListener("megsy:cookies-accepted", start);
   };

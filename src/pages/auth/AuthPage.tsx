@@ -878,7 +878,7 @@ const AuthPage = () => {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <BrandLogo
-                        alt="Megsy"
+                        alt="Nova"
                         className="h-8 w-8"
                         style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}
                         loading="lazy"
@@ -950,7 +950,7 @@ const AuthPage = () => {
                             </div>
                             <input
                               type="text"
-                              placeholder="MEGSY-XXXXXX"
+                              placeholder="NOVA-XXXXXX"
                               value={referralCode}
                               onChange={(e) =>
                                 setReferralCode(e.target.value.toUpperCase().slice(0, 64))

@@ -1,8 +1,8 @@
 /**
- * @doc Single source of truth for every payment method Megsy can offer.
+ * @doc Single source of truth for every payment method Nova can offer.
  *
  * Two rails:
- *  - `internal` → charged inside Megsy through Kashier (cards, Meeza, Apple Pay,
+ *  - `internal` → charged inside Nova through Kashier (cards, Meeza, Apple Pay,
  *    Egyptian wallets). No redirect: the customer never leaves our checkout.
  *  - `redirect` → opens the secure Dodo Payments checkout, which carries the
  *    worldwide methods (Google Pay, Klarna, iDEAL, UPI, Pix, ...).

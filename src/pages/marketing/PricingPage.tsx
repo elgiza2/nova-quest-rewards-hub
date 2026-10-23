@@ -196,10 +196,10 @@ const PricingPage = () => {
   const pricingLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Megsy AI",
+    name: "Nova AI",
     description:
       "AI agent workspace for chat, deep research, image and video generation, presentations, documents and app building.",
-    brand: { "@type": "Brand", name: "Megsy AI" },
+    brand: { "@type": "Brand", name: "Nova AI" },
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "USD",
@@ -211,7 +211,7 @@ const PricingPage = () => {
         name: p.name,
         priceCurrency: "USD",
         price: p.monthlyPrice.toString(),
-        url: "https://megsyai.com/pricing",
+        url: "/pricing",
         category: "SubscriptionMonthly",
       })),
     },

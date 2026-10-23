@@ -130,7 +130,7 @@ const CoderStudioModal = ({ open, onClose, initialFiles, filesOnly, onFilesChang
   const [buffer, setBuffer] = useState<string>("");
   const [dirty, setDirty] = useState(false);
   const [history, setHistory] = useState<HistoryLine[]>([
-    { kind: "sys", text: "Megsy Coder Studio — terminal ready. Type `help` to list commands." },
+    { kind: "sys", text: "Nova Coder Studio — terminal ready. Type `help` to list commands." },
   ]);
   const [cmd, setCmd] = useState("");
   const [pyReady, setPyReady] = useState<"idle" | "loading" | "ready" | "error">("idle");
@@ -421,7 +421,7 @@ const CoderStudioModal = ({ open, onClose, initialFiles, filesOnly, onFilesChang
             <div className="w-2 h-2 rounded-full bg-red-500" />
             <div className="w-2 h-2 rounded-full bg-yellow-500" />
             <div className="w-2 h-2 rounded-full bg-green-500" />
-            <span className="ml-2 text-[13px] font-semibold text-foreground truncate">Megsy Coder Studio</span>
+            <span className="ml-2 text-[13px] font-semibold text-foreground truncate">Nova Coder Studio</span>
           </div>
           <button aria-label="Close studio" onClick={requestClose} className="p-1.5 rounded-lg hover:bg-foreground/10 text-foreground/70 hover:text-foreground">
             <X className="w-4 h-4" />

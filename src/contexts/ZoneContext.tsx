@@ -1,4 +1,4 @@
-/** @doc ZoneContext — provides the active zone (Megsy / China) across the app. */
+/** @doc ZoneContext — provides the active zone (Nova / China) across the app. */
 import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { ZONES, ZONE_LIST, ZoneConfig, ZoneId, detectZoneFromHostname } from "@/config/zones";

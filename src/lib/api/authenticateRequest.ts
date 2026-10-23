@@ -25,8 +25,8 @@ export function apiHeaders(request: Request): Record<string, string> {
       process.env.APP_URL,
       process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
       // Production origins, so the API works with zero env configuration.
-      "https://megsyai.com",
-      "https://www.megsyai.com",
+      "/",
+      "/",
     ]
       .filter(Boolean)
       .map(String),

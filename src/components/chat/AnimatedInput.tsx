@@ -47,7 +47,7 @@ interface AnimatedInputProps {
   headerSlot?: React.ReactNode;
   inlineSlot?: React.ReactNode;
   activeServiceSlot?: React.ReactNode;
-  /** Live Megsy Computer surface fused into the composer above the textarea. */
+  /** Live Nova Computer surface fused into the composer above the textarea. */
   computerSlot?: React.ReactNode;
   /** Small icon buttons (model / template pickers) rendered in the bottom control row. */
   serviceTools?: React.ReactNode;
@@ -98,7 +98,7 @@ const AnimatedInput = ({
   const isArabicUi =
     currentLang === "ar-eg" ||
     (typeof document !== "undefined" && document.documentElement.dir === "rtl");
-  const shortPlaceholder = isArabicUi ? "اسأل ميغسي" : "Ask Megsy";
+  const shortPlaceholder = isArabicUi ? "اسأل ميغسي" : "Ask Nova";
 
   /**
    * Intercept bare slash commands (e.g. "/clear", "/docs", "/new").

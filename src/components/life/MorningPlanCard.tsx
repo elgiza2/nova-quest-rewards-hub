@@ -40,7 +40,7 @@ export default function MorningPlanCard({ ar }: { ar: boolean }) {
         <div className="min-w-0 flex-1">
           <h2 className="text-[17px] font-semibold">{ar ? "خطة الصبح" : "Morning plan"}</h2>
           <p className="text-sm text-muted-foreground">
-            {ar ? "ميغسي تبعتلك مهام وأهداف النهارده كل يوم." : "Megsy sends you today's tasks and goals every day."}
+            {ar ? "ميغسي تبعتلك مهام وأهداف النهارده كل يوم." : "Nova sends you today's tasks and goals every day."}
           </p>
         </div>
         <button

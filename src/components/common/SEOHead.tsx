@@ -16,7 +16,7 @@ interface SEOHeadProps {
 
 // The apex domain permanently redirects to www. Canonicals and alternates must
 // use the final 200 URL so Google sees a canonical/redirect match.
-const SITE_URL = "https://www.megsyai.com";
+const SITE_URL = "/";
 const DEFAULT_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fae3cd77-3f99-4a10-8225-ba5e64510390/id-preview-b1f21eef--70a3240c-12ec-46ff-99ea-54f772181a95.lovable.app-1772787005803.png";
 
@@ -32,7 +32,7 @@ const SEOHead = ({
 }: SEOHeadProps) => {
   const meta = locale ? getLocale(locale) : undefined;
 
-  const brandName = "Megsy AI";
+  const brandName = "Nova AI";
   const twitterHandle = "@MegsyAI";
 
   const isHomePath = path === "/" || (meta && path === meta.path);

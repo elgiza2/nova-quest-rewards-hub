@@ -74,7 +74,7 @@ const SecuritySettingsPage = () => {
         </SubRowList>
       </SubSection>
 
-      <SubSection title="Session" description="Sign out of Megsy on this device.">
+      <SubSection title="Session" description="Sign out of Nova on this device.">
         <SubRowList>
           <SubRow icon={LogOut} label="Sign out" onClick={handleLogout} />
         </SubRowList>

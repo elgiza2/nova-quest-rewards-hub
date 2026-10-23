@@ -25,8 +25,8 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   // -------------------------------------------------------------- مميزات الباقة
   "240 MC / month": "240 كريدت شهريًا",
   "600 MC / month": "600 كريدت شهريًا",
-  "Cloud Computer — Megsy operates a real browser and desktop for you":
-    "كمبيوتر سحابي — Megsy بيشغّل متصفح وسطح مكتب حقيقي بدالك",
+  "Cloud Computer — Nova operates a real browser and desktop for you":
+    "كمبيوتر سحابي — Nova بيشغّل متصفح وسطح مكتب حقيقي بدالك",
   "Long-running tasks up to 4 hours, continue while you are offline":
     "مهام طويلة لحد 4 ساعات، بتكمّل وإنت مش أونلاين",
   "3 background agents working in parallel": "3 وكلاء بيشتغلوا في الخلفية في نفس الوقت",
@@ -37,8 +37,8 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   "Unlimited videos for 7 days": "فيديوهات بلا حدود لمدة 7 أيام",
   "Up to 40 premium videos a month (240 MC)": "لحد 40 فيديو بريميوم في الشهر (240 كريدت)",
   "Up to 120 premium videos a month (600 MC)": "لحد 120 فيديو بريميوم في الشهر (600 كريدت)",
-  "Docs, Slides & Megsy Coder — export, build and deploy":
-    "مستندات وسلايدز وMegsy Coder — تصدير وبناء ونشر",
+  "Docs, Slides & Nova Coder — export, build and deploy":
+    "مستندات وسلايدز وNova Coder — تصدير وبناء ونشر",
   "Team workspace with shared projects and files":
     "مساحة شغل للفريق بمشاريع وملفات مشتركة",
   "Priority support · cancel anytime": "دعم بأولوية · تلغي في أي وقت",
@@ -66,7 +66,7 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   "Can I change or cancel my plan anytime?": "أقدر أغيّر أو ألغي باقتي في أي وقت؟",
   "Yes. From Billing settings you can upgrade, downgrade or cancel anytime. Upgrades are prorated and take effect immediately; downgrades and cancellations take effect at the end of the current cycle, and you keep full access until then.":
     "أيوه. من إعدادات الفوترة تقدر ترفّع أو تنزّل أو تلغي في أي وقت. الترقية بتتحسب بالتناسب وبتشتغل فورًا، والتخفيض والإلغاء بيشتغلوا آخر الدورة الحالية وتفضل معاك كل المميزات لحد وقتها.",
-  "What are Megsy Credits (MC)?": "إيه هي كريدتس Megsy (MC)؟",
+  "What are Nova Credits (MC)?": "إيه هي كريدتس Nova (MC)؟",
   "Chat and image generation are unlimited on every paid plan. MC is a separate monthly balance used for premium video generation and premium model runs — 240 MC on Pro (about 40 videos) and 600 MC on Max (about 120 videos). DeAPI video models never cost MC.":
     "الشات وتوليد الصور بلا حدود في كل الباقات المدفوعة. الكريدت رصيد شهري منفصل بيتستخدم في فيديوهات البريميوم وتشغيل الموديلات البريميوم — 240 كريدت في Pro (حوالي 40 فيديو) و600 كريدت في Max (حوالي 120 فيديو). موديلات فيديو DeAPI مش بتاخد كريدت خالص.",
   "What happens when I run out of MC?": "لو الكريدت خلص يحصل إيه؟",
@@ -96,11 +96,11 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   "Tap now to enter": "دوس دلوقتي تدخل",
 
   // ------------------------------------------------------- صفحة الإحالة (Pro)
-  "Megsy Pro invitation": "دعوة ميجسي برو",
+  "Nova Pro invitation": "دعوة ميجسي برو",
   "Invite 5 friends, get Pro free": "اعزم 5 أصحاب، وخد برو مجانًا",
-  "Every friend who joins Megsy AI with your link brings you closer to free Pro access for a limited time.":
+  "Every friend who joins Nova AI with your link brings you closer to free Pro access for a limited time.":
     "كل صاحب يسجل في ميجسي بلينكك بيقرّبك أكتر من برو مجانًا لفترة محدودة.",
-  "Megsy Pro invitation artwork": "صورة دعوة ميجسي برو",
+  "Nova Pro invitation artwork": "صورة دعوة ميجسي برو",
   "Required steps": "الخطوات المطلوبة",
   "Finish all steps below to unlock your free Pro subscription.": "كمّل كل الخطوات دي عشان تفتح اشتراك برو المجاني.",
   "We couldn't save this step yet": "مش قادرين نسجل الخطوة دي دلوقتي",
@@ -114,7 +114,7 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   "Left for Pro": "فاضل لبرو",
   "How it works": "بيشتغل إزاي",
   "Share your link": "شير اللينك بتاعك",
-  "Send your personal Megsy invite to friends.": "ابعت دعوة ميجسي بتاعتك لأصحابك.",
+  "Send your personal Nova invite to friends.": "ابعت دعوة ميجسي بتاعتك لأصحابك.",
   "Five friends join": "خمس أصحاب يسجلوا",
   "They create an account through your invitation.": "بيعملوا حساب من خلال دعوتك.",
   "Pro is yours": "برو يبقى بتاعك",
@@ -143,7 +143,7 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   "of every payment": "من كل دفعة",
   "Your Pro access is unlocked, so your invite link now earns a recurring share of everything your members pay.":
     "برو اتفتحلك، فبقى لينك الدعوة بتاعك بيكسّبك نسبة مستمرة من كل اللي أعضاءك بيدفعوه.",
-  "Megsy partner program artwork": "صورة برنامج شركاء ميجسي",
+  "Nova partner program artwork": "صورة برنامج شركاء ميجسي",
   "Revenue share": "نسبة الأرباح",
   Paid: "الدفع",
   Duration: "المدة",

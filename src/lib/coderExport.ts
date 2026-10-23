@@ -88,7 +88,7 @@ export async function pushFilesToGithub(
     repo_name: opts.repo,
     name: opts.repo,
     branch: opts.branch || "main",
-    message: opts.message || "Initial commit from Megsy Coder",
+    message: opts.message || "Initial commit from Nova Coder",
     private: opts.private ?? true,
     files: files.map((f) => ({ path: safeProjectPath(f.path), content: f.content })),
   };
@@ -201,7 +201,7 @@ export async function pushProjectToGithub(files: ProjectFile[], defaultName = "m
 
   const t = toast.loading(`Pushing to GitHub → ${repo}…`);
   try {
-    const result = await pushFilesToGithub(files, { repo, branch: "main", message: "Initial commit from Megsy Coder", private: true });
+    const result = await pushFilesToGithub(files, { repo, branch: "main", message: "Initial commit from Nova Coder", private: true });
     toast.dismiss(t);
     const url = result.repo_url || (status.account_name ? `https://github.com/${status.account_name}/${repo}` : undefined);
     if (url) {

@@ -24,7 +24,7 @@ export interface LandingChip {
   label: string;
 }
 
-// Megsy glyph set — custom duotone marks: rounded monoline + soft solid accents.
+// Nova glyph set — custom duotone marks: rounded monoline + soft solid accents.
 type GlyphProps = { className?: string };
 const glyphBase = {
   viewBox: "0 0 24 24",
@@ -130,8 +130,8 @@ import { BrandLogo as MegsyBrandLogo } from "@/components/brand/BrandLogo";
 import { t as uiT, useUserLang } from "@/lib/authI18n";
 import { MEGSY_CHAT_MODEL_LABEL } from "@/lib/megsyModelDisplay";
 const MegsyIcon = () => {
-  // Prefer configured Megsy logo but fall back to default if unset.
-  return <MegsyBrandLogo loading="lazy" decoding="async" alt="Megsy" className="w-full h-full" />;
+  // Prefer configured Nova logo but fall back to default if unset.
+  return <MegsyBrandLogo loading="lazy" decoding="async" alt="Nova" className="w-full h-full" />;
 };
 
 export const DEFAULT_LANDING_MODELS: LandingModel[] = [

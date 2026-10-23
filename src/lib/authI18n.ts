@@ -55,14 +55,14 @@ const DICT: Record<string, Entry> = {
   incorrectPassword: { en: "Incorrect password", "ar-eg": "كلمة السر غلط" },
   accountDeletionRequested: { en: "Account deletion requested. You will be signed out.", "ar-eg": "طلبنا حذف الحساب. هيتم تسجيل خروجك." },
   deleteAccountFailed: { en: "Failed to delete account", "ar-eg": "معرفناش نحذف الحساب" },
-  freeCreditsAdded: { en: "+15 free credits added — welcome to Megsy!", "ar-eg": "+15 كريدت مجاني — أهلاً بيك في Megsy!" },
+  freeCreditsAdded: { en: "+15 free credits added — welcome to Nova!", "ar-eg": "+15 كريدت مجاني — أهلاً بيك في Nova!" },
 
   // ── AuthPage UI (new) ────────────────────────────────────────────────
-  seoTitle: { en: "Sign in to Megsy AI — Your AI Agent Workspace", "ar-eg": "سجّل دخولك في Megsy AI" },
-  seoDesc: { en: "Sign in or create your Megsy AI account to chat, research and create with AI.", "ar-eg": "سجّل دخول أو اعمل حساب في Megsy AI." },
+  seoTitle: { en: "Sign in to Nova AI — Your AI Agent Workspace", "ar-eg": "سجّل دخولك في Nova AI" },
+  seoDesc: { en: "Sign in or create your Nova AI account to chat, research and create with AI.", "ar-eg": "سجّل دخول أو اعمل حساب في Nova AI." },
   back: { en: "Back", "ar-eg": "رجوع" },
   getStarted: { en: "Get started", "ar-eg": "يلا نبدأ" },
-  emailTitle: { en: "Welcome to Megsy", "ar-eg": "أهلاً بيك في Megsy" },
+  emailTitle: { en: "Welcome to Nova", "ar-eg": "أهلاً بيك في Nova" },
   emailSub: { en: "Enter your email to sign in or create an account.", "ar-eg": "اكتب إيميلك عشان تدخل أو تعمل حساب." },
   passwordTitle: { en: "Enter your password", "ar-eg": "اكتب كلمة السر" },
   verifyEmailTitle: { en: "Verify your email", "ar-eg": "أكّد الإيميل بتاعك" },
@@ -155,7 +155,7 @@ const UI_DICT: Record<string, Entry> = {
   logIn: { en: "Log in", "ar-eg": "دخول" },
   upgrade: { en: "Upgrade", "ar-eg": "ترقية" },
   getPlus: { en: "Get Plus", "ar-eg": "هات بلس" },
-  placeholderAsk: { en: "Message Megsy…", "ar-eg": "اكتب رسالتك…" },
+  placeholderAsk: { en: "Message Nova…", "ar-eg": "اكتب رسالتك…" },
   placeholderProject: { en: "Start your next project with one idea…", "ar-eg": "ابدأ مشروعك الجاي بفكرة واحدة…" },
   greeting1: { en: "", "ar-eg": "" },
   greeting2: { en: "What should we build today?", "ar-eg": "نبني إيه النهارده؟" },
@@ -165,7 +165,7 @@ const UI_DICT: Record<string, Entry> = {
 
   placeholderAllInOne: { en: "Design, write, research — all in one place", "ar-eg": "صمّم واكتب وابحث — كله في مكان واحد" },
   placeholderType: { en: "Type a question and let's get started", "ar-eg": "اكتب سؤال ويلا نبدأ" },
-  megsyAsking: { en: "Megsy is asking", "ar-eg": "Megsy بيسأل" },
+  megsyAsking: { en: "Nova is asking", "ar-eg": "Nova بيسأل" },
   skipQuestion: { en: "Skip question", "ar-eg": "عدّي السؤال" },
   typeOwnAnswer: { en: "Type your own answer…", "ar-eg": "اكتب إجابتك…" },
   sendAnswer: { en: "Send answer", "ar-eg": "ابعت الإجابة" },
@@ -203,7 +203,7 @@ const UI_DICT: Record<string, Entry> = {
   whatsOnYourMind: { en: "What's on your mind", "ar-eg": "بتفكر في إيه" },
   whereToToday: { en: "Where to today", "ar-eg": "رايح فين النهارده" },
   readyWhenYouAre: { en: "Ready when you are", "ar-eg": "جاهز لما تكون جاهز" },
-  loadingMegsy: { en: "Loading Megsy", "ar-eg": "Megsy بيحمّل" },
+  loadingMegsy: { en: "Loading Nova", "ar-eg": "Nova بيحمّل" },
 };
 
 const STORAGE_KEY = "app_lang";

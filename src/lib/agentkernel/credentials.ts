@@ -2,7 +2,7 @@
  * @doc Login identities the agent creates for the user.
  *
  * The agent never invents an address: it always signs up with the user's own
- * Megsy mailbox (`username@megsyai.com`), generates a clean strong password, and
+ * Nova mailbox (`username@megsyai.com`), generates a clean strong password, and
  * saves the pair here so it shows up in Settings → Passwords and can be reused
  * the next time the same site comes up.
  */

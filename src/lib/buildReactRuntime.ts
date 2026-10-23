@@ -221,7 +221,7 @@ function collectProjectCss(files: ProjectFile[]): string {
     .trim();
 }
 
-export function buildReactRuntimeHtml(files: ProjectFile[], title = "Megsy Project"): string {
+export function buildReactRuntimeHtml(files: ProjectFile[], title = "Nova Project"): string {
   const runnable = files.filter(isRunnable);
   const map = new Map(runnable.map((f) => [f.path, f]));
 
@@ -250,7 +250,7 @@ export function buildReactRuntimeHtml(files: ProjectFile[], title = "Megsy Proje
   const projectCss = collectProjectCss(files);
   const esc = (v: string) =>
     v.replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" })[c]!);
-  const description = `${title} — built with Megsy Coder.`;
+  const description = `${title} — built with Nova Coder.`;
   const entryPath = entry?.path || "src/main.tsx";
 
   return `<!doctype html>

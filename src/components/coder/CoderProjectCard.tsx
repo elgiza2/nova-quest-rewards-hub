@@ -1,4 +1,4 @@
-/** @doc Compact card that renders a saved Megsy Coder project in the chat history — replaces raw fenced markdown. */
+/** @doc Compact card that renders a saved Nova Coder project in the chat history — replaces raw fenced markdown. */
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { FileCode, Eye, Pencil, ExternalLink, Github, Download, Sparkles, Undo2, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -70,7 +70,7 @@ export default function CoderProjectCard({ files: initialFiles, summary, project
     setPublishing(true);
     try {
       const { publishProject } = await import("@/lib/publishProject");
-      const title = summary?.split("\n")[0]?.slice(0, 80) || "Megsy Project";
+      const title = summary?.split("\n")[0]?.slice(0, 80) || "Nova Project";
       const { url, id, degraded } = await publishProject(files, { title, siteId: publishedId ?? undefined });
       setPublishedId(id);
       try { window.localStorage.setItem(siteKey(pid), id); } catch { /* private mode */ }
@@ -105,7 +105,7 @@ export default function CoderProjectCard({ files: initialFiles, summary, project
       const { deployCoderProjectToAnything } = await import("@/lib/anything/coderBridge");
       const existing = (() => { try { return window.localStorage.getItem(anythingKey(pid)); } catch { return null; } })();
       const res = await deployCoderProjectToAnything(files, {
-        title: summary?.split("\n")[0]?.slice(0, 60) || "Megsy project",
+        title: summary?.split("\n")[0]?.slice(0, 60) || "Nova project",
         summary,
         projectId: existing ?? undefined,
         publish: true,

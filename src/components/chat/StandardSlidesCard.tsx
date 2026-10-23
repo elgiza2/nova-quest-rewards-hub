@@ -7,7 +7,7 @@ import { Download, ArrowLeft, Loader2, Share2, RectangleVertical, RectangleHoriz
 import { toast } from "sonner";
 import { stashSlidesFileForPreview } from "@/lib/slidesFilePreviewStore";
 
-const MEGSY_INVITE = "This presentation was designed with Megsy — try it free: https://megsy.ai";
+const MEGSY_INVITE = "This presentation was designed with Nova — try it free: https://megsy.ai";
 
 // Slides the generator appends that are not part of the user's content
 // (graphics libraries, icon credits, provider branding). Hidden from preview.

@@ -57,7 +57,7 @@ export const DesktopGreeting = ({ userName }: DesktopGreetingProps) => {
           >
             <AgentOrb size={88} state={presence} color={agent?.isDefault ? "aurora" : agent?.color ?? "aurora"} />
           </motion.div>
-          <p className="mb-2 text-sm text-muted-foreground">{lang === "ar-eg" ? `أهلاً${userName ? ` يا ${userName.split(" ")[0]}` : ""}، أنا ${agent?.name ?? "Megsy"}` : `Hello${userName ? `, ${userName.split(" ")[0]}` : ""}. I'm ${agent?.name ?? "Megsy"}`}</p>
+          <p className="mb-2 text-sm text-muted-foreground">{lang === "ar-eg" ? `أهلاً${userName ? ` يا ${userName.split(" ")[0]}` : ""}، أنا ${agent?.name ?? "Nova"}` : `Hello${userName ? `, ${userName.split(" ")[0]}` : ""}. I'm ${agent?.name ?? "Nova"}`}</p>
 
         </motion.div>
       </div>

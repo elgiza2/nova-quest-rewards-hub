@@ -2,7 +2,7 @@
  * ServiceIcon — one distinctive animated glyph per service family.
  *
  * Design contract (user request):
- * - The base mark is always the Megsy star (the same star from the chat).
+ * - The base mark is always the Nova star (the same star from the chat).
  * - While a service is running, its own distinctive icon animates beside it:
  *   search pulses, code types, agent orbits, media shimmers — each simple.
  * - Finished traces show the same icons statically (no animation).
@@ -86,7 +86,7 @@ interface ServiceIconProps {
 }
 
 /**
- * Renders the Megsy star with the service glyph. When active, the service
+ * Renders the Nova star with the service glyph. When active, the service
  * icon gets its own signature micro-animation (all calm, all CSS-only):
  * - search: gentle ping ring
  * - browse: slow orbit dot
