@@ -2,7 +2,7 @@ import { avatarSrc } from "@/lib/avatarSrc";
 import EmptyState from "@/components/common/EmptyState";
 import { memo, startTransition, useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate, useLocation, type NavigateOptions } from "react-router-dom";
-import { SquarePlus, PanelLeft, LogIn, Cloud, Sparkles, ChevronDown, Mail as MailIcon, X, Cog, Search, ListChecks } from "lucide-react";
+import { SquarePlus, PanelLeft, LogIn, Cloud, Sparkles, ChevronDown, Mail as MailIcon, X, Cog, Search, ListChecks, Trophy } from "lucide-react";
 import { AgentOrb } from "@/components/agent/AgentOrb";
 import { supabase } from "@/integrations/supabase/client";
 import { getUserSafe } from "@/lib/authSafe";
@@ -441,7 +441,7 @@ const AppSidebar = ({
   });
   moreNav.push({
     label: language === "ar-eg" ? "المهام" : "Tasks",
-    Icon: ({ size = 20, className, strokeWidth }) => <Sparkles size={size} className={className} strokeWidth={strokeWidth ?? 1.5} />,
+    Icon: ({ size = 20, className, strokeWidth }) => <Trophy size={size} className={className} strokeWidth={strokeWidth ?? 1.5} />,
     path: "/tasks",
     match: (p: string) => p.startsWith("/tasks"),
   });
