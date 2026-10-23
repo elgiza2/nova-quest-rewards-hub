@@ -10,8 +10,6 @@ import { createClient } from "@supabase/supabase-js";
 import { isOrangeTask } from "@/lib/orangeTasks";
 
 type TaskKey = string;
-const ORANGE_JETTON = "EQCY5dx1kTGT-r1RPXA-LTRyv73_LtfcaTl0g1E_WBlRdUyI";
-const LINK_MIN_SECONDS = 15;
 
 type TaskRow = { id: string; title: string; reward_credits: number; target_count: number; action_type: string | null; action_url: string | null };
 
