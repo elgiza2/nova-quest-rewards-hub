@@ -77,6 +77,8 @@ export function initTelegramWebApp(): void {
       while (el) {
         const c = getComputedStyle(el).backgroundColor;
         if (c && c !== "transparent" && !/rgba\([^)]*,\s*0\)$/.test(c)) { bg = c; break; }
+        const g = getComputedStyle(el).backgroundImage.match(/rgba?\([^)]*\)|oklch\([^)]*\)/);
+        if (g && !/,\s*0\)$/.test(g[0])) { bg = g[0]; break; }
         el = el.parentElement;
       }
       if (!bg) bg = getComputedStyle(document.body).backgroundColor;
