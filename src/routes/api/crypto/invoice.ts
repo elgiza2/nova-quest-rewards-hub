@@ -10,6 +10,7 @@
  */
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
+import { matchPaymentEvent } from "@/lib/crypto/verification";
 
 type Asset = "ton" | "usdt_ton" | "usdt_eth" | "usdt_bsc" | "usdt_sol" | "usdt_tron";
 
@@ -64,7 +65,7 @@ async function tonPrice(): Promise<number> {
   } catch {
     /* fall through */
   }
-  return tonPriceCache?.usd ?? 5;
+  throw new Error("price_unavailable");
 }
 
 async function resolvePlan(db: any, tier?: string, interval?: string, sku?: string) {
@@ -96,240 +97,18 @@ function randomMemo(): string {
   return "OAI-" + [...buf].map((b) => b.toString(16).padStart(2, "0")).join("").toUpperCase();
 }
 
-function padAddress(addr: string): string {
-  return addr.toLowerCase().replace(/^0x/, "").padStart(64, "0");
-}
-
-// ---------- chain verifiers ----------
-
-/** TON native: comment == memo and exact value. */
-async function verifyTonNative(wallet: string, expectedNano: number, memo: string) {
-  const res = await fetch(
-    `https://tonapi.io/v2/accounts/${encodeURIComponent(wallet)}/transactions?limit=100`,
-    { signal: AbortSignal.timeout(12000) },
-  );
-  if (!res.ok) return null;
-  const txs = (await res.json()) as Array<Record<string, any>>;
-  for (const tx of txs) {
-    const msg = tx?.in_msg;
-    if (!msg) continue;
-    const value = Number(msg.value ?? 0);
-    const comment: string = String(msg.comment ?? msg?.msg_data?.decoded_comment ?? msg?.msg_data?.message ?? "");
-    if (value === expectedNano && (comment === memo || comment.includes(memo))) {
-      return tx.hash ?? tx.transaction_id ?? null;
-    }
-  }
-  return null;
-}
-
-/** TON USDT (jetton) transfer into the wallet: exact amount (+ memo comment). */
-async function verifyTonJetton(wallet: string, expectedNano: number, memo: string) {
-  const res = await fetch(
-    `https://tonapi.io/v2/accounts/${encodeURIComponent(wallet)}/jetton-transfers?limit=100`,
-    { signal: AbortSignal.timeout(12000) },
-  );
-  if (!res.ok) return null;
-  const list = (await res.json()) as Array<Record<string, any>>;
-  for (const t of list) {
-    const jetton: string = String(t?.jetton?.address ?? "");
-    if (!jetton.startsWith(TON_USDT_MASTER.slice(0, 12))) continue;
-    const dest: string = String(t?.destination ?? "");
-    if (!dest.includes(wallet.replace(/^UQ/, "0:").replace(/^EQ/, "0:").split(":")[1] ?? "___")) continue;
-    if (Number(t?.amount ?? 0) !== expectedNano) continue;
-    const comment = String(t?.comment ?? "");
-    if (!comment || comment === memo || comment.includes(memo)) return t?.tx_hash ?? t?.transaction_hash ?? null;
-  }
-  // Destination match is finicky across raw/USER-FRIENDLY forms; accept exact amount
-  // + jetton + memo-or-empty (amounts are unique per invoice).
-  for (const t of list) {
-    const jetton: string = String(t?.jetton?.address ?? "");
-    if (!jetton.startsWith(TON_USDT_MASTER.slice(0, 12))) continue;
-    if (Number(t?.amount ?? 0) === expectedNano) {
-      const comment = String(t?.comment ?? "");
-      if (!comment || comment === memo || comment.includes(memo)) {
-        return t?.tx_hash ?? t?.transaction_hash ?? null;
-      }
-    }
-  }
-  return null;
-}
-
-/** EVM USDT (Ethereum / BSC): Transfer event to the merchant wallet. */
-async function verifyEvm(rpc: string, usdt: string, wallet: string, expectedNano: number) {
-  const call = async (method: string, params: unknown[]) => {
-    const res = await fetch(rpc, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
-      signal: AbortSignal.timeout(12000),
-    });
-    const j = (await res.json()) as { result?: any; error?: any };
-    if (j.error) throw new Error(JSON.stringify(j.error));
-    return j.result;
-  };
-  const head = Number(await call("eth_blockNumber", []));
-  const fromBlock = Math.max(0, head - 3000);
-  const logs = await call("eth_getLogs", [
-    {
-      address: usdt,
-      fromBlock: "0x" + fromBlock.toString(16),
-      toBlock: "0x" + head.toString(16),
-      topics: [
-        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", // Transfer
-        null,
-        "0x" + padAddress(wallet),
-      ],
-    },
-  ]);
-  if (!Array.isArray(logs)) return null;
-  for (const log of logs) {
-    const value = log?.data ? BigInt(log.data) : 0n;
-    if (value === BigInt(expectedNano)) return log?.transactionHash ?? null;
-  }
-  return null;
-}
-
-/** Tron USDT (TRC-20) via the public Tronscan API. */
-async function verifyTron(wallet: string, expectedNano: number) {
-  const res = await fetch(
-    `https://apilist.tronscanapi.com/api/transfer/trc20?limit=50&to_address=${encodeURIComponent(wallet)}&contract_address=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t`,
-    { headers: { accept: "application/json" }, signal: AbortSignal.timeout(12000) },
-  );
-  if (!res.ok) return null;
-  const j = (await res.json()) as { data?: Array<Record<string, any>> };
-  for (const t of j.data ?? []) {
-    if (Number(t?.quant ?? 0) === expectedNano) {
-      return t?.transaction_id ?? null;
-    }
-  }
-  return null;
-}
-
-/** Solana USDT: compare the merchant's USDT balance against the cumulative
- *  expected amount of outstanding invoices on this wallet (balance-based). */
-async function verifySol(wallet: string, cumulativeNano: number) {
-  const rpc = "https://api.mainnet-beta.solana.com";
-  const call = async (method: string, params: unknown[]) => {
-    const res = await fetch(rpc, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
-      signal: AbortSignal.timeout(12000),
-    });
-    const j = (await res.json()) as { result?: any; error?: any };
-    return j.result;
-  };
-  const accounts = await call("getTokenAccountsByOwner", [
-    wallet,
-    { mint: "Es9vMFrzaCERm6frWZvLFsM4EbkggivCLz1xZ3kEQRqZ", encoding: "base64" },
-  ]);
-  const tokenAccount = accounts?.value?.[0]?.pubkey;
-  if (!tokenAccount) return cumulativeNano === 0 ? true : false;
-  const bal = await call("getTokenAccountBalance", [tokenAccount]);
-  return Number(bal?.value?.amount ?? 0) >= cumulativeNano;
-}
-
-async function verifyInvoice(inv: Record<string, any>): Promise<{ paid: boolean; tx: string | null }> {
-  const asset = inv.asset as Asset;
-  const expected = Number(inv.expected_nano);
+async function verifyInvoice(inv: any): Promise<string | null> {
+  if (!["ton", "usdt_ton"].includes(inv.asset)) return null;
   try {
-    switch (asset) {
-      case "ton": {
-        const tx = await verifyTonNative(inv.wallet_address, expected, inv.memo);
-        return { paid: Boolean(tx), tx };
-      }
-      case "usdt_ton": {
-        const tx = await verifyTonJetton(inv.wallet_address, expected, inv.memo);
-        return { paid: Boolean(tx), tx };
-      }
-      case "usdt_eth":
-      case "usdt_bsc": {
-        const rpc =
-          asset === "usdt_eth"
-            ? "https://ethereum-rpc.publicnode.com"
-            : "https://bsc-rpc.publicnode.com";
-        const usdt =
-          asset === "usdt_eth"
-            ? "0xdAC17F958D2ee523a2206206994597C13D831ec7"
-            : "0x55d398326f99059fF775485246999027B3197955";
-        const tx = await verifyEvm(rpc, usdt, inv.wallet_address, expected);
-        return { paid: Boolean(tx), tx };
-      }
-      case "usdt_tron": {
-        const tx = await verifyTron(inv.wallet_address, expected);
-        return { paid: Boolean(tx), tx };
-      }
-      case "usdt_sol": {
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const db = supabaseAdmin as any;
-        const { data: unpaid } = await db
-          .from("crypto_payments")
-          .select("expected_nano")
-          .eq("asset", "usdt_sol")
-          .eq("wallet_address", inv.wallet_address)
-          .eq("status", "pending")
-          .gte("expires_at", new Date().toISOString());
-        const cumulative = (unpaid ?? []).reduce((s: number, r: any) => s + Number(r.expected_nano), 0);
-        const paid = await verifySol(inv.wallet_address, cumulative);
-        return { paid, tx: null };
-      }
+    const res = await fetch(`https://tonapi.io/v2/accounts/${encodeURIComponent(inv.wallet_address)}/events?limit=100&start_date=${Math.floor(Date.parse(inv.created_at)/1000)}`, {signal:AbortSignal.timeout(12000)});
+    if (!res.ok) return null;
+    const data = await res.json() as {events?: any[]};
+    for (const event of data.events ?? []) {
+      const tx = matchPaymentEvent(event, {asset:inv.asset,wallet:inv.wallet_address,amount:String(inv.expected_nano),memo:inv.memo,createdAt:inv.created_at,expiresAt:inv.expires_at});
+      if (tx) return tx;
     }
-  } catch (e) {
-    console.error("[crypto] verify error", asset, e);
-    return { paid: false, tx: null };
-  }
-}
-
-/** Fulfil a paid invoice exactly the way card payments are fulfilled. */
-async function fulfil(db: any, inv: Record<string, any>) {
-  const isPlan = inv.tier !== "credits";
-  const credits = Number(inv.credits ?? 0);
-  if (credits > 0) {
-    await db.rpc("grant_credit_bucket", {
-      p_user_id: inv.user_id,
-      p_bucket: isPlan ? "plan" : "purchased",
-      p_amount: credits,
-      p_action_type: isPlan ? "subscription_purchase" : "credit_purchase",
-      p_description: `crypto:${inv.asset}:${inv.memo}`,
-      p_operation_key: `payment:${inv.memo}`,
-    });
-  }
-  if (isPlan) {
-    const periodDays = inv.interval === "yearly" ? 365 : 30;
-    const periodEnd = new Date(Date.now() + periodDays * 86400_000).toISOString();
-    await db
-      .from("credit_wallets")
-      .update({ plan_credits: credits, plan_period_end: periodEnd, updated_at: new Date().toISOString() })
-      .eq("user_id", inv.user_id);
-    const { data: wallet } = await db
-      .from("credit_wallets")
-      .select("user_id")
-      .eq("user_id", inv.user_id)
-      .maybeSingle();
-    void wallet;
-    await db.rpc("sync_credit_total", { _user_id: inv.user_id });
-    await db.from("profiles").update({ plan: "pro", updated_at: new Date().toISOString() }).eq("id", inv.user_id);
-    const { data: sub } = await db
-      .from("subscriptions")
-      .select("id")
-      .eq("user_id", inv.user_id)
-      .order("updated_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-    const subRow = {
-      plan: "pro",
-      status: "active",
-      currency: "USD",
-      amount_cents: Math.round(Number(inv.amount_usd) * 100),
-      current_period_end: periodEnd,
-      updated_at: new Date().toISOString(),
-    };
-    if (sub) {
-      await db.from("subscriptions").update(subRow).eq("id", sub.id);
-    } else {
-      await db.from("subscriptions").insert({ user_id: inv.user_id, ...subRow });
-    }
-  }
+  } catch { /* A provider failure is never payment confirmation. */ }
+  return null;
 }
 
 export const Route = createFileRoute("/api/crypto/invoice")({
@@ -338,7 +117,7 @@ export const Route = createFileRoute("/api/crypto/invoice")({
       POST: async ({ request }) => {
         const done = json();
         const userId = await requireUserId(request);
-        if (!userId) return done({ ok: false, error: "unauthorized" }) && Response.json({}, { status: 401 });
+        if (!userId) return Response.json({ ok: false, error: "unauthorized" }, { status: 401 });
 
         const body = (await request.json().catch(() => ({}))) as {
           tier?: string;
@@ -347,6 +126,7 @@ export const Route = createFileRoute("/api/crypto/invoice")({
           asset?: string;
         };
         const asset = (body.asset && body.asset in ASSETS ? body.asset : "usdt_ton") as Asset;
+        if (!["ton", "usdt_ton"].includes(asset)) return Response.json({ok:false,error:"network_verification_unavailable"},{status:400});
 
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
         const db = supabaseAdmin as any;
@@ -366,17 +146,11 @@ export const Route = createFileRoute("/api/crypto/invoice")({
         } else {
           base = usd;
         }
-        // Unique amount per invoice: no two open invoices share an exact value,
-        // which is how the chain match stays unambiguous.
-        const { count } = await db
-          .from("crypto_payments")
-          .select("id", { count: "exact", head: true })
-          .eq("user_id", userId);
-        const suffix = ((count ?? 0) % 500) * 0.001;
-        const payAmount = Math.round((base + suffix) * 1_000_000) / 1_000_000;
+        const payAmount = Math.ceil(base * 1_000_000) / 1_000_000;
         const expectedNano = BigInt(Math.round(payAmount * 10 ** cfg.decimals));
-
-        const memo = randomMemo();
+        const {data: identity} = await db.from("telegram_profiles").select("username,telegram_user_id").eq("user_id",userId).maybeSingle();
+        const account = String(identity?.username || identity?.telegram_user_id || userId.slice(0,8)).replace(/[^A-Za-z0-9_]/g,"").slice(0,32);
+        const memo = `OAI-${account}-${crypto.randomUUID().replace(/-/g, "")}`;
         const { data: inv, error } = await db
           .from("crypto_payments")
           .insert({
@@ -421,7 +195,7 @@ export const Route = createFileRoute("/api/crypto/invoice")({
       GET: async ({ request }) => {
         const done = json();
         const userId = await requireUserId(request);
-        if (!userId) return done({ ok: false, error: "unauthorized" }) && Response.json({}, { status: 401 });
+        if (!userId) return Response.json({ ok: false, error: "unauthorized" }, { status: 401 });
 
         const id = new URL(request.url).searchParams.get("id");
         if (!id) return done({ ok: false, error: "missing_id" });
@@ -442,14 +216,10 @@ export const Route = createFileRoute("/api/crypto/invoice")({
           return Response.json({ ok: true, status: "expired", invoice: inv });
         }
 
-        const { paid, tx } = await verifyInvoice(inv);
-        if (paid) {
-          await db
-            .from("crypto_payments")
-            .update({ status: "paid", tx_hash: tx, paid_at: new Date().toISOString() })
-            .eq("id", inv.id);
-          await fulfil(db, inv);
-          return Response.json({ ok: true, status: "paid", invoice: inv });
+        const tx = await verifyInvoice(inv);
+        if (tx) {
+          const {data: confirmation,error} = await db.rpc("confirm_crypto_payment",{p_invoice:inv.id,p_tx:tx});
+          if (!error && confirmation?.ok) return Response.json({ok:true,status:"paid"});
         }
         return Response.json({ ok: true, status: "pending", invoice: inv });
       },
