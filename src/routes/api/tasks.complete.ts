@@ -26,20 +26,6 @@ async function verifyTelegramChannel(db: any, userId: string, url: string | null
   return j?.ok === true && (["member", "administrator", "creator"].includes(j?.result?.status) || (j?.result?.status === "restricted" && j.result.is_member === true));
 }
 
-async function verifyJetton(db: any, userId: string, wallet: string | undefined): Promise<boolean> {
-  const w = (wallet ?? "").trim();
-  if (!/^[A-Za-z0-9_\-:]{40,70}$/.test(w)) return false;
-  const res = await fetch(`https://tonapi.io/v2/accounts/${encodeURIComponent(w)}/jettons/${ORANGE_JETTON}`);
-  if (!res.ok) return false;
-  const j = (await res.json().catch(() => null)) as any;
-  if (!(Number(j?.balance ?? 0) > 0)) return false;
-  const raw = String(j?.wallet_address?.owner?.address ?? j?.wallet_address?.address ?? w);
-  const { data: claim } = await db.from("task_wallet_claims").select("user_id").eq("wallet", raw).maybeSingle();
-  if (claim && claim.user_id !== userId) return false;
-  if (!claim) await db.from("task_wallet_claims").insert({ wallet: raw, user_id: userId });
-  return true;
-}
-
 function serverClients() {
   const url = process.env.SUPABASE_URL as string | undefined;
   const anon = process.env.SUPABASE_PUBLISHABLE_KEY as string | undefined;
@@ -58,7 +44,7 @@ async function requireUser(request: Request): Promise<string | null> {
 
 async function verifyCondition(db: any, userId: string, taskKey: TaskKey, task: TaskRow, wallet?: string): Promise<boolean> {
   if (task.action_type === "telegram_channel") return verifyTelegramChannel(db, userId, task.action_url);
-  if (task.action_type === "buy_jetton") return verifyJetton(db, userId, wallet);
+
   if (taskKey === "daily_checkin") return true;
   if (taskKey === "first_subscription") {
     const {data,error} = await db.from("subscriptions").select("current_period_end").eq("user_id",userId).eq("status","active").gt("current_period_end",new Date().toISOString()).limit(1).maybeSingle();

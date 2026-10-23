@@ -68,6 +68,7 @@ export function initTelegramWebApp(): void {
     window.addEventListener("load", goFull, { once: true });
     try { tg.disableVerticalSwipes?.(); } catch { /* ignore */ }
     const bg = getComputedStyle(document.body || document.documentElement).backgroundColor;
+    document.documentElement.style.setProperty("--tg-page-background", bg);
     const hex = toHex(bg);
     if (hex) {
       tg.setHeaderColor?.(hex);
@@ -136,7 +137,7 @@ export async function fetchBotUsername(): Promise<string> {
  *  no manual /start step needed. */
 export async function openBotForLogin() {
   const username = await fetchBotUsername();
-  const miniAppUrl = `https://t.me/${username}?startapp=login`;
+  const miniAppUrl = `https://t.me/${username}?startapp=login&mode=fullscreen`;
   const tg = tgWebApp();
   // `tg.openTelegramLink` is a no-op stub outside the real Telegram client
   // (the telegram-web-app.js SDK is loaded globally, so `tg` is truthy in

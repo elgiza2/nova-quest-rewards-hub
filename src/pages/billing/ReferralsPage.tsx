@@ -326,7 +326,7 @@ const ReferralsPage = () => {
     toast.info("This reward is awaiting secure verification");
   };
 
-  const link = code && bot ? `https://t.me/${bot}?startapp=ref_${encodeURIComponent(code)}` : "";
+  const link = code && bot ? `https://t.me/${bot}?startapp=ref_${encodeURIComponent(code)}&mode=fullscreen` : "";
   const totalEarned = earns.reduce((s, x) => s + Number(x.amount), 0);
   const committed = wds
     .filter((w) => w.status !== "rejected")

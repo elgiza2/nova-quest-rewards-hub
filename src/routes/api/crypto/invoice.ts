@@ -12,21 +12,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import { matchPaymentEvent } from "@/lib/crypto/verification";
 
-type Asset = "ton" | "usdt_ton" | "usdt_eth" | "usdt_bsc" | "usdt_sol" | "usdt_tron";
-
-const ASSETS: Record<
-  Asset,
-  { network: string; decimals: number; walletEnv: string; label: string }
-> = {
-  ton: { network: "ton", decimals: 9, walletEnv: "CRYPTO_TON_WALLET_ADDRESS", label: "TON" },
-  usdt_ton: { network: "ton", decimals: 6, walletEnv: "CRYPTO_TON_WALLET_ADDRESS", label: "USDT (TON)" },
-  usdt_eth: { network: "ethereum", decimals: 6, walletEnv: "CRYPTO_ETH_WALLET_ADDRESS", label: "USDT (Ethereum)" },
-  usdt_bsc: { network: "bsc", decimals: 18, walletEnv: "CRYPTO_BSC_WALLET_ADDRESS", label: "USDT (BNB Chain)" },
-  usdt_sol: { network: "solana", decimals: 6, walletEnv: "CRYPTO_SOL_WALLET_ADDRESS", label: "USDT (Solana)" },
-  usdt_tron: { network: "tron", decimals: 6, walletEnv: "CRYPTO_TRON_WALLET_ADDRESS", label: "USDT (Tron)" },
+type Asset = "ton" | "usdt_ton";
+const ASSETS = {
+ ton:{network:"ton",decimals:9,walletEnv:"CRYPTO_TON_WALLET_ADDRESS",label:"TON"},
+ usdt_ton:{network:"ton",decimals:6,walletEnv:"CRYPTO_TON_WALLET_ADDRESS",label:"USDT (TON)"},
 };
-
-const TON_USDT_MASTER = "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiXPCkPNd3kCincpSx-u";
 
 function json(headers: Record<string, string> = {}, status = 200) {
   return (body: unknown) =>
@@ -92,11 +82,6 @@ async function resolvePlan(db: any, tier?: string, interval?: string, sku?: stri
   return null;
 }
 
-function randomMemo(): string {
-  const buf = crypto.getRandomValues(new Uint8Array(5));
-  return "OAI-" + [...buf].map((b) => b.toString(16).padStart(2, "0")).join("").toUpperCase();
-}
-
 async function verifyInvoice(inv: any): Promise<string | null> {
   if (!["ton", "usdt_ton"].includes(inv.asset)) return null;
   try {
@@ -125,7 +110,8 @@ export const Route = createFileRoute("/api/crypto/invoice")({
           sku?: string;
           asset?: string;
         };
-        const asset = (body.asset && body.asset in ASSETS ? body.asset : "usdt_ton") as Asset;
+        if (body.asset && !["ton", "usdt_ton"].includes(body.asset)) return Response.json({ok:false,error:"network_verification_unavailable"},{status:400});
+        const asset = (body.asset || "usdt_ton") as Asset;
         if (!["ton", "usdt_ton"].includes(asset)) return Response.json({ok:false,error:"network_verification_unavailable"},{status:400});
 
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -141,7 +127,8 @@ export const Route = createFileRoute("/api/crypto/invoice")({
         const usd = Number(plan.usd_price);
         let base: number;
         if (asset === "ton") {
-          const price = await tonPrice();
+          let price: number;
+          try { price = await tonPrice(); } catch { return Response.json({ok:false,error:"price_unavailable"},{status:503}); }
           base = usd / price;
         } else {
           base = usd;
