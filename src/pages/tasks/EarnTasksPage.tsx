@@ -27,6 +27,7 @@ type RewardTask = {
   task_key: string;
   title: string;
   description: string | null;
+  image_url: string | null;
   reward_credits: number;
   action_type: string | null;
   action_url: string | null;
@@ -197,9 +198,18 @@ export default function EarnTasksPage() {
               const invite = task.task_key === "invite_friend";
               return (
                 <div key={task.id} className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted">
-                    <Icon className="h-5 w-5" />
-                  </span>
+                  {task.image_url ? (
+                    <img
+                      src={task.image_url}
+                      alt=""
+                      loading="lazy"
+                      className="h-10 w-10 shrink-0 rounded-xl object-cover"
+                    />
+                  ) : (
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                  )}
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium">{task.title}</p>
                     <p className="truncate text-xs text-muted-foreground">
