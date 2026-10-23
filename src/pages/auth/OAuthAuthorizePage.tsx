@@ -1,4 +1,4 @@
-/** @doc OAuth consent screen for third-party apps requesting Nova access. */
+/** @doc OAuth consent screen for third-party apps requesting Orange access. */
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -162,7 +162,7 @@ export default function OAuthAuthorizePage() {
             {appInfo?.name}
           </h1>
           <p className="text-muted-foreground mt-1.5 text-sm">
-            wants to access your <span className="font-medium text-foreground">Nova</span> account
+            wants to access your <span className="font-medium text-foreground">Orange</span> account
           </p>
         </div>
 
@@ -234,7 +234,7 @@ export default function OAuthAuthorizePage() {
             className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Nova
+            Orange
           </span>
         </motion.div>
       </motion.div>

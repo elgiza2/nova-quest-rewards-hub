@@ -1,4 +1,4 @@
-/** @doc Tasks — goals, tasks/reminders/alarms and Nova's ideas (life_goals, life_tasks, life_ideas). */
+/** @doc Tasks — goals, tasks/reminders/alarms and Orange's ideas (life_goals, life_tasks, life_ideas). */
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlarmClock, ArrowLeft, Bell, Check, Loader2, Plus, Trash2, X } from "lucide-react";
@@ -33,12 +33,12 @@ const T = {
     when: "Remind me at",
     alarm: "Alarm",
     save: "Add",
-    noGoals: "No goals yet. Add one and Nova will help you reach it.",
+    noGoals: "No goals yet. Add one and Orange will help you reach it.",
     noTasks: "Nothing to do. Enjoy it.",
     done: "Done",
-    byMegsy: "By Nova",
+    byMegsy: "By Orange",
     failed: "Could not save",
-    alarmSoon: "Open Nova on your Android phone to set this as a real alarm.",
+    alarmSoon: "Open Orange on your Android phone to set this as a real alarm.",
   },
   ar: {
     title: "المهام",
@@ -52,12 +52,12 @@ const T = {
     when: "فكّرني الساعة",
     alarm: "منبّه",
     save: "إضافة",
-    noGoals: "لسه مفيش أهداف. ضيف هدف وميغسي هيساعدك توصله.",
+    noGoals: "لسه مفيش أهداف. ضيف هدف وأورانج هيساعدك توصله.",
     noTasks: "مفيش حاجة مطلوبة. استمتع.",
     done: "خلصت",
-    byMegsy: "من ميغسي",
+    byMegsy: "من أورانج",
     failed: "مقدرناش نحفظ",
-    alarmSoon: "افتح ميغسي من تطبيق الأندرويد عشان يتضبط كمنبه حقيقي.",
+    alarmSoon: "افتح أورانج من تطبيق الأندرويد عشان يتضبط كمنبه حقيقي.",
   },
 };
 

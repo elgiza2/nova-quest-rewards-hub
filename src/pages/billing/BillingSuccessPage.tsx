@@ -8,7 +8,7 @@ import {
   ExternalLink,
   Home,
   Loader2,
-  Mail,
+  Send,
   RefreshCw,
   ShieldCheck,
   XCircle,
@@ -64,7 +64,7 @@ const BillingSuccessPage = () => {
       else {
         setDetails({
           payment_id: kashierOrder,
-          product_name: "Nova subscription",
+          product_name: "Orange subscription",
           currency: "EGP",
         });
         setStatus("success");
@@ -155,7 +155,7 @@ const BillingSuccessPage = () => {
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#17191c] text-white">
               <span className="text-sm font-bold">m</span>
             </div>
-            <span className="text-sm font-semibold">Nova</span>
+            <span className="text-sm font-semibold">Orange</span>
           </div>
           <span className="flex items-center gap-1.5 text-xs text-black/45">
             <ShieldCheck className="h-4 w-4" /> {t("Secure checkout", "دفع آمن")}
@@ -191,7 +191,7 @@ const BillingSuccessPage = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold">
-                    {details?.product_name || t("Nova subscription", "اشتراك Nova")}
+                    {details?.product_name || t("Orange subscription", "اشتراك Orange")}
                   </p>
                   <p className="mt-1 text-xs text-black/45">
                     {t("Processed by Kashier", "تمت المعالجة عبر Kashier")}
@@ -277,17 +277,17 @@ const BillingSuccessPage = () => {
               </div>
             )}
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-black/40">
-              <Mail className="h-3.5 w-3.5" /> {t("Need help?", "محتاج مساعدة؟")}{" "}
-              <a href="mailto:support@megsyai.com" className="font-medium text-black/65 underline">
-                support@megsyai.com
+              <Send className="h-3.5 w-3.5" /> {t("Need help?", "محتاج مساعدة؟")}{" "}
+              <a href="https://t.me/Torekr" className="font-medium text-black/65 underline">
+                @Torekr on Telegram
               </a>
             </p>
           </div>
         </motion.main>
         <p className="mt-5 text-center text-[11px] text-black/35">
           {t(
-            "Your card details are handled securely by Kashier and never stored by Nova.",
-            "بيانات بطاقتك تتم معالجتها بأمان عبر Kashier ولا يتم حفظها لدى Nova.",
+            "Your card details are handled securely by Kashier and never stored by Orange.",
+            "بيانات بطاقتك تتم معالجتها بأمان عبر Kashier ولا يتم حفظها لدى Orange.",
           )}
         </p>
       </div>

@@ -1,5 +1,5 @@
 /** @doc Detects <MEGSY_MAIL .../> tags in a streamed assistant reply and acts on
- *  them through the Nova Mail system: the assistant can send mail from the
+ *  them through the Orange Mail system: the assistant can send mail from the
  *  user's own username@megsyai.com address (site sign-ups, follow-ups) and can
  *  read the latest inbox messages (e.g. confirmation codes).
  *

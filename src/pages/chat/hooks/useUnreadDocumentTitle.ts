@@ -1,7 +1,7 @@
 import { useEffect, type MutableRefObject } from "react";
 
 /**
- * Mirrors the unread-count into the document title (e.g. "(3) Nova") while
+ * Mirrors the unread-count into the document title (e.g. "(3) Orange") while
  * the tab is hidden, and clears it back to the original title when the user
  * returns to the tab.
  */

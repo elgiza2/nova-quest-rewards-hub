@@ -1,4 +1,4 @@
-/* Scope upstream tokens to chat and follow Nova's existing light/dark tokens. */
+/* Scope upstream tokens to chat and follow Orange's existing light/dark tokens. */
 .megsy-openui {
   --iui-font: inherit;
   --iui-canvas: var(--chat-ui-canvas);

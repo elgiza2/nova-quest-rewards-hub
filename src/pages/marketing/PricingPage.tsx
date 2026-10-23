@@ -50,7 +50,7 @@ const HERO_VIDEO =
 const NAV_LINKS = [
   { label: "Plans", href: "#plans-grid" },
   { label: "FAQ", href: "#pricing-faq" },
-  { label: "Support", href: "mailto:support@megsyai.com" },
+  { label: "Support", href: "https://t.me/Torekr" },
 ];
 
 /* ----------------------------- StaggeredFade ----------------------------- */
@@ -196,10 +196,10 @@ const PricingPage = () => {
   const pricingLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Nova AI",
+    name: "Orange AI",
     description:
       "AI agent workspace for chat, deep research, image and video generation, presentations, documents and app building.",
-    brand: { "@type": "Brand", name: "Nova AI" },
+    brand: { "@type": "Brand", name: "Orange AI" },
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "USD",

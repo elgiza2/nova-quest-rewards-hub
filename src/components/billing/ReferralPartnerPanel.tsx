@@ -31,7 +31,7 @@ export default function ReferralPartnerPanel({ className = "" }: ReferralPartner
       <div className="mt-6 overflow-hidden rounded-[24px] border border-border">
         <img
           src={partnerImage}
-          alt={copy("Nova partner program artwork")}
+          alt={copy("Orange partner program artwork")}
           width={1200}
           height={912}
           loading="lazy"

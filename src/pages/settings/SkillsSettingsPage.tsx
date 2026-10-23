@@ -306,7 +306,7 @@ export default function SkillsSettingsPage() {
   return (
     <SubShell
       title="Skills"
-      subtitle="Experts Nova calls automatically inside chat."
+      subtitle="Experts Orange calls automatically inside chat."
       backTo="/settings"
     >
       <input
@@ -779,7 +779,7 @@ function SkillDesigner({
           ? "Saving…"
           : hasDraft
             ? "Changes save automatically."
-            : "Tell Nova what expert you need and it drafts the skill."
+            : "Tell Orange what expert you need and it drafts the skill."
       }
       onBack={onClose}
       action={
@@ -933,7 +933,7 @@ function SkillDesigner({
             Your skill will appear here
           </p>
           <p className="mt-1.5 text-[12.5px] text-[color:var(--mn-muted)] max-w-[280px] mx-auto leading-relaxed">
-            Once Nova drafts it, every field below becomes editable.
+            Once Orange drafts it, every field below becomes editable.
           </p>
         </SubCard>
       ) : (
@@ -960,7 +960,7 @@ function SkillDesigner({
 
           <SubSection
             title="Triggers"
-            description="Keywords that let Nova pick this skill automatically."
+            description="Keywords that let Orange pick this skill automatically."
           >
             <SubCard>
               <div className="flex gap-1.5 flex-wrap min-h-[34px] items-center">
@@ -998,7 +998,7 @@ function SkillDesigner({
 
           <SubSection
             title="Instructions"
-            description="The system prompt Nova follows for this skill."
+            description="The system prompt Orange follows for this skill."
           >
             <SubCard flush>
               <Textarea

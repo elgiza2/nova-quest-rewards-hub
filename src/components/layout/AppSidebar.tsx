@@ -421,7 +421,7 @@ const AppSidebar = ({
     },
   ];
 
-  // Nova Email is hidden until the mailbox UI is reworked. Keep the entry here
+  // Orange Email is hidden until the mailbox UI is reworked. Keep the entry here
   // (commented, not deleted) so restoring it is a one-line change.
   // moreNav.push({
   //   label: "Mail",
@@ -539,7 +539,7 @@ const AppSidebar = ({
               className="text-[18px] tracking-tight truncate"
               style={{ fontWeight: 900, letterSpacing: "-0.02em" }}
             >
-              Nova
+              Orange
             </BrandWord>
           </div>
         )}
@@ -1035,7 +1035,7 @@ const AppSidebar = ({
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + var(--pwa-extra-top, 0px) + 0.75rem)" }}
       >
         <BrandLogo alt="" width={22} height={22} className="h-[22px] w-[22px] shrink-0" loading="eager" decoding="async" />
-        <BrandWord className="truncate text-[19px] font-bold tracking-normal">Nova</BrandWord>
+        <BrandWord className="truncate text-[19px] font-bold tracking-normal">Orange</BrandWord>
         <button
           type="button"
           onClick={onClose}

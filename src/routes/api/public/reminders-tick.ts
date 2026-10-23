@@ -85,7 +85,7 @@ export const Route = createFileRoute("/api/public/reminders-tick")({
           .limit(200);
         let reminders = 0;
         for (const n of due ?? []) {
-          const r = await sendToUser(admin, n.user_id, (n.kind === "alarm" ? "⏰ " : "🔔 ") + n.title, n.body || "ميغسي بتفكّرك", {
+          const r = await sendToUser(admin, n.user_id, (n.kind === "alarm" ? "⏰ " : "🔔 ") + n.title, n.body || "أورانج بتفكّرك", {
             kind: n.kind || "task",
             task_id: n.task_id || "",
             path: "/tasks",

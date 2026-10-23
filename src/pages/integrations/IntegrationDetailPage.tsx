@@ -1,4 +1,4 @@
-/** @doc One app — glass detail: hero, linked accounts, connect, how Nova uses it. */
+/** @doc One app — glass detail: hero, linked accounts, connect, how Orange uses it. */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeft, Loader2, Plus, ShieldCheck, Trash2, UserRound } from "lucide-react";
@@ -40,7 +40,7 @@ export default function IntegrationDetailPage() {
   };
 
   useEffect(() => {
-    if (item) document.title = `${item.name} — Nova`;
+    if (item) document.title = `${item.name} — Orange`;
     void refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [app]);
@@ -165,12 +165,12 @@ export default function IntegrationDetailPage() {
           <section className="gx-card app-note">
             <h3 className="app-note-title">
               <ShieldCheck strokeWidth={1.8} />
-              {ar ? "ميغسي بيستخدمه إزاي" : "How Nova uses it"}
+              {ar ? "أورانج بيستخدمه إزاي" : "How Orange uses it"}
             </h3>
             <p className="app-note-text">
               {ar
-                ? "لما تطلب حاجة محتاجة التطبيق ده، ميغسي بيستخدم حسابك المربوط تلقائيًا، وبيسألك قبل أي خطوة مهمة."
-                : "When a request needs this app, Nova uses your linked account automatically and asks before important steps."}
+                ? "لما تطلب حاجة محتاجة التطبيق ده، أورانج بيستخدم حسابك المربوط تلقائيًا، وبيسألك قبل أي خطوة مهمة."
+                : "When a request needs this app, Orange uses your linked account automatically and asks before important steps."}
             </p>
           </section>
         </div>

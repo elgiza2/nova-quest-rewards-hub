@@ -65,7 +65,7 @@ export default function PasswordsPage() {
   return (
     <SubShell
       title="Passwords"
-      subtitle="Every account the agent creates is registered with your Nova email and a strong password, and it is saved here so you can come back to it anytime."
+      subtitle="Every account the agent creates is registered with your Orange email and a strong password, and it is saved here so you can come back to it anytime."
     >
       <SubSection title="Saved logins">
         <div className="gx-card">

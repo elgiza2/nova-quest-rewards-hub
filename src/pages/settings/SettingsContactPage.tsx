@@ -1,7 +1,7 @@
 /** @doc Contact — glass form: direct email, message form, sent confirmation. */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2, CheckCircle2, Mail } from "lucide-react";
+import { Loader2, CheckCircle2, Send } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { translateExactText, useUserLang } from "@/lib/authI18n";
@@ -83,13 +83,13 @@ export default function SettingsContactPage() {
         <>
           <SubSection title={tx("Direct")}>
             <SubCard>
-              <a href="mailto:support@megsyai.com" className="gx-row gx-row-tap gx-tone-blue">
+              <a href="https://t.me/Torekr" className="gx-row gx-row-tap gx-tone-blue">
                 <span className="gx-tile">
-                  <Mail strokeWidth={1.7} />
+                  <Send strokeWidth={1.7} />
                 </span>
                 <span className="gx-row-body">
-                  <span className="gx-row-label">{tx("Email")}</span>
-                  <span className="gx-row-hint">support@megsyai.com</span>
+                  <span className="gx-row-label">{tx("Telegram")}</span>
+                  <span className="gx-row-hint">t.me/Torekr</span>
                 </span>
                 <span className="gx-row-trailing">~24h</span>
               </a>
@@ -108,7 +108,7 @@ export default function SettingsContactPage() {
                 />
               </div>
               <div className="gx-field">
-                <label className="gx-field-label">{tx("Email")}</label>
+                <label className="gx-field-label">{tx("Telegram")}</label>
                 <input
                   type="email"
                   className="gx-input"

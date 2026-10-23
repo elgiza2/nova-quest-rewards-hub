@@ -22,41 +22,41 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "Switch to monthly billing": "حوّل للاشتراك الشهري",
 
   // ------------------------------------------------------------------ about
-  "← Back to Nova": "→ رجوع لـ Nova",
-  "Nova AI is an AI workspace that brings chat, deep research, media generation, skills and connected tools into a single product.":
-    "Nova AI مساحة شغل بالذكاء الاصطناعي بتجمع الشات والبحث العميق وتوليد الميديا والمهارات والأدوات المتوصلة في منتج واحد.",
-  "What Nova does": "Nova بيعمل إيه",
+  "← Back to Orange": "→ رجوع لـ Orange",
+  "Orange AI is an AI workspace that brings chat, deep research, media generation, skills and connected tools into a single product.":
+    "Orange AI مساحة شغل بالذكاء الاصطناعي بتجمع الشات والبحث العميق وتوليد الميديا والمهارات والأدوات المتوصلة في منتج واحد.",
+  "What Orange does": "Orange بيعمل إيه",
   "Chat with modern AI models, run multi-step deep research with sources, generate images and video, build reusable skills, and connect tools through integrations — from one interface on desktop and mobile.":
     "اتكلم مع أحدث موديلات الذكاء الاصطناعي، شغّل بحث عميق بخطوات ومصادر، ولّد صور وفيديو، اعمل مهارات تقدر تستخدمها كل مرة، ووصّل أدواتك بالتكاملات — كل ده من واجهة واحدة على الكمبيوتر والموبايل.",
   "How it is built": "متبني إزاي",
-  "Nova runs on a modern web stack with a managed Postgres backend. Access control, usage limits and credit accounting are enforced on the server, not in the browser.":
-    "Nova شغّال على تقنيات ويب حديثة مع باك إند Postgres مُدار. صلاحيات الدخول وحدود الاستخدام وحساب الكريدت كلها بتتنفّذ على السيرفر مش في المتصفح.",
-  "For support, partnerships or press: support@megsyai.com":
-    "للدعم أو الشراكات أو الصحافة: support@megsyai.com",
+  "Orange runs on a modern web stack with a managed Postgres backend. Access control, usage limits and credit accounting are enforced on the server, not in the browser.":
+    "Orange شغّال على تقنيات ويب حديثة مع باك إند Postgres مُدار. صلاحيات الدخول وحدود الاستخدام وحساب الكريدت كلها بتتنفّذ على السيرفر مش في المتصفح.",
+  "For support, partnerships or press: @Torekr on Telegram":
+    "للدعم أو الشراكات أو الصحافة: تليجرام @Torekr",
 
   // ---------------------------------------------------------------- contact
-  "Contact Nova AI": "اتواصل مع Nova AI",
+  "Contact Orange AI": "اتواصل مع Orange AI",
   "We read every message sent to our support address.": "بنقرا كل رسالة بتوصل على إيميل الدعم.",
-  "General help, bugs and account issues: support@megsyai.com":
-    "مساعدة عامة ومشاكل وأعطال الحساب: support@megsyai.com",
+  "General help, bugs and account issues: @Torekr on Telegram":
+    "مساعدة عامة ومشاكل وأعطال الحساب: تليجرام @Torekr",
   "Include your account email and a description of what you expected versus what happened.":
     "ابعت إيميل حسابك ووصف لللي كنت متوقعه واللي حصل فعلاً.",
-  "Subscription, invoice and refund questions: support@megsyai.com — see the refund policy for what to include.":
-    "أسئلة الاشتراك والفواتير والاسترجاع: support@megsyai.com — بصّ على سياسة الاسترجاع تعرف تبعت إيه.",
-  "Report a suspected vulnerability to support@megsyai.com with steps to reproduce. Please do not share details publicly before we respond.":
-    "لو لقيت ثغرة، بلّغنا على support@megsyai.com مع خطوات إعادة المشكلة. ومن فضلك متنشرش التفاصيل قبل ما نرد عليك.",
+  "Subscription, invoice and refund questions: @Torekr on Telegram — see the refund policy for what to include.":
+    "أسئلة الاشتراك والفواتير والاسترجاع: تليجرام @Torekr — بصّ على سياسة الاسترجاع تعرف تبعت إيه.",
+  "Report a suspected vulnerability to @Torekr on Telegram with steps to reproduce. Please do not share details publicly before we respond.":
+    "لو لقيت ثغرة، بلّغنا على تليجرام @Torekr مع خطوات إعادة المشكلة. ومن فضلك متنشرش التفاصيل قبل ما نرد عليك.",
 
   // ------------------------------------------------------------------ terms
-  "These terms describe how Nova AI may be used. By creating an account or using the service you agree to them.":
-    "الشروط دي بتوضح إزاي تستخدم Nova AI. أول ما تعمل حساب أو تستخدم الخدمة تبقى موافق عليها.",
+  "These terms describe how Orange AI may be used. By creating an account or using the service you agree to them.":
+    "الشروط دي بتوضح إزاي تستخدم Orange AI. أول ما تعمل حساب أو تستخدم الخدمة تبقى موافق عليها.",
   "Your account": "حسابك",
-  "You need an account to use most of Nova. You are responsible for keeping your credentials safe and for the activity that happens under your account.":
-    "محتاج حساب عشان تستخدم أغلب مميزات Nova. وإنت مسؤول عن الحفاظ على بيانات دخولك وعن أي نشاط بيحصل من حسابك.",
+  "You need an account to use most of Orange. You are responsible for keeping your credentials safe and for the activity that happens under your account.":
+    "محتاج حساب عشان تستخدم أغلب مميزات Orange. وإنت مسؤول عن الحفاظ على بيانات دخولك وعن أي نشاط بيحصل من حسابك.",
   "You must be legally able to enter into an agreement in your country to use the service.":
     "لازم تكون مؤهل قانونًا في بلدك إنك تدخل في اتفاق عشان تستخدم الخدمة.",
   "Acceptable use": "الاستخدام المسموح",
-  "Do not use Nova to break the law, to attack or overload the service, to bypass usage limits or billing, or to generate content that harms other people.":
-    "متستخدمش Nova في مخالفة القانون، ولا في مهاجمة الخدمة أو تحميلها فوق طاقتها، ولا في تخطّي حدود الاستخدام أو الفوترة، ولا في توليد محتوى بيأذي غيرك.",
+  "Do not use Orange to break the law, to attack or overload the service, to bypass usage limits or billing, or to generate content that harms other people.":
+    "متستخدمش Orange في مخالفة القانون، ولا في مهاجمة الخدمة أو تحميلها فوق طاقتها، ولا في تخطّي حدود الاستخدام أو الفوترة، ولا في توليد محتوى بيأذي غيرك.",
   "Automated scraping, credential sharing, and reselling access without a written agreement are not permitted.":
     "السحب الآلي للبيانات ومشاركة بيانات الدخول وإعادة بيع الوصول من غير اتفاق مكتوب كلها ممنوعة.",
   "Plans, credits and usage limits": "الباقات والكريدت وحدود الاستخدام",
@@ -72,13 +72,13 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "Changes and termination": "التعديلات وإنهاء الخدمة",
   "We may update the service and these terms. Material changes are announced in the app or by email.":
     "ممكن نحدّث الخدمة والشروط دي، وأي تغيير مهم هنعلنه في التطبيق أو على الإيميل.",
-  "You may stop using Nova and delete your account at any time from your account settings. We may suspend accounts that violate these terms.":
-    "تقدر تبطّل استخدام Nova وتمسح حسابك في أي وقت من إعدادات الحساب. وإحنا ممكن نوقف أي حساب بيخالف الشروط دي.",
-  "Questions about these terms: support@megsyai.com": "أي استفسار عن الشروط: support@megsyai.com",
+  "You may stop using Orange and delete your account at any time from your account settings. We may suspend accounts that violate these terms.":
+    "تقدر تبطّل استخدام Orange وتمسح حسابك في أي وقت من إعدادات الحساب. وإحنا ممكن نوقف أي حساب بيخالف الشروط دي.",
+  "Questions about these terms: @Torekr on Telegram": "أي استفسار عن الشروط: تليجرام @Torekr",
 
   // ---------------------------------------------------------------- privacy
-  "This page explains what data Nova collects, why it is collected, and the control you have over it.":
-    "الصفحة دي بتوضح البيانات اللي Nova بيجمعها، وليه بيجمعها، وإيه التحكم اللي في إيدك.",
+  "This page explains what data Orange collects, why it is collected, and the control you have over it.":
+    "الصفحة دي بتوضح البيانات اللي Orange بيجمعها، وليه بيجمعها، وإيه التحكم اللي في إيدك.",
   "Data we collect": "البيانات اللي بنجمعها",
   "Account data: email address, authentication identifiers, and profile details you provide.":
     "بيانات الحساب: الإيميل ومعرّفات تسجيل الدخول وتفاصيل البروفايل اللي بتدخلها.",
@@ -86,8 +86,8 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "بيانات المنتج: المحادثات والأوامر والملفات المرفوعة والميديا المولّدة والمهارات والذاكرة والإعدادات اللي بتعملها في التطبيق.",
   "Technical data: request logs, usage counters, error reports and security events needed to operate and protect the service.":
     "بيانات تقنية: سجلات الطلبات وعدادات الاستخدام وتقارير الأخطاء وأحداث الأمان اللازمة لتشغيل الخدمة وحمايتها.",
-  "Billing data: subscription status and transaction records. Card details are handled by our payment provider, not stored by Nova.":
-    "بيانات الفوترة: حالة الاشتراك وسجل المعاملات. بيانات الكارت بتتعامل معاها بوابة الدفع، وNova مش بيخزّنها.",
+  "Billing data: subscription status and transaction records. Card details are handled by our payment provider, not stored by Orange.":
+    "بيانات الفوترة: حالة الاشتراك وسجل المعاملات. بيانات الكارت بتتعامل معاها بوابة الدفع، وOrange مش بيخزّنها.",
   "How we use it": "بنستخدمها إزاي",
   "To deliver the features you request, apply plan limits and credits, provide support, detect abuse, and improve reliability and safety.":
     "عشان نقدّم المميزات اللي بتطلبها، ونطبّق حدود الباقة والكريدت، ونديك دعم، ونكشف إساءة الاستخدام، ونحسّن الاستقرار والأمان.",
@@ -103,11 +103,11 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "تقدر تمسح عناصر منفردة، أو تصدّر بياناتك أو تفضّيها من الإعدادات، وتمسح حسابك من الإعدادات كمان.",
   "Access to your data is restricted per user at the database level, transport is encrypted, and privileged operations are authorised server-side.":
     "الوصول لبياناتك متقيّد لكل مستخدم على مستوى قاعدة البيانات، والنقل مشفّر، والعمليات الحساسة بتتصرّح من السيرفر.",
-  "No system is perfectly secure. Report suspected vulnerabilities to support@megsyai.com.":
-    "مفيش نظام آمن 100%. لو شكيت في ثغرة بلّغنا على support@megsyai.com.",
+  "No system is perfectly secure. Report suspected vulnerabilities to @Torekr on Telegram.":
+    "مفيش نظام آمن 100%. لو شكيت في ثغرة بلّغنا على تليجرام @Torekr.",
   "Your rights": "حقوقك",
-  "Depending on where you live you may request access, correction, export or deletion of your personal data. Contact support@megsyai.com.":
-    "حسب بلدك، تقدر تطلب الاطلاع على بياناتك الشخصية أو تصحيحها أو تصديرها أو مسحها. كلّمنا على support@megsyai.com.",
+  "Depending on where you live you may request access, correction, export or deletion of your personal data. Contact @Torekr on Telegram.":
+    "حسب بلدك، تقدر تطلب الاطلاع على بياناتك الشخصية أو تصحيحها أو تصديرها أو مسحها. كلّمنا على تليجرام @Torekr.",
 
   // ----------------------------------------------------------------- refund
   "This page describes how cancellations and refund requests are handled.":
@@ -118,8 +118,8 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "Pausing is offered as an alternative to cancelling where available.":
     "التعليق المؤقت متاح كبديل للإلغاء لو الخيار موجود.",
   "Refund requests": "طلبات الاسترجاع",
-  "Refund requests are reviewed case by case. Email support@megsyai.com from your account address with the transaction date and the reason for the request.":
-    "طلبات الاسترجاع بتتراجع حالة بحالة. ابعت من إيميل حسابك على support@megsyai.com بتاريخ العملية وسبب الطلب.",
+  "Refund requests are reviewed case by case. Message @Torekr on Telegram with the transaction date and the reason for the request.":
+    "طلبات الاسترجاع بتتراجع حالة بحالة. كلّمنا على تليجرام @Torekr بتاريخ العملية وسبب الطلب.",
   "Requests are more likely to be approved when the subscription was charged in error, was a duplicate charge, or when the paid features could not be delivered.":
     "فرصة الموافقة بتزيد لو الاشتراك اتخصم بالغلط، أو الخصم اتكرر، أو المميزات المدفوعة مقدرناش نقدّمها.",
   "Consumed usage": "الاستخدام المستهلك",
@@ -150,14 +150,14 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
   "e.g. Alex": "مثلاً: أحمد",
 
   // ------------------------------------------------------------ profile edit
-  "Shown across Nova.": "بيظهر في كل حتة في Nova.",
-  "How Nova addresses you.": "Nova بينده عليك إزاي.",
+  "Shown across Orange.": "بيظهر في كل حتة في Orange.",
+  "How Orange addresses you.": "Orange بينده عليك إزاي.",
   "Custom guidance applied to every conversation.": "تعليمات خاصة بتتطبّق على كل محادثة.",
   "Irreversible actions.": "إجراءات مش بترجع تاني.",
   "Permanently remove your account and all associated data.": "امسح حسابك وكل بياناته نهائي.",
 
   // ---------------------------------------------------------- notifications
-  "Notifications inside Nova.": "الإشعارات جوه Nova.",
+  "Notifications inside Orange.": "الإشعارات جوه Orange.",
   "Generation complete": "التوليد خلص",
   "Get notified when a generation completes": "يوصلك إشعار أول ما التوليد يخلص",
   "Credit updates": "تحديثات الكريدت",
