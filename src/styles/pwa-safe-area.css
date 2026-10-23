@@ -124,6 +124,7 @@ html.tg-app header.fixed,
 html.tg-app header.sticky,
 html.tg-app [data-app-header],
 html.tg-app .fixed.inset-y-0,
+html.tg-app .mobile-chat-header,
 html.tg-app [data-fixed-top] {
   top: var(--tg-top-safe) !important;
 }
