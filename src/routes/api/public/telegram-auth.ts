@@ -126,7 +126,7 @@ export const Route = createFileRoute("/api/public/telegram-auth")({
             if (String((createErr as { code?: string }).code ?? "").includes("already") ||
                 String((createErr as { message?: string }).message ?? "").toLowerCase().includes("already registered")) {
               const { data: byEmail } = await db.auth.admin.listUsers({ page: 1, perPage: 50 });
-              const match = (byEmail?.users ?? []).find(
+              let match = (byEmail?.users ?? []).find(
                 (u: { email?: string }) => u.email?.toLowerCase() === email,
               );
               if (!match) {
