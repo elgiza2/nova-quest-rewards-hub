@@ -74,6 +74,7 @@ import {
   // marketing
   PricingPage,
   CheckoutPage,
+  CryptoCheckoutPage,
   LegalPage,
   RestorePurchasePage,
   MegsyLandingPage,
@@ -451,6 +452,7 @@ export const AppRoutes = ({ currentUserId }: { currentUserId: string | null }) =
 
     {/* ── Checkout — dedicated payment page, separate from pricing ── */}
     <Route path="/checkout" element={<CheckoutPage />} />
+    <Route path="/checkout/crypto" element={<CryptoCheckoutPage />} />
 
     {/* ── Security (settings-owned) ─────────────────────────── */}
     <Route path="/security" element={<SecurityPage />} />
