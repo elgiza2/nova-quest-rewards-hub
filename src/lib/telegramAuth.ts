@@ -185,3 +185,13 @@ export async function tryAutoLoginTelegram(): Promise<boolean> {
   const r = await signInWithTelegram();
   return r.ok;
 }
+
+/** Open a link the Telegram way: t.me links inside Telegram, others in Telegram's browser. */
+export function openTaskLink(url: string): void {
+  const tg = tgWebApp() as (TgWebApp & { openLink?: (u: string) => void }) | null;
+  if (isInsideTelegram() && tg) {
+    if (/^https?:\/\/t\.me\//i.test(url) && tg.openTelegramLink) return tg.openTelegramLink(url);
+    if (tg.openLink) return tg.openLink(url);
+  }
+  window.open(url, "_blank", "noopener,noreferrer");
+}
