@@ -47,10 +47,10 @@ function bold(s: string): string {
 
 /** Channel post pool — the app's own characters, bold English captions, no emojis. */
 const POST_POOL: { photo: string; caption: string }[] = [
-  { photo: char01.url, caption: `<b>${bold("Orange AI is here.")}</b>\n\n<b>${bold("Your all-in-one AI assistant, right inside Telegram.")}</b>` },
-  { photo: char02.url, caption: `<b>${bold("Reach new levels.")}</b>\n\n<b>${bold("Complete daily tasks, earn points and climb the ranks.")}</b>` },
-  { photo: char03.url, caption: `<b>${bold("Stay on course.")}</b>\n\n<b>${bold("Check in every day and keep your rewards growing.")}</b>` },
-  { photo: char04.url, caption: `<b>${bold("Your tasks are waiting.")}</b>\n\n<b>${bold("Open Orange AI, finish a task and turn minutes into points.")}</b>` },
+  { photo: `${MINIAPP_URL}/posts/post-welcome.jpg`, caption: `<b>${bold("Orange AI is here.")}</b>\n\n<b>${bold("Your all-in-one AI assistant, right inside Telegram.")}</b>` },
+  { photo: `${MINIAPP_URL}/posts/post-levels.jpg`, caption: `<b>${bold("Reach new levels.")}</b>\n\n<b>${bold("Complete daily tasks, earn points and climb the ranks.")}</b>` },
+  { photo: `${MINIAPP_URL}/posts/post-daily.jpg`, caption: `<b>${bold("Stay on course.")}</b>\n\n<b>${bold("Check in every day and keep your rewards growing.")}</b>` },
+  { photo: `${MINIAPP_URL}/posts/post-tasks.jpg`, caption: `<b>${bold("Your tasks are waiting.")}</b>\n\n<b>${bold("Open Orange AI, finish a task and turn minutes into points.")}</b>` },
 ];
 
 /** Daily channel posts: two slots per day, lazily fired on webhook traffic. */
