@@ -1,10 +1,10 @@
-/** @doc useBrandLogo — returns the Orange brand icon URL. */
-import megsyProjectLogo from "@/assets/megsy-project-logo.png";
+/** @doc useBrandLogo — returns the Orange brand icon URL (Orange AI logo). */
+import orangeLogo from "@/assets/orange-logo.png.asset.json";
 
-const megsyIconUrl = megsyProjectLogo;
+const orangeIconUrl = orangeLogo.url;
 
 export function useBrandLogo(): string {
-  return megsyIconUrl;
+  return orangeIconUrl;
 }
 
-export { megsyIconUrl as megsyIcon };
+export { orangeIconUrl as megsyIcon, orangeIconUrl as orangeIcon };
