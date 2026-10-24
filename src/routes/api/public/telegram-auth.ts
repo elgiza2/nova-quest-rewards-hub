@@ -26,6 +26,21 @@ function hex(buf: ArrayBuffer): string {
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+function safeErrorDetails(error: unknown) {
+  const value = error as { code?: unknown; name?: unknown; status?: unknown; message?: unknown } | null;
+  const message = typeof value?.message === "string" ? value.message : "";
+  return {
+    name: typeof value?.name === "string" ? value.name.slice(0, 80) : "unknown",
+    code: typeof value?.code === "string" ? value.code.slice(0, 80) : "unknown",
+    status: typeof value?.status === "number" ? value.status : null,
+    message: message
+      .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "[email]")
+      .replace(/\b\d{7,}\b/g, "[id]")
+      .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, "[token]")
+      .slice(0, 180),
+  };
+}
+
 async function hmac(key: ArrayBuffer | Uint8Array, msg: string): Promise<ArrayBuffer> {
   const k = await crypto.subtle.importKey(
     "raw",
@@ -173,7 +188,7 @@ export const Route = createFileRoute("/api/public/telegram-auth")({
               }
             } else {
               console.error("[telegram-auth] Supabase user creation failed", {
-                code: String((createErr as { code?: string }).code ?? "unknown"),
+                ...safeErrorDetails(createErr),
               });
               return Response.json({ ok: false, error: "user_create_failed" }, { status: 500 });
             }
