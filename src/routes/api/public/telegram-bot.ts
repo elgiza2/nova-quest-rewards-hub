@@ -25,7 +25,7 @@ const EMAIL_DOMAIN = "users.orangeai.telegram";
 
 const MINIAPP_URL =
   process.env.TELEGRAM_MINIAPP_URL ||
-  "https://orange-ai-beta.vercel.app";
+  "https://nova-quest-rewards-hub.lovable.app";
 
 const CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || "-1002616088306";
 const COMMUNITY_URL = "https://t.me/oraien";
@@ -57,6 +57,12 @@ const POST_POOL: { photo: string; caption: string }[] = [
 const DAILY_SLOTS = [
   { key: "morning", hourUTC: 9 },
   { key: "evening", hourUTC: 19 },
+];
+
+/** One-off scheduled channel posts: fired once when webhook traffic arrives
+ *  after `atUTC`, then marked done in bot_daily_state under `key`. */
+const ONEOFF_POSTS: { key: string; atUTC: string; poolIndex: number }[] = [
+  { key: "oneoff-2026-10-24-02", atUTC: "2026-10-24T02:00:00Z", poolIndex: 3 },
 ];
 
 /** Daily personal notification to every Telegram user, sent in batches from webhook traffic. */
@@ -274,6 +280,13 @@ async function maybePostDaily(): Promise<void> {
     const db = supabaseAdmin as any;
     const now = new Date();
     const today = now.toISOString().slice(0, 10);
+    for (const one of ONEOFF_POSTS) {
+      if (now.getTime() < Date.parse(one.atUTC)) continue;
+      const { data } = await db.from("bot_daily_state").select("last_posted_day").eq("slot", one.key).maybeSingle();
+      if (data?.last_posted_day) continue;
+      if (await postToChannel(one.poolIndex)) await saveDailyState(one.key, one.poolIndex);
+      return;
+    }
     for (const slot of DAILY_SLOTS) {
       if (now.getUTCHours() < slot.hourUTC) continue;
       const { data } = await db.from("bot_daily_state").select("last_posted_day").eq("slot", slot.key).maybeSingle();
