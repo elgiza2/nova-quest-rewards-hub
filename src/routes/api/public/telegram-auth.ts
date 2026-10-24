@@ -38,7 +38,7 @@ async function hmac(key: ArrayBuffer | Uint8Array, msg: string): Promise<ArrayBu
 }
 
 /** Returns the parsed fields when initData is valid and fresh, else null. */
-async function verifyInitData(initData: string, botToken: string): Promise<TgUser | null> {
+export async function verifyInitData(initData: string, botToken: string): Promise<TgUser | null> {
   const params = new URLSearchParams(initData);
   const hash = params.get("hash");
   if (!hash) return null;
@@ -47,7 +47,8 @@ async function verifyInitData(initData: string, botToken: string): Promise<TgUse
     .map(([k, v]) => `${k}=${v}`)
     .sort()
     .join("\n");
-  const secret = await hmac(new TextEncoder().encode("WebAppData"), botToken);
+  // Telegram derives the secret key as HMAC-SHA256(key=bot_token, data="WebAppData").
+  const secret = await hmac(new TextEncoder().encode(botToken), "WebAppData");
   const computed = hex(await hmac(secret, dataCheckString));
   if (computed !== hash.toLowerCase()) return null;
   const authDate = Number(params.get("auth_date") || 0);
