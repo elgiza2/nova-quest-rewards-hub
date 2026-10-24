@@ -24,13 +24,14 @@ async function signedInitData(botToken: string, authDate: number): Promise<strin
   const params = new URLSearchParams({
     auth_date: String(authDate),
     query_id: "AAEAAAB-test-query",
+    signature: "test-telegram-signature",
     user: JSON.stringify({ id: 123456789, first_name: "Telegram", username: "test_user" }),
   });
   const dataCheckString = [...params.entries()]
+    .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
     .map(([key, value]) => `${key}=${value}`)
-    .sort()
     .join("\n");
-  const secretKey = await hmac(new TextEncoder().encode(botToken), "WebAppData");
+  const secretKey = await hmac(new TextEncoder().encode("WebAppData"), botToken);
   params.set("hash", toHex(await hmac(secretKey, dataCheckString)));
   return params.toString();
 }
@@ -38,7 +39,7 @@ async function signedInitData(botToken: string, authDate: number): Promise<strin
 describe("Telegram initData verification", () => {
   const botToken = "123456789:unit-test-bot-token";
 
-  it("accepts initData signed with HMAC(bot token, WebAppData)", async () => {
+  it("accepts initData with WebAppData as HMAC key and the bot token as message", async () => {
     const initData = await signedInitData(botToken, Math.floor(Date.now() / 1000));
 
     await expect(verifyInitData(initData, botToken)).resolves.toEqual({

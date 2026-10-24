@@ -44,11 +44,11 @@ export async function verifyInitData(initData: string, botToken: string): Promis
   if (!hash) return null;
   params.delete("hash");
   const dataCheckString = [...params.entries()]
+    .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
     .map(([k, v]) => `${k}=${v}`)
-    .sort()
     .join("\n");
-  // Telegram derives the secret key as HMAC-SHA256(key=bot_token, data="WebAppData").
-  const secret = await hmac(new TextEncoder().encode(botToken), "WebAppData");
+  // Telegram derives the secret key as HMAC-SHA256(key="WebAppData", data=bot_token).
+  const secret = await hmac(new TextEncoder().encode("WebAppData"), botToken);
   const computed = hex(await hmac(secret, dataCheckString));
   if (computed !== hash.toLowerCase()) return null;
   const authDate = Number(params.get("auth_date") || 0);
