@@ -1,50 +1,12 @@
-/** Tasks & points — server-verified completion of reward tasks.
+/** Tasks & points — authenticated reward claims.
  *
- *  The browser cannot award itself credits: this route verifies the caller's
- *  bearer session and the task condition before the privileged claim RPC runs.
+ *  Regular tasks are completed by user confirmation after opening the task.
+ *  The monthly subscription reward remains tied to an active in-app subscription.
  */
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { isOrangeTask } from "@/lib/orangeTasks";
 
 type TaskKey = string;
-type TaskRow = {
-  id: string;
-  title: string;
-  reward_credits: number;
-  target_count: number;
-  active: boolean;
-  action_type: string | null;
-  action_url: string | null;
-};
-
-async function verifyTelegramChannel(
-  db: SupabaseClient,
-  userId: string,
-  url: string | null,
-): Promise<boolean> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const handle = (url ?? "").match(/t\.me\/([A-Za-z0-9_]+)/)?.[1];
-  if (!token || !handle) return false;
-  const { data } = await db
-    .from("telegram_profiles")
-    .select("telegram_user_id")
-    .eq("user_id", userId)
-    .maybeSingle();
-  if (!data?.telegram_user_id) return false;
-  const response = await fetch(
-    `https://api.telegram.org/bot${token}/getChatMember?chat_id=@${handle}&user_id=${data.telegram_user_id}`,
-  );
-  const result = (await response.json().catch(() => null)) as {
-    ok?: boolean;
-    result?: { status?: string; is_member?: boolean };
-  } | null;
-  return (
-    result?.ok === true &&
-    (["member", "administrator", "creator"].includes(result?.result?.status) ||
-      (result?.result?.status === "restricted" && result.result.is_member === true))
-  );
-}
 
 function serverClients() {
   const url = process.env.SUPABASE_URL as string | undefined;
@@ -62,29 +24,18 @@ async function requireUser(request: Request): Promise<string | null> {
   return data.user?.id ?? null;
 }
 
-async function verifyCondition(
-  db: SupabaseClient,
-  userId: string,
-  taskKey: TaskKey,
-  task: TaskRow,
-): Promise<boolean> {
-  if (task.action_type === "telegram_channel")
-    return verifyTelegramChannel(db, userId, task.action_url);
-  if (taskKey === "daily_checkin") return true;
-  if (taskKey === "first_subscription") {
-    const { data, error } = await db
-      .from("subscriptions")
-      .select("current_period_end")
-      .eq("user_id", userId)
-      .eq("status", "active")
-      .gt("current_period_end", new Date().toISOString())
-      .limit(1)
-      .maybeSingle();
-    return (
-      !error && Boolean(data) && Date.parse(data.current_period_end) <= Date.now() + 32 * 86400_000
-    );
-  }
-  return false;
+async function verifyMonthlySubscription(db: SupabaseClient, userId: string): Promise<boolean> {
+  const { data, error } = await db
+    .from("subscriptions")
+    .select("current_period_end")
+    .eq("user_id", userId)
+    .eq("status", "active")
+    .gt("current_period_end", new Date().toISOString())
+    .limit(1)
+    .maybeSingle();
+  return (
+    !error && Boolean(data) && Date.parse(data.current_period_end) <= Date.now() + 32 * 86400_000
+  );
 }
 
 export const Route = createFileRoute("/api/tasks/complete")({
@@ -149,24 +100,6 @@ export const Route = createFileRoute("/api/tasks/complete")({
             return Response.json({ ok: true, started: true });
           }
 
-          // Only tasks in the shared allowlist have a server-verifiable completion condition.
-          // Opening an arbitrary third-party URL is not proof that the task was completed.
-          if (!isOrangeTask(taskKey)) {
-            return Response.json({ ok: false, error: "verification_unavailable" }, { status: 409 });
-          }
-          if (taskKey === "follow_x") {
-            return Response.json(
-              { ok: false, error: "x_verification_unavailable" },
-              { status: 409 },
-            );
-          }
-          if (taskKey === "buy_orange") {
-            return Response.json(
-              { ok: false, error: "wallet_ownership_verification_required" },
-              { status: 409 },
-            );
-          }
-
           if (taskKey === "daily_checkin") {
             const { data: recent } = await db
               .from("user_reward_tasks")
@@ -189,9 +122,15 @@ export const Route = createFileRoute("/api/tasks/complete")({
               .maybeSingle();
             if (done) return Response.json({ ok: true, already: true, credits: 0 });
 
-            const verified = await verifyCondition(db, userId, taskKey, task as TaskRow);
-            if (!verified)
-              return Response.json({ ok: false, error: "condition_not_met" }, { status: 400 });
+            if (
+              taskKey === "first_subscription" &&
+              !(await verifyMonthlySubscription(db, userId))
+            ) {
+              return Response.json(
+                { ok: false, error: "monthly_subscription_required" },
+                { status: 400 },
+              );
+            }
           }
 
           const { data: grant, error: grantError } = await db.rpc("claim_orange_task", {

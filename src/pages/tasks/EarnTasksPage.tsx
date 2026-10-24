@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useUserLang } from "@/lib/authI18n";
 import SEOHead from "@/components/common/SEOHead";
 import { openTaskLink } from "@/lib/telegramAuth";
-import { ORANGE_TASK_KEYS, canCheckIn, isOrangeTask } from "@/lib/orangeTasks";
+import { ORANGE_TASK_KEYS, canCheckIn } from "@/lib/orangeTasks";
 const logo = { url: "/orange-logo.png" };
 import xArt from "@/assets/tasks/follow_x.jpg";
 import communityArt from "@/assets/tasks/join_channel.jpg";
@@ -209,23 +209,10 @@ export default function EarnTasksPage() {
           message = ar
             ? "افتح المهمة أولاً بالضغط على «يلا»"
             : "Open the task first by pressing Go";
-        else if (result?.error === "verification_unavailable")
+        else if (result?.error === "monthly_subscription_required")
           message = ar
-            ? "لا يتوفر تحقق آمن لهذه المهمة الخارجية؛ لن تُمنح نقاط دون إثبات من الخدمة"
-            : "This external task has no secure verification yet; points require proof from the provider";
-        else if (result?.error === "task_not_ready") {
-          const seconds = Number(result.retryAfterSeconds) || 30;
-          message = ar
-            ? `ارجع بعد ${seconds} ثانية من فتح المهمة واضغط تحقّق`
-            : `Return ${seconds} seconds after opening the task and verify again`;
-        } else if (result?.error === "x_verification_unavailable")
-          message = ar
-            ? "متابعة إكس تحتاج ربط حساب إكس؛ لن تُمنح نقاط قبل التحقق"
-            : "X account verification is required before points can be awarded";
-        else if (result?.error === "wallet_ownership_verification_required")
-          message = ar
-            ? "شراء العملة يحتاج إثبات ملكية المحفظة؛ لا تكفي كتابة عنوانها"
-            : "Coin purchase requires proof of wallet ownership; entering an address is not enough";
+            ? "اشترك في الخطة الشهرية داخل التطبيق أولاً"
+            : "Subscribe to the in-app monthly plan first";
         toast.info(message);
         return;
       }
@@ -291,13 +278,6 @@ export default function EarnTasksPage() {
                     <p className="flex items-center gap-1 text-xs text-muted-foreground tabular-nums">
                       <img src={logo.url} alt="" className="h-3.5 w-3.5" />+{task.reward_credits}
                     </p>
-                    {opened && !daily && !isOrangeTask(task.task_key) && (
-                      <p className="mt-1 text-[10px] text-muted-foreground">
-                        {ar
-                          ? "لا يتوفر تحقق آمن لهذه المهمة بعد"
-                          : "Secure verification is not available for this task yet"}
-                      </p>
-                    )}
                   </div>
                   {completed ? (
                     <Check
@@ -308,9 +288,7 @@ export default function EarnTasksPage() {
                     <Button
                       size="sm"
                       className="h-7 shrink-0 rounded-full px-3 text-xs"
-                      disabled={
-                        busy === task.task_key || (opened && !daily && !isOrangeTask(task.task_key))
-                      }
+                      disabled={busy === task.task_key}
                       onClick={() => {
                         if (opened) void verify(task);
                         else void startTask(task);
@@ -320,15 +298,11 @@ export default function EarnTasksPage() {
                         ? "…"
                         : opened && !daily
                           ? ar
-                            ? "تحقّق"
-                            : "Verify"
-                          : opened && !daily
-                            ? ar
-                              ? "غير متاح"
-                              : "Unavailable"
-                            : ar
-                              ? "يلا"
-                              : "Go"}
+                            ? "تمت"
+                            : "Done"
+                          : ar
+                            ? "يلا"
+                            : "Go"}
                     </Button>
                   )}
                 </li>
