@@ -82,20 +82,45 @@ export const Route = createFileRoute("/api/public/telegram-auth")({
     handlers: {
       GET: async () => {
         const token = process.env.TELEGRAM_BOT_TOKEN;
+        console.info("[telegram-auth] GET bot username", { configured: Boolean(token) });
         if (!token) return Response.json({ ok: false, error: "not_configured" }, { status: 500 });
         const username = await botUsername(token);
         return Response.json({ ok: true, botUsername: username });
       },
       POST: async ({ request }) => {
         const botToken = process.env.TELEGRAM_BOT_TOKEN;
-        if (!botToken) return Response.json({ ok: false, error: "not_configured" }, { status: 500 });
+        if (!botToken) {
+          console.error("[telegram-auth] POST rejected: bot token is not configured");
+          return Response.json({ ok: false, error: "not_configured" }, { status: 500 });
+        }
 
         const body = (await request.json().catch(() => null)) as { initData?: string } | null;
         const initData = body?.initData;
-        if (!initData) return Response.json({ ok: false, error: "missing_init_data" }, { status: 400 });
+        console.info("[telegram-auth] POST received", {
+          hasInitData: Boolean(initData),
+          initDataLength: typeof initData === "string" ? initData.length : 0,
+        });
+        if (!initData) {
+          console.warn("[telegram-auth] POST rejected: initData is missing");
+          return Response.json({ ok: false, error: "missing_init_data" }, { status: 400 });
+        }
 
         const tgUser = await verifyInitData(initData, botToken);
-        if (!tgUser) return Response.json({ ok: false, error: "invalid_init_data" }, { status: 401 });
+        if (!tgUser) {
+          const params = new URLSearchParams(initData);
+          const authDate = Number(params.get("auth_date") || 0);
+          const ageSeconds = authDate ? Math.round(Date.now() / 1000 - authDate) : null;
+          const reason = !params.has("hash")
+            ? "missing_hash"
+            : !authDate
+              ? "missing_auth_date"
+              : Math.abs(ageSeconds ?? 0) > 86400
+                ? "stale_auth_date"
+                : "signature_or_user_invalid";
+          console.warn("[telegram-auth] initData rejected", { reason, ageSeconds });
+          return Response.json({ ok: false, error: "invalid_init_data" }, { status: 401 });
+        }
+        console.info("[telegram-auth] Telegram signature verified");
 
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
         const db = supabaseAdmin as any;
@@ -143,9 +168,13 @@ export const Route = createFileRoute("/api/public/telegram-auth")({
                 userId = match.id;
                 email = match.email ?? email;
               } else {
+                console.error("[telegram-auth] Existing auth user could not be recovered");
                 return Response.json({ ok: false, error: "user_create_failed" }, { status: 500 });
               }
             } else {
+              console.error("[telegram-auth] Supabase user creation failed", {
+                code: String((createErr as { code?: string }).code ?? "unknown"),
+              });
               return Response.json({ ok: false, error: "user_create_failed" }, { status: 500 });
             }
           } else {
@@ -186,8 +215,12 @@ export const Route = createFileRoute("/api/public/telegram-auth")({
         });
         const tokenHash = (link?.properties as { hashed_token?: string } | undefined)?.hashed_token;
         if (linkErr || !tokenHash) {
+          console.error("[telegram-auth] Supabase session token mint failed", {
+            code: String((linkErr as { code?: string } | null)?.code ?? "missing_token_hash"),
+          });
           return Response.json({ ok: false, error: "session_mint_failed" }, { status: 500 });
         }
+        console.info("[telegram-auth] Session token minted successfully");
         return Response.json({ ok: true, token_hash: tokenHash, email });
       },
     },
