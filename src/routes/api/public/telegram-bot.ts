@@ -25,7 +25,7 @@ const EMAIL_DOMAIN = "users.orangeai.telegram";
 
 const MINIAPP_URL =
   process.env.TELEGRAM_MINIAPP_URL ||
-  "https://orange-ai-beta.vercel.app";
+  "https://nova-quest-rewards-hub.lovable.app";
 
 const CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || "-1002616088306";
 const COMMUNITY_URL = "https://t.me/oraien";
