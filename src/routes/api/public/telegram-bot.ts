@@ -280,6 +280,13 @@ async function maybePostDaily(): Promise<void> {
     const db = supabaseAdmin as any;
     const now = new Date();
     const today = now.toISOString().slice(0, 10);
+    for (const one of ONEOFF_POSTS) {
+      if (now.getTime() < Date.parse(one.atUTC)) continue;
+      const { data } = await db.from("bot_daily_state").select("last_posted_day").eq("slot", one.key).maybeSingle();
+      if (data?.last_posted_day) continue;
+      if (await postToChannel(one.poolIndex)) await saveDailyState(one.key, one.poolIndex);
+      return;
+    }
     for (const slot of DAILY_SLOTS) {
       if (now.getUTCHours() < slot.hourUTC) continue;
       const { data } = await db.from("bot_daily_state").select("last_posted_day").eq("slot", slot.key).maybeSingle();
