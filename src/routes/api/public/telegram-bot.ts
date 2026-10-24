@@ -59,6 +59,12 @@ const DAILY_SLOTS = [
   { key: "evening", hourUTC: 19 },
 ];
 
+/** One-off scheduled channel posts: fired once when webhook traffic arrives
+ *  after `atUTC`, then marked done in bot_daily_state under `key`. */
+const ONEOFF_POSTS: { key: string; atUTC: string; poolIndex: number }[] = [
+  { key: "oneoff-2026-10-24-02", atUTC: "2026-10-24T02:00:00Z", poolIndex: 3 },
+];
+
 /** Daily personal notification to every Telegram user, sent in batches from webhook traffic. */
 const NOTIFY_HOUR_UTC = 12;
 const NOTIFY_BATCH = 80;
