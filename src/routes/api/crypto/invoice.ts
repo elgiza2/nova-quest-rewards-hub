@@ -10,12 +10,18 @@
  */
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
+import { Address } from "@ton/core";
 import { matchPaymentEvent } from "@/lib/crypto/verification";
 
 type Asset = "ton" | "usdt_ton";
 const ASSETS = {
- ton:{network:"ton",decimals:9,walletEnv:"CRYPTO_TON_WALLET_ADDRESS",label:"TON"},
- usdt_ton:{network:"ton",decimals:6,walletEnv:"CRYPTO_TON_WALLET_ADDRESS",label:"USDT (TON)"},
+  ton: { network: "ton", decimals: 9, walletEnv: "CRYPTO_TON_WALLET_ADDRESS", label: "TON" },
+  usdt_ton: {
+    network: "ton",
+    decimals: 6,
+    walletEnv: "CRYPTO_TON_WALLET_ADDRESS",
+    label: "USDT (TON)",
+  },
 };
 
 function json(headers: Record<string, string> = {}, status = 200) {
@@ -85,14 +91,26 @@ async function resolvePlan(db: any, tier?: string, interval?: string, sku?: stri
 async function verifyInvoice(inv: any): Promise<string | null> {
   if (!["ton", "usdt_ton"].includes(inv.asset)) return null;
   try {
-    const res = await fetch(`https://tonapi.io/v2/accounts/${encodeURIComponent(inv.wallet_address)}/events?limit=100&start_date=${Math.floor(Date.parse(inv.created_at)/1000)}`, {signal:AbortSignal.timeout(12000)});
+    const res = await fetch(
+      `https://tonapi.io/v2/accounts/${encodeURIComponent(inv.wallet_address)}/events?limit=100&start_date=${Math.floor(Date.parse(inv.created_at) / 1000)}`,
+      { signal: AbortSignal.timeout(12000) },
+    );
     if (!res.ok) return null;
-    const data = await res.json() as {events?: any[]};
+    const data = (await res.json()) as { events?: any[] };
     for (const event of data.events ?? []) {
-      const tx = matchPaymentEvent(event, {asset:inv.asset,wallet:inv.wallet_address,amount:String(inv.expected_nano),memo:inv.memo,createdAt:inv.created_at,expiresAt:inv.expires_at});
+      const tx = matchPaymentEvent(event, {
+        asset: inv.asset,
+        wallet: inv.wallet_address,
+        amount: String(inv.expected_nano),
+        memo: inv.memo,
+        createdAt: inv.created_at,
+        expiresAt: inv.expires_at,
+      });
       if (tx) return tx;
     }
-  } catch { /* A provider failure is never payment confirmation. */ }
+  } catch {
+    /* A provider failure is never payment confirmation. */
+  }
   return null;
 }
 
@@ -110,9 +128,17 @@ export const Route = createFileRoute("/api/crypto/invoice")({
           sku?: string;
           asset?: string;
         };
-        if (body.asset && !["ton", "usdt_ton"].includes(body.asset)) return Response.json({ok:false,error:"network_verification_unavailable"},{status:400});
+        if (body.asset && !["ton", "usdt_ton"].includes(body.asset))
+          return Response.json(
+            { ok: false, error: "network_verification_unavailable" },
+            { status: 400 },
+          );
         const asset = (body.asset || "usdt_ton") as Asset;
-        if (!["ton", "usdt_ton"].includes(asset)) return Response.json({ok:false,error:"network_verification_unavailable"},{status:400});
+        if (!["ton", "usdt_ton"].includes(asset))
+          return Response.json(
+            { ok: false, error: "network_verification_unavailable" },
+            { status: 400 },
+          );
 
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
         const db = supabaseAdmin as any;
@@ -123,28 +149,56 @@ export const Route = createFileRoute("/api/crypto/invoice")({
         const cfg = ASSETS[asset];
         const wallet = process.env[cfg.walletEnv];
         if (!wallet) return done({ ok: false, error: "wallet_not_configured" });
+        try {
+          Address.parse(wallet);
+        } catch {
+          return done({ ok: false, error: "wallet_not_configured" });
+        }
 
         let usd = Number(plan.usd_price);
         // First-month intro price (shown on the pricing page) for users who never paid before.
         if (!body.sku && body.tier === "pro" && body.interval === "monthly") {
-          const { count } = await db.from("crypto_payments").select("id", { count: "exact", head: true }).eq("user_id", userId).eq("status", "paid");
+          const { count } = await db
+            .from("crypto_payments")
+            .select("id", { count: "exact", head: true })
+            .eq("user_id", userId)
+            .eq("status", "paid");
           if (!count) {
-            const { data: intro } = await db.from("billing_catalog").select("usd_price").eq("tier", "pro").eq("interval", "monthly_intro").eq("active", true).maybeSingle();
-            if (intro && Number(intro.usd_price) > 0 && Number(intro.usd_price) < usd) usd = Number(intro.usd_price);
+            const { data: intro } = await db
+              .from("billing_catalog")
+              .select("usd_price")
+              .eq("tier", "pro")
+              .eq("interval", "monthly_intro")
+              .eq("active", true)
+              .maybeSingle();
+            if (intro && Number(intro.usd_price) > 0 && Number(intro.usd_price) < usd)
+              usd = Number(intro.usd_price);
           }
         }
         let base: number;
         if (asset === "ton") {
           let price: number;
-          try { price = await tonPrice(); } catch { return Response.json({ok:false,error:"price_unavailable"},{status:503}); }
+          try {
+            price = await tonPrice();
+          } catch {
+            return Response.json({ ok: false, error: "price_unavailable" }, { status: 503 });
+          }
           base = usd / price;
         } else {
           base = usd;
         }
         const payAmount = Math.ceil(base * 1_000_000) / 1_000_000;
         const expectedNano = BigInt(Math.round(payAmount * 10 ** cfg.decimals));
-        const {data: identity} = await db.from("telegram_profiles").select("username,telegram_user_id").eq("user_id",userId).maybeSingle();
-        const account = String(identity?.username || identity?.telegram_user_id || userId.slice(0,8)).replace(/[^A-Za-z0-9_]/g,"").slice(0,32);
+        const { data: identity } = await db
+          .from("telegram_profiles")
+          .select("username,telegram_user_id")
+          .eq("user_id", userId)
+          .maybeSingle();
+        const account = String(
+          identity?.username || identity?.telegram_user_id || userId.slice(0, 8),
+        )
+          .replace(/[^A-Za-z0-9_]/g, "")
+          .slice(0, 32);
         const memo = `OAI-${account}-${crypto.randomUUID().replace(/-/g, "")}`;
         const { data: inv, error } = await db
           .from("crypto_payments")
@@ -204,7 +258,8 @@ export const Route = createFileRoute("/api/crypto/invoice")({
           .eq("user_id", userId)
           .maybeSingle();
         if (!inv) return done({ ok: false, error: "not_found" });
-        if (inv.status !== "pending") return Response.json({ ok: true, status: inv.status, invoice: inv });
+        if (inv.status !== "pending")
+          return Response.json({ ok: true, status: inv.status, invoice: inv });
 
         if (new Date(inv.expires_at).getTime() < Date.now()) {
           await db.from("crypto_payments").update({ status: "expired" }).eq("id", inv.id);
@@ -213,8 +268,11 @@ export const Route = createFileRoute("/api/crypto/invoice")({
 
         const tx = await verifyInvoice(inv);
         if (tx) {
-          const {data: confirmation,error} = await db.rpc("confirm_crypto_payment",{p_invoice:inv.id,p_tx:tx});
-          if (!error && confirmation?.ok) return Response.json({ok:true,status:"paid"});
+          const { data: confirmation, error } = await db.rpc("confirm_crypto_payment", {
+            p_invoice: inv.id,
+            p_tx: tx,
+          });
+          if (!error && confirmation?.ok) return Response.json({ ok: true, status: "paid" });
         }
         return Response.json({ ok: true, status: "pending", invoice: inv });
       },

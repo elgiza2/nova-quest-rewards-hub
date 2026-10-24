@@ -30,6 +30,7 @@ import { Route as ApiCryptoInvoiceRouteImport } from './routes/api/crypto/invoic
 import { Route as ApiPublicFxRouteImport } from './routes/api/public/fx'
 import { Route as ApiPublicGeoRouteImport } from './routes/api/public/geo'
 import { Route as ApiPublicRemindersTickRouteImport } from './routes/api/public/reminders-tick'
+import { Route as ApiPublicTaskImageRouteImport } from './routes/api/public/task-image'
 import { Route as ApiPublicTelegramAuthRouteImport } from './routes/api/public/telegram-auth'
 import { Route as ApiPublicTelegramBotRouteImport } from './routes/api/public/telegram-bot'
 import { Route as ApiPublicTelegramKeysRouteImport } from './routes/api/public/telegram-keys'
@@ -144,6 +145,11 @@ const ApiPublicRemindersTickRoute = ApiPublicRemindersTickRouteImport.update({
   path: '/api/public/reminders-tick',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicTaskImageRoute = ApiPublicTaskImageRouteImport.update({
+  id: '/api/public/task-image',
+  path: '/api/public/task-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicTelegramAuthRoute = ApiPublicTelegramAuthRouteImport.update({
   id: '/api/public/telegram-auth',
   path: '/api/public/telegram-auth',
@@ -210,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/api/public/fx': typeof ApiPublicFxRoute
   '/api/public/geo': typeof ApiPublicGeoRoute
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
+  '/api/public/task-image': typeof ApiPublicTaskImageRoute
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-bot': typeof ApiPublicTelegramBotRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
@@ -241,6 +248,7 @@ export interface FileRoutesByTo {
   '/api/public/fx': typeof ApiPublicFxRoute
   '/api/public/geo': typeof ApiPublicGeoRoute
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
+  '/api/public/task-image': typeof ApiPublicTaskImageRoute
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-bot': typeof ApiPublicTelegramBotRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
@@ -273,6 +281,7 @@ export interface FileRoutesById {
   '/api/public/fx': typeof ApiPublicFxRoute
   '/api/public/geo': typeof ApiPublicGeoRoute
   '/api/public/reminders-tick': typeof ApiPublicRemindersTickRoute
+  '/api/public/task-image': typeof ApiPublicTaskImageRoute
   '/api/public/telegram-auth': typeof ApiPublicTelegramAuthRoute
   '/api/public/telegram-bot': typeof ApiPublicTelegramBotRoute
   '/api/public/telegram-keys': typeof ApiPublicTelegramKeysRoute
@@ -306,6 +315,7 @@ export interface FileRouteTypes {
     | '/api/public/fx'
     | '/api/public/geo'
     | '/api/public/reminders-tick'
+    | '/api/public/task-image'
     | '/api/public/telegram-auth'
     | '/api/public/telegram-bot'
     | '/api/public/telegram-keys'
@@ -337,6 +347,7 @@ export interface FileRouteTypes {
     | '/api/public/fx'
     | '/api/public/geo'
     | '/api/public/reminders-tick'
+    | '/api/public/task-image'
     | '/api/public/telegram-auth'
     | '/api/public/telegram-bot'
     | '/api/public/telegram-keys'
@@ -368,6 +379,7 @@ export interface FileRouteTypes {
     | '/api/public/fx'
     | '/api/public/geo'
     | '/api/public/reminders-tick'
+    | '/api/public/task-image'
     | '/api/public/telegram-auth'
     | '/api/public/telegram-bot'
     | '/api/public/telegram-keys'
@@ -400,6 +412,7 @@ export interface RootRouteChildren {
   ApiPublicFxRoute: typeof ApiPublicFxRoute
   ApiPublicGeoRoute: typeof ApiPublicGeoRoute
   ApiPublicRemindersTickRoute: typeof ApiPublicRemindersTickRoute
+  ApiPublicTaskImageRoute: typeof ApiPublicTaskImageRoute
   ApiPublicTelegramAuthRoute: typeof ApiPublicTelegramAuthRoute
   ApiPublicTelegramBotRoute: typeof ApiPublicTelegramBotRoute
   ApiPublicTelegramKeysRoute: typeof ApiPublicTelegramKeysRoute
@@ -559,6 +572,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicRemindersTickRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/task-image': {
+      id: '/api/public/task-image'
+      path: '/api/public/task-image'
+      fullPath: '/api/public/task-image'
+      preLoaderRoute: typeof ApiPublicTaskImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/telegram-auth': {
       id: '/api/public/telegram-auth'
       path: '/api/public/telegram-auth'
@@ -640,6 +660,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicFxRoute: ApiPublicFxRoute,
   ApiPublicGeoRoute: ApiPublicGeoRoute,
   ApiPublicRemindersTickRoute: ApiPublicRemindersTickRoute,
+  ApiPublicTaskImageRoute: ApiPublicTaskImageRoute,
   ApiPublicTelegramAuthRoute: ApiPublicTelegramAuthRoute,
   ApiPublicTelegramBotRoute: ApiPublicTelegramBotRoute,
   ApiPublicTelegramKeysRoute: ApiPublicTelegramKeysRoute,

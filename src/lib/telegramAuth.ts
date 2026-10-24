@@ -22,6 +22,7 @@ type TgWebApp = {
   ready?: () => void;
   expand?: () => void;
   openTelegramLink?: (url: string) => void;
+  openLink?: (url: string, options?: { try_instant_view?: boolean }) => void;
   platform?: string;
   version?: string;
   isVersionAtLeast?: (v: string) => boolean;
@@ -31,9 +32,9 @@ type TgWebApp = {
   setBackgroundColor?: (c: string) => void;
   setBottomBarColor?: (c: string) => void;
   isFullscreen?: boolean;
-  safeAreaInset?: {top?:number;bottom?:number};
-  contentSafeAreaInset?: {top?:number;bottom?:number};
-  onEvent?: (event:string,callback:()=>void)=>void;
+  safeAreaInset?: { top?: number; bottom?: number };
+  contentSafeAreaInset?: { top?: number; bottom?: number };
+  onEvent?: (event: string, callback: () => void) => void;
 };
 
 function tgWebApp(): TgWebApp | null {
@@ -47,26 +48,51 @@ let telegramInitialized = false;
 export function initTelegramWebApp(): void {
   const tg = tgWebApp();
   if (!tg) return;
-  try { tg.ready?.(); } catch { /* ignore */ }
-  try { tg.expand?.(); } catch { /* ignore */ }
+  try {
+    tg.ready?.();
+  } catch {
+    /* ignore */
+  }
+  try {
+    tg.expand?.();
+  } catch {
+    /* ignore */
+  }
   if (!isInsideTelegram()) return;
   try {
     document.documentElement.classList.add("tg-app");
     const syncInsets = () => {
-      const root=document.documentElement;
+      const root = document.documentElement;
       root.style.setProperty("--tg-safe-area-inset-top", `${tg.safeAreaInset?.top ?? 0}px`);
-      root.style.setProperty("--tg-content-safe-area-inset-top", `${tg.contentSafeAreaInset?.top ?? (tg.isFullscreen ? 56 : 0)}px`);
+      root.style.setProperty(
+        "--tg-content-safe-area-inset-top",
+        `${tg.contentSafeAreaInset?.top ?? (tg.isFullscreen ? 56 : 0)}px`,
+      );
       root.style.setProperty("--tg-safe-area-inset-bottom", `${tg.safeAreaInset?.bottom ?? 0}px`);
     };
-    const goFull = () => { try { if (!tg.isFullscreen && (!tg.isVersionAtLeast || tg.isVersionAtLeast("8.0"))) tg.requestFullscreen?.(); } catch { /* unsupported client */ } syncInsets(); };
+    const goFull = () => {
+      try {
+        if (!tg.isFullscreen && (!tg.isVersionAtLeast || tg.isVersionAtLeast("8.0")))
+          tg.requestFullscreen?.();
+      } catch {
+        /* unsupported client */
+      }
+      syncInsets();
+    };
     goFull();
     if (telegramInitialized) return;
-    telegramInitialized=true;
-    ["safeAreaChanged","contentSafeAreaChanged","fullscreenChanged","viewportChanged"].forEach(event=>tg.onEvent?.(event,syncInsets));
-    window.addEventListener("pointerdown",goFull,{once:true});
+    telegramInitialized = true;
+    ["safeAreaChanged", "contentSafeAreaChanged", "fullscreenChanged", "viewportChanged"].forEach(
+      (event) => tg.onEvent?.(event, syncInsets),
+    );
+    window.addEventListener("pointerdown", goFull, { once: true });
     window.setTimeout(goFull, 400);
     window.addEventListener("load", goFull, { once: true });
-    try { tg.disableVerticalSwipes?.(); } catch { /* ignore */ }
+    try {
+      tg.disableVerticalSwipes?.();
+    } catch {
+      /* ignore */
+    }
     // Match the safe strip to whatever page is showing right under it.
     let lastHex = "";
     const syncColor = () => {
@@ -76,9 +102,15 @@ export function initTelegramWebApp(): void {
       let bg = "";
       while (el) {
         const c = getComputedStyle(el).backgroundColor;
-        if (c && c !== "transparent" && !/rgba\([^)]*,\s*0\)$/.test(c)) { bg = c; break; }
+        if (c && c !== "transparent" && !/rgba\([^)]*,\s*0\)$/.test(c)) {
+          bg = c;
+          break;
+        }
         const g = getComputedStyle(el).backgroundImage.match(/rgba?\([^)]*\)|oklch\([^)]*\)/);
-        if (g && !/,\s*0\)$/.test(g[0])) { bg = g[0]; break; }
+        if (g && !/,\s*0\)$/.test(g[0])) {
+          bg = g[0];
+          break;
+        }
         el = el.parentElement;
       }
       if (!bg) bg = getComputedStyle(document.body).backgroundColor;
@@ -86,17 +118,27 @@ export function initTelegramWebApp(): void {
       if (!hex || hex === lastHex) return;
       lastHex = hex;
       root.style.setProperty("--tg-page-background", hex);
-      try { tg.setHeaderColor?.(hex); tg.setBackgroundColor?.(hex); tg.setBottomBarColor?.(hex); } catch { /* old client */ }
+      try {
+        tg.setHeaderColor?.(hex);
+        tg.setBackgroundColor?.(hex);
+        tg.setBottomBarColor?.(hex);
+      } catch {
+        /* old client */
+      }
     };
     const syncTopPx = () => {
       const t = (tg.safeAreaInset?.top ?? 0) + (tg.contentSafeAreaInset?.top ?? 0);
       document.documentElement.style.setProperty("--tg-top-px", String(t));
     };
     syncTopPx();
-    ["safeAreaChanged","contentSafeAreaChanged","fullscreenChanged"].forEach(event=>tg.onEvent?.(event,syncTopPx));
+    ["safeAreaChanged", "contentSafeAreaChanged", "fullscreenChanged"].forEach((event) =>
+      tg.onEvent?.(event, syncTopPx),
+    );
     syncColor();
     window.setInterval(syncColor, 600);
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
 }
 
 let colorCtx: CanvasRenderingContext2D | null = null;
@@ -111,7 +153,9 @@ function toHex(color: string): string | null {
     colorCtx.fillRect(0, 0, 1, 1);
     const [r, g, b] = colorCtx.getImageData(0, 0, 1, 1).data;
     return "#" + [r, g, b].map((n) => n.toString(16).padStart(2, "0")).join("");
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 
 /** Wait briefly for `initData` — the Telegram SDK sometimes populates it
@@ -157,7 +201,9 @@ export async function fetchBotUsername(): Promise<string> {
       botUsernameCache = String(data.botUsername);
       return botUsernameCache;
     }
-  } catch { /* fall through */ }
+  } catch {
+    /* fall through */
+  }
   return FALLBACK_BOT_USERNAME;
 }
 
@@ -228,7 +274,8 @@ async function performTelegramSignIn(): Promise<TelegramSignInResult> {
     // it again adds a second auth transition and an unnecessary network call.
     if (!authData.session) return { ok: false, error: "session_missing" };
     const startParam = new URLSearchParams(initData).get("start_param");
-    if (startParam?.startsWith("ref_")) await supabase.rpc("claim_referral_signup", {p_code:startParam.slice(4)});
+    if (startParam?.startsWith("ref_"))
+      await supabase.rpc("claim_referral_signup", { p_code: startParam.slice(4) });
     return { ok: true };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
@@ -242,6 +289,19 @@ export async function tryAutoLoginTelegram(): Promise<boolean> {
   if (data.session) return false;
   const r = await signInWithTelegram();
   return r.ok;
+}
+
+/** Ask Telegram to hand an HTTPS payment link to the device's external browser. */
+export function openExternalBrowserLink(url: string): boolean {
+  if (typeof window === "undefined" || !/^https:\/\//i.test(url)) return false;
+  const tg = tgWebApp();
+  if (!isInsideTelegram() || !tg?.openLink) return false;
+  try {
+    tg.openLink(url, { try_instant_view: false });
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /** Open a link the Telegram way: t.me links inside Telegram, others in Telegram's browser. */

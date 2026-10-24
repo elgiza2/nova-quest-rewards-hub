@@ -1,1 +1,7 @@
-{"url": "https://nova-quest-rewards-hub.lovable.app", "name": "Orange AI", "iconUrl": "https://nova-quest-rewards-hub.lovable.app/app-icon-512.png", "termsOfUseUrl": "https://nova-quest-rewards-hub.lovable.app/terms", "privacyPolicyUrl": "https://nova-quest-rewards-hub.lovable.app/privacy"}
+{
+  "url": "https://nova-quest-rewards-hub.vercel.app",
+  "name": "Orange AI",
+  "iconUrl": "https://nova-quest-rewards-hub.vercel.app/app-icon-512.png",
+  "termsOfUseUrl": "https://nova-quest-rewards-hub.vercel.app/terms",
+  "privacyPolicyUrl": "https://nova-quest-rewards-hub.vercel.app/privacy"
+}
