@@ -42,3 +42,8 @@
 - [x] Regenerated 5 task images sized for small circular rows
 - [x] Welcome post published to channel (msg 375, button opens Mini App via t.me/Noveaibot?startapp)
 - [x] Channel post button opens Mini App
+- [ ] Delete 10 old Vercel projects to free project slots
+- [ ] Publish to Vercel (new project) and update bot webhook/menu/manifest links
+- [ ] Fix Telegram sign-in failure on the live site
+- [ ] Schedule one channel post ~1 hour from 00:52 UTC (one-off)
+- [ ] Fix /start message (re-register webhook to new URL after deploy, verify)
