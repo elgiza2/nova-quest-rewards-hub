@@ -29,7 +29,7 @@ export function OperatorInlineBubble({
   const assistantReply = messages.find((m) => m.agent === "assistant")?.content;
   // Treat as a plain chat reply when the backend marked it chat OR a chat
   // response exists OR the only message is the assistant reply. This avoids the
-  // duplicate "Orange" header that appeared before run.mode synced to "chat".
+  // duplicate "Nova" header that appeared before run.mode synced to "chat".
   const isChat =
     run.mode === "chat" ||
     !!run.chat_response ||

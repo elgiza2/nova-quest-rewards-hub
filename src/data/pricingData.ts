@@ -9,7 +9,7 @@
 
 export type PlanTier = "starter" | "pro" | "elite" | "business";
 
-/** Monthly Orange Credits included with each tier. */
+/** Monthly Nova Credits included with each tier. */
 export const PLAN_MONTHLY_CREDITS: Record<PlanTier, number> = {
   starter: 70,
   pro: 1000,
@@ -64,11 +64,11 @@ export interface PlanCardConfig {
 // cloud computer → long-running tasks → agents → research → chat →
 // images/video → docs & build → workspace → support.
 const PRO_FEATURES = [
-  "Orange — OpenClaw with helper agents for multi-step work",
+  "Nova — OpenClaw with helper agents for multi-step work",
   "Web search, browsing, coding and Python in one chat",
   "Choose from the available agent catalogue — subscribers only",
   "Live task progress and tool activity in your conversation",
-  "1,000 Orange Credits every month",
+  "1,000 Nova Credits every month",
   "Higgsfield image and video generation — subscribers only",
   "Images and videos appear directly in chat, with no separate studio",
   "Media availability depends on the provider's configured agents",
@@ -77,7 +77,7 @@ const PRO_FEATURES = [
 
 const MAX_FEATURES = [
   ...PRO_FEATURES.filter((feature) => !feature.startsWith("1,000")),
-  `${PLAN_MONTHLY_CREDITS.elite} Orange Credits every month`,
+  `${PLAN_MONTHLY_CREDITS.elite} Nova Credits every month`,
 ];
 
 /** Yearly = 8 × monthly, i.e. 4 months free. */
@@ -92,7 +92,7 @@ const yearlyIntro = (savings: number, bonus: number) => [
 export const PLANS: PlanCardConfig[] = [
   {
     tier: "pro",
-    name: "Orange Pro",
+    name: "Nova Pro",
     label: "",
     bg: "linear-gradient(165deg, #1e64ff 0%, #2563eb 55%, #1d4fd8 100%)",
     text: "#ffffff",
@@ -203,13 +203,13 @@ export function getDisplayPrice(plan: PlanCardConfig, yearly: boolean) {
 
 export const ENTERPRISE_FEATURES: string[] = [
   "Custom MC Allocation",
-  "Priority Orange AI compute lane",
+  "Priority Nova AI compute lane",
   "Dedicated Infrastructure",
   "SLA Guarantees",
   "Custom API Access & Integrations",
   "Enterprise Security (SOC2-ready, GDPR & Advanced Encryption)",
   "Data Privacy & Compliance",
-  "Early access to new Orange capabilities",
+  "Early access to new Nova capabilities",
   "Advanced Analytics & Reporting",
   "Dedicated Account Manager",
   "24/7 Priority Support",
@@ -220,16 +220,16 @@ export const ENTERPRISE_FEATURES: string[] = [
 ];
 
 export const SERVICES_GUIDE: { name: string; desc: string }[] = [
-  { name: "Orange", desc: "OpenClaw handles chat, web research, browsing, coding and Python through AgentSky." },
+  { name: "Nova", desc: "OpenClaw handles chat, web research, browsing, coding and Python through AgentSky." },
   { name: "Helper agents", desc: "Multi-step work can be split across helper agents with live progress in chat." },
   { name: "Agent catalogue", desc: "Browse available agents. Switching agents requires an active subscription." },
   { name: "Higgsfield Images & Video", desc: "Subscriber-only media inside chat using the configured Hypit agent. Free accounts cannot generate images or videos. Availability depends on the provider." },
   { name: "Task progress", desc: "Follow the agent's actual work, tool activity and completion status." },
-  { name: "Orange Credits", desc: "Pro includes 1,000 Orange Credits every month. Chat, media and agent switching are all metered against those credits — there is no free tier." },
+  { name: "Nova Credits", desc: "Pro includes 1,000 Nova Credits every month. Chat, media and agent switching are all metered against those credits — there is no free tier." },
 ];
 
 export const FAQS: { q: string; a: string }[] = [
-  { q: "Do I need a subscription to use Orange?", a: "Yes. Orange is a paid product: chat, research, media and agent switching all run on the Pro plan and are metered against your Orange Credits." },
+  { q: "Do I need a subscription to use Nova?", a: "Yes. Nova is a paid product: chat, research, media and agent switching all run on the Pro plan and are metered against your Nova Credits." },
   {
     q: "How does the introductory first month work?",
     a: "Your first month costs $7, then Pro renews at $15 a month. Each month includes 1,000 credits. You can cancel anytime.",
@@ -239,8 +239,8 @@ export const FAQS: { q: string; a: string }[] = [
     a: "Yes. From Billing settings you can upgrade, downgrade or cancel anytime. Upgrades are prorated and take effect immediately; downgrades and cancellations take effect at the end of the current cycle, and you keep full access until then.",
   },
   {
-    q: "What are Orange Credits (MC)?",
-    a: "Orange Credits are your monthly allowance and the single currency for everything Orange does — chat, research, browsing, coding, images and video. Every request is metered against the real usage it costs.",
+    q: "What are Nova Credits (MC)?",
+    a: "Nova Credits are your monthly allowance and the single currency for everything Nova does — chat, research, browsing, coding, images and video. Every request is metered against the real usage it costs.",
   },
   {
     q: "What happens when I run out of MC?",
@@ -260,7 +260,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Is my payment secure? Which payment methods do you accept?",
-    a: "All Orange subscription payments are processed through Kashier. Your card details never touch our servers. Kashier supports card and mobile-wallet payment methods available in your checkout.",
+    a: "All Nova subscription payments are processed through Kashier. Your card details never touch our servers. Kashier supports card and mobile-wallet payment methods available in your checkout.",
   },
   {
     q: "Do you offer team or enterprise plans?",

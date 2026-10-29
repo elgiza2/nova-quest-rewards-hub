@@ -27,7 +27,7 @@ const practices = [
   {
     icon: Server,
     title: "Infrastructure",
-    desc: "Orange uses managed hosting, database, storage and authentication providers. Availability, backups and residency follow the commitments published by those providers and the active service configuration.",
+    desc: "Nova uses managed hosting, database, storage and authentication providers. Availability, backups and residency follow the commitments published by those providers and the active service configuration.",
   },
   {
     icon: Key,
@@ -65,7 +65,7 @@ const SecurityPage = () => (
   <div className="amber-settings min-h-dvh">
     <SEOHead
       title="Security"
-      description="Learn how Orange AI protects your account, chats, files and AI workflows with secure access, data controls and privacy-focused infrastructure."
+      description="Learn how Nova AI protects your account, chats, files and AI workflows with secure access, data controls and privacy-focused infrastructure."
       path="/security"
     />
     <LandingNavbar />

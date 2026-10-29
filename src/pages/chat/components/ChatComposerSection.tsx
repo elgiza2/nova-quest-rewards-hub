@@ -65,7 +65,7 @@ function DesktopFastshotComposer({ props }: { props: ChatComposerSectionProps })
       <div className="desktop-fastshot-shade" aria-hidden="true" />
       <div className="desktop-fastshot-frame">
         <header className="desktop-fastshot-nav">
-          <a className="desktop-fastshot-brand" href="/" aria-label="Orange home"><span>Orange</span></a>
+          <a className="desktop-fastshot-brand" href="/" aria-label="Nova home"><span>Nova</span></a>
           <Button className="desktop-fastshot-cta" onClick={() => props.navigate("/pricing")}>Upgrade</Button>
         </header>
         <main className="desktop-fastshot-hero">
@@ -84,7 +84,7 @@ function DesktopFastshotComposer({ props }: { props: ChatComposerSectionProps })
                 {(d.chatMode === "images" || d.chatMode === "video") && props.imageTools ? props.imageTools : null}
               </div>
             ) : null}
-            <textarea value={value} onChange={(event) => { c.setInput(event.target.value); const t = event.currentTarget; t.style.height = "auto"; t.style.height = `${Math.min(t.scrollHeight, 240)}px`; }} onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); send(); } }} placeholder="Build a fintech tracking app with bank level privacy and..." aria-label="Message Orange" rows={1} />
+            <textarea value={value} onChange={(event) => { c.setInput(event.target.value); const t = event.currentTarget; t.style.height = "auto"; t.style.height = `${Math.min(t.scrollHeight, 240)}px`; }} onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); send(); } }} placeholder="Build a fintech tracking app with bank level privacy and..." aria-label="Message Nova" rows={1} />
             {props.attachedFiles.length > 0 ? (
               <div className="desktop-fastshot-attachments">
                 {props.attachedFiles.map((f: any, i: number) => (

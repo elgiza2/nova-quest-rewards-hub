@@ -106,7 +106,7 @@ function builtinAgents() {
   return [
     {
       id: "megsy-default",
-      name: "Orange",
+      name: "Nova",
       description: "Primary assistant",
       color: "aurora",
       prompt: "",

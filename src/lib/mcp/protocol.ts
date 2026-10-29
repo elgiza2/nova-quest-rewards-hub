@@ -229,7 +229,7 @@ export class McpClient {
         const result: any = await this.send("initialize", {
           protocolVersion: version,
           capabilities: { elicitation: {} },
-          clientInfo: { name: "megsy", title: "Orange", version: "2.0.0" },
+          clientInfo: { name: "megsy", title: "Nova", version: "2.0.0" },
         });
         this.serverInfo = result?.serverInfo ?? null;
         this.capabilities = result?.capabilities ?? {};
@@ -371,7 +371,7 @@ export async function registerOAuthClient(
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       redirect: "error",
       body: JSON.stringify({
-        client_name: "Orange",
+        client_name: "Nova",
         redirect_uris: [redirectUri],
         grant_types: ["authorization_code", "refresh_token"],
         response_types: ["code"],

@@ -4,7 +4,7 @@
  * Anything the agent hands to a real environment outside this tab (the cloud
  * computer / browser session) is registered here against its run. The kernel
  * refuses to mark a run complete while any registered external task is still
- * non-terminal, so "Orange says done" can never disagree with "the computer is
+ * non-terminal, so "Nova says done" can never disagree with "the computer is
  * still working".
  */
 import { pollComputerTask, type ComputerTask } from "@/lib/computer/client";

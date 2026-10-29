@@ -1,4 +1,4 @@
-/** @doc Zone configuration — Orange (global), China (soon). */
+/** @doc Zone configuration — Nova (global), China (soon). */
 
 export type ZoneId = "megsy" | "china";
 
@@ -16,7 +16,7 @@ export interface ZoneConfig {
   defaultLanguage: string;
   /** AI dialect hint sent to backend prompts. */
   aiDialect: "standard" | "chinese";
-  /** Payment provider for Orange subscriptions. */
+  /** Payment provider for Nova subscriptions. */
   paymentProvider: "kashier";
   /** Brand color (HSL) for accents. */
   accentHsl: string;
@@ -29,7 +29,7 @@ export interface ZoneConfig {
 export const ZONES: Record<ZoneId, ZoneConfig> = {
   megsy: {
     id: "megsy",
-    name: "Orange",
+    name: "Nova",
     tagline: "The global AI assistant",
     subdomain: "",
     defaultCurrency: "USD",

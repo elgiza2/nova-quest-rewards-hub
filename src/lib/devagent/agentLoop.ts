@@ -791,7 +791,7 @@ export async function advanceDevRun(
     commit = await saveWorkspaceToGithub(
       ws,
       project.github_repo,
-      run.prompt.slice(0, 120) || "Update from Orange",
+      run.prompt.slice(0, 120) || "Update from Nova",
     );
   }
   if (commit) {

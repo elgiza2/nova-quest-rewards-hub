@@ -1242,7 +1242,7 @@ const ChatMessage = ({
       const { publishProject } = await import("@/lib/publishProject");
       const firstLine = (content || "").split("\n").find((l) => l.trim())?.slice(0, 80);
       const res = await publishProject(projectFiles, {
-        title: firstLine || "Orange Project",
+        title: firstLine || "Nova Project",
       });
       setPublishState({ status: "done", url: res.url });
       try {
@@ -1257,16 +1257,16 @@ const ChatMessage = ({
 
   const [studioOpen, setStudioOpen] = useState(false);
 
-  // Detect a saved Orange Coder project so old conversations render the compact
+  // Detect a saved Nova Coder project so old conversations render the compact
   // card instead of dumping raw fenced code blocks into the transcript.
   const isSavedCoderProject =
     role === "assistant" &&
     !isStreaming &&
     typeof content === "string" &&
-    content.startsWith("Orange Coder finished the build.") &&
+    content.startsWith("Nova Coder finished the build.") &&
     projectFiles.length > 0;
   const coderSummary = isSavedCoderProject
-    ? content.replace(/^Orange Coder finished the build\.\s*/, "").split("```")[0].trim()
+    ? content.replace(/^Nova Coder finished the build\.\s*/, "").split("```")[0].trim()
     : "";
 
 
@@ -2171,6 +2171,24 @@ const ChatMessage = ({
                     <Copy className="w-[15px] h-[15px]" strokeWidth={1.75} />
                   )}
                 </AIMessageAction>
+                {role === "assistant" && onRegenerate && (
+                  <AIMessageAction
+                    onClick={onRegenerate}
+                    tooltip={label("Regenerate", "إعادة توليد")}
+                    className="h-9 w-9 rounded-md border-0 bg-transparent text-muted-foreground/70 shadow-none hover:bg-transparent hover:text-foreground"
+                  >
+                    <RefreshCw className="w-[15px] h-[15px]" strokeWidth={1.75} />
+                  </AIMessageAction>
+                )}
+                {role === "assistant" && onBranch && (
+                  <AIMessageAction
+                    onClick={onBranch}
+                    tooltip={label("Branch from here", "تفريع من هنا")}
+                    className="h-9 w-9 rounded-md border-0 bg-transparent text-muted-foreground/70 shadow-none hover:bg-transparent hover:text-foreground"
+                  >
+                    <GitBranch className="w-[15px] h-[15px]" strokeWidth={1.75} />
+                  </AIMessageAction>
+                )}
                 {downloadUrl && (
                   <AIMessageAction
                     onClick={() => {

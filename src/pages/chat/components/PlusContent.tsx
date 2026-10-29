@@ -230,7 +230,7 @@ const PlusModels = (p: PlusContentProps) => (
             transition={iosSpring}
             onClick={() => {
               if (locked) {
-                promptUpgrade("Orange " + t.label);
+                promptUpgrade("Nova " + t.label);
                 return;
               }
               p.setMegsyTier(t.id);

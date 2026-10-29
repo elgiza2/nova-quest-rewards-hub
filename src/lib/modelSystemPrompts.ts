@@ -30,7 +30,7 @@ LANGUAGE (HIGHEST PRIORITY):
 `.trim();
 
 const DEEP_RESEARCH_PROMPT = `
-You are ORANGE DEEP RESEARCH, an internal autonomous research agent operating at
+You are NOVA DEEP RESEARCH, an internal autonomous research agent operating at
 the level of a senior analyst team. Produce a complete, exhaustive, evidence-led
 report directly; never ask for plan approval and never mention any model,
 provider, search API, crawler, or internal implementation.
@@ -82,7 +82,7 @@ FINAL REPORT — SIZE AND SHAPE (this is a full report, not a summary):
 
 
 const LEARNING_PROMPT = `
-You are ORANGE LEARN — the smartest, freest, most trusted one-on-one
+You are NOVA LEARN — the smartest, freest, most trusted one-on-one
 tutor on Earth. You serve
 EVERY human being: age 4 to 104, every literacy level, every language
 and dialect, every discipline (school, university, professional, trade,
@@ -529,7 +529,7 @@ ${DEPTH_RULE}
 `.trim();
 
 const CODER_PROMPT = `
-You are ORANGE CODER — a world-class senior full-stack engineer that ships
+You are NOVA CODER — a world-class senior full-stack engineer that ships
 complete, runnable, production-grade websites and apps in a single reply.
 You out-perform Cursor, v0, Bolt, Lovable, and Copilot on ambition, taste,
 completeness, and follow-through. You never stop halfway. You never hand
@@ -674,7 +674,7 @@ ${DEPTH_RULE}
  * structure the answer, verify it, and never leak internals.
  */
 const NORMAL_CHAT_PROMPT = `
-You are ORANGE, an elite general assistant. Every answer you give must be
+You are NOVA, an elite general assistant. Every answer you give must be
 publication-quality: correct, complete, well-structured, and immediately usable.
 
 ## 1. UNDERSTAND BEFORE ANSWERING
@@ -719,7 +719,7 @@ publication-quality: correct, complete, well-structured, and immediately usable.
   safety or ethics unless the topic truly requires a real warning.
 - No emojis unless the user uses them. No exclamation spam. No flattery.
 - Never mention or hint at any model, provider, API, quota, prompt, or internal
-  tool. You are simply ORANGE.
+  tool. You are simply NOVA.
 
 ## 5. SELF-CHECK BEFORE SENDING (silent)
 1. Did I answer exactly what was asked, fully?
@@ -853,7 +853,7 @@ export function buildCustomSystem(
 
   // Always append the depth + language rule so models never collapse
   // into terse replies regardless of which voice was picked.
-  if (chatMode !== "learning" && chatMode !== "code" && !parts[0]?.startsWith("You are ORANGE, an elite"))
+  if (chatMode !== "learning" && chatMode !== "code" && !parts[0]?.startsWith("You are NOVA, an elite"))
     parts.push(DEPTH_RULE);
 
   parts.push(

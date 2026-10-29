@@ -1,11 +1,11 @@
-/** @doc BrandLogo — Orange icon with a silver shimmer sweep that settles to white. */
+/** @doc BrandLogo — Nova icon with a silver shimmer sweep that settles to white. */
 import { useBrandLogo } from "@/hooks/useBrandLogo";
 import { cn } from "@/lib/utils";
 import type { HTMLAttributes, ImgHTMLAttributes } from "react";
 
 export interface BrandLogoProps extends ImgHTMLAttributes<HTMLImageElement> {}
 
-export function BrandLogo({ className, style, alt = "Orange", ...props }: BrandLogoProps) {
+export function BrandLogo({ className, style, alt = "Nova", ...props }: BrandLogoProps) {
   const src = useBrandLogo();
   return (
     <span className="brand-logo-wrap relative inline-flex items-center justify-center">
@@ -26,7 +26,7 @@ export function BrandLogo({ className, style, alt = "Orange", ...props }: BrandL
   );
 }
 
-export function BrandWord({ className, children = "Orange", ...props }: HTMLAttributes<HTMLSpanElement>) {
+export function BrandWord({ className, children = "Nova", ...props }: HTMLAttributes<HTMLSpanElement>) {
   return (
     <span className={cn("brand-word", className)} {...props}>
       {children}

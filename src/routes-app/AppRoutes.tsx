@@ -32,7 +32,6 @@ import {
   DeleteAccountPage,
   AcceptInvitePage,
   ReferralRedirectPage,
-  EarnTasksPage,
   // billing hub
   BillingSuccessPage,
   ReferralsPage,
@@ -74,7 +73,6 @@ import {
   // marketing
   PricingPage,
   CheckoutPage,
-  CryptoCheckoutPage,
   LegalPage,
   RestorePurchasePage,
   MegsyLandingPage,
@@ -271,11 +269,8 @@ export const AppRoutes = ({ currentUserId }: { currentUserId: string | null }) =
         </ProtectedRoute>
       }
     />
-    <Route
-      path="/tasks"
-      element={<EarnTasksPage />}
-    />
-    <Route path="/tasks/*" element={<Navigate to="/tasks" replace />} />
+    <Route path="/tasks" element={<Navigate to="/agents" replace />} />
+    <Route path="/tasks/*" element={<Navigate to="/agents" replace />} />
     <Route path="/settings/knowledge" element={<Navigate to="/settings/memory" replace />} />
 
     <Route
@@ -448,7 +443,6 @@ export const AppRoutes = ({ currentUserId }: { currentUserId: string | null }) =
 
     {/* ── Checkout — dedicated payment page, separate from pricing ── */}
     <Route path="/checkout" element={<CheckoutPage />} />
-    <Route path="/checkout/crypto" element={<CryptoCheckoutPage />} />
 
     {/* ── Security (settings-owned) ─────────────────────────── */}
     <Route path="/security" element={<SecurityPage />} />

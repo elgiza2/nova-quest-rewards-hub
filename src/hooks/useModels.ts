@@ -157,7 +157,7 @@ const PROVIDER_ORDER = [
 ];
 
 const PROVIDER_LABELS: Record<string, string> = {
-  deapi: "Orange",
+  deapi: "Nova",
   xai: "xAI",
   openai: "OpenAI",
   bytedance: "ByteDance",

@@ -150,7 +150,7 @@ export const AGENTS: AgentDef[] = [
   },
 
   // Cross-workspace tools with models
-  // All non-Orange models are routed through OpenRouter via Apify's or-bridge
+  // All non-Nova models are routed through OpenRouter via Apify's or-bridge
   // actor — zero external API keys required.
   {
     id: "images",
@@ -162,7 +162,7 @@ export const AGENTS: AgentDef[] = [
     description: "Generate AI images",
     category: "images",
     models: [
-      { id: "megsy-image", label: "Orange Image", cost: 8 },
+      { id: "megsy-image", label: "Nova Image", cost: 8 },
       { id: "nano-banana-pro", label: "Nano Banana Pro", cost: 4 },
       { id: "nano-banana-2", label: "Nano Banana 2", cost: 3 },
       { id: "nano-banana", label: "Nano Banana", cost: 2 },
@@ -182,7 +182,7 @@ export const AGENTS: AgentDef[] = [
     description: "Create AI videos",
     category: "videos",
     models: [
-      { id: "megsy-video", label: "Orange Video", cost: 40 },
+      { id: "megsy-video", label: "Nova Video", cost: 40 },
       { id: "seedance-2-0", label: "Seedance 2.0", cost: 35 },
       { id: "seedance-2-0-fast", label: "Seedance 2.0 Fast", cost: 30 },
       { id: "seedance-1-5-pro", label: "Seedance 1.5 Pro", cost: 60 },

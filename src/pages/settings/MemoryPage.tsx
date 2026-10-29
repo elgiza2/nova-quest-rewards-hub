@@ -1,4 +1,4 @@
-/** @doc Memory — a clean glass shelf of what Orange remembers (user_knowledge):
+/** @doc Memory — a clean glass shelf of what Nova remembers (user_knowledge):
  * search, one card per memory with its own switch, and a tidy edit sheet. */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,16 +22,16 @@ type Draft = { id?: string; name: string; use_when: string; content: string };
 const T = {
   en: {
     title: "Memory",
-    sub: "What Orange keeps in mind and uses across your chats.",
+    sub: "What Nova keeps in mind and uses across your chats.",
     search: "Search memory",
     add: "Add memory",
     edit: "Edit memory",
     empty: "Nothing here yet",
-    emptySub: "Add a fact or an instruction and Orange will use it when it fits.",
+    emptySub: "Add a fact or an instruction and Nova will use it when it fits.",
     name: "Title",
     namePh: "e.g. My writing style",
     when: "Use when",
-    whenPh: "When should Orange use this?",
+    whenPh: "When should Nova use this?",
     content: "What to remember",
     contentPh: "Write the fact or instruction",
     save: "Save",
@@ -49,16 +49,16 @@ const T = {
   },
   ar: {
     title: "الذاكرة",
-    sub: "الحاجات اللي أورانج فاكرها وبيستخدمها في محادثاتك.",
+    sub: "الحاجات اللي ميغسي فاكرها وبيستخدمها في محادثاتك.",
     search: "دوّر في الذاكرة",
     add: "إضافة ذكرى",
     edit: "تعديل الذكرى",
     empty: "لسه مفيش حاجة",
-    emptySub: "ضيف معلومة أو تعليمات وأورانج هيستخدمها لما تناسب.",
+    emptySub: "ضيف معلومة أو تعليمات وميغسي هيستخدمها لما تناسب.",
     name: "العنوان",
     namePh: "مثلًا: أسلوب كتابتي",
     when: "تُستخدم لما",
-    whenPh: "إمتى أورانج يستخدم دي؟",
+    whenPh: "إمتى ميغسي يستخدم دي؟",
     content: "المطلوب تفتكره",
     contentPh: "اكتب المعلومة أو التعليمات",
     save: "حفظ",

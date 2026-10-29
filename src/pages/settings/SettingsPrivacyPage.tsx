@@ -27,7 +27,7 @@ export default function SettingsPrivacyPage() {
             </span>
             <p className="text-[14px] leading-relaxed text-[color:var(--settings-muted)]">
               {ar(
-                "بنستخدم رسايلك وملفاتك عشان Orange يرد عليك وينفذ شغلك بس. محادثاتك خاصة بيك ومحدش غيرك يقدر يشوفها.",
+                "بنستخدم رسايلك وملفاتك عشان Nova يرد عليك وينفذ شغلك بس. محادثاتك خاصة بيك ومحدش غيرك يقدر يشوفها.",
                 "We use your messages and files only to answer you and get your work done. Your chats are private to you.",
               )}
             </p>

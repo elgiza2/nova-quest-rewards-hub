@@ -76,7 +76,6 @@ export const ImageModelsPage = lazy(() => import("@/pages/settings/ImageModelsPa
 export const MegsyLandingPage = lazy(() => import("@/pages/marketing/MegsyLandingPage"));
 export const PricingPage = lazy(() => import("@/pages/marketing/PricingPage"));
 export const CheckoutPage = lazy(() => import("@/pages/marketing/CheckoutPage"));
-export const CryptoCheckoutPage = lazy(() => import("@/pages/billing/CryptoCheckoutPage"));
 export const LegalPage = lazy(() => import("@/pages/legal/LegalPage"));
 export const RestorePurchasePage = lazy(() => import("@/pages/legal/RestorePurchasePage"));
 export const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
@@ -90,7 +89,6 @@ export const DocumentPreviewPage = lazy(() => import("@/pages/DocumentPreviewPag
 export const FilePreviewPage = lazy(() => import("@/pages/FilePreviewPage"));
 export const MemoryPage = lazy(() => import("@/pages/settings/MemoryPage"));
 export const TasksPage = lazy(() => import("@/pages/tasks/TasksPage"));
-export const EarnTasksPage = lazy(() => import("@/pages/tasks/EarnTasksPage"));
 
 /* ── Hidden admin ─────────────────────────────────────────────── */
 export const ManusKeysPage = lazy(() => import("@/pages/admin/ManusKeysPage"));

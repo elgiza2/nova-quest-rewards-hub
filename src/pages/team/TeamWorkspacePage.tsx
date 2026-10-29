@@ -151,14 +151,14 @@ export default function TeamWorkspacePage() {
   if (!paid) {
     return (
       <>
-        <SEOHead path="/team" title="Team Workspace — Orange" description="Your 24/7 AI agent team. Subscribe to unlock." />
+        <SEOHead path="/team" title="Team Workspace — Nova" description="Your 24/7 AI agent team. Subscribe to unlock." />
         <div className="mx-auto max-w-3xl px-6 py-16 text-center">
           <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-pink-500 to-indigo-500 text-white">
             <Bot size={26} />
           </span>
           <h1 className="mt-6 text-3xl font-bold">Team Workspace</h1>
           <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed opacity-75">
-            Send one message describing your goal. Orange assembles a named agent team —
+            Send one message describing your goal. Nova assembles a named agent team —
             each agent with its own role and task — and advances active tasks in the background.
           </p>
           {error && <p role="alert" className="mx-auto mt-3 max-w-xl text-sm text-red-500">{error}</p>}
@@ -184,7 +184,7 @@ export default function TeamWorkspacePage() {
 
   return (
     <>
-      <SEOHead path="/team" title="Team Workspace — Orange" description="Your 24/7 AI agent team at work." />
+      <SEOHead path="/team" title="Team Workspace — Nova" description="Your 24/7 AI agent team at work." />
       <div className="mx-auto max-w-3xl px-4 py-8">
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -232,7 +232,7 @@ export default function TeamWorkspacePage() {
           ))}
           {!agents.length && !busy && (
             <p className="rounded-xl border border-dashed p-6 text-center text-sm opacity-60">
-              No agents yet — send your goal above and Orange will assemble the team.
+              No agents yet — send your goal above and Nova will assemble the team.
             </p>
           )}
         </div>

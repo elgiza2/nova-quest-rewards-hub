@@ -1,7 +1,7 @@
 /**
  * Curated open-source skills from top GitHub repositories
  * (anthropics/skills, obra/superpowers, ComposioHQ/awesome-claude-skills),
- * renamed for Orange. Shown in the skills library next to system skills.
+ * renamed for Nova. Shown in the skills library next to system skills.
  */
 import type { Skill } from "@/hooks/useSkills";
 

@@ -51,7 +51,7 @@ const IMAGES: { asset: Asset; title: string; tone: string }[] = [
   { asset: img8 as Asset, title: "AI Video in Seconds", tone: PEACH },
   { asset: img9 as Asset, title: "Code with AI", tone: MINT },
   { asset: img10 as Asset, title: "An OS Built For ✦", tone: LAVENDER },
-  { asset: img11 as Asset, title: "Just Orange", tone: YELLOW },
+  { asset: img11 as Asset, title: "Just Nova", tone: YELLOW },
   { asset: img12 as Asset, title: "Type it. See it.", tone: PINK },
   { asset: img13 as Asset, title: "Ship Code 10× Faster", tone: PEACH },
   { asset: img14 as Asset, title: "Replace Your AI Stack", tone: MINT },
@@ -59,11 +59,11 @@ const IMAGES: { asset: Asset; title: string; tone: string }[] = [
 
 const VIDEOS: { asset: Asset; title: string; tone: string }[] = [
   { asset: vid1 as Asset, title: "Agents Reel", tone: LAVENDER },
-  { asset: vid2 as Asset, title: "Orange Problem Solver", tone: MINT },
+  { asset: vid2 as Asset, title: "Nova Problem Solver", tone: MINT },
   { asset: vid3 as Asset, title: "Remotion Demo", tone: YELLOW },
   { asset: vid4 as Asset, title: "Face Swap", tone: PINK },
   { asset: vid5 as Asset, title: "Talking Avatar", tone: PEACH },
-  { asset: vid6 as Asset, title: "Curious Orange", tone: LAVENDER },
+  { asset: vid6 as Asset, title: "Curious Nova", tone: LAVENDER },
 ];
 
 const downloadAsset = async (asset: Asset) => {

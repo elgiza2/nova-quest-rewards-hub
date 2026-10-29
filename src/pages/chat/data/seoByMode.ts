@@ -10,13 +10,13 @@ export type ChatSeoMeta = { title: string; description: string; path: string };
  */
 export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
   normal: {
-    title: "AI Chat with 80+ Models — Orange AI Agent Workspace",
+    title: "AI Chat with 80+ Models — Nova AI Agent Workspace",
     description:
       "Chat with leading AI models, compare answers, upload files and get work done in one AI agent workspace. One Pro plan, metered by real usage.",
     path: "/chat",
   },
   learning: {
-    title: "AI Tutor for Any Subject — Orange Learning Mode",
+    title: "AI Tutor for Any Subject — Nova Learning Mode",
     description:
       "Learn step by step with an adaptive AI tutor, practice questions, clear explanations and study support for any subject.",
     path: "/chat?mode=learning",
@@ -30,7 +30,7 @@ export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
   "deep-research": {
     title: "Deep Research AI — Cited Reports from Real Sources",
     description:
-      "Run multi-source web research with citations. Orange reads, verifies, synthesizes and writes an exportable research report.",
+      "Run multi-source web research with citations. Nova reads, verifies, synthesizes and writes an exportable research report.",
     path: "/chat?mode=deep-research",
   },
   slides: {
@@ -46,7 +46,7 @@ export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
     path: "/chat?mode=slides-images",
   },
   operator: {
-    title: "Autonomous Browser Agent — Orange Operator",
+    title: "Autonomous Browser Agent — Nova Operator",
     description:
       "Delegate browser tasks to an autonomous AI agent that can research, navigate, click and complete workflows under your supervision.",
     path: "/chat?mode=operator",

@@ -49,7 +49,7 @@ export default function PlanCard({
             className="text-[10px] font-bold uppercase tracking-[0.22em]"
             style={{ color: "#fff", WebkitTextFillColor: "#fff", textShadow: "0 1px 6px rgba(0,0,0,1)" }}
           >
-            Orange
+            Nova
           </span>
         </div>
         <p

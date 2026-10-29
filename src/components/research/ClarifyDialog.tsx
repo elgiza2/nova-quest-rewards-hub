@@ -79,7 +79,7 @@ const ClarifyDialog = ({ questions, onSubmit, onSkip }: Props) => {
           onClick={onSkip}
           className="text-xs text-muted-foreground hover:text-foreground px-3 py-1.5"
         >
-          Skip & let Orange decide
+          Skip & let Nova decide
         </button>
         <button
           disabled={!allAnswered}

@@ -1,4 +1,3 @@
-import { avatarSrc } from "@/lib/avatarSrc";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getOwnProfile } from "@/lib/ownProfile";
@@ -101,7 +100,7 @@ export function useActiveAccount(): ActiveAccount {
             kind: "personal",
             id: user.id,
             name: pickName(user) || prev.name,
-            avatarUrl: avatarSrc(user.user_metadata?.avatar_url || prev.avatarUrl),
+            avatarUrl: user.user_metadata?.avatar_url || prev.avatarUrl || null,
             credits: prev.credits,
           };
           writeCache(next);
@@ -118,7 +117,7 @@ export function useActiveAccount(): ActiveAccount {
           kind: "personal",
           id: user.id,
           name: pickName(user, profile),
-          avatarUrl: avatarSrc(profile?.avatar_url || user.user_metadata?.avatar_url),
+          avatarUrl: profile?.avatar_url || user.user_metadata?.avatar_url || null,
           credits: Number(profile?.credits) || 0,
         };
         setAccount(next);

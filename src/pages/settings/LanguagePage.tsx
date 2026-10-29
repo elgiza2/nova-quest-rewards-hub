@@ -61,7 +61,7 @@ export default function LanguagePage() {
         </header>
 
         <h1 className="gx-title">{tx("Language")}</h1>
-        <p className="gx-sub">{tx("Pick how Orange talks to you.")}</p>
+        <p className="gx-sub">{tx("Pick how Nova talks to you.")}</p>
 
         <div className="gx-content">
           <section className="gx-card" role="radiogroup" aria-label={tx("Language")}>

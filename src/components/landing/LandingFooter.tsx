@@ -1,4 +1,4 @@
-/** @doc Site-wide footer — Orange "liquid glass" design with cinematic video backdrop. */
+/** @doc Site-wide footer — Nova "liquid glass" design with cinematic video backdrop. */
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { BrandLogo, BrandWord } from "@/components/brand/BrandLogo";
@@ -89,7 +89,7 @@ const LandingFooter = () => {
             <div className="md:col-span-5">
               <div className="flex items-center gap-3 mb-4">
                 <BrandLogo
-                  alt="Orange logo"
+                  alt="Nova logo"
                   width={32}
                   height={32}
                   className="h-8 w-8"
@@ -97,10 +97,10 @@ const LandingFooter = () => {
                   decoding="async"
                 />
 
-                <BrandWord className="text-xl font-medium tracking-wide">ORANGE</BrandWord>
+                <BrandWord className="text-xl font-medium tracking-wide">NOVA</BrandWord>
               </div>
               <p className="text-sm leading-relaxed max-w-sm">
-                {tx("Orange is the all-in-one AI workspace — chat, images, video, slides, docs and code, in one calm canvas.")}
+                {tx("Nova is the all-in-one AI workspace — chat, images, video, slides, docs and code, in one calm canvas.")}
               </p>
             </div>
 

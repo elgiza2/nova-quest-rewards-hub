@@ -133,7 +133,7 @@ const ThinkingTrace = ({
         <ServiceIcon kind={headerKind} active={!!active} size={15} />
         <span
           key={active ? label : "done"}
-          className={`min-w-0 truncate text-[13px] animate-in fade-in slide-in-from-bottom-1 duration-300 ${active ? "orange-thinking-text" : ""}`}
+          className={`min-w-0 truncate text-[13px] animate-in fade-in slide-in-from-bottom-1 duration-300 ${active ? "thinking-shimmer" : ""}`}
           aria-live="polite"
         >
           {label}

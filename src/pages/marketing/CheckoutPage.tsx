@@ -53,7 +53,6 @@ const CheckoutPage = () => {
         path="/checkout"
       />
       <CustomCardForm open tier={tier} interval={interval} onClose={() => navigate("/pricing", { replace: true })} />
-
     </>
   );
 };

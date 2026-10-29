@@ -1,8 +1,7 @@
-import { avatarSrc } from "@/lib/avatarSrc";
 import EmptyState from "@/components/common/EmptyState";
 import { memo, startTransition, useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate, useLocation, type NavigateOptions } from "react-router-dom";
-import { SquarePlus, PanelLeft, LogIn, Cloud, Sparkles, ChevronDown, Mail as MailIcon, X, Cog, Search, ListChecks, Trophy } from "lucide-react";
+import { SquarePlus, PanelLeft, LogIn, Cloud, Sparkles, ChevronDown, Mail as MailIcon, X, Cog, Search } from "lucide-react";
 import { AgentOrb } from "@/components/agent/AgentOrb";
 import { supabase } from "@/integrations/supabase/client";
 import { getUserSafe } from "@/lib/authSafe";
@@ -361,7 +360,7 @@ const AppSidebar = ({
   const account = useActiveAccount();
   const activeUserId = currentUserId || account.id;
   const displayName = (account.name || userName || "User").trim() || "User";
-  const displayAvatar = avatarSrc(account.avatarUrl || avatarUrl);
+  const displayAvatar = account.avatarUrl ?? avatarUrl;
   const initial = displayName.charAt(0).toUpperCase() || "U";
   const [collapsed, setCollapsed, toggleCollapsed] = useSidebarCollapsed();
   const isCollapsed = inline && collapsed && !forceExpanded;
@@ -422,7 +421,7 @@ const AppSidebar = ({
     },
   ];
 
-  // Orange Email is hidden until the mailbox UI is reworked. Keep the entry here
+  // Nova Email is hidden until the mailbox UI is reworked. Keep the entry here
   // (commented, not deleted) so restoring it is a one-line change.
   // moreNav.push({
   //   label: "Mail",
@@ -438,12 +437,6 @@ const AppSidebar = ({
     Icon: EarnIcon,
     path: "/referrals",
     match: (p: string) => p.startsWith("/referrals") && !p.includes("tasks"),
-  });
-  moreNav.push({
-    label: language === "ar-eg" ? "المهام" : "Tasks",
-    Icon: ({ size = 20, className, strokeWidth }) => <Trophy size={size} className={className} strokeWidth={strokeWidth ?? 1.5} />,
-    path: "/tasks",
-    match: (p: string) => p.startsWith("/tasks"),
   });
 
   const handleNewChat = () => {
@@ -546,7 +539,7 @@ const AppSidebar = ({
               className="text-[18px] tracking-tight truncate"
               style={{ fontWeight: 900, letterSpacing: "-0.02em" }}
             >
-              Orange
+              Nova
             </BrandWord>
           </div>
         )}
@@ -1042,7 +1035,7 @@ const AppSidebar = ({
         style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + var(--pwa-extra-top, 0px) + 0.75rem)" }}
       >
         <BrandLogo alt="" width={22} height={22} className="h-[22px] w-[22px] shrink-0" loading="eager" decoding="async" />
-        <BrandWord className="truncate text-[19px] font-bold tracking-normal">Orange</BrandWord>
+        <BrandWord className="truncate text-[19px] font-bold tracking-normal">Nova</BrandWord>
         <button
           type="button"
           onClick={onClose}

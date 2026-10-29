@@ -1,4 +1,4 @@
-/** Runs OpenClaw through AgentSky while preserving Orange's original chat surface. */
+/** Runs OpenClaw through AgentSky while preserving Nova's original chat surface. */
 import type React from "react";
 import { agentApi, openStream, type AgentRequest, type RawEvent } from "@/lib/agentsky/client";
 import { buildTranscript, orbStateFor, type AgentTurn, type Lang } from "@/lib/agentsky/transcript";

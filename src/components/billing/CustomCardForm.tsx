@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Check, Loader2, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandMark } from "./CardPreview";
-import ManualCryptoPayment from "./ManualCryptoPayment";
+import { BrandIcon } from "./PaymentMethodMark";
 import artCoat from "@/assets/orange-coat.png.asset.json";
 
 import {
@@ -278,9 +278,7 @@ export default function CustomCardForm({ open, tier, interval, onClose }: Props)
               </div>
 
               <div key={method} className="checkout-panel">
-                {method === "crypto" ? (
-                  <ManualCryptoPayment tier={tier} interval={interval} />
-                ) : method === "visa" ? (
+                {method === "visa" ? (
                   <form onSubmit={submitCard} className="checkout-card-form" autoComplete="off">
                     <Field label="Card number">
                       <input
@@ -411,7 +409,7 @@ export default function CustomCardForm({ open, tier, interval, onClose }: Props)
 
 /**
  * Apple Pay straight inside our checkout: Kashier's SDK draws the real Apple Pay
- * button and the Wallet sheet opens on top of Orange — no redirect anywhere.
+ * button and the Wallet sheet opens on top of Nova — no redirect anywhere.
  */
 function ApplePayPanel({
   tier,
@@ -485,13 +483,13 @@ function ApplePayPanel({
   );
 }
 
-type TileId = "visa" | "apple_pay" | "vodafone" | "crypto" | "more";
+type TileId = "visa" | "apple_pay" | "vodafone" | "google_pay" | "more";
 type Tile = { id: TileId; label: string; redirect?: string | null };
 const METHODS: Tile[] = [
   { id: "visa", label: "Card" },
   { id: "apple_pay", label: "Apple Pay" },
   { id: "vodafone", label: "Vodafone" },
-  { id: "crypto", label: "Crypto" },
+  { id: "google_pay", label: "Google Pay", redirect: "google_pay" },
   { id: "more", label: "More", redirect: null },
 ];
 
@@ -519,20 +517,8 @@ function TileLogo({ id }: { id: TileId }) {
           <path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM11.5 3c.7-.9 1.2-2 1-3.2-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3.1 1.1.1 2.2-.6 2.9-1.4z" />
         </svg>
       );
-    case "crypto":
-      return (
-        <svg viewBox="0 0 44 22" className="h-[22px] w-[44px]" aria-hidden="true">
-          {/* Stacked TON, USDT and ETH coins */}
-          <circle cx="11" cy="11" r="10" fill="#0098EA" stroke="#fff" strokeWidth="1.5" />
-          <path d="M6.5 7.5h9L11 15.5z" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinejoin="round" />
-          <path d="M11 7.5v8" stroke="#fff" strokeWidth="1.4" />
-          <circle cx="22" cy="11" r="10" fill="#26A17B" stroke="#fff" strokeWidth="1.5" />
-          <path d="M16.5 6.8h11M22 6.8v9.4" stroke="#fff" strokeWidth="2" />
-          <ellipse cx="22" cy="10.6" rx="4.6" ry="1.4" fill="none" stroke="#fff" strokeWidth="1.2" />
-          <circle cx="33" cy="11" r="10" fill="#627EEA" stroke="#fff" strokeWidth="1.5" />
-          <path d="M33 4.5l-4 6.8 4 2.3 4-2.3zM29 12.2l4 5.3 4-5.3-4 2.3z" fill="#fff" />
-        </svg>
-      );
+    case "google_pay":
+      return <BrandIcon slug="googlepay" className="h-[22px] w-[22px]" />;
     case "more":
       return <MoreHorizontal className="h-[22px] w-[22px]" strokeWidth={2} />;
     case "vodafone":
