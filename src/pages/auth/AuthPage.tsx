@@ -1027,7 +1027,6 @@ const AuthPage = () => {
                           </svg>
                           {authT("continueWithGoogle")}
                         </button>
-                        <AppleSignInButton className={socialCls} />
                       </div>
                     </motion.div>
                   )}
