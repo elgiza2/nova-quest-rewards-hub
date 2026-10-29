@@ -101,7 +101,7 @@ export default function AgentChatPage() {
       title={
         <span className="flex items-center gap-2.5" data-agent-color={color}>
           <AgentOrb size={26} color={color} state={orb} />
-          <span className="truncate">{session?.title || agent?.name || "Orange"}</span>
+          <span className="truncate">{session?.title || agent?.name || "Megsy"}</span>
         </span>
       }
     >

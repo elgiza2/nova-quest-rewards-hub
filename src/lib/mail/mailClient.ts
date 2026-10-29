@@ -1,4 +1,4 @@
-/** @doc Client for the Orange internal mail system (username@megsyai.com). */
+/** @doc Client for the Megsy internal mail system (username@megsyai.com). */
 import { supabase } from "@/integrations/supabase/client";
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/edgeRuntime";
 

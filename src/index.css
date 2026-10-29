@@ -198,9 +198,9 @@ html.lenis body {
   --overlay-black-50: rgba(0, 0, 0, 0.50);
   --overlay-black-55: rgba(0, 0, 0, 0.55);
   --page-bg: #1c1c1c;
-  /* Orange brand blue — used across ThinkingLoader, AgentStatusLine, ChatMessage sources, MegsyStar */
+  /* Nova brand blue — used across ThinkingLoader, AgentStatusLine, ChatMessage sources, MegsyStar */
   --megsy-blue: #5b8def;
-  /* Orange computer gold — the rotating star on the computer dock */
+  /* Nova computer gold — the rotating star on the computer dock */
   --megsy-gold: #e0b25a;
   --megsy-gold-strong: #f5d489;
 
@@ -220,7 +220,7 @@ html.lenis body {
   --mode-learning: #7DD3FC;  /* sky */
 
 
-  /* ── Orange Brand Tokens (unified) ─────────────────────────────
+  /* ── Nova Brand Tokens (unified) ─────────────────────────────
      Use the Tailwind aliases `brand-*` / `surface-*` (see tailwind.config.ts)
      instead of writing literal hex values in components. */
   --brand-ink: 0 0% 4%;            /* #0A0A0A */
@@ -390,7 +390,7 @@ html:not(.dark) .ambient-bg__blob { opacity: 0.10; }
   from { background-position: -40% 0; }
   to { background-position: 140% 0; }
 }
-/* Orange plus-star: brand star with a periodic silver light sweep */
+/* Nova plus-star: brand star with a periodic silver light sweep */
 .megsy-plus-star { position: relative; display: inline-flex; overflow: hidden; border-radius: 6px; }
 .megsy-plus-star::after {
   content: ""; position: absolute; inset: -40%;
@@ -945,7 +945,7 @@ button[data-slides-preview-button] svg,
   }
 
 
-  /* Orange theme tokens remain shared across all locales and zones. */
+  /* Nova theme tokens remain shared across all locales and zones. */
 
 
 
@@ -3939,7 +3939,7 @@ a.bg-primary:hover,
   outline: none !important;
 }
 
-/* Unified media/loading animations (Orange star breathing + sheen sweep). */
+/* Unified media/loading animations (Nova star breathing + sheen sweep). */
 @keyframes media-breathe {
   0%, 100% { transform: scale(1); opacity: 0.75; }
   50%      { transform: scale(1.14); opacity: 1; }
@@ -4181,9 +4181,9 @@ html.lenis body {
   --overlay-black-50: rgba(0, 0, 0, 0.50);
   --overlay-black-55: rgba(0, 0, 0, 0.55);
   --page-bg: #1c1c1c;
-  /* Orange brand blue — used across ThinkingLoader, AgentStatusLine, ChatMessage sources, MegsyStar */
+  /* Nova brand blue — used across ThinkingLoader, AgentStatusLine, ChatMessage sources, MegsyStar */
   --megsy-blue: #5b8def;
-  /* Orange computer gold — the rotating star on the computer dock */
+  /* Nova computer gold — the rotating star on the computer dock */
   --megsy-gold: #e0b25a;
   --megsy-gold-strong: #f5d489;
 
@@ -4203,7 +4203,7 @@ html.lenis body {
   --mode-learning: #7DD3FC;  /* sky */
 
 
-  /* ── Orange Brand Tokens (unified) ─────────────────────────────
+  /* ── Nova Brand Tokens (unified) ─────────────────────────────
      Use the Tailwind aliases `brand-*` / `surface-*` (see tailwind.config.ts)
      instead of writing literal hex values in components. */
   --brand-ink: 0 0% 4%;            /* #0A0A0A */
@@ -4892,7 +4892,7 @@ button[data-slides-preview-button] svg,
   }
 
 
-  /* Orange theme tokens remain shared across all locales and zones. */
+  /* Nova theme tokens remain shared across all locales and zones. */
 
 
 
@@ -7886,7 +7886,7 @@ a.bg-primary:hover,
   outline: none !important;
 }
 
-/* Unified media/loading animations (Orange star breathing + sheen sweep). */
+/* Unified media/loading animations (Nova star breathing + sheen sweep). */
 @keyframes media-breathe {
   0%, 100% { transform: scale(1); opacity: 0.75; }
   50%      { transform: scale(1.14); opacity: 1; }
@@ -8038,8 +8038,8 @@ a.bg-primary:hover,
   .upgrade-plan-btn * { color: inherit !important; }
 }
 
-/* ── ServiceIcon: Orange star + distinctive animated service glyph ──────────
-   Base is always the Orange star. The service glyph sits centered on top.
+/* ── ServiceIcon: Nova star + distinctive animated service glyph ──────────
+   Base is always the Nova star. The service glyph sits centered on top.
    Animations are calm micro-motions, disabled under reduced-motion. */
 .megsy-service-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; flex: none; color: var(--megsy-gold, #e8b64c); }
 .megsy-service-thinking > svg { transform-origin: center; animation: megsy-thinking-breathe 1.8s ease-in-out infinite; filter: drop-shadow(0 0 3px color-mix(in srgb, currentColor 28%, transparent)); }

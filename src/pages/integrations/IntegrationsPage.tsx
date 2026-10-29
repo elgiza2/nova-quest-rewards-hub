@@ -15,7 +15,7 @@ export default function IntegrationsPage() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    document.title = "Apps — Orange";
+    document.title = "Apps — Megsy";
     loadIntegrationConnections(CATALOG)
       .then((s) => setConnected(s.connectedApps || {}))
       .catch(() => undefined)
@@ -78,8 +78,8 @@ export default function IntegrationsPage() {
         <h1 className="gx-title">{ar ? "التطبيقات" : "Apps"}</h1>
         <p className="gx-sub">
           {ar
-            ? "اربط تطبيقاتك وأورانج هيستخدمها وقت ما يحتاج."
-            : "Connect your apps and Orange uses them when needed."}
+            ? "اربط تطبيقاتك وميغسي هيستخدمها وقت ما يحتاج."
+            : "Connect your apps and Megsy uses them when needed."}
         </p>
 
         <div className="gx-content">

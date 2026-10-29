@@ -1,4 +1,4 @@
-/** @doc Bridge between Orange Coder projects and the Anything.com build API.
+/** @doc Bridge between Megsy Coder projects and the Anything.com build API.
  *  Takes the files Coder generated and hands them to Anything as a build spec,
  *  then polls until a live deployment URL exists and (optionally) publishes it. */
 
@@ -148,7 +148,7 @@ export async function deployCoderProjectToAnything(
     const res = await anything.projects.create({
       prompt,
       organizationId,
-      name: (opts.title || "Orange project").slice(0, 60),
+      name: (opts.title || "Megsy project").slice(0, 60),
     });
     projectId = String(res?.projectGroupId ?? res?.id ?? "");
     if (!projectId) throw new AnythingApiError("Anything.com did not return a project id");

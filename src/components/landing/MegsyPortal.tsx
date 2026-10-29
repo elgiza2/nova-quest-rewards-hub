@@ -11,7 +11,7 @@ import mercury from "@/assets/portal/mercury.jpg.asset.json";
 const states = [
   { name: "Explore", next: "Create", background: mars.url, portal: earth.url },
   { name: "Create", next: "Discover", background: earth.url, portal: venus.url },
-  { name: "Discover", next: "Orange", background: venus.url, portal: mercury.url },
+  { name: "Discover", next: "Megsy", background: venus.url, portal: mercury.url },
 ];
 
 /** Screen-locked media clipped through a perspective-projected moving portal. */
@@ -127,16 +127,16 @@ export default function MegsyPortal({ ar, onStart }: { ar: boolean; onStart: () 
     return () => { alive = false; cancelAnimationFrame(frame); observer.disconnect(); timers.forEach(clearTimeout); element.removeEventListener("pointermove", pointer); element.removeEventListener("pointerleave", leave); loader.removeEventListener("loadedmetadata", startLoader); loader.removeEventListener("ended", finish); loader.removeEventListener("error", finish); [loader, video, bg].forEach(v => v.pause()); };
   }, [onStart]);
 
-  return <section ref={host} className={`megsy-experience ${loaded ? "is-ready" : ""} ${busy ? "is-travelling" : ""}`} aria-label={ar ? "عالم أورانج" : "The Orange universe"} dir="ltr">
+  return <section ref={host} className={`megsy-experience ${loaded ? "is-ready" : ""} ${busy ? "is-travelling" : ""}`} aria-label={ar ? "عالم ميغسي" : "The Megsy universe"} dir="ltr">
     <video ref={background} className="megsy-space-background" src={mars.url} muted={muted} loop playsInline preload="auto" poster={mercury.url} />
     <div className="megsy-space-shade" />
     <div className="megsy-space-preloader" aria-hidden={loaded}><video ref={preloader} src={intro.url} muted playsInline preload="auto" /><span>{progress}<small>%</small></span></div>
-    <header className="megsy-space-header"><a href="/landing" className="megsy-space-wordmark">ORANGE<span>AI</span></a><nav aria-label="Landing navigation"><a href="#possibilities">{ar ? "المميزات" : "Explore"}</a><a href="#egypt">{ar ? "من مصر" : "From Egypt"}</a><Button variant="neutral" size="sm" onClick={onStart}>{ar ? "ابدأ" : "Start creating"}<ArrowUpRight size={15} /></Button></nav></header>
+    <header className="megsy-space-header"><a href="/landing" className="megsy-space-wordmark">NOVA<span>AI</span></a><nav aria-label="Landing navigation"><a href="#possibilities">{ar ? "المميزات" : "Explore"}</a><a href="#egypt">{ar ? "من مصر" : "From Egypt"}</a><Button variant="neutral" size="sm" onClick={onStart}>{ar ? "ابدأ" : "Start creating"}<ArrowUpRight size={15} /></Button></nav></header>
     <aside className="megsy-world-list">{["Chat", "Research", "Documents", "Code", "Agents", "Images", "Video"].map((name,i) => <a key={name} href="#possibilities" className={i === current ? "active" : ""}>{name}</a>)}</aside>
     <canvas ref={canvas} className="megsy-portal-canvas" aria-hidden="true" />
     <div className="megsy-portal-wrap"><div className="megsy-portal-heading"><span>{ar ? "التالي" : "Next"}</span><span>[0{current+2}] {states[current].next}</span></div><Button ref={windowRef} variant="ghost" className="megsy-portal" aria-label={`Travel to ${states[current].next}`} disabled={busy || !loaded} onClick={() => travelRef.current()}><span className="sr-only">{states[current].next}</span></Button><p className="megsy-portal-label">{busy ? (ar ? "بننتقل…" : "Preparing orbit…") : (ar ? "عالم جديد مستنيك" : "A new world awaits")}</p></div>
     <video ref={portal} className="megsy-pixel-source" src={earth.url} muted playsInline preload="auto" /><img ref={image} className="megsy-pixel-source" src={mercury.url} alt="" width={1920} height={1080} />
-    <div className="megsy-planet-content"><div><p>{ar ? "أفكارك، من أول سؤال لآخر خطوة" : "YOUR IDEAS. FROM FIRST THOUGHT TO FINISHED WORK."}</p><h1>ORANGE</h1></div><div className="megsy-space-facts" dir={ar ? "rtl" : "ltr"}><div><span>{ar ? "شريكك" : "Your partner"}</span><p>{ar ? "بيفكر معاك، يبحث ويشتغل." : "Think together. Research. Make it happen."}</p></div><div><span>{ar ? "مكان واحد" : "One space"}</span><p>{ar ? "شات، ملفات، كود ووكلاء." : "Chat, files, code and personal agents."}</p></div><div><span>{ar ? "من القاهرة" : "From Cairo"}</span><p>{ar ? "ذكاء اصطناعي بروح مصرية." : "Egyptian roots. Worldwide possibilities."}</p></div></div></div>
+    <div className="megsy-planet-content"><div><p>{ar ? "أفكارك، من أول سؤال لآخر خطوة" : "YOUR IDEAS. FROM FIRST THOUGHT TO FINISHED WORK."}</p><h1>NOVA</h1></div><div className="megsy-space-facts" dir={ar ? "rtl" : "ltr"}><div><span>{ar ? "شريكك" : "Your partner"}</span><p>{ar ? "بيفكر معاك، يبحث ويشتغل." : "Think together. Research. Make it happen."}</p></div><div><span>{ar ? "مكان واحد" : "One space"}</span><p>{ar ? "شات، ملفات، كود ووكلاء." : "Chat, files, code and personal agents."}</p></div><div><span>{ar ? "من القاهرة" : "From Cairo"}</span><p>{ar ? "ذكاء اصطناعي بروح مصرية." : "Egyptian roots. Worldwide possibilities."}</p></div></div></div>
     <div className="megsy-space-character"><AgentOrb state={busy ? "tool" : "hello"} size={64} /><Button variant="ghost" size="icon-sm" aria-label={muted ? "Unmute background" : "Mute background"} onClick={() => setMuted(!muted)}>{muted ? <VolumeX size={15} /> : <Volume2 size={15} />}</Button></div>
   </section>;
 }

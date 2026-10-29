@@ -1,4 +1,3 @@
-import { fetchBotUsername } from "@/lib/telegramAuth";
 /** @doc Referral program — 20 credits per verified invite, 10 per task. */
 import {
   useState,
@@ -23,7 +22,7 @@ import {
 
 export const WHATSAPP_PHONE = "201098821812";
 export const PROMOTER_MESSAGE =
-  "Hello, I want to join the Orange AI promotion / referral system. Please send me the details.";
+  "Hello, I want to join the Megsy AI promotion / referral system. Please send me the details.";
 export const MIN_PAYOUT = 10;
 
 /* Neutral, quiet palette — no gradients, no neon. */
@@ -242,8 +241,6 @@ const ReferralsPage = () => {
   const milestone = useReferralMilestone();
   const [userId, setUserId] = useState<string | null>(null);
   const [code, setCode] = useState("");
-  const [bot, setBot] = useState("");
-  useEffect(() => { void fetchBotUsername().then(setBot); }, []);
   const [refs, setRefs] = useState<Referral[]>([]);
   const [earns, setEarns] = useState<Earning[]>([]);
   const [wds, setWds] = useState<Withdrawal[]>([]);
@@ -266,7 +263,7 @@ const ReferralsPage = () => {
         .limit(1);
       let row = codes?.[0] as { code: string } | undefined;
       if (!row) {
-        const newCode = `ORANGE-${user.id.substring(0, 6).toUpperCase()}`;
+        const newCode = `NOVA-${user.id.substring(0, 6).toUpperCase()}`;
         await supabase
           .from("referral_codes")
           .insert({ user_id: user.id, code: newCode, referral_mode: "cash" });
@@ -274,7 +271,7 @@ const ReferralsPage = () => {
       }
       setCode(row.code);
 
-      const [r, e, w] = await Promise.all([
+      const [r, e, w, tk, ut] = await Promise.all([
         supabase
           .from("referrals")
           .select("*")
@@ -290,12 +287,17 @@ const ReferralsPage = () => {
           .select("*")
           .eq("user_id", user.id)
           .order("created_at", { ascending: false }),
+        supabase.from("reward_tasks").select("*").eq("active", true).order("sort_order"),
+        supabase
+          .from("user_reward_tasks")
+          .select("task_id, progress, completed_at, awarded_credits")
+          .eq("user_id", user.id),
       ]);
       setRefs(r.data ?? []);
       setEarns(e.data ?? []);
       setWds(w.data ?? []);
-
-
+      setTasks((tk.data as RewardTask[]) ?? []);
+      setUserTasks((ut.data as UserTask[]) ?? []);
     } catch {
       // A failed lookup must never blank the page — the invite UI still works.
     }
@@ -326,7 +328,7 @@ const ReferralsPage = () => {
     toast.info("This reward is awaiting secure verification");
   };
 
-  const link = code && bot ? `https://t.me/${bot}?startapp=ref_${encodeURIComponent(code)}&mode=fullscreen` : "";
+  const link = code ? `${window.location.origin}/ref/${code}` : "";
   const totalEarned = earns.reduce((s, x) => s + Number(x.amount), 0);
   const committed = wds
     .filter((w) => w.status !== "rejected")
@@ -345,10 +347,10 @@ const ReferralsPage = () => {
 
   const shareLink = async () => {
     if (!link) return;
-    const shareText = `Join Orange AI with my invite link:\n${link}`;
+    const shareText = `Join Megsy AI with my invite link:\n${link}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Orange AI", text: shareText, url: link });
+        await navigator.share({ title: "Megsy AI", text: shareText, url: link });
         return;
       } catch {
         /* fallthrough */
@@ -430,7 +432,7 @@ const ReferralsPage = () => {
           <h1 className="gx-title">{translateExactText("Invite friends", lang)}</h1>
           <p className="gx-sub">
             {translateExactText(
-              "Invite a friend and you both get credits — they are credited when they join, you are credited when they start using Orange. Five verified invites unlock Pro.",
+              "Invite a friend and you both get credits — they are credited when they join, you are credited when they start using Megsy. Five verified invites unlock Pro.",
               lang,
             )}
           </p>

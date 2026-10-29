@@ -55,7 +55,7 @@ export const SKILL_TOOLS: SkillToolOption[] = [
   },
   {
     name: "MEGSY_MAIL",
-    label: "Orange Mail",
+    label: "Nova Mail",
     description: "Send and read mail from your own username@megsyai.com inbox",
   },
 ];

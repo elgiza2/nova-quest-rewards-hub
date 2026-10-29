@@ -151,7 +151,7 @@ const ORG_JSON_LD = JSON.stringify({
     {
       "@type": "Organization",
       "@id": "/#organization",
-      name: "Orange AI",
+      name: "Megsy AI",
       url: "/",
       logo: "/app-icon-512.png",
       sameAs: [],
@@ -161,7 +161,7 @@ const ORG_JSON_LD = JSON.stringify({
     {
       "@type": "WebSite",
       "@id": "/#website",
-      name: "Orange AI",
+      name: "Megsy AI",
       url: "/",
       publisher: { "@id": "/#organization" },
       inLanguage: ["en", "ar"],
@@ -169,7 +169,7 @@ const ORG_JSON_LD = JSON.stringify({
     {
       "@type": "SoftwareApplication",
       "@id": "/#software",
-      name: "Orange AI",
+      name: "Megsy AI",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       url: "/",
@@ -257,35 +257,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "apple-mobile-web-app-title", content: "Orange" },
-      { name: "application-name", content: "Orange AI" },
+      { name: "apple-mobile-web-app-title", content: "Megsy" },
+      { name: "application-name", content: "Megsy AI" },
       { name: "theme-color", content: "#ffffff" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "format-detection", content: "telephone=no" },
-      { title: "Orange AI — AI Agent Workspace for Chat, Research, Images & Video" },
+      { title: "Megsy AI — AI Agent Workspace for Chat, Research, Images & Video" },
       {
         name: "description",
         content:
-          "Orange AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
+          "Megsy AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
       },
       {
         property: "og:title",
-        content: "Orange AI — AI Agent Workspace for Chat, Research, Images & Video",
+        content: "Megsy AI — AI Agent Workspace for Chat, Research, Images & Video",
       },
       {
         property: "og:description",
         content:
-          "Orange AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
+          "Megsy AI is an all-in-one AI agent workspace for chat, research, image and video generation, slides, documents and app building. Free to start.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
-      { property: "og:site_name", content: "Orange AI" },
+      { property: "og:site_name", content: "Megsy AI" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "ar_EG" },
       { property: "og:image", content: "/og-megsy.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Orange AI — AI Agent Workspace" },
+      { property: "og:image:alt", content: "Megsy AI — AI Agent Workspace" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "/og-megsy.jpg" },
     ],
@@ -317,7 +317,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // third-party request never competes with the first paint, and re-fired on SPA
 // navigation because the loader only counts one pageView per document.
 // IMPORTANT: the tag only starts after the visitor accepted cookies through
-// Orange's own banner (megsy_cookies_accepted === "true"). Loading it earlier
+// Megsy's own banner (megsy_cookies_accepted === "true"). Loading it earlier
 // makes AdRoll/NextRoll show its full-screen Didomi consent dialog, which
 // covers the pricing/checkout UI.
 const ADROLL_SCRIPT = `
@@ -328,7 +328,7 @@ const ADROLL_SCRIPT = `
     } catch (e) { return; }
     if (window.__adroll_loaded) return;
     var w = window, d = document;
-    // Consent was already collected by Orange's own banner: suppress the
+    // Consent was already collected by Megsy's own banner: suppress the
     // AdRoll/NextRoll (Didomi) dialog, which otherwise overlays the whole app
     // and swallows clicks on the chat composer and the checkout buttons.
     try {
@@ -371,7 +371,7 @@ const ADROLL_SCRIPT = `
     };
     w.addEventListener("megsy:navigation", onNav);
     w.addEventListener("popstate", onNav);
-    // If consent arrives after boot (user clicks Accept in the Orange banner),
+    // If consent arrives after boot (user clicks Accept in the Megsy banner),
     // start the pixel then.
     w.addEventListener("megsy:cookies-accepted", start);
   };

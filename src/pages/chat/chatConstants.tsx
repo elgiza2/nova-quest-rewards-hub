@@ -87,7 +87,7 @@ export interface Message {
   /** Live Computer Agent task rendered as an in-chat card. */
   agentPending?: boolean;
   computerTaskId?: string;
-  /** Live long-running Orange Computer session (own machine + preview). */
+  /** Live long-running Megsy Computer session (own machine + preview). */
   longRunId?: string;
   /** Model-written step plan shown while the computer run starts. */
   computerPlan?: string[];
@@ -135,7 +135,7 @@ export interface Message {
   };
   /** Friendly display name of the model that produced this assistant message. */
   modelLabel?: string;
-  /** AgentSky session state rendered inside the original Orange transcript. */
+  /** AgentSky session state rendered inside the original Megsy transcript. */
   agentSkySessionId?: string;
   agentSkyCards?: AgentSkyCard[];
   agentSkyRequests?: AgentRequest[];
@@ -208,7 +208,7 @@ export const MODE_PROMPTS: Record<ChatMode, string> = {
   code:
     LANG_RULE +
     " You are in Coder Mode. Write clean, production-ready code. Prefer TypeScript/React with Tailwind for UI. Return runnable examples in fenced code blocks with the correct language tag (```tsx, ```html, ```js, ```python, etc.). Keep prose short — the user wants the code.",
-  operator: `You are "Orange Operator" — a multi-layer AI agent inside the Orange platform, similar to Manus and Kimi, capable of fully controlling a virtual computer and executing any digital task end-to-end without human intervention.
+  operator: `You are "Megsy Operator" — a multi-layer AI agent inside the Megsy platform, similar to Manus and Kimi, capable of fully controlling a virtual computer and executing any digital task end-to-end without human intervention.
 
 🧠 Internal Architecture (Multi-Layer Agent System):
 1. Orchestrator Layer: Understands the user's request, converts it into a Task Plan, distributes tasks across agents, manages sequencing, and retries on failure.
@@ -268,7 +268,7 @@ export const getChatModelDisplayLabel = (
 };
 
 
-// Chat picker = Orange agents only (Lite / 3.9 / Max)
+// Chat picker = Megsy agents only (Lite / 3.9 / Max)
 export const CHAT_COMPOSER_MODEL_OPTIONS = [
   {
     kind: "tier" as const,
@@ -343,7 +343,7 @@ export function getEffortPresetsForModel(modelId: string | null | undefined): Ef
 
 
 // Brand logos are ~85 KB of SVG paths. Loading them eagerly pulled six extra
-// chunks into the first paint even though the default model shows the Orange
+// chunks into the first paint even though the default model shows the Megsy
 // logo. Each brand is fetched only when that brand is actually rendered.
 const LazyBrandLogo: Partial<Record<ChatModelBrand, React.ComponentType>> = {
   claude: lazy(() =>

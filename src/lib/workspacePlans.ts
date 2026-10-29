@@ -41,7 +41,7 @@ export const WORKSPACE_PLANS: WorkspacePlanOption[] = [
     monthlyPrice: 0,
     tagline: "Basic shared space to get started",
     creditsLabel: "No subscription",
-    perks: ["3 members", "Orange Lite chat", "Personal use or small team"],
+    perks: ["3 members", "Megsy Lite chat", "Personal use or small team"],
   },
   ...PLANS.map<WorkspacePlanOption>((plan) => ({
     id: plan.tier as WorkspacePaidPlan,

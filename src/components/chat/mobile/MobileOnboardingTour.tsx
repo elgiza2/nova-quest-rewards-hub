@@ -20,7 +20,7 @@ const STEPS: Step[] = [
   {
     target: '[data-tour="composer"]',
     title: "Type your idea here",
-    text: "One short sentence is enough — Orange turns it into steps or content.",
+    text: "One short sentence is enough — Megsy turns it into steps or content.",
     placement: "top",
     pad: 10,
   },
@@ -34,7 +34,7 @@ const STEPS: Step[] = [
   {
     target: '[data-tour="send"]',
     title: "Send when ready",
-    text: "Tap send and Orange gets to work right away.",
+    text: "Tap send and Megsy gets to work right away.",
     placement: "top",
     pad: 12,
   },

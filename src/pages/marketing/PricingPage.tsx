@@ -196,10 +196,10 @@ const PricingPage = () => {
   const pricingLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Orange AI",
+    name: "Megsy AI",
     description:
       "AI agent workspace for chat, deep research, image and video generation, presentations, documents and app building.",
-    brand: { "@type": "Brand", name: "Orange AI" },
+    brand: { "@type": "Brand", name: "Megsy AI" },
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "USD",

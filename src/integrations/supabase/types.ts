@@ -2460,48 +2460,6 @@ export type Database = {
         }
         Relationships: []
       }
-      bot_admin_state: {
-        Row: {
-          action: string
-          created_at: string
-          task_id: string | null
-          telegram_id: number
-        }
-        Insert: {
-          action: string
-          created_at?: string
-          task_id?: string | null
-          telegram_id: number
-        }
-        Update: {
-          action?: string
-          created_at?: string
-          task_id?: string | null
-          telegram_id?: number
-        }
-        Relationships: []
-      }
-      bot_daily_state: {
-        Row: {
-          last_posted_at: string
-          last_posted_day: string
-          post_index: number
-          slot: string
-        }
-        Insert: {
-          last_posted_at?: string
-          last_posted_day?: string
-          post_index?: number
-          slot: string
-        }
-        Update: {
-          last_posted_at?: string
-          last_posted_day?: string
-          post_index?: number
-          slot?: string
-        }
-        Relationships: []
-      }
       bot_pending_actions: {
         Row: {
           action: string
@@ -3453,75 +3411,6 @@ export type Database = {
           created_at?: string
           name?: string
           secret?: string
-        }
-        Relationships: []
-      }
-      crypto_payments: {
-        Row: {
-          amount_usd: number
-          asset: string
-          created_at: string
-          credits: number | null
-          decimals: number
-          expected_nano: number
-          expires_at: string
-          id: string
-          interval: string | null
-          memo: string
-          network: string
-          paid_at: string | null
-          pay_amount: number
-          status: string
-          tier: string | null
-          tx_from: string | null
-          tx_hash: string | null
-          updated_at: string
-          user_id: string
-          wallet_address: string
-        }
-        Insert: {
-          amount_usd: number
-          asset: string
-          created_at?: string
-          credits?: number | null
-          decimals?: number
-          expected_nano: number
-          expires_at?: string
-          id?: string
-          interval?: string | null
-          memo: string
-          network: string
-          paid_at?: string | null
-          pay_amount: number
-          status?: string
-          tier?: string | null
-          tx_from?: string | null
-          tx_hash?: string | null
-          updated_at?: string
-          user_id: string
-          wallet_address: string
-        }
-        Update: {
-          amount_usd?: number
-          asset?: string
-          created_at?: string
-          credits?: number | null
-          decimals?: number
-          expected_nano?: number
-          expires_at?: string
-          id?: string
-          interval?: string | null
-          memo?: string
-          network?: string
-          paid_at?: string | null
-          pay_amount?: number
-          status?: string
-          tier?: string | null
-          tx_from?: string | null
-          tx_hash?: string | null
-          updated_at?: string
-          user_id?: string
-          wallet_address?: string
         }
         Relationships: []
       }
@@ -9380,7 +9269,6 @@ export type Database = {
           description: string | null
           icon: string | null
           id: string
-          image_url: string | null
           reward_credits: number
           sort_order: number
           target_count: number
@@ -9396,7 +9284,6 @@ export type Database = {
           description?: string | null
           icon?: string | null
           id?: string
-          image_url?: string | null
           reward_credits?: number
           sort_order?: number
           target_count?: number
@@ -9412,7 +9299,6 @@ export type Database = {
           description?: string | null
           icon?: string | null
           id?: string
-          image_url?: string | null
           reward_credits?: number
           sort_order?: number
           target_count?: number
@@ -10546,50 +10432,6 @@ export type Database = {
           name?: string
           preferred_model?: string | null
           triggers?: string[]
-        }
-        Relationships: []
-      }
-      task_starts: {
-        Row: {
-          started_at: string
-          task_id: string
-          user_id: string
-        }
-        Insert: {
-          started_at?: string
-          task_id: string
-          user_id: string
-        }
-        Update: {
-          started_at?: string
-          task_id?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "task_starts_task_id_fkey"
-            columns: ["task_id"]
-            isOneToOne: false
-            referencedRelation: "reward_tasks"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      task_wallet_claims: {
-        Row: {
-          created_at: string
-          user_id: string
-          wallet: string
-        }
-        Insert: {
-          created_at?: string
-          user_id: string
-          wallet: string
-        }
-        Update: {
-          created_at?: string
-          user_id?: string
-          wallet?: string
         }
         Relationships: []
       }
@@ -13119,10 +12961,6 @@ export type Database = {
         Returns: Json
       }
       claim_daily_credits: { Args: never; Returns: Json }
-      claim_orange_task: {
-        Args: { p_task: string; p_user: string }
-        Returns: Json
-      }
       claim_promo_slot: { Args: never; Returns: number }
       claim_referral_milestone: { Args: never; Returns: Json }
       claim_referral_signup: { Args: { p_code: string }; Returns: Json }
@@ -13183,10 +13021,6 @@ export type Database = {
       cleanup_old_research_reports: { Args: never; Returns: undefined }
       cleanup_rate_limits: { Args: never; Returns: undefined }
       complete_referral_task: { Args: { p_task_key: string }; Returns: Json }
-      confirm_crypto_payment: {
-        Args: { p_invoice: string; p_tx: string }
-        Returns: Json
-      }
       consume_agentsky_free_video: {
         Args: { p_limit?: number; p_user_id: string }
         Returns: boolean

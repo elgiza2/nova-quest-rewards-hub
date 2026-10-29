@@ -13,12 +13,12 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   Imported: "اتستورد",
   "Image is too large (max 5MB)": "الصورة كبيرة أوي (أقصى حد 5 ميجا)",
   "No suggestions returned": "مفيش اقتراحات رجعت",
-  "Learn about Orange AI": "اعرف أكتر عن Orange AI",
+  "Learn about Megsy AI": "اعرف أكتر عن Megsy AI",
   "browser screenshot": "صورة شاشة المتصفح",
-  "Orange OS screenshot": "صورة شاشة Orange OS",
-  "Orange logo": "شعار Orange",
+  "Megsy OS screenshot": "صورة شاشة Megsy OS",
+  "Megsy logo": "شعار Megsy",
   "Smooth oil-painted document preview cover": "غلاف معاينة المستند برسم زيتي ناعم",
-  "How you'd like Orange to respond": "تحب Orange يرد عليك إزاي",
+  "How you'd like Megsy to respond": "تحب Megsy يرد عليك إزاي",
   "You're all caught up": "خلصت كل حاجة",
   "Enter the new email address. You'll need to confirm from both inboxes to complete the change.":
     "اكتب الإيميل الجديد. لازم تأكّد من الإيميلين عشان التغيير يكتمل.",
@@ -35,8 +35,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Go to step 2": "روح للخطوة 2",
   "Go to step 3": "روح للخطوة 3",
   "Go to step 4": "روح للخطوة 4",
-  "Tell Orange once. It does the whole job.": "قول لـ Orange مرة واحدة… وهو يعمل الشغل كله.",
-  "Orange writes the work in front of you.": "Orange بيشتغل قدامك خطوة بخطوة.",
+  "Tell Megsy once. It does the whole job.": "قول لـ Megsy مرة واحدة… وهو يعمل الشغل كله.",
+  "Megsy writes the work in front of you.": "Megsy بيشتغل قدامك خطوة بخطوة.",
   "you@example.com": "أنت@example.com",
 
   // ------------------------------------------------------------- toasts: عام
@@ -175,8 +175,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
     "البناء اتوقف قبل ما يطلّع ملفات. جرّب تاني.",
   "A file with that name already exists": "فيه ملف بنفس الاسم موجود",
   "Failed to load Pyodide": "تحميل Pyodide فشل",
-  "Orange Coder Studio — terminal ready. Type `help` to list commands.":
-    "Orange Coder Studio — التيرمنال جاهز. اكتب `help` تشوف الأوامر.",
+  "Megsy Coder Studio — terminal ready. Type `help` to list commands.":
+    "Megsy Coder Studio — التيرمنال جاهز. اكتب `help` تشوف الأوامر.",
   Terminal: "تيرمنال",
   Notes: "ملاحظات",
   "Skipped — you can continue without connecting": "اتخطّيناها — تقدر تكمّل من غير ربط",
@@ -195,8 +195,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Tasks up to 4 hours": "مهام لحد 4 ساعات",
   "3 agents in parallel": "3 وكلاء بيشتغلوا مع بعض",
   "Deep research with citations": "بحث عميق بمصادر",
-  "Upgrade to Orange Pro": "اترقّى لـ Orange Pro",
-  "Orange OS is available on Pro plans and above": "Orange OS متاح في باقات Pro وأعلى",
+  "Upgrade to Megsy Pro": "اترقّى لـ Megsy Pro",
+  "Megsy OS is available on Pro plans and above": "Megsy OS متاح في باقات Pro وأعلى",
 
   // ---------------------------------------------------------------- تكاملات
   "Require your confirmation before each action.": "يطلب تأكيدك قبل كل خطوة.",
@@ -260,8 +260,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Type your idea here": "اكتب فكرتك هنا",
   "Start with one short sentence — I'll turn it into steps or ready-made content.":
     "ابدأ بجملة قصيرة — وأنا أحوّلها لخطوات أو محتوى جاهز.",
-  "One short sentence is enough — Orange turns it into steps or content.":
-    "جملة قصيرة تكفي — وOrange يحوّلها لخطوات أو محتوى.",
+  "One short sentence is enough — Megsy turns it into steps or content.":
+    "جملة قصيرة تكفي — وMegsy يحوّلها لخطوات أو محتوى.",
   "Use + for files and tools": "استخدم + للملفات والأدوات",
   "Add anything from +": "ضيف أي حاجة من +",
   "Upload images and video, or open creation and editing tools from the + button.":
@@ -269,7 +269,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Photos, videos and creation tools all live behind this button.":
     "الصور والفيديوهات وأدوات الإنشاء كلها ورا الزر ده.",
   "Send when ready": "ابعت لما تكون جاهز",
-  "Tap send and Orange gets to work right away.": "دوس ابعت وOrange يبدأ الشغل على طول.",
+  "Tap send and Megsy gets to work right away.": "دوس ابعت وMegsy يبدأ الشغل على طول.",
   "Pick the model that fits — speed or higher quality — before you send.":
     "اختار الموديل المناسب — سرعة ولا جودة أعلى — قبل ما تبعت.",
   "Tap the name at the top to pick the model that fits the task.":
@@ -287,7 +287,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "2,000+ reviews": "أكتر من 2,000 تقييم",
   "AI Creation": "الإنشاء بالذكاء الاصطناعي",
   Studios: "الاستوديوهات",
-  "Discover Orange": "اكتشف Orange",
+  "Discover Megsy": "اكتشف Megsy",
   Earn: "اكسب",
   "Parallel agents": "وكلاء بالتوازي",
   "In-chat tools": "أدوات جوه الشات",
@@ -300,8 +300,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Rate this app": "قيّم التطبيق",
   Version: "الإصدار",
   "This page has moved": "الصفحة دي اتنقلت",
-  "This Orange AI page does not exist. Head back to chat, pricing or your settings.":
-    "الصفحة دي مش موجودة في Orange AI. ارجع للشات أو الأسعار أو الإعدادات.",
+  "This Megsy AI page does not exist. Head back to chat, pricing or your settings.":
+    "الصفحة دي مش موجودة في Megsy AI. ارجع للشات أو الأسعار أو الإعدادات.",
 
   // ----------------------------------------------------------- دخول وحسابات
   "Invalid invite link": "لينك الدعوة غير صحيح",
@@ -367,11 +367,11 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Delete this skill?": "تمسح المهارة دي؟",
   "Describe or refine the skill in plain language.": "وصف المهارة أو ظبّطها بكلام عادي.",
   "How this skill shows up in your library.": "شكل المهارة دي في مكتبتك.",
-  "Keywords that let Orange pick this skill automatically.":
-    "كلمات مفتاحية تخلّي Orange يختار المهارة دي لوحده.",
+  "Keywords that let Megsy pick this skill automatically.":
+    "كلمات مفتاحية تخلّي Megsy يختار المهارة دي لوحده.",
   "add keyword…": "ضيف كلمة مفتاحية…",
-  "The system prompt Orange follows for this skill.":
-    "التعليمات الأساسية اللي Orange بيمشي عليها في المهارة دي.",
+  "The system prompt Megsy follows for this skill.":
+    "التعليمات الأساسية اللي Megsy بيمشي عليها في المهارة دي.",
   "What this skill is allowed to use.": "المهارة دي مسموح لها تستخدم إيه.",
   "Leave on Auto unless this skill needs a specific model.":
     "سيبها تلقائي إلا لو المهارة محتاجة موديل معيّن.",
@@ -381,24 +381,24 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Manus API Key": "مفتاح Manus API",
 
   // ---------------------------------------------------------------- وصف قانوني
-  "The terms that apply when you use Orange AI, including account rules, acceptable use, subscriptions and account termination.":
-    "الشروط اللي بتنطبق وإنت بتستخدم Orange AI، وفيها قواعد الحساب والاستخدام المقبول والاشتراكات وإنهاء الحساب.",
-  "How Orange AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.":
-    "إزاي Orange AI بيجمع ويستخدم ويخزّن ويحمي بياناتك، وده يشمل الشاتات والملفات وبيانات الحساب والأطراف التانية.",
-  "How refunds, cancellations and billing issues are handled for Orange AI subscriptions and credit purchases.":
-    "إزاي بنتعامل مع الاسترجاع والإلغاء ومشاكل الفوترة في اشتراكات Orange AI وشراء الكريدت.",
-  "Orange AI is an AI workspace for chat, research, media generation, skills and connected tools.":
-    "Orange AI مساحة شغل بالذكاء الاصطناعي للشات والبحث وتوليد الميديا والمهارات والأدوات المتوصلة.",
-  "Get in touch with the Orange AI team for support, billing questions, security reports or partnership enquiries.":
-    "اتواصل مع فريق Orange AI للدعم أو أسئلة الفوترة أو تقارير الأمان أو الشراكات.",
-  "Restore a Orange AI subscription on this device by re-checking the plan recorded for your account.":
-    "استرجع اشتراك Orange AI على الجهاز ده بمراجعة الباقة المسجّلة لحسابك.",
-  "Learn about Orange AI's security practices, data protection, encryption, and compliance commitments. Your data safety is our priority.":
-    "اعرف ممارسات الأمان في Orange AI وحماية البيانات والتشفير والالتزام بالمعايير. أمان بياناتك أولويتنا.",
+  "The terms that apply when you use Megsy AI, including account rules, acceptable use, subscriptions and account termination.":
+    "الشروط اللي بتنطبق وإنت بتستخدم Megsy AI، وفيها قواعد الحساب والاستخدام المقبول والاشتراكات وإنهاء الحساب.",
+  "How Megsy AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.":
+    "إزاي Megsy AI بيجمع ويستخدم ويخزّن ويحمي بياناتك، وده يشمل الشاتات والملفات وبيانات الحساب والأطراف التانية.",
+  "How refunds, cancellations and billing issues are handled for Megsy AI subscriptions and credit purchases.":
+    "إزاي بنتعامل مع الاسترجاع والإلغاء ومشاكل الفوترة في اشتراكات Megsy AI وشراء الكريدت.",
+  "Megsy AI is an AI workspace for chat, research, media generation, skills and connected tools.":
+    "Megsy AI مساحة شغل بالذكاء الاصطناعي للشات والبحث وتوليد الميديا والمهارات والأدوات المتوصلة.",
+  "Get in touch with the Megsy AI team for support, billing questions, security reports or partnership enquiries.":
+    "اتواصل مع فريق Megsy AI للدعم أو أسئلة الفوترة أو تقارير الأمان أو الشراكات.",
+  "Restore a Megsy AI subscription on this device by re-checking the plan recorded for your account.":
+    "استرجع اشتراك Megsy AI على الجهاز ده بمراجعة الباقة المسجّلة لحسابك.",
+  "Learn about Megsy AI's security practices, data protection, encryption, and compliance commitments. Your data safety is our priority.":
+    "اعرف ممارسات الأمان في Megsy AI وحماية البيانات والتشفير والالتزام بالمعايير. أمان بياناتك أولويتنا.",
   // ------------------------------------------------------------------ الباسوردات
   "Passwords": "الباسوردات",
-  "Every account the agent creates is registered with your Orange email and a strong password, and it is saved here so you can come back to it anytime.":
-    "كل حساب بيعمله الوكيل بيتسجّل بإيميل أورانج بتاعك وبباسورد قوي، وبيتحفظ هنا علشان ترجع له في أي وقت.",
+  "Every account the agent creates is registered with your Megsy email and a strong password, and it is saved here so you can come back to it anytime.":
+    "كل حساب بيعمله الوكيل بيتسجّل بإيميل ميغسي بتاعك وبباسورد قوي، وبيتحفظ هنا علشان ترجع له في أي وقت.",
   "No saved passwords yet.": "مفيش باسوردات محفوظة لسه.",
   "Add password": "إضافة باسورد",
   "Show password": "إظهار الباسورد",

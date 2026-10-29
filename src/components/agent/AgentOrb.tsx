@@ -16,7 +16,7 @@ export const AgentOrb = memo(function AgentOrb({
   size?: number;
   className?: string;
 }) {
-  // While the agent is thinking/working, show the Orange star with the silver
+  // While the agent is thinking/working, show the Megsy star with the silver
   // light sweep instead of the orb creature (user request).
   if (state === "thinking" || state === "tool") {
     return (

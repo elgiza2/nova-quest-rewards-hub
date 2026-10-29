@@ -636,12 +636,12 @@ const ChatPage = () => {
     setBrokenLogos,
   } = useIntegrationsUi();
 
-  // Orange OS is restricted to Pro plans and above.
+  // Megsy OS is restricted to Pro plans and above.
   const isProPlusPlan = useCallback(() => isPaidUser(userPlan), [userPlan]);
 
   const tryActivateMegsyOs = useCallback(() => {
     if (!isProPlusPlan()) {
-      toast.info("Orange OS is available on Pro plans and above");
+      toast.info("Megsy OS is available on Pro plans and above");
       setPlusMenuOpen(false);
       setMegsyOsIntroOpen(true);
       return false;
@@ -2729,7 +2729,7 @@ const ChatPage = () => {
     >
       <SEOHead title={seoMeta.title} description={seoMeta.description} path={seoMeta.path} />
 
-      {/* Orange Operator now renders as a tiny inline pill above the input — see below. */}
+      {/* Megsy Operator now renders as a tiny inline pill above the input — see below. */}
       <div
         data-shell="megsy"
         data-skin="claude"
@@ -3054,7 +3054,7 @@ const ChatPage = () => {
                               })
                               .join("\n\n");
                             const content = [
-                              "Orange Coder finished the build.",
+                              "Megsy Coder finished the build.",
                               summary?.trim() ? summary.trim() : "",
                               projectText,
                             ]
@@ -3198,7 +3198,7 @@ const ChatPage = () => {
                 <DialogHeader>
                   <DialogTitle>Add links</DialogTitle>
                   <DialogDescription>
-                    Paste one or more links. Orange will read them and attach their content to this
+                    Paste one or more links. Megsy will read them and attach their content to this
                     turn.
                   </DialogDescription>
                 </DialogHeader>

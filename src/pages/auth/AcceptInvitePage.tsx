@@ -1,4 +1,4 @@
-/** @doc Accept a personal invite to join a Orange workspace or chat. */
+/** @doc Accept a personal invite to join a Megsy workspace or chat. */
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";

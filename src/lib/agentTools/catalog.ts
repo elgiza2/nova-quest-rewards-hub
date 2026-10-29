@@ -1,5 +1,5 @@
 /**
- * @doc Orange 2026 tool catalog.
+ * @doc Megsy 2026 tool catalog.
  *
  * The agent used to know about ~6 hardcoded tools, so it kept saying "I only do
  * certain tasks". This catalog gives it a large, searchable inventory of real
@@ -137,7 +137,7 @@ const SERVICES: ServiceSpec[] = [
   { id: "evals", name: "Evaluation", category: "ai", kind: "model", auth: "none", base: "", ops: ["score", "compare", "rubric", "hallucination_check", "citation_check", "regression"] },
 
   // ---------------------------------------------------------------- comms
-  { id: "mail", name: "Orange Mail", category: "comms", kind: "http", auth: "login", base: "", ops: ["send", "inbox", "read", "reply", "search", "attachment", "address", "verify_code"] },
+  { id: "mail", name: "Nova Mail", category: "comms", kind: "http", auth: "login", base: "", ops: ["send", "inbox", "read", "reply", "search", "attachment", "address", "verify_code"] },
   { id: "gmail", name: "Gmail", category: "comms", kind: "http", auth: "oauth", base: "https://gmail.googleapis.com/gmail/v1", ops: ["search", "read", "send", "reply", "label", "draft", "attachments"] },
   { id: "outlook", name: "Outlook", category: "comms", kind: "http", auth: "oauth", base: "https://graph.microsoft.com/v1.0", ops: ["search", "read", "send", "reply", "calendar", "contacts"] },
   { id: "slack", name: "Slack", category: "comms", kind: "http", auth: "oauth", base: "https://slack.com/api", ops: ["post", "search", "channels", "thread", "dm", "upload", "reminder"] },

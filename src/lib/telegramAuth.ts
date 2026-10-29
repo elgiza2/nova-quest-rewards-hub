@@ -1,20 +1,15 @@
 /** @doc Detects Telegram Mini App context and signs the user into Supabase
- *  via the local /api/public/telegram-auth endpoint (verifies Telegram
- *  initData server-side and returns a token_hash we exchange for a real
- *  session). */
+ *  via the /harmony/auth endpoint (verifies Telegram initData server-side
+ *  and returns a token_hash we exchange for a real session). */
 import { supabase } from "@/integrations/supabase/client";
 
-const SUPABASE_URL =
-  (import.meta.env.VITE_SUPABASE_URL as string | undefined) ||
-  "https://qdnqxjzjecaieuavagvq.supabase.co";
+const SUPABASE_URL = "https://qdnqxjzjecaieuavagvq.supabase.co";
 const ANON_KEY =
-  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkbnF4anpqZWNhaWV1YXZhZ3ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MDY1NTcsImV4cCI6MjEwNDA4MjU1N30.eFK_7U7MRlktAAnQQ_9d4k7tF8N3qZ3QGhKVhH6C3Tg";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0Z2FtcGR0YXd1ZWZ3d2F5bmN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3Njk5ODAsImV4cCI6MjA4ODM0NTk4MH0.5ZOzuxCrm-TO4zzRDJ68LrCLH3f0itiznUxhbEupvGg";
 
-/** Fallback only — the live username comes from /api/public/telegram-auth GET. */
-const FALLBACK_BOT_USERNAME = "Noveaibot";
-const AUTH_ENDPOINT = "/api/public/telegram-auth";
-let botUsernameCache: string | null = null;
+const BOT_USERNAME = "Megsyaibot";
+const ENDPOINT = `${SUPABASE_URL}/functions/v1/telegram-tasks-bot/harmony/auth`;
+const BOT_MINI_APP_URL = `https://t.me/${BOT_USERNAME}?startapp=login`;
 
 type TgWebApp = {
   initData?: string;
@@ -22,19 +17,7 @@ type TgWebApp = {
   ready?: () => void;
   expand?: () => void;
   openTelegramLink?: (url: string) => void;
-  openLink?: (url: string, options?: { try_instant_view?: boolean }) => void;
   platform?: string;
-  version?: string;
-  isVersionAtLeast?: (v: string) => boolean;
-  requestFullscreen?: () => void;
-  disableVerticalSwipes?: () => void;
-  setHeaderColor?: (c: string) => void;
-  setBackgroundColor?: (c: string) => void;
-  setBottomBarColor?: (c: string) => void;
-  isFullscreen?: boolean;
-  safeAreaInset?: { top?: number; bottom?: number };
-  contentSafeAreaInset?: { top?: number; bottom?: number };
-  onEvent?: (event: string, callback: () => void) => void;
 };
 
 function tgWebApp(): TgWebApp | null {
@@ -44,118 +27,11 @@ function tgWebApp(): TgWebApp | null {
 }
 
 /** Call as early as possible so Telegram populates initData and expands the view. */
-let telegramInitialized = false;
 export function initTelegramWebApp(): void {
   const tg = tgWebApp();
   if (!tg) return;
-  try {
-    tg.ready?.();
-  } catch {
-    /* ignore */
-  }
-  try {
-    tg.expand?.();
-  } catch {
-    /* ignore */
-  }
-  if (!isInsideTelegram()) return;
-  try {
-    document.documentElement.classList.add("tg-app");
-    const syncInsets = () => {
-      const root = document.documentElement;
-      root.style.setProperty("--tg-safe-area-inset-top", `${tg.safeAreaInset?.top ?? 0}px`);
-      root.style.setProperty(
-        "--tg-content-safe-area-inset-top",
-        `${tg.contentSafeAreaInset?.top ?? (tg.isFullscreen ? 56 : 0)}px`,
-      );
-      root.style.setProperty("--tg-safe-area-inset-bottom", `${tg.safeAreaInset?.bottom ?? 0}px`);
-    };
-    const goFull = () => {
-      try {
-        if (!tg.isFullscreen && (!tg.isVersionAtLeast || tg.isVersionAtLeast("8.0")))
-          tg.requestFullscreen?.();
-      } catch {
-        /* unsupported client */
-      }
-      syncInsets();
-    };
-    goFull();
-    if (telegramInitialized) return;
-    telegramInitialized = true;
-    ["safeAreaChanged", "contentSafeAreaChanged", "fullscreenChanged", "viewportChanged"].forEach(
-      (event) => tg.onEvent?.(event, syncInsets),
-    );
-    window.addEventListener("pointerdown", goFull, { once: true });
-    window.setTimeout(goFull, 400);
-    window.addEventListener("load", goFull, { once: true });
-    try {
-      tg.disableVerticalSwipes?.();
-    } catch {
-      /* ignore */
-    }
-    // Match the safe strip to whatever page is showing right under it.
-    let lastHex = "";
-    const syncColor = () => {
-      const root = document.documentElement;
-      const top = parseFloat(getComputedStyle(root).getPropertyValue("--tg-top-px")) || 0;
-      let el = document.elementFromPoint(window.innerWidth / 2, top + 4) as HTMLElement | null;
-      let bg = "";
-      while (el) {
-        const c = getComputedStyle(el).backgroundColor;
-        if (c && c !== "transparent" && !/rgba\([^)]*,\s*0\)$/.test(c)) {
-          bg = c;
-          break;
-        }
-        const g = getComputedStyle(el).backgroundImage.match(/rgba?\([^)]*\)|oklch\([^)]*\)/);
-        if (g && !/,\s*0\)$/.test(g[0])) {
-          bg = g[0];
-          break;
-        }
-        el = el.parentElement;
-      }
-      if (!bg) bg = getComputedStyle(document.body).backgroundColor;
-      const hex = toHex(bg);
-      if (!hex || hex === lastHex) return;
-      lastHex = hex;
-      root.style.setProperty("--tg-page-background", hex);
-      try {
-        tg.setHeaderColor?.(hex);
-        tg.setBackgroundColor?.(hex);
-        tg.setBottomBarColor?.(hex);
-      } catch {
-        /* old client */
-      }
-    };
-    const syncTopPx = () => {
-      const t = (tg.safeAreaInset?.top ?? 0) + (tg.contentSafeAreaInset?.top ?? 0);
-      document.documentElement.style.setProperty("--tg-top-px", String(t));
-    };
-    syncTopPx();
-    ["safeAreaChanged", "contentSafeAreaChanged", "fullscreenChanged"].forEach((event) =>
-      tg.onEvent?.(event, syncTopPx),
-    );
-    syncColor();
-    window.setInterval(syncColor, 600);
-  } catch {
-    /* ignore */
-  }
-}
-
-let colorCtx: CanvasRenderingContext2D | null = null;
-/** Any CSS color (rgb, oklch, color()) → #rrggbb via a 1px canvas. */
-function toHex(color: string): string | null {
-  try {
-    colorCtx ??= document.createElement("canvas").getContext("2d", { willReadFrequently: true });
-    if (!colorCtx) return null;
-    colorCtx.clearRect(0, 0, 1, 1);
-    colorCtx.fillStyle = "#000";
-    colorCtx.fillStyle = color;
-    colorCtx.fillRect(0, 0, 1, 1);
-    const [r, g, b] = colorCtx.getImageData(0, 0, 1, 1).data;
-    return "#" + [r, g, b].map((n) => n.toString(16).padStart(2, "0")).join("");
-  } catch {
-    return null;
-  }
+  try { tg.ready?.(); } catch { /* ignore */ }
+  try { tg.expand?.(); } catch { /* ignore */ }
 }
 
 /** Wait briefly for `initData` — the Telegram SDK sometimes populates it
@@ -191,28 +67,11 @@ export function isInsideTelegram(): boolean {
   return false;
 }
 
-/** The bot username from the server (live), falling back to the last known one. */
-export async function fetchBotUsername(): Promise<string> {
-  if (botUsernameCache) return botUsernameCache;
-  try {
-    const res = await fetch(AUTH_ENDPOINT);
-    const data = await res.json().catch(() => null);
-    if (data?.botUsername) {
-      botUsernameCache = String(data.botUsername);
-      return botUsernameCache;
-    }
-  } catch {
-    /* fall through */
-  }
-  return FALLBACK_BOT_USERNAME;
-}
-
-/** Open the bot's Main Mini App directly. Launching the Mini App signs the
- *  user's identity into `initData` and our auto-login runs on arrival —
- *  no manual /start step needed. */
-export async function openBotForLogin() {
-  const username = await fetchBotUsername();
-  const miniAppUrl = `https://t.me/${username}?startapp=login&mode=fullscreen`;
+/** Open the bot's Main Mini App directly. `?startapp=login` launches the
+ *  Mini App (configured via BotFather → Menu Button / Main Mini App) with
+ *  `start_param=login`, so Telegram signs the user's identity into `initData`
+ *  and our auto-login runs on arrival — no manual /start step needed. */
+export function openBotForLogin() {
   const tg = tgWebApp();
   // `tg.openTelegramLink` is a no-op stub outside the real Telegram client
   // (the telegram-web-app.js SDK is loaded globally, so `tg` is truthy in
@@ -220,28 +79,16 @@ export async function openBotForLogin() {
   // otherwise fall back to opening the deep link in a new tab so desktop /
   // mobile Safari users are handed off to Telegram to launch the Mini App.
   if (isInsideTelegram() && tg?.openTelegramLink) {
-    tg.openTelegramLink(miniAppUrl);
+    tg.openTelegramLink(BOT_MINI_APP_URL);
   } else if (typeof window !== "undefined") {
     // Same-tab navigation is more reliable on mobile than window.open(): it
     // hands the browser directly to Telegram instead of leaving the user in a
     // background tab that cannot ever receive Telegram initData.
-    window.location.href = miniAppUrl;
+    window.location.href = BOT_MINI_APP_URL;
   }
 }
 
-type TelegramSignInResult = { ok: boolean; error?: string };
-let pendingTelegramSignIn: Promise<TelegramSignInResult> | null = null;
-
-/** Boot and the sign-in page must share one single-use magic-link exchange. */
-export function signInWithTelegram(): Promise<TelegramSignInResult> {
-  if (pendingTelegramSignIn) return pendingTelegramSignIn;
-  pendingTelegramSignIn = performTelegramSignIn().finally(() => {
-    pendingTelegramSignIn = null;
-  });
-  return pendingTelegramSignIn;
-}
-
-async function performTelegramSignIn(): Promise<TelegramSignInResult> {
+export async function signInWithTelegram(): Promise<{ ok: boolean; error?: string }> {
   try {
     // Give the Telegram SDK a moment to populate initData on slow clients.
     const initData = getTelegramInitData() ?? (await waitForInitData());
@@ -250,12 +97,16 @@ async function performTelegramSignIn(): Promise<TelegramSignInResult> {
       // not launched as a Mini App (no initData). In both cases the fix is
       // the same: relaunch through the bot's Main Mini App gateway so
       // Telegram signs the user's identity into initData automatically.
-      await openBotForLogin();
+      openBotForLogin();
       return { ok: false, error: isInsideTelegram() ? "no_init_data" : "not_in_telegram" };
     }
-    const resp = await fetch(AUTH_ENDPOINT, {
+    const resp = await fetch(ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        apikey: ANON_KEY,
+        Authorization: `Bearer ${ANON_KEY}`,
+      },
       body: JSON.stringify({ initData }),
     });
     const data = await resp.json().catch(() => ({}));
@@ -270,12 +121,13 @@ async function performTelegramSignIn(): Promise<TelegramSignInResult> {
       type: "email",
     });
     if (error) return { ok: false, error: error.message };
-    // verifyOtp already persists the session and publishes SIGNED_IN. Setting
-    // it again adds a second auth transition and an unnecessary network call.
-    if (!authData.session) return { ok: false, error: "session_missing" };
-    const startParam = new URLSearchParams(initData).get("start_param");
-    if (startParam?.startsWith("ref_"))
-      await supabase.rpc("claim_referral_signup", { p_code: startParam.slice(4) });
+    if (authData.session?.access_token && authData.session?.refresh_token) {
+      const { error: setErr } = await supabase.auth.setSession({
+        access_token: authData.session.access_token,
+        refresh_token: authData.session.refresh_token,
+      });
+      if (setErr) return { ok: false, error: setErr.message };
+    }
     return { ok: true };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
@@ -289,27 +141,4 @@ export async function tryAutoLoginTelegram(): Promise<boolean> {
   if (data.session) return false;
   const r = await signInWithTelegram();
   return r.ok;
-}
-
-/** Ask Telegram to hand an HTTPS payment link to the device's external browser. */
-export function openExternalBrowserLink(url: string): boolean {
-  if (typeof window === "undefined" || !/^https:\/\//i.test(url)) return false;
-  const tg = tgWebApp();
-  if (!isInsideTelegram() || !tg?.openLink) return false;
-  try {
-    tg.openLink(url, { try_instant_view: false });
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-/** Open a link the Telegram way: t.me links inside Telegram, others in Telegram's browser. */
-export function openTaskLink(url: string): void {
-  const tg = tgWebApp() as (TgWebApp & { openLink?: (u: string) => void }) | null;
-  if (isInsideTelegram() && tg) {
-    if (/^https?:\/\/t\.me\//i.test(url) && tg.openTelegramLink) return tg.openTelegramLink(url);
-    if (tg.openLink) return tg.openLink(url);
-  }
-  window.open(url, "_blank", "noopener,noreferrer");
 }

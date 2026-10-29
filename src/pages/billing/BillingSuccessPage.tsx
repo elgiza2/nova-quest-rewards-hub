@@ -64,7 +64,7 @@ const BillingSuccessPage = () => {
       else {
         setDetails({
           payment_id: kashierOrder,
-          product_name: "Orange subscription",
+          product_name: "Megsy subscription",
           currency: "EGP",
         });
         setStatus("success");
@@ -155,7 +155,7 @@ const BillingSuccessPage = () => {
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#17191c] text-white">
               <span className="text-sm font-bold">m</span>
             </div>
-            <span className="text-sm font-semibold">Orange</span>
+            <span className="text-sm font-semibold">Megsy</span>
           </div>
           <span className="flex items-center gap-1.5 text-xs text-black/45">
             <ShieldCheck className="h-4 w-4" /> {t("Secure checkout", "دفع آمن")}
@@ -191,7 +191,7 @@ const BillingSuccessPage = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold">
-                    {details?.product_name || t("Orange subscription", "اشتراك Orange")}
+                    {details?.product_name || t("Megsy subscription", "اشتراك Megsy")}
                   </p>
                   <p className="mt-1 text-xs text-black/45">
                     {t("Processed by Kashier", "تمت المعالجة عبر Kashier")}
@@ -286,8 +286,8 @@ const BillingSuccessPage = () => {
         </motion.main>
         <p className="mt-5 text-center text-[11px] text-black/35">
           {t(
-            "Your card details are handled securely by Kashier and never stored by Orange.",
-            "بيانات بطاقتك تتم معالجتها بأمان عبر Kashier ولا يتم حفظها لدى Orange.",
+            "Your card details are handled securely by Kashier and never stored by Megsy.",
+            "بيانات بطاقتك تتم معالجتها بأمان عبر Kashier ولا يتم حفظها لدى Megsy.",
           )}
         </p>
       </div>

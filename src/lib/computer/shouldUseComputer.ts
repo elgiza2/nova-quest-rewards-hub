@@ -71,7 +71,7 @@ const DEV_AR = [
   /(سو[يى]|سويلي|سو[يى]\s*لي|اعمل|اعملي|اعمل\s*لي|إعمل|ابن[يى]|ابنيلي|ابن[يى]\s*لي|انشئ|أنشئ|صمم|صممي|صمم\s*لي|طور|برمج|برمجلي|اكتب\s*لي|كلون)\s*(لي|لنا)?\s*[^.\n]{0,40}(موقع|ويب\s*سايت|تطبيق|ابليكيشن|أبليكيشن|منصه|منصة|متجر|ستور|لعبه|لعبة|بوت|سكربت|داشبورد|لوحه\s*تحكم|صفحه\s*هبوط|لاندنج|نظام|برنامج)/i,
 ];
 
-/** Mail-sending asks handled by the Orange Mail tool, not the computer agent. */
+/** Mail-sending asks handled by the Nova Mail tool, not the computer agent. */
 const MAIL_INTENT =
   /(ابعت|ارسل|إبعت|أرسل|بعتلي|ابعتلي|رد على|ردي على)\s*(لي|لى)?\s*(ال)?(ايميل|إيميل|بريد|ميل|رساله|رسالة|mail)/i;
 const MAIL_INTENT_EN =
@@ -108,7 +108,7 @@ export function shouldUseComputer(text: string): boolean {
   if (!t) return false;
   if (/(^|\s)@computer\b/i.test(t)) return true;
   if (t.length < 8) return false;
-  // Sending mail is Orange Mail's own tool, never a computer-agent task —
+  // Sending mail is Nova Mail's own tool, never a computer-agent task —
   // even though the message carries an email address.
   if (MAIL_INTENT.test(normalizeArabic(t)) || MAIL_INTENT_EN.test(t)) return false;
   // A message carrying credentials (email + something else) is always a

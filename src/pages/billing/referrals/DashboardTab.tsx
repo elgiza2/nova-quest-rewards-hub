@@ -4,7 +4,7 @@ import { translateExactText, useUserLang } from "@/lib/authI18n";
 import heroImage from "@/assets/megsy-referral-hero.jpg";
 import { GlassCard } from "@/components/profile/ProfileGlassShell";
 import ReferralProgressBar from "@/components/billing/ReferralProgressBar";
-
+import ReferralTasksList from "@/components/billing/ReferralTasksList";
 import ReferralCreditRewards from "@/components/billing/ReferralCreditRewards";
 import { useReferrals } from "@/pages/billing/ReferralsPage";
 
@@ -18,7 +18,7 @@ export default function DashboardTab() {
       <GlassCard className="ref-hero">
         <img
           src={heroImage}
-          alt={copy("Orange Pro invitation artwork")}
+          alt={copy("Megsy Pro invitation artwork")}
           width={1280}
           height={960}
           loading="lazy"
@@ -31,7 +31,7 @@ export default function DashboardTab() {
 
       <ReferralCreditRewards />
 
-
+      <ReferralTasksList />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-/** Agent task list inside Orange's original site navigation. */
+/** Agent task list inside Megsy's original site navigation. */
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListTodo, ChevronRight, RefreshCw, ArrowUpRight } from "lucide-react";
@@ -45,7 +45,7 @@ export default function AgentTasksPage() {
   };
   const visible = (tasks ?? []).filter((task) => filter === "all" || task.attention === filter);
   return <AgentShell lang={lang} title={ar ? "المهام" : "Tasks"} actions={<Button variant="outline" size="sm" onClick={() => nav("/tasks/life")}><ListTodo />{ar ? "مهامي" : "My tasks"}</Button>}>
-    <SEOHead path="/tasks" title="Tasks — Orange AI" description="Follow your agents' work and tasks in Orange." />
+    <SEOHead path="/tasks" title="Tasks — Megsy AI" description="Follow your agents' work and tasks in Megsy." />
     <div className="flex-1 overflow-y-auto px-5 py-8 md:px-10 md:py-12"><div className="mx-auto w-full max-w-5xl">
       <div className="mb-8 flex items-center justify-between gap-4"><div><h1 className="text-3xl font-semibold">{ar ? "الشغل الجاري" : "Work in progress"}</h1><p className="mt-2 text-sm text-muted-foreground">{tasks?.length ?? 0} {ar ? "مهمة" : "tasks"}</p></div><Button variant="ghost" size="icon" disabled={refreshing} onClick={() => void load()} title={ar ? "تحديث" : "Refresh"} aria-label={ar ? "تحديث" : "Refresh"}><RefreshCw className={refreshing ? "motion-safe:animate-spin" : ""} /></Button></div>
       <div className="mb-6 flex flex-wrap gap-1 border-b border-border" role="tablist" aria-label={ar ? "حالة المهام" : "Task status"}>{Object.entries(labels).map(([key, label]) => <Button variant="ghost" role="tab" aria-selected={filter === key} key={key} onClick={() => setFilter(key)} className={`rounded-none border-b-2 px-3 ${filter === key ? "border-primary text-foreground" : "border-transparent text-muted-foreground"}`}>{label}<span className="text-xs text-muted-foreground">{(tasks ?? []).filter((t) => key === "all" || t.attention === key).length}</span></Button>)}</div>
@@ -57,7 +57,7 @@ export default function AgentTasksPage() {
         const state = task.attention === "working" ? "tool" : task.attention === "failed" ? "error" : task.attention === "done" ? "done" : "idle";
         return <Button variant="outline" key={task.id} disabled={opening === task.id} onClick={() => void open(task)} className="h-auto w-full justify-start gap-4 rounded-lg p-4 text-start md:p-5">
           <AgentOrb size={40} color={agent?.color} state={state} />
-          <div className="min-w-0 flex-1"><div className="truncate font-semibold">{task.title || session?.title || (ar ? "مهمة" : "Task")}</div><div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-normal text-muted-foreground"><span>{agent?.name ?? "Orange"}</span><span>{labels[task.attention] ?? task.attention}</span>{task.helpers > 0 && <span>{task.helpers} {ar ? "مساعد" : "helpers"}</span>}</div>{task.statusLine && <div className="mt-2 truncate text-sm font-normal text-muted-foreground">{task.statusLine}</div>}</div>
+          <div className="min-w-0 flex-1"><div className="truncate font-semibold">{task.title || session?.title || (ar ? "مهمة" : "Task")}</div><div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-normal text-muted-foreground"><span>{agent?.name ?? "Megsy"}</span><span>{labels[task.attention] ?? task.attention}</span>{task.helpers > 0 && <span>{task.helpers} {ar ? "مساعد" : "helpers"}</span>}</div>{task.statusLine && <div className="mt-2 truncate text-sm font-normal text-muted-foreground">{task.statusLine}</div>}</div>
           {task.openRequests > 0 && <span className="text-xs text-primary">{task.openRequests} {ar ? "مستنياك" : "pending"}</span>}<ChevronRight className="shrink-0 text-muted-foreground rtl:rotate-180" />
         </Button>;
       })}</div>

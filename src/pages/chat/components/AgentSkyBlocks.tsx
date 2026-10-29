@@ -1,4 +1,4 @@
-/** AgentSky-specific steps and interactive results embedded in Orange's original messages. */
+/** AgentSky-specific steps and interactive results embedded in Megsy's original messages. */
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserLang } from "@/lib/authI18n";

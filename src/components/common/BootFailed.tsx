@@ -6,7 +6,7 @@
 export function BootFailed() {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center">
-      <h1 className="text-lg font-semibold tracking-tight">Couldn't load Orange</h1>
+      <h1 className="text-lg font-semibold tracking-tight">Couldn't load Megsy</h1>
       <p className="max-w-xs text-sm opacity-70">
         The app files didn't finish downloading. Check your connection and try again.
       </p>

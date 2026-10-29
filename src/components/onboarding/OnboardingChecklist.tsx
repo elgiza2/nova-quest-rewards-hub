@@ -120,7 +120,7 @@ export default function OnboardingChecklist() {
             <div className="px-4 py-3 border-b border-border flex items-center justify-between bg-gradient-to-r from-primary/10 to-transparent">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <div className="text-sm font-bold">Get started with Orange</div>
+                <div className="text-sm font-bold">Get started with Megsy</div>
               </div>
               <div className="flex items-center gap-1">
                 <button

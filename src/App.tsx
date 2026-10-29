@@ -2,7 +2,6 @@ import ReminderWatcher from "@/components/life/ReminderWatcher";
 import OctoberOfferDialog from "@/components/promo/OctoberOfferDialog";
 import { useEffect, useState, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
-import TelegramBackButton from "@/components/telegram/TelegramBackButton";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CostConfirmationHost } from "@/components/billing/CostConfirmationHost";
@@ -211,7 +210,6 @@ const App = () => {
                   <ConfirmProvider>
                     <DynamicNotifications>
                     <ScrollToTop />
-                    <TelegramBackButton />
                     <PageViewTracker />
                     <ReminderWatcher />
                     <OctoberOfferDialog />

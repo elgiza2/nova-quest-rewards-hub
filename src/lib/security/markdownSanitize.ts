@@ -1,7 +1,7 @@
 /**
  * Hardened rehype-sanitize schema for chat markdown.
  *
- * Extends the default GitHub-style schema to keep the visual features Orange
+ * Extends the default GitHub-style schema to keep the visual features Megsy
  * relies on (KaTeX math, syntax highlighting classes, task-list checkboxes,
  * inline `dir="auto"`/`dir="rtl"`/`dir="ltr"` for BiDi text) while still
  * stripping <script>, event handlers, and any javascript: URIs from

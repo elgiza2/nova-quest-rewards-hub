@@ -153,7 +153,7 @@ function PaymentGatewaySheetImpl({
 
   if (!open) return null;
 
-  // Orange subscriptions use Kashier only. Respect the caller's order while
+  // Megsy subscriptions use Kashier only. Respect the caller's order while
   // keeping the safe Kashier-only default for any future caller.
   const visible = (options ?? ["local", "wallets"])
     .map((id) => ROWS.find((row) => row.id === id))

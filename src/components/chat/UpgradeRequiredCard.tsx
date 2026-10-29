@@ -18,7 +18,7 @@ const COPY: Record<Feature, { title: string; sub: string; perks: string[] }> = {
   },
   code: {
     title: "Code & website builds are Premium",
-    sub: "Ship full websites, apps and code projects with Orange — paid plans only.",
+    sub: "Ship full websites, apps and code projects with Megsy — paid plans only.",
     perks: ["Unlimited builds", "Live preview & deploy", "Pro models for code"],
   },
 };

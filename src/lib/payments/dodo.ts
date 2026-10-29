@@ -1,13 +1,12 @@
 /**
  * @doc The Dodo Payments rail.
  *
- * Methods Orange cannot charge in-app are handed to the Dodo Payments checkout:
+ * Methods Megsy cannot charge in-app are handed to the Dodo Payments checkout:
  * `dodo-checkout` creates the session server-side (Dodo is the Merchant of
  * Record, so it collects the money and handles tax) and we open the returned
  * payment link. Switch the rail off with VITE_DODO_CHECKOUT_ENABLED=false.
  */
 import { supabase } from "@/integrations/supabase/client";
-import { openExternalBrowserLink } from "@/lib/telegramAuth";
 
 export const DODO_READY = import.meta.env.VITE_DODO_CHECKOUT_ENABLED !== "false";
 
@@ -28,10 +27,6 @@ export function openExternalCheckout(url: string): boolean {
     console.error("Blocked non-Dodo checkout URL");
     return false;
   }
-
-  // Telegram's WebApp API explicitly hands checkout links to the device browser
-  // (Chrome when it is the Android default), rather than leaving payment in the WebView.
-  if (openExternalBrowserLink(target.toString())) return true;
 
   const framed = window.top && window.top !== window;
   if (framed) {
@@ -94,8 +89,7 @@ export async function startDodoCheckout(input: {
       return {
         ok: false,
         reason: "failed",
-        message:
-          payload?.error ?? "The secure checkout link is missing. Please try another method.",
+        message: payload?.error ?? "The secure checkout link is missing. Please try another method.",
       };
     }
 

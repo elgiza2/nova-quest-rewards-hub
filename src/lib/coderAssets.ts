@@ -1,5 +1,5 @@
 /**
- * @doc Orange Coder media pipeline — turns image/video placeholders inside a
+ * @doc Megsy Coder media pipeline — turns image/video placeholders inside a
  * generated project into REAL generated assets (hosted URLs), reports the
  * credit cost, and lets the user regenerate or attach their own media.
  *

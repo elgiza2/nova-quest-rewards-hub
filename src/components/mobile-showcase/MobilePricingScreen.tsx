@@ -28,15 +28,15 @@ export default function MobilePricingScreen({ isYearly, onToggleYearly, onSubscr
   const monthly = getDisplayPrice(pro, false);
   const yearly = getDisplayPrice(pro, true);
   const benefits = isAr
-    ? ["١٬٠٠٠ رصيد Orange كل شهر", "بحث وتصفح وبرمجة مع وكيلك", "إنشاء الصور والفيديو داخل الشات"]
-    : ["1,000 Orange Credits every month", "Research, browse & code with your agent", "Create images & video in chat"];
+    ? ["١٬٠٠٠ رصيد Megsy كل شهر", "بحث وتصفح وبرمجة مع وكيلك", "إنشاء الصور والفيديو داخل الشات"]
+    : ["1,000 Megsy Credits every month", "Research, browse & code with your agent", "Create images & video in chat"];
   const options = [
     { yearly: false, label: isAr ? "شهري" : "Monthly", price: monthly.price, note: isAr ? "للشهر الأول" : "First month", detail: isAr ? `ثم $${pro.monthlyPrice} / شهر` : `Then $${pro.monthlyPrice} / month` },
     { yearly: true, label: isAr ? "سنوي" : "Yearly", price: yearly.price, note: isAr ? "دفع سنوي" : "Billed yearly", detail: isAr ? `يعادل $${(yearly.price / 12).toFixed(2)} / شهر` : `$${(yearly.price / 12).toFixed(2)} / month equivalent` },
   ];
 
   return (
-    <section className="botanical-pricing" data-art={artwork.key} dir={isAr ? "rtl" : "ltr"} aria-label={isAr ? "اشتراك Orange Pro" : "Orange Pro subscription"}>
+    <section className="botanical-pricing" data-art={artwork.key} dir={isAr ? "rtl" : "ltr"} aria-label={isAr ? "اشتراك Megsy Pro" : "Megsy Pro subscription"}>
       <div className="botanical-art" aria-hidden="true">
         <img src={artwork.url} alt="" fetchPriority="high" width={768} height={1376} />
       </div>

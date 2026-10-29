@@ -46,7 +46,7 @@ export default function ReferralCreditRewards() {
       hint: copy("Credited the moment they sign up."),
     },
     {
-      label: copy("They start using Orange"),
+      label: copy("They start using Megsy"),
       value: `${n(rewards.referrer_credits)} MC`,
       hint: copy("Credited to you on their first real use."),
     },
@@ -61,7 +61,7 @@ export default function ReferralCreditRewards() {
     <GlassCard className="px-5 py-5">
       <h2 className="text-[15px] font-semibold text-foreground">{copy("Referral credits")}</h2>
       <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-        {copy("Credits are what runs Orange. Invite someone and both of you get more.")}
+        {copy("Credits are what runs Megsy. Invite someone and both of you get more.")}
       </p>
       <dl className="mt-4 flex flex-col divide-y divide-border/60">
         {rows.map((row) => (

@@ -213,7 +213,7 @@ const PdfPreviewModal = ({ url, chatName, onClose }: ModalProps) => {
       if (!res.ok) throw new Error("fetch failed");
       const blob = await res.blob();
       const file = new File([blob], fileName, { type: "application/pdf" });
-      const text = "This presentation was designed with Orange AI: https://nova-quest-rewards-hub.lovable.app";
+      const text = "This presentation was designed with Megsy — try it free: https://megsy.ai";
       const navAny: any = navigator;
       if (navAny.canShare && navAny.canShare({ files: [file] })) {
         await navAny.share({ files: [file], title: chatName, text });

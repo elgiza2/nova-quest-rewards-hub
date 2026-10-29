@@ -169,9 +169,9 @@ ${renderSubAgents()}
 - run_code: {"code":"async JS; console.log results"}
 - fetch_url: {"url":"https://..."}
 - login_identity: {"site":"example.com","url":"https://example.com/signup"}
-  -> returns the user's own Orange email plus a clean strong password, already saved
+  -> returns the user's own Megsy email plus a clean strong password, already saved
      in Settings > Passwords. ALWAYS use this to sign up or sign in to any site.
-- check_mail: {"query":"verification"} -> reads the newest messages in that Orange
+- check_mail: {"query":"verification"} -> reads the newest messages in that Megsy
   mailbox, so you can pull confirmation links and verification codes yourself.
 - write_file: {"path":"report.md","content":"..."}
 - read_file: {"path":"report.md"}

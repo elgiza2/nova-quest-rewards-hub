@@ -77,13 +77,13 @@ const SharedSitePage = () => {
   if (state === "missing") {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background px-6 text-center">
-        <SEOHead title="Site not found — Orange" description="This shared site is unavailable." path={`/s/${slug ?? ""}`} />
+        <SEOHead title="Site not found — Megsy" description="This shared site is unavailable." path={`/s/${slug ?? ""}`} />
         <h1 className="text-xl font-semibold text-foreground">This site is unavailable</h1>
         <p className="max-w-sm text-sm text-muted-foreground">
           The link may have expired, or the owner made it private.
         </p>
         <Link to="/chat" className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground">
-          Build your own with Orange
+          Build your own with Megsy
         </Link>
       </div>
     );
@@ -92,14 +92,14 @@ const SharedSitePage = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SEOHead
-        title={`${title} — built with Orange`}
-        description={`${title}, a site built with Orange AI.`}
+        title={`${title} — built with Megsy`}
+        description={`${title}, a site built with Megsy AI.`}
         path={`/s/${slug ?? ""}`}
       />
       <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-2">
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-foreground">{title}</p>
-          <p className="text-[11px] text-muted-foreground">Built with Orange</p>
+          <p className="text-[11px] text-muted-foreground">Built with Megsy</p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <button

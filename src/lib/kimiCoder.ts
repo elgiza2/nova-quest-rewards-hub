@@ -99,7 +99,7 @@ const MEDIA_RULES = [
   "For a video, use: {{MEGSY_VIDEO:a short English description of the clip}}",
   'Example: <img src="{{MEGSY_IMAGE:pixel art space shooter game cover, neon}}" alt="Space shooter" />',
   "Also usable inside CSS: background-image: url('{{MEGSY_IMAGE:dark arcade background}}')",
-  "Orange generates each token into a real hosted asset and injects it into the site automatically.",
+  "Megsy generates each token into a real hosted asset and injects it into the site automatically.",
   "If the user attached media, use the exact attachment URLs given below instead of tokens.",
   "--- End media rules ---",
   "",

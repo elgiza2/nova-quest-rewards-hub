@@ -1,5 +1,5 @@
 /**
- * UpgradePlanButton — premium emerald payment CTA for Orange.
+ * UpgradePlanButton — premium emerald payment CTA for Megsy.
  *
  * Two-plan model (Pro + Max only):
  *   free  → "Get Pro"          (Get Pro)
@@ -118,7 +118,7 @@ export function UpgradePlanButton({ variant = "full", className, hideCredits = f
     >
 
 
-      {/* Star icon — Orange brand sparkle, blue */}
+      {/* Star icon — Megsy brand sparkle, blue */}
       <MegsyStar
         className={`relative z-10 transition-transform duration-200 group-hover:scale-105 text-[var(--megsy-blue)] ${variant === "compact" ? "w-4 h-4" : "w-3.5 h-3.5"}`}
       />

@@ -8,7 +8,7 @@ export const AGENT_COLORS: Record<AgentKey, { label: string; color: string; bg: 
   coo: { label: "COO", color: "#a855f7", bg: "rgba(168,85,247,0.10)" },
   cto: { label: "CTO", color: "#0ea5e9", bg: "rgba(14,165,233,0.10)" },
   executor: { label: "Executor", color: "#10b981", bg: "rgba(16,185,129,0.10)" },
-  assistant: { label: "Orange", color: "#f59e0b", bg: "rgba(245,158,11,0.10)" },
+  assistant: { label: "Megsy", color: "#f59e0b", bg: "rgba(245,158,11,0.10)" },
   system: { label: "System", color: "#94a3b8", bg: "rgba(148,163,184,0.10)" },
 };
 
