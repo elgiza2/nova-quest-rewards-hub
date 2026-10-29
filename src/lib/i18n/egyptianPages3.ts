@@ -15,10 +15,10 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "No suggestions returned": "مفيش اقتراحات رجعت",
   "Learn about Megsy AI": "اعرف أكتر عن Megsy AI",
   "browser screenshot": "صورة شاشة المتصفح",
-  "Nova OS screenshot": "صورة شاشة Nova OS",
-  "Nova logo": "شعار Nova",
+  "Megsy OS screenshot": "صورة شاشة Megsy OS",
+  "Megsy logo": "شعار Megsy",
   "Smooth oil-painted document preview cover": "غلاف معاينة المستند برسم زيتي ناعم",
-  "How you'd like Nova to respond": "تحب Nova يرد عليك إزاي",
+  "How you'd like Megsy to respond": "تحب Megsy يرد عليك إزاي",
   "You're all caught up": "خلصت كل حاجة",
   "Enter the new email address. You'll need to confirm from both inboxes to complete the change.":
     "اكتب الإيميل الجديد. لازم تأكّد من الإيميلين عشان التغيير يكتمل.",
@@ -35,8 +35,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Go to step 2": "روح للخطوة 2",
   "Go to step 3": "روح للخطوة 3",
   "Go to step 4": "روح للخطوة 4",
-  "Tell Nova once. It does the whole job.": "قول لـ Nova مرة واحدة… وهو يعمل الشغل كله.",
-  "Nova writes the work in front of you.": "Nova بيشتغل قدامك خطوة بخطوة.",
+  "Tell Megsy once. It does the whole job.": "قول لـ Megsy مرة واحدة… وهو يعمل الشغل كله.",
+  "Megsy writes the work in front of you.": "Megsy بيشتغل قدامك خطوة بخطوة.",
   "you@example.com": "أنت@example.com",
 
   // ------------------------------------------------------------- toasts: عام
@@ -175,8 +175,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
     "البناء اتوقف قبل ما يطلّع ملفات. جرّب تاني.",
   "A file with that name already exists": "فيه ملف بنفس الاسم موجود",
   "Failed to load Pyodide": "تحميل Pyodide فشل",
-  "Nova Coder Studio — terminal ready. Type `help` to list commands.":
-    "Nova Coder Studio — التيرمنال جاهز. اكتب `help` تشوف الأوامر.",
+  "Megsy Coder Studio — terminal ready. Type `help` to list commands.":
+    "Megsy Coder Studio — التيرمنال جاهز. اكتب `help` تشوف الأوامر.",
   Terminal: "تيرمنال",
   Notes: "ملاحظات",
   "Skipped — you can continue without connecting": "اتخطّيناها — تقدر تكمّل من غير ربط",
@@ -195,8 +195,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Tasks up to 4 hours": "مهام لحد 4 ساعات",
   "3 agents in parallel": "3 وكلاء بيشتغلوا مع بعض",
   "Deep research with citations": "بحث عميق بمصادر",
-  "Upgrade to Nova Pro": "اترقّى لـ Nova Pro",
-  "Nova OS is available on Pro plans and above": "Nova OS متاح في باقات Pro وأعلى",
+  "Upgrade to Megsy Pro": "اترقّى لـ Megsy Pro",
+  "Megsy OS is available on Pro plans and above": "Megsy OS متاح في باقات Pro وأعلى",
 
   // ---------------------------------------------------------------- تكاملات
   "Require your confirmation before each action.": "يطلب تأكيدك قبل كل خطوة.",
@@ -260,8 +260,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Type your idea here": "اكتب فكرتك هنا",
   "Start with one short sentence — I'll turn it into steps or ready-made content.":
     "ابدأ بجملة قصيرة — وأنا أحوّلها لخطوات أو محتوى جاهز.",
-  "One short sentence is enough — Nova turns it into steps or content.":
-    "جملة قصيرة تكفي — وNova يحوّلها لخطوات أو محتوى.",
+  "One short sentence is enough — Megsy turns it into steps or content.":
+    "جملة قصيرة تكفي — وMegsy يحوّلها لخطوات أو محتوى.",
   "Use + for files and tools": "استخدم + للملفات والأدوات",
   "Add anything from +": "ضيف أي حاجة من +",
   "Upload images and video, or open creation and editing tools from the + button.":
@@ -269,7 +269,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Photos, videos and creation tools all live behind this button.":
     "الصور والفيديوهات وأدوات الإنشاء كلها ورا الزر ده.",
   "Send when ready": "ابعت لما تكون جاهز",
-  "Tap send and Nova gets to work right away.": "دوس ابعت وNova يبدأ الشغل على طول.",
+  "Tap send and Megsy gets to work right away.": "دوس ابعت وMegsy يبدأ الشغل على طول.",
   "Pick the model that fits — speed or higher quality — before you send.":
     "اختار الموديل المناسب — سرعة ولا جودة أعلى — قبل ما تبعت.",
   "Tap the name at the top to pick the model that fits the task.":
@@ -287,7 +287,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "2,000+ reviews": "أكتر من 2,000 تقييم",
   "AI Creation": "الإنشاء بالذكاء الاصطناعي",
   Studios: "الاستوديوهات",
-  "Discover Nova": "اكتشف Nova",
+  "Discover Megsy": "اكتشف Megsy",
   Earn: "اكسب",
   "Parallel agents": "وكلاء بالتوازي",
   "In-chat tools": "أدوات جوه الشات",
@@ -367,11 +367,11 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Delete this skill?": "تمسح المهارة دي؟",
   "Describe or refine the skill in plain language.": "وصف المهارة أو ظبّطها بكلام عادي.",
   "How this skill shows up in your library.": "شكل المهارة دي في مكتبتك.",
-  "Keywords that let Nova pick this skill automatically.":
-    "كلمات مفتاحية تخلّي Nova يختار المهارة دي لوحده.",
+  "Keywords that let Megsy pick this skill automatically.":
+    "كلمات مفتاحية تخلّي Megsy يختار المهارة دي لوحده.",
   "add keyword…": "ضيف كلمة مفتاحية…",
-  "The system prompt Nova follows for this skill.":
-    "التعليمات الأساسية اللي Nova بيمشي عليها في المهارة دي.",
+  "The system prompt Megsy follows for this skill.":
+    "التعليمات الأساسية اللي Megsy بيمشي عليها في المهارة دي.",
   "What this skill is allowed to use.": "المهارة دي مسموح لها تستخدم إيه.",
   "Leave on Auto unless this skill needs a specific model.":
     "سيبها تلقائي إلا لو المهارة محتاجة موديل معيّن.",
@@ -397,7 +397,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
     "اعرف ممارسات الأمان في Megsy AI وحماية البيانات والتشفير والالتزام بالمعايير. أمان بياناتك أولويتنا.",
   // ------------------------------------------------------------------ الباسوردات
   "Passwords": "الباسوردات",
-  "Every account the agent creates is registered with your Nova email and a strong password, and it is saved here so you can come back to it anytime.":
+  "Every account the agent creates is registered with your Megsy email and a strong password, and it is saved here so you can come back to it anytime.":
     "كل حساب بيعمله الوكيل بيتسجّل بإيميل ميغسي بتاعك وبباسورد قوي، وبيتحفظ هنا علشان ترجع له في أي وقت.",
   "No saved passwords yet.": "مفيش باسوردات محفوظة لسه.",
   "Add password": "إضافة باسورد",

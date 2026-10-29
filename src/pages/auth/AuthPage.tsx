@@ -878,7 +878,7 @@ const AuthPage = () => {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <BrandLogo
-                        alt="Nova"
+                        alt="Megsy"
                         className="h-8 w-8"
                         style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}
                         loading="lazy"

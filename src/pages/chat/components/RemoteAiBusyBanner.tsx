@@ -29,7 +29,7 @@ export const RemoteAiBusyBanner = ({ remoteAiBusy }: RemoteAiBusyBannerProps) =>
               style={{ animationDelay: "300ms" }}
             />
           </span>
-          <span className="font-medium">Nova is replying to {remoteAiBusy.name}…</span>
+          <span className="font-medium">Megsy is replying to {remoteAiBusy.name}…</span>
           <motion.span
             className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-amber-400/20 to-transparent"
             animate={{ x: ["-100%", "200%"] }}

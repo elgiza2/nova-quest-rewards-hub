@@ -179,12 +179,12 @@ export default function CapabilitiesPage() {
           />
           <Row
             title="Code execution and file creation"
-            description="Allow Nova to execute code and create and edit docs, spreadsheets, presentations, PDFs, and data reports."
+            description="Allow Megsy to execute code and create and edit docs, spreadsheets, presentations, PDFs, and data reports."
             trailing={<Toggle label="Code execution" checked={state.codeExec} onChange={() => setCodeExec(!state.codeExec)} />}
           />
           <Row
             title="Web search"
-            description="Nova will automatically search the web when it determines it needs current information."
+            description="Megsy will automatically search the web when it determines it needs current information."
             trailing={<Toggle label="Web search" checked={state.webSearch} onChange={() => update("webSearch", !state.webSearch)} />}
           />
           <Row
@@ -223,7 +223,7 @@ export default function CapabilitiesPage() {
 
         <SectionLabel>Tool access</SectionLabel>
         <Card>
-          <RadioRow title="Auto" description="Nova chooses for you" value="auto" />
+          <RadioRow title="Auto" description="Megsy chooses for you" value="auto" />
           <RadioRow title="On demand" description="Load when needed. More messages, lower accuracy" value="on_demand" />
           <RadioRow title="Always available" description="Ready from start. Fewer messages, better accuracy" value="always" last />
         </Card>

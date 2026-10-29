@@ -22,7 +22,7 @@ interface LegalDoc {
 
 const SUPPORT_EMAIL = "@Torekr on Telegram";
 const COMPANY = {
-  name: "Nova for Digital Platforms & E-Commerce Development LLC",
+  name: "Megsy for Digital Platforms & E-Commerce Development LLC",
   address: "58 El-Hegaz Street, Amoun Tower, Unit 84, Floor 8, Sheraton Al-Matar, Cairo, Egypt",
   registration: "248691",
   tax: "774034785",
@@ -40,14 +40,14 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       {
         heading: "Your account",
         body: [
-          "You need an account to use most of Nova. You are responsible for keeping your credentials safe and for the activity that happens under your account.",
+          "You need an account to use most of Megsy. You are responsible for keeping your credentials safe and for the activity that happens under your account.",
           "You must be legally able to enter into an agreement in your country to use the service.",
         ],
       },
       {
         heading: "Acceptable use",
         body: [
-          "Do not use Nova to break the law, to attack or overload the service, to bypass usage limits or billing, or to generate content that harms other people.",
+          "Do not use Megsy to break the law, to attack or overload the service, to bypass usage limits or billing, or to generate content that harms other people.",
           "Automated scraping, credential sharing, and reselling access without a written agreement are not permitted.",
         ],
       },
@@ -69,7 +69,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         heading: "Changes and termination",
         body: [
           "We may update the service and these terms. Material changes are announced in the app or by email.",
-          "You may stop using Nova and delete your account at any time from your account settings. We may suspend accounts that violate these terms.",
+          "You may stop using Megsy and delete your account at any time from your account settings. We may suspend accounts that violate these terms.",
         ],
       },
       {
@@ -84,7 +84,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     description:
       "How Megsy AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.",
     intro:
-      "This page explains what data Nova collects, why it is collected, and the control you have over it.",
+      "This page explains what data Megsy collects, why it is collected, and the control you have over it.",
     sections: [
       {
         heading: "Data we collect",
@@ -92,7 +92,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
           "Account data: email address, authentication identifiers, and profile details you provide.",
           "Product data: conversations, prompts, uploaded files, generated media, skills, memory entries and settings you create in the app.",
           "Technical data: request logs, usage counters, error reports and security events needed to operate and protect the service.",
-          "Billing data: subscription status and transaction records. Card details are handled by our payment provider, not stored by Nova.",
+          "Billing data: subscription status and transaction records. Card details are handled by our payment provider, not stored by Megsy.",
         ],
       },
       {
@@ -176,7 +176,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       "Megsy AI brings chat, deep research, image and video generation, documents, presentations, coding and connected tools into one AI agent workspace.",
     sections: [
       {
-        heading: "What Nova does",
+        heading: "What Megsy does",
         body: [
           "Chat with modern AI models, run multi-step deep research with sources, generate images and video, build reusable skills, and connect tools through integrations — from one interface on desktop and mobile.",
         ],
@@ -184,7 +184,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       {
         heading: "How it is built",
         body: [
-          "Nova runs on a modern web stack with a managed Postgres backend. Access control, usage limits and credit accounting are enforced on the server, not in the browser.",
+          "Megsy runs on a modern web stack with a managed Postgres backend. Access control, usage limits and credit accounting are enforced on the server, not in the browser.",
         ],
       },
       {
@@ -198,7 +198,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     title: "Contact Megsy AI",
     description:
       "Get in touch with the Megsy AI team for support, billing questions, security reports or partnership enquiries.",
-    intro: "Contact the Nova team for account, payment, privacy or security questions.",
+    intro: "Contact the Megsy team for account, payment, privacy or security questions.",
     sections: [
       {
         heading: "Support",
@@ -229,7 +229,7 @@ const LegalPage = ({ slug }: { slug: keyof typeof LEGAL_DOCS }) => {
   const sections = [
     { heading: "Company and operator", body: [COMPANY.name, COMPANY.address, `Commercial registration: ${COMPANY.registration} · Tax registration: ${COMPANY.tax}`, `Support and privacy enquiries: ${SUPPORT_EMAIL}`] },
     ...doc.sections,
-    ...(slug === "terms" ? [{ heading: "Egyptian law and consumer rights", body: ["Nova is operated by an Egyptian company. These terms are subject to applicable Egyptian law, including mandatory consumer-protection and personal-data requirements. Nothing here excludes rights or remedies that cannot lawfully be excluded.", "AI output is not a substitute for professional advice. You must have permission to submit files and personal information, and must not use an agent to take actions you are not authorised to perform."] }] : []),
+    ...(slug === "terms" ? [{ heading: "Egyptian law and consumer rights", body: ["Megsy is operated by an Egyptian company. These terms are subject to applicable Egyptian law, including mandatory consumer-protection and personal-data requirements. Nothing here excludes rights or remedies that cannot lawfully be excluded.", "AI output is not a substitute for professional advice. You must have permission to submit files and personal information, and must not use an agent to take actions you are not authorised to perform."] }] : []),
     ...(slug === "refund" ? [{ heading: "Payment methods", body: ["Checkout offers the payment methods available for your order, including mobile wallets such as Vodafone Cash in Egypt through Kashier. The amount, currency and purchase details shown before confirmation apply.", "Do not send passwords, full card numbers or wallet PINs to support. Keep your order reference and payment receipt."] }] : []),
   ];
 

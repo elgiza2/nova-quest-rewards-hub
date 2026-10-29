@@ -432,7 +432,7 @@ const ReferralsPage = () => {
           <h1 className="gx-title">{translateExactText("Invite friends", lang)}</h1>
           <p className="gx-sub">
             {translateExactText(
-              "Invite a friend and you both get credits — they are credited when they join, you are credited when they start using Nova. Five verified invites unlock Pro.",
+              "Invite a friend and you both get credits — they are credited when they join, you are credited when they start using Megsy. Five verified invites unlock Pro.",
               lang,
             )}
           </p>

@@ -1,4 +1,4 @@
-/** @doc useBrandLogo — returns the Nova brand icon URL. */
+/** @doc useBrandLogo — returns the Megsy brand icon URL. */
 import megsyProjectLogo from "@/assets/megsy-project-logo.png";
 
 const megsyIconUrl = megsyProjectLogo;

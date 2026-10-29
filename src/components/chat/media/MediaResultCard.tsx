@@ -253,7 +253,7 @@ export default function MediaResultCard({
  * Unified loading tile (same language as MediaGenerationSkeleton):
  *  - Clean surface, no border
  *  - One diagonal light sweep
- *  - Nova star breathing in the centre + one quiet caption
+ *  - Megsy star breathing in the centre + one quiet caption
  */
 function RunningTile({
   previewUrl,

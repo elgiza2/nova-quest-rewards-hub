@@ -11,7 +11,7 @@ import mercury from "@/assets/portal/mercury.jpg.asset.json";
 const states = [
   { name: "Explore", next: "Create", background: mars.url, portal: earth.url },
   { name: "Create", next: "Discover", background: earth.url, portal: venus.url },
-  { name: "Discover", next: "Nova", background: venus.url, portal: mercury.url },
+  { name: "Discover", next: "Megsy", background: venus.url, portal: mercury.url },
 ];
 
 /** Screen-locked media clipped through a perspective-projected moving portal. */
@@ -127,7 +127,7 @@ export default function MegsyPortal({ ar, onStart }: { ar: boolean; onStart: () 
     return () => { alive = false; cancelAnimationFrame(frame); observer.disconnect(); timers.forEach(clearTimeout); element.removeEventListener("pointermove", pointer); element.removeEventListener("pointerleave", leave); loader.removeEventListener("loadedmetadata", startLoader); loader.removeEventListener("ended", finish); loader.removeEventListener("error", finish); [loader, video, bg].forEach(v => v.pause()); };
   }, [onStart]);
 
-  return <section ref={host} className={`megsy-experience ${loaded ? "is-ready" : ""} ${busy ? "is-travelling" : ""}`} aria-label={ar ? "عالم ميغسي" : "The Nova universe"} dir="ltr">
+  return <section ref={host} className={`megsy-experience ${loaded ? "is-ready" : ""} ${busy ? "is-travelling" : ""}`} aria-label={ar ? "عالم ميغسي" : "The Megsy universe"} dir="ltr">
     <video ref={background} className="megsy-space-background" src={mars.url} muted={muted} loop playsInline preload="auto" poster={mercury.url} />
     <div className="megsy-space-shade" />
     <div className="megsy-space-preloader" aria-hidden={loaded}><video ref={preloader} src={intro.url} muted playsInline preload="auto" /><span>{progress}<small>%</small></span></div>

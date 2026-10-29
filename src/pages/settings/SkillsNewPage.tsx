@@ -38,7 +38,7 @@ export default function SkillsNewPage() {
   return (
     <SubShell
       title="New skill"
-      subtitle="Describe the role and Nova will draft it in seconds."
+      subtitle="Describe the role and Megsy will draft it in seconds."
       backTo="/chat"
     >
       <SubSection title="Describe the expert" description="One or two sentences is enough — you can refine everything after.">

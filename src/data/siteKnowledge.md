@@ -4,12 +4,12 @@
 ---
 
 ## Company Identity (used across all pages)
-- **Legal name:** Nova for Digital Platforms & E-Commerce Development LLC
+- **Legal name:** Megsy for Digital Platforms & E-Commerce Development LLC
 - **Incorporated:** Arab Republic of Egypt
 - **Commercial Registry:** 248691
 - **Tax ID:** 774034785
 - **Address:** 58 El-Hegaz St., Amoun Tower, Unit 84, Floor 8, Sheraton Al-Matar, Al-Nozha District, Cairo Governorate, Egypt
-- **Founder & CEO:** Hamza Hassan Elgzairy — sole developer and creator of the Nova model
+- **Founder & CEO:** Hamza Hassan Elgzairy — sole developer and creator of the Megsy model
 - **Headquarters:** Cairo, Egypt
 
 ---
@@ -37,21 +37,21 @@
 
 ### / and /landing and /home — Landing Page
 - Main entry point; redirects logged-in users to /chat
-- Sections: Hero, Stats Marquee, Feature Tabs, Nova OS, Chat Models, Image Models, Code Models, Creative Blueprints, How It Works, Pricing Preview, Referral section, FAQ, CTA
+- Sections: Hero, Stats Marquee, Feature Tabs, Megsy OS, Chat Models, Image Models, Code Models, Creative Blueprints, How It Works, Pricing Preview, Referral section, FAQ, CTA
 - CTA: "Start free" → /auth
 
 ---
 
 ### /about — About Page
 - Title: "Two founders. One creative workspace."
-- Founder, CEO and only developer: Hamza Hassan Elgzairy (Egyptian company, Nova LLC)
+- Founder, CEO and only developer: Hamza Hassan Elgzairy (Egyptian company, Megsy LLC)
 - Built in Cairo, Egypt; fully independent, not VC-backed
-- Platform has 5 core tools: AI Chat (Nova 3.9), Image Generation (Nova Imagine), Video Generation (Nova Video), Code Builder (Apps & Web), File Analysis (Documents & Data)
-- Nova 3.9: conversational AI with web search, deep research, file upload — built on 36+ underlying engines
-- Nova Imagine: text-to-image + image-to-image, multiple models, aspect ratios 1:1 to 21:9, up to 4K resolution
-- Nova Video: text-to-video and image-to-video, durations 5–10 seconds, audio support
-- Code Builder: describe → Nova builds and deploys working web app in a sandbox
-- File Analysis: upload PDFs, images, documents; Nova reads/extracts/answers questions
+- Platform has 5 core tools: AI Chat (Megsy 3.9), Image Generation (Megsy Imagine), Video Generation (Megsy Video), Code Builder (Apps & Web), File Analysis (Documents & Data)
+- Megsy 3.9: conversational AI with web search, deep research, file upload — built on 36+ underlying engines
+- Megsy Imagine: text-to-image + image-to-image, multiple models, aspect ratios 1:1 to 21:9, up to 4K resolution
+- Megsy Video: text-to-video and image-to-video, durations 5–10 seconds, audio support
+- Code Builder: describe → Megsy builds and deploys working web app in a sandbox
+- File Analysis: upload PDFs, images, documents; Megsy reads/extracts/answers questions
 - Single credit (MC) used across all tools — "one transparent credit"
 - "We never train on your private projects. Delete your account and data any time from settings."
 - Values: Built for creators; Honest by default; Made in Egypt; Your work is yours
@@ -62,7 +62,7 @@
 - Contact: Telegram @Torekr and +20 109 882 1812
 - Two paid plans: Pro and Max (no free card shown on pricing page)
 - Yearly billing toggle: 4 months free (yearly = 8 × monthly)
-- Payment processor: **Kashier** (the only Nova subscription checkout)
+- Payment processor: **Kashier** (the only Megsy subscription checkout)
 - Checkout methods: Kashier-hosted card and mobile-wallet options shown at checkout
 - Prices shown ex. tax; VAT/GST added at checkout
 
@@ -79,15 +79,15 @@
 - 240 MC each month for images, video and premium runs
 - Deep Research with sourced, citation-backed reports
 - Docs & Slides — generated, editable, export to PDF/PPTX
-- Nova Coder — build and deploy full apps in one click
-- Nova OS agents running tasks in the background
+- Megsy Coder — build and deploy full apps in one click
+- Megsy OS agents running tasks in the background
 - Team workspace with shared projects and files
 - Priority support, cancel anytime
 
 #### Max ($17 first month, then $40/mo) includes everything in Pro plus:
 - 600 MC each month (2.5× the Pro allowance)
 - Priority compute lane — up to 3× faster generations
-- Unlimited parallel Nova OS agents
+- Unlimited parallel Megsy OS agents
 - Longer context, larger uploads and bigger projects
 - Advanced branding, presets and usage analytics
 - Early access to new models and features
@@ -109,34 +109,34 @@
 - FAQ: What happens when I run out of MC? → Chat is always unlimited. Images/Slides/Docs/Research/Code Builder are available inside the plan window (7 days Pro, 15 days Elite, all month Business). MC is required for video and usage outside plan windows. Can top up anytime.
 - FAQ: What's the difference between unlimited window and MC? → Unlimited window covers Images, Slides, Docs, Deep Research, Code Builder. Chat always unlimited. Video is always credit-based (MC).
 - FAQ: Do unused credits roll over? → No. MC reset each billing cycle. Yearly plans get bonus MC upfront.
-- FAQ: Is my payment secure? → Kashier-hosted checkout. Nova never stores card details.
+- FAQ: Is my payment secure? → Kashier-hosted checkout. Megsy never stores card details.
 - FAQ: Do you offer team or enterprise plans? → Business has unlimited team seats. For custom needs, contact enterprise sales.
 
 ---
 
 ### /features-guide — Features Guide Page
-- Title: "Everything Nova does, explained."
+- Title: "Everything Megsy does, explained."
 - 11 services, 4 plans (Free $0, Pro $25, Elite $59, Business $149)
 - Free plan: $0 forever; Pro: $25 "for creators"; Elite: $59 "most popular"; Business: $149 "for teams"
 
 #### Per-service plan matrix:
 | Service | Free | Pro | Elite | Business |
 |---|---|---|---|---|
-| AI Chat | Nova Lite — unlimited | Megsy AI — unlimited | Megsy AI — unlimited | Megsy AI — unlimited |
+| AI Chat | Megsy Lite — unlimited | Megsy AI — unlimited | Megsy AI — unlimited | Megsy AI — unlimited |
 | Image Generation | Not included | Unlimited 7 days/month | Unlimited 15 days/month | Unlimited all month |
 | Video Generation | Not included | 240 MC included | 500 MC included | 1,200 MC included |
 | Slides & Presentations | 3/day | Unlimited 7 days/month | Unlimited 15 days/month | Unlimited all month |
 | Docs & Deep Research | 3/day each | Unlimited 7 days/month | Unlimited 15 days/month | Unlimited all month |
 | Code Builder | Not included | Unlimited 7 days/month | Unlimited 15 days/month | Unlimited all month |
-| Nova OS | Not included | Unlimited tasks | Unlimited tasks | Unlimited tasks |
-| Nova Credits (MC) | 0 MC | 240 MC/month | 500 MC/month | 1,200 MC/month |
+| Megsy OS | Not included | Unlimited tasks | Unlimited tasks | Unlimited tasks |
+| Megsy Credits (MC) | 0 MC | 240 MC/month | 500 MC/month | 1,200 MC/month |
 | Team Workspace | Not included | Included | Included | Unlimited seats + SSO |
 | Priority Queue & Speed | Not included | Standard speed | 3× priority | 3× priority + SLA |
 | Support | Community | Priority email | 24/7 chat | Dedicated manager |
 
 - Video Generation: always credit-based on all plans; each video uses MC
 - Code Builder: one-click deploy, custom domains, GitHub sync, live preview
-- Nova OS: multi-step autonomous workflows, runs 24/7 in background, schedule recurring tasks
+- Megsy OS: multi-step autonomous workflows, runs 24/7 in background, schedule recurring tasks
 - Slides: export to PPTX, PDF, Google Slides; brand-aware templates on Elite+
 - Docs: export to DOCX, PDF, Markdown; custom tone & length
 - Image: HD/4K resolution, style presets, bulk generation; up to 4K
@@ -186,14 +186,14 @@
 - FAQ: Commercial use on Free? → Free plan is personal, non-commercial use only.
 - FAQ: Can I change plan later? → Anytime. Upgrades prorated immediately; downgrades at next billing cycle.
 - FAQ: Does pricing include tax? → No. VAT/GST added at checkout based on country.
-- FAQ: Does Nova have an API? → Yes — Ultimate includes API access with webhooks and per-key analytics.
+- FAQ: Does Megsy have an API? → Yes — Ultimate includes API access with webhooks and per-key analytics.
 - FAQ: Can I buy more tokens? → Yes. Top-up tokens available on all paid plans; never expire while subscription active.
 
 ---
 
 ### /contact — Contact Page
 - Two tabs: "Support and billing" and "Enterprise sales"
-- Support form fields: Nova username, email address, message (up to 2000 chars)
+- Support form fields: Megsy username, email address, message (up to 2000 chars)
 - Enterprise form fields: first name, last name, work email, company name, country, company size, needs
 - Company size options: 1-10, 11-50, 51-200, 201-500, 500+
 - Enterprise needs options: Image generation at scale, Video generation at scale, Custom AI models, API access & webhooks, Dedicated infrastructure, SLA guarantees, Priority support, Custom integrations, Data privacy & compliance, Advanced analytics
@@ -202,7 +202,7 @@
 ---
 
 ### /enterprise — Enterprise Page
-- Title: "Nova for your team."
+- Title: "Megsy for your team."
 - Features: Custom credit allocation, Team workspaces, Priority support channel (direct line to founders), Higher rate limits, Data residency on request, Custom data agreements (DPA), Usage reporting (monthly per team/feature/workspace), Onboarding session (live setup + training), Contract & invoicing (annual contracts, PO support, tax-compliant invoicing)
 - Form submits inquiry; team responds with custom plan
 
@@ -217,7 +217,7 @@
 - Credit packs one-time, don't auto-renew
 - Prices exclusive of taxes
 - You retain rights to inputs/outputs (subject to third-party model providers' terms)
-- Nova granted non-exclusive, royalty-free licence to host/process/display Your Content to operate Service
+- Megsy granted non-exclusive, royalty-free licence to host/process/display Your Content to operate Service
 - AI outputs may be inaccurate; independently verify before relying on for medical/legal/financial decisions
 - Different users may receive similar or identical outputs for similar prompts
 - Liability cap: amount paid in preceding 12 months or USD 100, whichever is greater
@@ -230,9 +230,9 @@
 
 ### /privacy — Privacy Policy
 - Last updated: 19 May 2026
-- Data controller: Nova for Digital Platforms & E-Commerce Development LLC (CR 248691, Tax 774034785)
+- Data controller: Megsy for Digital Platforms & E-Commerce Development LLC (CR 248691, Tax 774034785)
 - Data collected: account data, workspace data, content data (prompts/files/outputs), usage data, billing data (last four digits only — no full card numbers)
-- Nova does NOT sell personal data; does NOT share for cross-context behavioural advertising
+- Megsy does NOT sell personal data; does NOT share for cross-context behavioural advertising
 - Account data retained while active and up to 24 months after closure (longer if legally required, e.g. tax records)
 - Generated outputs/uploaded files: deleted from active systems within 30 days of user deletion; from backups within 90 days
 - Material privacy changes: 14 days advance notice in-app or by email
@@ -256,7 +256,7 @@
 - Response: within 5 business days; approved refunds processed within 7-14 business days to original payment method
 - **Chargebacks:** Contact support BEFORE filing; most disputes resolved in under 48 hours; chargeback abuse → account closure and reporting to Ethoca/Verifi
 - EU right of withdrawal: 14-day right waived for digital content activated immediately (user consents at checkout)
-- Payment processor: Kashier-hosted checkout; Nova does not store card details
+- Payment processor: Kashier-hosted checkout; Megsy does not store card details
 - Accepted payment methods: card and mobile-wallet options presented by Kashier
 - Billing dispute email: @Torekr on Telegram
 
@@ -272,7 +272,7 @@
 - **Hate/harassment:** No content targeting race, ethnicity, religion, nationality, gender, gender identity, sexual orientation, disability, age
 - **Fraud/spam:** No phishing, scams, fake reviews, counterfeit IDs, malware, election manipulation, bulk spam
 - **Illegal activity:** No controlled-substance/human/weapons trafficking, money laundering, fraud
-- **Platform integrity:** No bypassing safety filters, rate limits, credit systems; no scraping/reverse-engineering; no reselling outputs as own model; no using Nova to train competing models
+- **Platform integrity:** No bypassing safety filters, rate limits, credit systems; no scraping/reverse-engineering; no reselling outputs as own model; no using Megsy to train competing models
 - Report violations: @Torekr on Telegram
 - Enforcement: warning → removal → suspension → permanent termination and law-enforcement referral for severe violations (CSAM, identity fraud, safety threats)
 
@@ -296,7 +296,7 @@
 
 ### /legal/moderation and /legal/moderation-full — Content Moderation Policy
 - Last updated: 19 May 2026
-- Three-layer moderation: (a) provider-level filters from upstream AI vendors, (b) Nova's own automated detection (text classifiers, image/video safety models, perceptual hashing), (c) human review of escalations
+- Three-layer moderation: (a) provider-level filters from upstream AI vendors, (b) Megsy's own automated detection (text classifiers, image/video safety models, perceptual hashing), (c) human review of escalations
 - **Strictly Prohibited (Zero Tolerance):** CSAM (reported to NCMEC), non-consensual intimate imagery, terrorism/violent extremism, political deepfakes to deceive voters, weapons manufacture content, fraud/malware instructions
 - **Restricted (allowed with safeguards):** artistic nudity, mature fiction, security research, harm-reduction info, educational violence depictions — may require age-gating or additional verification
 - Identity/likeness tools: user must have rights to source likeness; outputs may include C2PA/watermarks that must not be removed
@@ -333,13 +333,13 @@
 - Last updated: 19 May 2026
 - Performance-based marketing program; affiliates are independent partners, not employees
 - No income guarantee
-- **Eligibility:** 18+, valid Nova account in good standing, not in comprehensively sanctioned country; government employees and minors not eligible
+- **Eligibility:** 18+, valid Megsy account in good standing, not in comprehensively sanctioned country; government employees and minors not eligible
 - **Rewards:** percentage of net subscription revenue (ex. taxes, refunds, chargebacks, processor fees, discounts); details in Affiliate dashboard
 - Self-referrals and incentivized signups not eligible; may result in termination and forfeiture
 - **Disclosure (FTC, ASA, EU):** must disclose material connection before link, visible without clicking "more" — acceptable: "#ad", "#sponsored", "affiliate link", "I receive a commission"
-- **Prohibited conduct:** spam, false claims, bidding on Nova trademarks, promoting on adult/hate/violent/deepfake platforms, cookie stuffing, click fraud, bot traffic, fake accounts
+- **Prohibited conduct:** spam, false claims, bidding on Megsy trademarks, promoting on adult/hate/violent/deepfake platforms, cookie stuffing, click fraud, bot traffic, fake accounts
 - **Payouts:** become payable only after referred user has remained active subscriber for full refund window; minimum thresholds in Affiliate dashboard
-- Affiliates responsible for their own tax obligations; Nova may request W-9/W-8BEN
+- Affiliates responsible for their own tax obligations; Megsy may request W-9/W-8BEN
 - **Clawback:** rewards linked to refunded/chargebacked/fraudulent referrals may be clawed back
 - **Changes:** material changes communicated at least 14 days in advance
 - Governing law: Arab Republic of Egypt; courts of Cairo
@@ -354,7 +354,7 @@
 - International transfers: EU SCCs (Module 2 or 3), UK ITDA
 - Data breach notification: within 72 hours per GDPR Article 33
 - Personal data returned or deleted within 90 days of service termination; backups deleted on normal rotation
-- **AI Training Opt-Out:** Nova does NOT use Controller content to train its own or any third-party foundation models. Any opt-in (if offered) is a separate explicit choice in account settings.
+- **AI Training Opt-Out:** Megsy does NOT use Controller content to train its own or any third-party foundation models. Any opt-in (if offered) is a separate explicit choice in account settings.
 - Data subject rights requests: @Torekr on Telegram
 
 ---
@@ -362,7 +362,7 @@
 ### /legal/dmca — DMCA Policy
 - Last updated: 19 May 2026
 - Complies with US DMCA 1998, EU Directive 2019/790
-- **Designated Agent:** Nova for Digital Platforms & E-Commerce Development LLC
+- **Designated Agent:** Megsy for Digital Platforms & E-Commerce Development LLC
 - Copyright Agent contact: @Torekr on Telegram
 - Address: 58 El-Hegaz St., Amoun Tower, Unit 84, Floor 8, Sheraton Al-Matar, Al-Nozha District, Cairo Governorate, Egypt
 - Takedown notice must include: signature, identification of copyrighted work, identification of infringing material (URL), your full contact info, good-faith belief statement, perjury statement
@@ -374,14 +374,14 @@
 
 ### /cookies — Cookie Policy
 - Last updated: 19 May 2026
-- Data controller: Nova for Digital Platforms & E-Commerce Development LLC (CR 248691, Tax 774034785)
+- Data controller: Megsy for Digital Platforms & E-Commerce Development LLC (CR 248691, Tax 774034785)
 - Cookie questions: @Torekr on Telegram
 - **Essential cookies:** session ID (sb-auth-token), auth state, CSRF token, cookie consent prefs, security headers; retention: session or up to 30 days for persistent login; CANNOT be disabled
 - **Analytics cookies:** anonymized/aggregated; no PII; legal basis: consent (GDPR Art. 6(1)(a)); retention: up to 12 months
 - **Preference/functional cookies:** theme, language, layout, notifications; no cross-site tracking; retention: up to 12 months
-- **Third-party cookies:** Nova does NOT use third-party advertising or behavioural tracking cookies; does NOT participate in ad networks or sell cookie data
+- **Third-party cookies:** Megsy does NOT use third-party advertising or behavioural tracking cookies; does NOT participate in ad networks or sell cookie data
 - Legal frameworks: EU GDPR, ePrivacy Directive, Egyptian PDP Law No. 151/2020, CCPA, UK Data Protection Act
-- Rights: accept/reject non-essential via banner; withdraw consent by clearing cookies or contacting Nova; access, deletion, opt-out of analytics
+- Rights: accept/reject non-essential via banner; withdraw consent by clearing cookies or contacting Megsy; access, deletion, opt-out of analytics
 
 ---
 
@@ -407,7 +407,7 @@
 - Last updated: 19 May 2026
 - **Infrastructure & Hosting:** Lovable Cloud (Supabase) — managed Postgres, auth, object storage, edge functions (Europe/US); Cloudflare — CDN, DDoS, SSL; Vercel/Lovable Edge — static assets
 - **AI Model Providers:** Lovable AI Gateway (routing layer); OpenAI (text, image, audio); Anthropic (text); Google LLC (Gemini, Imagen, Veo — text, image, video); Fal.ai (image, video, lipsync); Replicate (third-party model inference); fireworks.ai (text inference); ElevenLabs (voice generation)
-- **Payments:** Kashier-hosted card and mobile-wallet checkout for Nova subscriptions
+- **Payments:** Kashier-hosted card and mobile-wallet checkout for Megsy subscriptions
 - **Communications:** Resend (transactional email); Postmark/SendGrid (failover email); Telegram bot API (optional user notifications)
 - **Analytics & Monitoring:** PostHog (privacy-respecting analytics, self-host option); Sentry (error monitoring, PII-scrubbed)
 - **Code & Sandbox:** E2B (ephemeral isolated sandboxes for code execution); GitHub (optional Git integration)
@@ -418,7 +418,7 @@
 ### /legal/accessibility-full — Accessibility Statement
 - Last updated: 19 May 2026 (route: /legal/accessibility-full; /legal/accessibility redirects to /trust)
 - Targets: WCAG 2.2 Level AA, European Accessibility Act (EAA Directive 2019/882), ADA + Section 508, UK Public Sector Bodies Accessibility Regulations 2018
-- **What Nova does:** semantic HTML + ARIA, keyboard navigability + visible focus indicators, WCAG AA color contrast, respects `prefers-reduced-motion`, responsive down to 320px and up to 200% zoom, alt text on meaningful images, captions on instructional videos
+- **What Megsy does:** semantic HTML + ARIA, keyboard navigability + visible focus indicators, WCAG AA color contrast, respects `prefers-reduced-motion`, responsive down to 320px and up to 200% zoom, alt text on meaningful images, captions on instructional videos
 - **Known limitations:** AI-generated images may lack alt text by default (working on auto alt-text generation); some third-party embedded content may not fully conform
 - **Feedback:** @Torekr on Telegram with page URL, device, assistive technology, description of issue; acknowledged within 5 business days; material barriers resolved within 30 days
 
@@ -446,13 +446,13 @@
 - **National Roads Network:** 7,000+ km new roads; 1,000+ bridges; Rod El Farag Axis holds Guinness World Record as widest cable-stayed bridge globally
 - **Benban Solar Park:** 37 km²; 1.8 GW capacity; one of world's largest solar installations; Egypt targets 42% renewable electricity by 2035
 - Investment sectors: Real Estate & Construction, Technology & Digital Economy (500+ startups, 60% population under 30), Tourism (7 UNESCO World Heritage Sites, targets 30M tourists annually, Grand Egyptian Museum), Energy & Renewables, Manufacturing & Industry (Suez Canal Economic Zone), Agriculture
-- Nova is "proud of our president and his tireless dedication to the people of Egypt" (President Abdel Fattah El-Sisi)
+- Megsy is "proud of our president and his tireless dedication to the people of Egypt" (President Abdel Fattah El-Sisi)
 
 ---
 
 ### /blog — Blog Page
 - Title: "Writing about the work, not the hype."
-- Subtitle: The Nova Journal
+- Subtitle: The Megsy Journal
 - Topics: AI image generation, video generation, prompt engineering, modern creator stack
 - Posts sourced from database (up to 200) plus static BLOG_POSTS array
 - Each post shows category, date, reading time
@@ -460,10 +460,10 @@
 ---
 
 ### /vs/:slug — Comparison Page
-- Dynamic comparison pages (Nova vs. competitor)
-- Shows: feature comparison table, "Nova is best for" and "Competitor is best for" sections, "honest verdict" section
+- Dynamic comparison pages (Megsy vs. competitor)
+- Shows: feature comparison table, "Megsy is best for" and "Competitor is best for" sections, "honest verdict" section
 - Other comparison links shown at bottom
-- CTAs: "Try Nova free" (→ /auth), "See pricing" (→ /pricing)
+- CTAs: "Try Megsy free" (→ /auth), "See pricing" (→ /pricing)
 - Comparisons data from src/data/comparisons.ts
 
 ---

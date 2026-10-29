@@ -62,7 +62,7 @@ export default function RestorePurchasePage() {
           <header className="mt-6">
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Restore Purchases</h1>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Your subscription is stored on your Nova account, not on the device. Restoring simply
+              Your subscription is stored on your Megsy account, not on the device. Restoring simply
               re-reads it from our servers and re-applies it here.
             </p>
           </header>

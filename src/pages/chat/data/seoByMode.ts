@@ -16,7 +16,7 @@ export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
     path: "/chat",
   },
   learning: {
-    title: "AI Tutor for Any Subject — Nova Learning Mode",
+    title: "AI Tutor for Any Subject — Megsy Learning Mode",
     description:
       "Learn step by step with an adaptive AI tutor, practice questions, clear explanations and study support for any subject.",
     path: "/chat?mode=learning",
@@ -30,7 +30,7 @@ export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
   "deep-research": {
     title: "Deep Research AI — Cited Reports from Real Sources",
     description:
-      "Run multi-source web research with citations. Nova reads, verifies, synthesizes and writes an exportable research report.",
+      "Run multi-source web research with citations. Megsy reads, verifies, synthesizes and writes an exportable research report.",
     path: "/chat?mode=deep-research",
   },
   slides: {
@@ -46,7 +46,7 @@ export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
     path: "/chat?mode=slides-images",
   },
   operator: {
-    title: "Autonomous Browser Agent — Nova Operator",
+    title: "Autonomous Browser Agent — Megsy Operator",
     description:
       "Delegate browser tasks to an autonomous AI agent that can research, navigate, click and complete workflows under your supervision.",
     path: "/chat?mode=operator",

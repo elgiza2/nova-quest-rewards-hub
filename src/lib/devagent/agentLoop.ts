@@ -791,7 +791,7 @@ export async function advanceDevRun(
     commit = await saveWorkspaceToGithub(
       ws,
       project.github_repo,
-      run.prompt.slice(0, 120) || "Update from Nova",
+      run.prompt.slice(0, 120) || "Update from Megsy",
     );
   }
   if (commit) {

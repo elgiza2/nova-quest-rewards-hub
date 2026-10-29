@@ -62,7 +62,7 @@ const DeleteAccountPage = () => {
     return (
       <ProfileGlassShell
         title="Delete account"
-        subtitle="Permanently remove your Nova account and all associated data. This action cannot be undone."
+        subtitle="Permanently remove your Megsy account and all associated data. This action cannot be undone."
         onBack={goBack}
       >
         <GlassSection title="Warning">
@@ -132,10 +132,10 @@ const DeleteAccountPage = () => {
   return (
     <SubShell
       title="Delete Account"
-      subtitle="Permanently remove your Nova account and all associated data. This action cannot be undone."
+      subtitle="Permanently remove your Megsy account and all associated data. This action cannot be undone."
       backTo="/settings/security"
     >
-      <SubSection title="What gets deleted" description="Everything tied to your account will be removed from Nova's servers.">
+      <SubSection title="What gets deleted" description="Everything tied to your account will be removed from Megsy's servers.">
         <SubCard>
           <ul className="space-y-2.5">
             {deletedItems.map((item) => (

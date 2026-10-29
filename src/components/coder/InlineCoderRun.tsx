@@ -1,4 +1,4 @@
-/** @doc Nova Coder inline run — renders as a normal chat turn: thinking trace,
+/** @doc Megsy Coder inline run — renders as a normal chat turn: thinking trace,
  *  short message, then a site preview card and a project files card (ZIP). */
 import { useEffect, useMemo, useRef, useState } from "react";
 import {

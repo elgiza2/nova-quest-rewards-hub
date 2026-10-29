@@ -125,7 +125,7 @@ export default function SplashTestPage() {
                 animation: `ms-word-wipe ${DURATION}ms var(--e) forwards, ms-ink ${DURATION}ms linear forwards`,
               }}
             >
-              Nova
+              Megsy
             </span>
 
 

@@ -11,7 +11,7 @@ interface ComputerRunViewportProps {
 }
 
 /**
- * Nova computer surface. Collapsed it is a single quiet pill sized to its own
+ * Megsy computer surface. Collapsed it is a single quiet pill sized to its own
  * label — it never reserves screen space and the actual screen only mounts once
  * the user opens it.
  */
@@ -26,14 +26,14 @@ export default function ComputerRunViewport({
 
   // The live status belongs to the thinking badge higher up in the chat; the
   // pill stays a fixed, quiet label so the same status is not printed twice.
-  const label = isArabic ? "كمبيوتر ميغسي" : "Nova computer";
+  const label = isArabic ? "كمبيوتر ميغسي" : "Megsy computer";
   void status;
 
   return (
     <section
       data-computer-viewport
       className={`relative ${expanded ? "w-full overflow-hidden rounded-2xl bg-foreground/[0.03]" : "w-fit"}`}
-      aria-label={isArabic ? "كمبيوتر ميغسي" : "Nova computer"}
+      aria-label={isArabic ? "كمبيوتر ميغسي" : "Megsy computer"}
     >
       <button
         type="button"
@@ -61,7 +61,7 @@ export default function ComputerRunViewport({
           {url ? (
             <iframe
               src={url}
-              aria-label={isArabic ? "عرض كمبيوتر ميغسي" : "Nova computer preview"}
+              aria-label={isArabic ? "عرض كمبيوتر ميغسي" : "Megsy computer preview"}
               className="absolute inset-0 h-full w-full border-0"
               allow="clipboard-read; clipboard-write"
               sandbox="allow-scripts allow-same-origin allow-forms"
@@ -69,7 +69,7 @@ export default function ComputerRunViewport({
           ) : poster ? (
             <img
               src={poster}
-              alt={isArabic ? "آخر شاشة من كمبيوتر ميغسي" : "Latest Nova computer screen"}
+              alt={isArabic ? "آخر شاشة من كمبيوتر ميغسي" : "Latest Megsy computer screen"}
               className="h-full w-full object-cover object-top"
             />
           ) : (

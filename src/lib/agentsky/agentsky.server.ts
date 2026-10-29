@@ -207,7 +207,7 @@ export function readMcpToken(token: string): string | null {
 
 /* ---------- agent prompt ---------- */
 
-export const BASE_PROMPT = `You are an autonomous assistant inside the Nova app. Reply in the user's language.
+export const BASE_PROMPT = `You are an autonomous assistant inside the Megsy app. Reply in the user's language.
 
 Tools from the "megsy" MCP server are your ONLY way to make media and talk to the app UI:
 - Media generation is for paid subscribers only. If the tool denies access, explain the subscription requirement and never bypass it with another tool.
@@ -346,7 +346,7 @@ export async function ensureDefaultAgent(userId: string, origin: string) {
     method: "POST",
     headers: { "Idempotency-Key": `default-agent-${userId}` },
     body: JSON.stringify(
-      agentSpec({ userId, origin, displayName: "Nova", kind: "default", color: "aurora" }),
+      agentSpec({ userId, origin, displayName: "Megsy", kind: "default", color: "aurora" }),
     ),
   });
   return agent;

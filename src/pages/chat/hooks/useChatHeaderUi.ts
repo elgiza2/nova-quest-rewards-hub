@@ -5,7 +5,7 @@ export type ChatMenuView = "main" | "invite" | "share" | "rename" | "pin" | "del
 /**
  * Encapsulates state for the chat header overlays: directory,
  * scroll-to-bottom button visibility, the per-chat action menu
- * (rename/pin/share/etc), and the Nova OS intro modal. Extracted from
+ * (rename/pin/share/etc), and the Megsy OS intro modal. Extracted from
  * ChatPage to reduce re-render surface.
  */
 export function useChatHeaderUi() {

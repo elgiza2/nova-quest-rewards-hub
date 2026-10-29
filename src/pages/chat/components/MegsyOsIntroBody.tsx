@@ -18,7 +18,7 @@ export interface MegsyOsIntroBodyProps {
 }
 
 /**
- * Nova OS intro — unified with the app's dark token-based design system.
+ * Megsy OS intro — unified with the app's dark token-based design system.
  * Uses semantic tokens (background/foreground/card/border/primary/muted) so
  * it matches the rest of the chat surface in both light and dark themes.
  */
@@ -114,7 +114,7 @@ export default function MegsyOsIntroBody({
               </span>
             </span>
             <h2 className="mt-4 text-[38px] leading-[0.95] tracking-tight text-foreground font-bold">
-              What Nova{" "}
+              What Megsy{" "}
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 OS
               </span>{" "}
@@ -194,7 +194,7 @@ export default function MegsyOsIntroBody({
               </span>
             </span>
             <h2 className="mt-5 text-[56px] leading-[0.98] tracking-tight font-bold text-foreground">
-              What Nova{" "}
+              What Megsy{" "}
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 OS
               </span>{" "}

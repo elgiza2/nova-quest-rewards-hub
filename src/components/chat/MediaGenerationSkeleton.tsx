@@ -6,7 +6,7 @@
  *  - Reserve the exact frame the finished media will occupy (square for
  *    images, 9:16 for video) so the transcript never jumps when it lands.
  *  - Calm, premium surface: soft tinted gradient, a single diagonal sheen
- *    sweeping across, the Nova star breathing in the centre.
+ *    sweeping across, the Megsy star breathing in the centre.
  *  - One quiet caption line, no counters, no borders, no progress theatre.
  *
  * Motion is skipped on low-end devices and when the user prefers reduced

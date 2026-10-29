@@ -257,7 +257,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "apple-mobile-web-app-title", content: "Nova" },
+      { name: "apple-mobile-web-app-title", content: "Megsy" },
       { name: "application-name", content: "Megsy AI" },
       { name: "theme-color", content: "#ffffff" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
@@ -317,7 +317,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // third-party request never competes with the first paint, and re-fired on SPA
 // navigation because the loader only counts one pageView per document.
 // IMPORTANT: the tag only starts after the visitor accepted cookies through
-// Nova's own banner (megsy_cookies_accepted === "true"). Loading it earlier
+// Megsy's own banner (megsy_cookies_accepted === "true"). Loading it earlier
 // makes AdRoll/NextRoll show its full-screen Didomi consent dialog, which
 // covers the pricing/checkout UI.
 const ADROLL_SCRIPT = `
@@ -328,7 +328,7 @@ const ADROLL_SCRIPT = `
     } catch (e) { return; }
     if (window.__adroll_loaded) return;
     var w = window, d = document;
-    // Consent was already collected by Nova's own banner: suppress the
+    // Consent was already collected by Megsy's own banner: suppress the
     // AdRoll/NextRoll (Didomi) dialog, which otherwise overlays the whole app
     // and swallows clicks on the chat composer and the checkout buttons.
     try {
@@ -371,7 +371,7 @@ const ADROLL_SCRIPT = `
     };
     w.addEventListener("megsy:navigation", onNav);
     w.addEventListener("popstate", onNav);
-    // If consent arrives after boot (user clicks Accept in the Nova banner),
+    // If consent arrives after boot (user clicks Accept in the Megsy banner),
     // start the pixel then.
     w.addEventListener("megsy:cookies-accepted", start);
   };

@@ -1,4 +1,4 @@
-/** @doc Memory — a clean glass shelf of what Nova remembers (user_knowledge):
+/** @doc Memory — a clean glass shelf of what Megsy remembers (user_knowledge):
  * search, one card per memory with its own switch, and a tidy edit sheet. */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,16 +22,16 @@ type Draft = { id?: string; name: string; use_when: string; content: string };
 const T = {
   en: {
     title: "Memory",
-    sub: "What Nova keeps in mind and uses across your chats.",
+    sub: "What Megsy keeps in mind and uses across your chats.",
     search: "Search memory",
     add: "Add memory",
     edit: "Edit memory",
     empty: "Nothing here yet",
-    emptySub: "Add a fact or an instruction and Nova will use it when it fits.",
+    emptySub: "Add a fact or an instruction and Megsy will use it when it fits.",
     name: "Title",
     namePh: "e.g. My writing style",
     when: "Use when",
-    whenPh: "When should Nova use this?",
+    whenPh: "When should Megsy use this?",
     content: "What to remember",
     contentPh: "Write the fact or instruction",
     save: "Save",

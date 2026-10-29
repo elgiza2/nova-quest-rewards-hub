@@ -29,7 +29,7 @@ import { promptUpgrade } from "@/lib/upgradeMoment";
 
 /**
  * Distinctive icon per specialist (user request): every agent gets its own
- * mark. Nova keeps its own robot mark; each specialist gets the icon of
+ * mark. Megsy keeps its own robot mark; each specialist gets the icon of
  * its craft — search, code, analysis, writing, media.
  */
 function SpecialistMark({ name, mediaOnly }: { name: string; mediaOnly?: boolean }) {
@@ -157,7 +157,7 @@ export default function AgentSelectionPage() {
 
   return (
     <div data-no-translate>
-      <SEOHead locale="en" path="/agents" title="Agent settings" description="Choose Nova's primary chat and specialist agents." />
+      <SEOHead locale="en" path="/agents" title="Agent settings" description="Choose Megsy's primary chat and specialist agents." />
       <ProfileGlassShell
         title="Agent settings"
         subtitle="Choose the assistant that leads your chats and which specialists can join when relevant."
@@ -171,10 +171,10 @@ export default function AgentSelectionPage() {
         <GlassSection title="Primary assistant">
           <GlassCard className="gx-card-pad">
             <div className="flex items-center gap-3">
-              {/* Nova keeps its own robot mark — never a generic icon. */}
+              {/* Megsy keeps its own robot mark — never a generic icon. */}
               <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-2xl bg-primary/10"><MegsyMark color="aurora" size={30} /></span>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2"><strong>Nova Quick Chat</strong><span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">Primary</span></div>
+                <div className="flex items-center gap-2"><strong>Megsy Quick Chat</strong><span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">Primary</span></div>
                 <p className="mt-1 text-sm text-muted-foreground">Leads every normal conversation. Specialist agents stay off unless enabled below.</p>
               </div>
               <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground"><Check size={15} /></span>
@@ -222,7 +222,7 @@ export default function AgentSelectionPage() {
                 <div className="mt-3 flex items-center justify-between border-t border-border/50 pt-3 ps-14">
                   <div className="min-w-0">
                     <strong className="text-sm">Auto-join relevant chats</strong>
-                    <p className="mt-0.5 text-xs text-muted-foreground">Let Nova bring this specialist in when its skills fit.</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">Let Megsy bring this specialist in when its skills fit.</p>
                   </div>
                   <Toggle checked={autoJoin} label={`Auto-join ${agent.name}`} disabled={!enabled || locked} onClick={() => toggleAutoJoin(agent.id)} />
                 </div>

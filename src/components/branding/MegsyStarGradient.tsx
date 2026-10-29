@@ -1,4 +1,4 @@
-// Brand 8-point sparkle rendered with the Nova gradient (blue → violet → warm).
+// Brand 8-point sparkle rendered with the Megsy gradient (blue → violet → warm).
 // Used for the empty-state hero mark above the greeting line.
 
 type Props = { className?: string };

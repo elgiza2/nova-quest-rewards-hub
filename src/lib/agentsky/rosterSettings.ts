@@ -37,9 +37,9 @@ export function getAutoJoinAgentIds(rawSettings: string | null | undefined): str
 export function buildAgentRosterContext(rawSettings: string | null | undefined): string {
   const ids = getAutoJoinAgentIds(rawSettings);
   if (!ids.length) {
-    return "SPECIALIST ROUTING PREFERENCE: no specialists are enabled for auto-join. Keep Nova Quick Chat as the lead and do not auto-delegate; a specialist explicitly selected for this turn may still be used.";
+    return "SPECIALIST ROUTING PREFERENCE: no specialists are enabled for auto-join. Keep Megsy Quick Chat as the lead and do not auto-delegate; a specialist explicitly selected for this turn may still be used.";
   }
-  return `SPECIALIST ROUTING PREFERENCE (browser-stored user setting): auto-join is enabled only for these specialist IDs: ${ids.join(", ")}. Keep Nova Quick Chat as the lead and consider these specialists only when genuinely needed. This preference does not override safety or server-side access checks.`;
+  return `SPECIALIST ROUTING PREFERENCE (browser-stored user setting): auto-join is enabled only for these specialist IDs: ${ids.join(", ")}. Keep Megsy Quick Chat as the lead and consider these specialists only when genuinely needed. This preference does not override safety or server-side access checks.`;
 }
 
 export function readAgentRosterContext(): string {

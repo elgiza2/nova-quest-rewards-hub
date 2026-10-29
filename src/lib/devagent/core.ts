@@ -30,7 +30,7 @@ function db(token?: string): SupabaseClient {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY ||
     process.env.SUPABASE_PUBLISHABLE_KEY ||
     process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-  if (!url || !key) throw new Error("Nova Supabase is not configured");
+  if (!url || !key) throw new Error("Megsy Supabase is not configured");
   return createClient(url, key, {
     auth: { persistSession: false },
     global: token ? { headers: { Authorization: `Bearer ${token}` } } : undefined,

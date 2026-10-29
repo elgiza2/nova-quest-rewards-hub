@@ -1,5 +1,5 @@
 /**
- * @doc Nova 2026 tool catalog.
+ * @doc Megsy 2026 tool catalog.
  *
  * The agent used to know about ~6 hardcoded tools, so it kept saying "I only do
  * certain tasks". This catalog gives it a large, searchable inventory of real

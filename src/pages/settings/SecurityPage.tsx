@@ -27,7 +27,7 @@ const practices = [
   {
     icon: Server,
     title: "Infrastructure",
-    desc: "Nova uses managed hosting, database, storage and authentication providers. Availability, backups and residency follow the commitments published by those providers and the active service configuration.",
+    desc: "Megsy uses managed hosting, database, storage and authentication providers. Availability, backups and residency follow the commitments published by those providers and the active service configuration.",
   },
   {
     icon: Key,

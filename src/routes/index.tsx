@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SpaMount } from "@/lib/spaMount";
 
-// The home page is the Nova SPA itself (same mount as the catch-all `$` route).
+// The home page is the Megsy SPA itself (same mount as the catch-all `$` route).
 export const Route = createFileRoute("/")({
   ssr: false,
   component: SpaMount,

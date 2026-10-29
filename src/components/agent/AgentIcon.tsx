@@ -1,7 +1,7 @@
 /** @doc Real agent marks. Every brand icon comes from @lobehub/icons (the
  * official logo of the agent/model it names) and is a dynamic import, so only
  * the icons actually on screen are downloaded. Agents with no published logo —
- * starting with Nova itself — get the robot. */
+ * starting with Megsy itself — get the robot. */
 import { lazy, Suspense, useMemo, type ComponentType } from "react";
 import { Bot, Clapperboard } from "lucide-react";
 import { AgentOrb } from "./AgentOrb";
@@ -123,7 +123,7 @@ const RULES: [RegExp, keyof typeof BRANDS][] = [
 
 /** The published logo for this agent, or null when it has none. */
 export function agentBrandKey(agent: AgentInfo): keyof typeof BRANDS | null {
-  // Nova itself is the robot, never a third-party logo.
+  // Megsy itself is the robot, never a third-party logo.
   if (agent.isDefault) return null;
   const text = `${agent.name} ${agent.description} ${agent.prompt}`.toLowerCase();
   for (const [re, key] of RULES) if (re.test(text)) return key;
@@ -154,9 +154,9 @@ function lazyBrand(key: string) {
   return Comp;
 }
 
-/** Nova's own mark. It belongs to the main agent alone, so every other
+/** Megsy's own mark. It belongs to the main agent alone, so every other
  *  logo-less agent gets its own generic mark instead of borrowing it. */
-/** Nova's own mark: the same orb creature the chat page greets you with. */
+/** Megsy's own mark: the same orb creature the chat page greets you with. */
 export function MegsyMark({ color = "aurora", size = 28, className }: { color?: AgentColor; size?: number; className?: string }) {
   return <AgentOrb color={color} size={size} state="idle" className={className} />;
 }

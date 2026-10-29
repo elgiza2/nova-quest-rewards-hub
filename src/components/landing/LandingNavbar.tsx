@@ -43,8 +43,8 @@ const navItems: NavItem[] = [
       {
         title: "Company",
         items: [
-          { label: "About", desc: "What Nova is and who builds it", href: "/about" },
-          { label: "Contact", desc: "Reach the Nova team", href: "/contact" },
+          { label: "About", desc: "What Megsy is and who builds it", href: "/about" },
+          { label: "Contact", desc: "Reach the Megsy team", href: "/contact" },
           { label: "Security", desc: "How we protect your data", href: "/security" },
         ],
       },
