@@ -33,9 +33,9 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     path: "/terms",
     title: "Terms of Service",
     description:
-      "The terms that apply when you use Nova AI, including account rules, acceptable use, subscriptions and account termination.",
+      "The terms that apply when you use Megsy AI, including account rules, acceptable use, subscriptions and account termination.",
     intro:
-      "These terms describe how Nova AI may be used. By creating an account or using the service you agree to them.",
+      "These terms describe how Megsy AI may be used. By creating an account or using the service you agree to them.",
     sections: [
       {
         heading: "Your account",
@@ -82,7 +82,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     path: "/privacy",
     title: "Privacy Policy",
     description:
-      "How Nova AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.",
+      "How Megsy AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.",
     intro:
       "This page explains what data Nova collects, why it is collected, and the control you have over it.",
     sections: [
@@ -136,7 +136,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     path: "/refund",
     title: "Refund Policy",
     description:
-      "How refunds, cancellations and billing issues are handled for Nova AI subscriptions and credit purchases.",
+      "How refunds, cancellations and billing issues are handled for Megsy AI subscriptions and credit purchases.",
     intro: "This page describes how cancellations and refund requests are handled.",
     sections: [
       {
@@ -169,11 +169,11 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
   },
   about: {
     path: "/about",
-    title: "About Nova AI",
+    title: "About Megsy AI",
     description:
-      "Nova AI is an AI agent workspace for chat, deep research, image and video generation, documents, presentations, coding and connected tools.",
+      "Megsy AI is an AI agent workspace for chat, deep research, image and video generation, documents, presentations, coding and connected tools.",
     intro:
-      "Nova AI brings chat, deep research, image and video generation, documents, presentations, coding and connected tools into one AI agent workspace.",
+      "Megsy AI brings chat, deep research, image and video generation, documents, presentations, coding and connected tools into one AI agent workspace.",
     sections: [
       {
         heading: "What Nova does",
@@ -195,9 +195,9 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
   },
   contact: {
     path: "/contact",
-    title: "Contact Nova AI",
+    title: "Contact Megsy AI",
     description:
-      "Get in touch with the Nova AI team for support, billing questions, security reports or partnership enquiries.",
+      "Get in touch with the Megsy AI team for support, billing questions, security reports or partnership enquiries.",
     intro: "Contact the Nova team for account, payment, privacy or security questions.",
     sections: [
       {
@@ -236,12 +236,12 @@ const LegalPage = ({ slug }: { slug: keyof typeof LEGAL_DOCS }) => {
   return (
     <>
       <SEOHead
-        title={`${doc.title} — Nova AI`}
+        title={`${doc.title} — Megsy AI`}
         description={doc.description}
         path={doc.path || location.pathname}
       />
       <main className="megsy-legal" data-no-translate>
-        <nav className="megsy-legal-nav" aria-label="Company navigation"><Link to="/landing" className="font-semibold">Nova AI</Link><Link to="/chat">Workspace</Link><Link to="/pricing">Plans</Link><a href="https://t.me/Torekr">Support</a></nav>
+        <nav className="megsy-legal-nav" aria-label="Company navigation"><Link to="/landing" className="font-semibold">Megsy AI</Link><Link to="/chat">Workspace</Link><Link to="/pricing">Plans</Link><a href="https://t.me/Torekr">Support</a></nav>
         <div className="megsy-legal-layout">
           <aside className="megsy-legal-aside" aria-label="Policies">{Object.entries(LEGAL_DOCS).map(([key, item]) => <Link key={key} to={item.path} aria-current={key === slug ? "page" : undefined}>{item.title}</Link>)}</aside>
           <article>

@@ -27,7 +27,7 @@ const NotFoundPage = () => {
     <>
       <SEOHead
         title="Page not found"
-        description="This Nova AI page does not exist. Head back to chat, pricing or your settings."
+        description="This Megsy AI page does not exist. Head back to chat, pricing or your settings."
         path={location.pathname}
         noindex
       />

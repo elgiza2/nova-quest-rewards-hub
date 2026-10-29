@@ -23,8 +23,8 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
 
   // ------------------------------------------------------------------ about
   "← Back to Nova": "→ رجوع لـ Nova",
-  "Nova AI is an AI workspace that brings chat, deep research, media generation, skills and connected tools into a single product.":
-    "Nova AI مساحة شغل بالذكاء الاصطناعي بتجمع الشات والبحث العميق وتوليد الميديا والمهارات والأدوات المتوصلة في منتج واحد.",
+  "Megsy AI is an AI workspace that brings chat, deep research, media generation, skills and connected tools into a single product.":
+    "Megsy AI مساحة شغل بالذكاء الاصطناعي بتجمع الشات والبحث العميق وتوليد الميديا والمهارات والأدوات المتوصلة في منتج واحد.",
   "What Nova does": "Nova بيعمل إيه",
   "Chat with modern AI models, run multi-step deep research with sources, generate images and video, build reusable skills, and connect tools through integrations — from one interface on desktop and mobile.":
     "اتكلم مع أحدث موديلات الذكاء الاصطناعي، شغّل بحث عميق بخطوات ومصادر، ولّد صور وفيديو، اعمل مهارات تقدر تستخدمها كل مرة، ووصّل أدواتك بالتكاملات — كل ده من واجهة واحدة على الكمبيوتر والموبايل.",
@@ -35,7 +35,7 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "للدعم أو الشراكات أو الصحافة: تليجرام @Torekr",
 
   // ---------------------------------------------------------------- contact
-  "Contact Nova AI": "اتواصل مع Nova AI",
+  "Contact Megsy AI": "اتواصل مع Megsy AI",
   "We read every message sent to our support address.": "بنقرا كل رسالة بتوصل على إيميل الدعم.",
   "General help, bugs and account issues: @Torekr on Telegram":
     "مساعدة عامة ومشاكل وأعطال الحساب: تليجرام @Torekr",
@@ -47,8 +47,8 @@ export const EGYPTIAN_PAGES: Record<string, string> = {
     "لو لقيت ثغرة، بلّغنا على تليجرام @Torekr مع خطوات إعادة المشكلة. ومن فضلك متنشرش التفاصيل قبل ما نرد عليك.",
 
   // ------------------------------------------------------------------ terms
-  "These terms describe how Nova AI may be used. By creating an account or using the service you agree to them.":
-    "الشروط دي بتوضح إزاي تستخدم Nova AI. أول ما تعمل حساب أو تستخدم الخدمة تبقى موافق عليها.",
+  "These terms describe how Megsy AI may be used. By creating an account or using the service you agree to them.":
+    "الشروط دي بتوضح إزاي تستخدم Megsy AI. أول ما تعمل حساب أو تستخدم الخدمة تبقى موافق عليها.",
   "Your account": "حسابك",
   "You need an account to use most of Nova. You are responsible for keeping your credentials safe and for the activity that happens under your account.":
     "محتاج حساب عشان تستخدم أغلب مميزات Nova. وإنت مسؤول عن الحفاظ على بيانات دخولك وعن أي نشاط بيحصل من حسابك.",

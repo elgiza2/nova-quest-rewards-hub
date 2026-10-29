@@ -22,7 +22,7 @@ import {
 
 export const WHATSAPP_PHONE = "201098821812";
 export const PROMOTER_MESSAGE =
-  "Hello, I want to join the Nova AI promotion / referral system. Please send me the details.";
+  "Hello, I want to join the Megsy AI promotion / referral system. Please send me the details.";
 export const MIN_PAYOUT = 10;
 
 /* Neutral, quiet palette — no gradients, no neon. */
@@ -347,10 +347,10 @@ const ReferralsPage = () => {
 
   const shareLink = async () => {
     if (!link) return;
-    const shareText = `Join Nova AI with my invite link:\n${link}`;
+    const shareText = `Join Megsy AI with my invite link:\n${link}`;
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Nova AI", text: shareText, url: link });
+        await navigator.share({ title: "Megsy AI", text: shareText, url: link });
         return;
       } catch {
         /* fallthrough */

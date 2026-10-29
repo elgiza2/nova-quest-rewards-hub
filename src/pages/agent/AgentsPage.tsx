@@ -199,7 +199,7 @@ export function AgentsPage() {
         locale="en"
         path="/agents"
         title="Your agents"
-        description="Your personal Nova AI agents, specialist agents and conversations."
+        description="Your personal Megsy AI agents, specialist agents and conversations."
       />
       <ProfileGlassShell
         title="Agents"

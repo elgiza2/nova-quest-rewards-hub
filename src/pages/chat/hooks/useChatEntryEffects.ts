@@ -130,7 +130,7 @@ export function useChatEntryEffects(params: {
 Nothing to set up. Tell me what you're working on and we'll go from there.`;
 
       const workspaceId = getActiveWorkspaceId();
-      const welcomeTitle = ar ? "أهلاً بيك في Nova AI" : "Welcome to Nova AI";
+      const welcomeTitle = ar ? "أهلاً بيك في Megsy AI" : "Welcome to Megsy AI";
       const { data: conv } = await supabase
         .from("conversations")
         .insert({

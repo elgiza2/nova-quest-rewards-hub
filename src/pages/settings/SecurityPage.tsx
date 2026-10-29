@@ -65,7 +65,7 @@ const SecurityPage = () => (
   <div className="amber-settings min-h-dvh">
     <SEOHead
       title="Security"
-      description="Learn how Nova AI protects your account, chats, files and AI workflows with secure access, data controls and privacy-focused infrastructure."
+      description="Learn how Megsy AI protects your account, chats, files and AI workflows with secure access, data controls and privacy-focused infrastructure."
       path="/security"
     />
     <LandingNavbar />

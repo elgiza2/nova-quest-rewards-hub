@@ -1,4 +1,4 @@
-# Nova AI — Comprehensive Knowledge Base for AI Support Assistant
+# Megsy AI — Comprehensive Knowledge Base for AI Support Assistant
 > Extracted from all marketing, legal, and feature pages. Last policy date: 19 May 2026.
 
 ---
@@ -122,7 +122,7 @@
 #### Per-service plan matrix:
 | Service | Free | Pro | Elite | Business |
 |---|---|---|---|---|
-| AI Chat | Nova Lite — unlimited | Nova AI — unlimited | Nova AI — unlimited | Nova AI — unlimited |
+| AI Chat | Nova Lite — unlimited | Megsy AI — unlimited | Megsy AI — unlimited | Megsy AI — unlimited |
 | Image Generation | Not included | Unlimited 7 days/month | Unlimited 15 days/month | Unlimited all month |
 | Video Generation | Not included | 240 MC included | 500 MC included | 1,200 MC included |
 | Slides & Presentations | 3/day | Unlimited 7 days/month | Unlimited 15 days/month | Unlimited all month |
@@ -439,7 +439,7 @@
 ---
 
 ### /egypt — Egypt Page
-- Title: "Built in Egypt — The Story Behind Nova AI"
+- Title: "Built in Egypt — The Story Behind Megsy AI"
 - Egypt stats: 7,000+ years of civilization; 110M+ population; 1M km² total area; $400B+ GDP; 30+ national mega projects; 20+ new cities under construction; $58B New Capital investment; 14.5M tourists in 2023
 - **New Administrative Capital:** $58B investment; 700 km² area; includes Africa's tallest skyscraper (Iconic Tower, 385m); designed for 6.5M residents
 - **New Suez Canal expansion:** 72 km new channel; increased capacity from 49 to 97 ships daily; $8B+ annual revenue; completed in record one year

@@ -203,7 +203,7 @@ export function getDisplayPrice(plan: PlanCardConfig, yearly: boolean) {
 
 export const ENTERPRISE_FEATURES: string[] = [
   "Custom MC Allocation",
-  "Priority Nova AI compute lane",
+  "Priority Megsy AI compute lane",
   "Dedicated Infrastructure",
   "SLA Guarantees",
   "Custom API Access & Integrations",

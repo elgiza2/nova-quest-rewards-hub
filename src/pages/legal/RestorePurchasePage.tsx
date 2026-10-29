@@ -50,7 +50,7 @@ export default function RestorePurchasePage() {
     <>
       <SEOHead
         title="Restore Purchases"
-        description="Restore a Nova AI subscription on this device by re-checking the plan recorded for your account."
+        description="Restore a Megsy AI subscription on this device by re-checking the plan recorded for your account."
         path="/restore"
       />
       <main className="min-h-dvh bg-background text-foreground">

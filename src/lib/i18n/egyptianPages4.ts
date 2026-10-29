@@ -98,7 +98,7 @@ export const EGYPTIAN_PAGES_4: Record<string, string> = {
   // ------------------------------------------------------- صفحة الإحالة (Pro)
   "Nova Pro invitation": "دعوة ميجسي برو",
   "Invite 5 friends, get Pro free": "اعزم 5 أصحاب، وخد برو مجانًا",
-  "Every friend who joins Nova AI with your link brings you closer to free Pro access for a limited time.":
+  "Every friend who joins Megsy AI with your link brings you closer to free Pro access for a limited time.":
     "كل صاحب يسجل في ميجسي بلينكك بيقرّبك أكتر من برو مجانًا لفترة محدودة.",
   "Nova Pro invitation artwork": "صورة دعوة ميجسي برو",
   "Required steps": "الخطوات المطلوبة",

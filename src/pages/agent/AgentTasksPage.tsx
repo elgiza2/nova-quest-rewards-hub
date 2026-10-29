@@ -45,7 +45,7 @@ export default function AgentTasksPage() {
   };
   const visible = (tasks ?? []).filter((task) => filter === "all" || task.attention === filter);
   return <AgentShell lang={lang} title={ar ? "المهام" : "Tasks"} actions={<Button variant="outline" size="sm" onClick={() => nav("/tasks/life")}><ListTodo />{ar ? "مهامي" : "My tasks"}</Button>}>
-    <SEOHead path="/tasks" title="Tasks — Nova AI" description="Follow your agents' work and tasks in Nova." />
+    <SEOHead path="/tasks" title="Tasks — Megsy AI" description="Follow your agents' work and tasks in Nova." />
     <div className="flex-1 overflow-y-auto px-5 py-8 md:px-10 md:py-12"><div className="mx-auto w-full max-w-5xl">
       <div className="mb-8 flex items-center justify-between gap-4"><div><h1 className="text-3xl font-semibold">{ar ? "الشغل الجاري" : "Work in progress"}</h1><p className="mt-2 text-sm text-muted-foreground">{tasks?.length ?? 0} {ar ? "مهمة" : "tasks"}</p></div><Button variant="ghost" size="icon" disabled={refreshing} onClick={() => void load()} title={ar ? "تحديث" : "Refresh"} aria-label={ar ? "تحديث" : "Refresh"}><RefreshCw className={refreshing ? "motion-safe:animate-spin" : ""} /></Button></div>
       <div className="mb-6 flex flex-wrap gap-1 border-b border-border" role="tablist" aria-label={ar ? "حالة المهام" : "Task status"}>{Object.entries(labels).map(([key, label]) => <Button variant="ghost" role="tab" aria-selected={filter === key} key={key} onClick={() => setFilter(key)} className={`rounded-none border-b-2 px-3 ${filter === key ? "border-primary text-foreground" : "border-transparent text-muted-foreground"}`}>{label}<span className="text-xs text-muted-foreground">{(tasks ?? []).filter((t) => key === "all" || t.attention === key).length}</span></Button>)}</div>

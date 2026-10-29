@@ -13,7 +13,7 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   Imported: "اتستورد",
   "Image is too large (max 5MB)": "الصورة كبيرة أوي (أقصى حد 5 ميجا)",
   "No suggestions returned": "مفيش اقتراحات رجعت",
-  "Learn about Nova AI": "اعرف أكتر عن Nova AI",
+  "Learn about Megsy AI": "اعرف أكتر عن Megsy AI",
   "browser screenshot": "صورة شاشة المتصفح",
   "Nova OS screenshot": "صورة شاشة Nova OS",
   "Nova logo": "شعار Nova",
@@ -300,8 +300,8 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Rate this app": "قيّم التطبيق",
   Version: "الإصدار",
   "This page has moved": "الصفحة دي اتنقلت",
-  "This Nova AI page does not exist. Head back to chat, pricing or your settings.":
-    "الصفحة دي مش موجودة في Nova AI. ارجع للشات أو الأسعار أو الإعدادات.",
+  "This Megsy AI page does not exist. Head back to chat, pricing or your settings.":
+    "الصفحة دي مش موجودة في Megsy AI. ارجع للشات أو الأسعار أو الإعدادات.",
 
   // ----------------------------------------------------------- دخول وحسابات
   "Invalid invite link": "لينك الدعوة غير صحيح",
@@ -381,20 +381,20 @@ export const EGYPTIAN_PAGES_3: Record<string, string> = {
   "Manus API Key": "مفتاح Manus API",
 
   // ---------------------------------------------------------------- وصف قانوني
-  "The terms that apply when you use Nova AI, including account rules, acceptable use, subscriptions and account termination.":
-    "الشروط اللي بتنطبق وإنت بتستخدم Nova AI، وفيها قواعد الحساب والاستخدام المقبول والاشتراكات وإنهاء الحساب.",
-  "How Nova AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.":
-    "إزاي Nova AI بيجمع ويستخدم ويخزّن ويحمي بياناتك، وده يشمل الشاتات والملفات وبيانات الحساب والأطراف التانية.",
-  "How refunds, cancellations and billing issues are handled for Nova AI subscriptions and credit purchases.":
-    "إزاي بنتعامل مع الاسترجاع والإلغاء ومشاكل الفوترة في اشتراكات Nova AI وشراء الكريدت.",
-  "Nova AI is an AI workspace for chat, research, media generation, skills and connected tools.":
-    "Nova AI مساحة شغل بالذكاء الاصطناعي للشات والبحث وتوليد الميديا والمهارات والأدوات المتوصلة.",
-  "Get in touch with the Nova AI team for support, billing questions, security reports or partnership enquiries.":
-    "اتواصل مع فريق Nova AI للدعم أو أسئلة الفوترة أو تقارير الأمان أو الشراكات.",
-  "Restore a Nova AI subscription on this device by re-checking the plan recorded for your account.":
-    "استرجع اشتراك Nova AI على الجهاز ده بمراجعة الباقة المسجّلة لحسابك.",
-  "Learn about Nova AI's security practices, data protection, encryption, and compliance commitments. Your data safety is our priority.":
-    "اعرف ممارسات الأمان في Nova AI وحماية البيانات والتشفير والالتزام بالمعايير. أمان بياناتك أولويتنا.",
+  "The terms that apply when you use Megsy AI, including account rules, acceptable use, subscriptions and account termination.":
+    "الشروط اللي بتنطبق وإنت بتستخدم Megsy AI، وفيها قواعد الحساب والاستخدام المقبول والاشتراكات وإنهاء الحساب.",
+  "How Megsy AI collects, uses, stores and protects your data, including chats, files, account information and third-party processors.":
+    "إزاي Megsy AI بيجمع ويستخدم ويخزّن ويحمي بياناتك، وده يشمل الشاتات والملفات وبيانات الحساب والأطراف التانية.",
+  "How refunds, cancellations and billing issues are handled for Megsy AI subscriptions and credit purchases.":
+    "إزاي بنتعامل مع الاسترجاع والإلغاء ومشاكل الفوترة في اشتراكات Megsy AI وشراء الكريدت.",
+  "Megsy AI is an AI workspace for chat, research, media generation, skills and connected tools.":
+    "Megsy AI مساحة شغل بالذكاء الاصطناعي للشات والبحث وتوليد الميديا والمهارات والأدوات المتوصلة.",
+  "Get in touch with the Megsy AI team for support, billing questions, security reports or partnership enquiries.":
+    "اتواصل مع فريق Megsy AI للدعم أو أسئلة الفوترة أو تقارير الأمان أو الشراكات.",
+  "Restore a Megsy AI subscription on this device by re-checking the plan recorded for your account.":
+    "استرجع اشتراك Megsy AI على الجهاز ده بمراجعة الباقة المسجّلة لحسابك.",
+  "Learn about Megsy AI's security practices, data protection, encryption, and compliance commitments. Your data safety is our priority.":
+    "اعرف ممارسات الأمان في Megsy AI وحماية البيانات والتشفير والالتزام بالمعايير. أمان بياناتك أولويتنا.",
   // ------------------------------------------------------------------ الباسوردات
   "Passwords": "الباسوردات",
   "Every account the agent creates is registered with your Nova email and a strong password, and it is saved here so you can come back to it anytime.":

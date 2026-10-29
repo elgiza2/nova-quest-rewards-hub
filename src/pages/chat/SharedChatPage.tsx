@@ -37,7 +37,7 @@ const SharedChatPage = () => {
     const firstUser = messages.find((m) => m.role === "user")?.content || "";
     const firstAssistant = messages.find((m) => m.role === "assistant")?.content || "";
     const raw = (firstUser + " — " + firstAssistant).replace(/[#*_`>\[\]()]/g, " ").replace(/\s+/g, " ").trim();
-    return raw.slice(0, 155) || tx("A conversation shared from Nova AI.");
+    return raw.slice(0, 155) || tx("A conversation shared from Megsy AI.");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
@@ -53,9 +53,9 @@ const SharedChatPage = () => {
   };
 
   const shareTo = (platform: "whatsapp" | "x" | "telegram" | "facebook") => {
-    const text = encodeURIComponent(`${title || tx("A conversation on Nova AI")}\n${shareUrl}`);
+    const text = encodeURIComponent(`${title || tx("A conversation on Megsy AI")}\n${shareUrl}`);
     const url = encodeURIComponent(shareUrl);
-    const t = encodeURIComponent(title || "Nova AI");
+    const t = encodeURIComponent(title || "Megsy AI");
     const urls: Record<typeof platform, string> = {
       whatsapp: `https://wa.me/?text=${text}`,
       x: `https://twitter.com/intent/tweet?url=${url}&text=${t}`,
@@ -70,7 +70,7 @@ const SharedChatPage = () => {
       return copyLink();
     }
     try {
-      await (navigator as any).share({ title: title || "Nova AI", text: preview, url: shareUrl });
+      await (navigator as any).share({ title: title || "Megsy AI", text: preview, url: shareUrl });
     } catch { /* dismissed */ }
   };
 
@@ -210,7 +210,7 @@ const SharedChatPage = () => {
               <p className="mt-2 text-xs text-muted-foreground">
                 {new Date(createdAt).toLocaleDateString(lang || undefined, { year: "numeric", month: "short", day: "numeric" })}
                 {" · "}
-                {tx("Shared on Nova AI")}
+                {tx("Shared on Megsy AI")}
               </p>
             )}
 
@@ -261,7 +261,7 @@ const SharedChatPage = () => {
             <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full bg-purple-500/20 blur-[120px] pointer-events-none" />
             <div className="relative">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-foreground/5 border border-border/50 text-[11px] font-medium text-foreground/80 mb-4">
-                {tx("Powered by Nova AI")}
+                {tx("Powered by Megsy AI")}
               </div>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                 {tx("Start your own conversation")}

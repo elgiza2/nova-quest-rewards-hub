@@ -10,7 +10,7 @@ export type ChatSeoMeta = { title: string; description: string; path: string };
  */
 export const SEO_BY_MODE: Record<ChatMode, ChatSeoMeta> = {
   normal: {
-    title: "AI Chat with 80+ Models — Nova AI Agent Workspace",
+    title: "AI Chat with 80+ Models — Megsy AI Agent Workspace",
     description:
       "Chat with leading AI models, compare answers, upload files and get work done in one AI agent workspace. One Pro plan, metered by real usage.",
     path: "/chat",

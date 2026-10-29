@@ -93,7 +93,7 @@ const SharedSitePage = () => {
     <div className="flex min-h-screen flex-col bg-background">
       <SEOHead
         title={`${title} — built with Nova`}
-        description={`${title}, a site built with Nova AI.`}
+        description={`${title}, a site built with Megsy AI.`}
         path={`/s/${slug ?? ""}`}
       />
       <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-2">
